@@ -15,3 +15,4 @@ Basics
    usage.rst
    credit.rst
    exercises.rst
+   rstudio.rst

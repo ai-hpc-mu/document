@@ -160,8 +160,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'WordCount', 'WordCount Documentation',
-     author, 'WordCount', 'One line description of project.',
+    (master_doc, 'Mahidol University AI HPC cluster documentt', 'Documentation',
+     author, 'Snit Sanghlao', 'One line description of project.',
      'Miscellaneous'),
 ]
 
