@@ -1,7 +1,7 @@
 
 
-Usage : RStudio Server
-=====
+RStudio Server
+==============
 
 
 One time setup
@@ -15,6 +15,7 @@ Run application with Singularity
 Allocate resource::
 
         $ salloc -w node_name -t 1:0:0
+
 or
 Use browser with remote desktop on exascale web portal::
 
