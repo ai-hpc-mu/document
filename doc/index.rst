@@ -16,3 +16,4 @@ Basics
    credit.rst
    exercises.rst
    rstudio.rst
+   workshop.rst
