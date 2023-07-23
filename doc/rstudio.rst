@@ -6,9 +6,13 @@ RStudio Server
 
 One time setup
 ---------------------
+Console::
 
-$ mkdir ~/rstudio-tmp 
-
+$ TMPDIR=~/rstudio-tmp # your choice
+$ mkdir -p $TMPDIR/tmp/rstudio-server
+$ uuidgen > $TMPDIR/tmp/rstudio-server/secure-cookie-key
+$ chmod 600 $TMPDIR/tmp/rstudio-server/secure-cookie-key
+$ mkdir -p $TMPDIR/var/{lib,run}
 
 Run application with Singularity
 --------------------------------------
