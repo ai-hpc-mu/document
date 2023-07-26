@@ -16,4 +16,6 @@ Basics
    credit.rst
    exercises.rst
    rstudio.rst
+   container.rst
    workshop.rst
+   swguide.rst
