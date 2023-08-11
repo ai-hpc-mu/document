@@ -23,6 +23,6 @@ Console::
 
 $ cp /shared/dataset/relion/relion_benchmark ~/fastdata -r 
 $ cd ~/fastdata/relion_benchmark 
-$ singularity -nv -B $PWD:/host_pwd --pwd /host_pwd /shared/software/singularity/images/relion_3.1.3.sif run_relion.sh 
+$ singularity run --nv -B $PWD:/host_pwd --pwd /host_pwd /shared/software/singularity/images/relion_3.1.3.sif run_relion.sh 
 
 
