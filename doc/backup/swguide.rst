@@ -25,16 +25,4 @@ $ cp /shared/dataset/relion/relion_benchmark ~/fastdata -r
 $ cd ~/fastdata/relion_benchmark 
 $ singularity run --nv -B $PWD:/host_pwd --pwd /host_pwd /shared/software/singularity/images/relion_3.1.3.sif ./run_relion.sh 
 
-Software Define Radio and Cloud Radio Access Network:
------------------------------------------------------
-GNU Radio is a free & open-source software development toolkit that provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in research, industry, academia, government, and hobbyist environments to support both wireless communications research and real-world radio systems.
-
-`GNURadio <https://https://www.gnuradio.org/>`_
-
-Console::
-
-$ salloc -w turing -t 1:0:0 -c 8 --mem=16G --gres=gpu:1
-$ ssh turing
-$ singularity shell --nv /app/gnuradio-3.10.sif
-$ gnuradio-companion &
 
