@@ -19,3 +19,4 @@ Basics
    container.rst
    workshop.rst
    swguide.rst
+   powersaving.rst
