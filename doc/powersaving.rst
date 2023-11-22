@@ -26,11 +26,13 @@ Recommend to submit job witch schedule to run during OFF PEAK
 
 It may sometimes be useful to submit a job and tell Slurm to defer scheduling until later. This is possible using the --begin option, which works with both sbatch and srun. The job will be submitted immediately, but only considered to run at the specified time in the future. Some examples below:
 .. example-code::
+    #!/bin/bash
 
-  #SBATCH
- --begin=<time>
+    #SBATCH --job-name=SubmitDelay
+    #SBATCH --account=ict
+    #SBATCH --partition=batch
+    #SBATCH --begin=15:25
 
-                 --begin=22:00
-                 --begin=now+1hour
-                 --begin=2023-11-T22:00:00
+    hostname
+    date
 
