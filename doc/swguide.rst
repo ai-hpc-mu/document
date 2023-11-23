@@ -38,3 +38,39 @@ $ ssh turing
 $ singularity shell --nv /app/gnuradio-3.10.sif
 $ gnuradio-companion &
 
+Macromolecular Modeling and Visualization:
+==========================================
+Biomolecular simulation
+
+VMD:
+---
+
+VMD is designed for modeling, visualization, and analysis of biological systems such as proteins, nucleic acids, lipid bilayer assemblies, etc. It may be used to view more general molecules, as VMD can read standard Protein Data Bank (PDB) files and display the contained structure. VMD provides a wide variety of methods for rendering and coloring a molecule: simple points and lines, CPK spheres and cylinders, licorice bonds, backbone tubes and ribbons, cartoon drawings, and others. VMD can be used to animate and analyze the trajectory of a molecular dynamics (MD) simulation. In particular, VMD can act as a graphical front end for an external MD program by displaying and animating a molecule undergoing simulation on a remote computer.
+
+`Theoretical and Computational BioPhysics <https://www.ks.uiuc.edu/Research/vmd/>`_
+
+Console::
+
+   $ singularity shell --nv /app/vmd1.9.4.sif
+   Singularity> vmd
+   rlwrap: Command not found.
+   Info) VMD for LINUXAMD64, version 1.9.4a44 (June 22, 2020)
+   Info) http://www.ks.uiuc.edu/Research/vmd/
+   Info) Email questions and bug reports to vmd@ks.uiuc.edu
+   Info) Please include this reference in published work using VMD:
+   Info)    Humphrey, W., Dalke, A. and Schulten, K., `VMD - Visual
+   Info)    Molecular Dynamics', J. Molec. Graphics 1996, 14.1, 33-38.
+   Info) -------------------------------------------------------------
+   Info) Multithreading available, 256 CPUs detected.
+   Info)   CPU features: SSE2 AVX AVX2 FMA
+   Info) Free system memory: 980GB (97%)
+   Info) Creating CUDA device pool and initializing hardware...
+   Info) Unable to load NVML library, GPU-CPU affinity unavailable.
+   Info) Detected 8 available CUDA accelerators, 28 P2P links, 1 island:
+   Info) [0-7] NVIDIA A100-SXM4-40GB 108 SM_8.0 1.4 GHz, 40GB RAM AE3 ZC
+   Info) Detected 8 available TachyonL/OptiX ray tracing accelerators
+   Info)   Compiling 1 OptiX shaders on 8 target GPUs...
+   Info) Dynamically loaded 3 plugins in directory:
+   Info) /usr/local/lib/vmd/plugins/LINUXAMD64/molfile
+   vmd >
+
