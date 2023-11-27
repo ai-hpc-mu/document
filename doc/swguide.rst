@@ -56,7 +56,7 @@ are in the public domain or have other open-source licenses.
 
 Console::
 
-   $ singularity shell --nv amber22T23.sif
+   $ singularity shell --nv /app/amber22T23.sif
    Singularity> source /opt/amber22/amber.sh
    Singularity> tleap -f leaprc.protein.ff19SB
    -I: Adding /opt/amber22/dat/leap/prep to search path.
