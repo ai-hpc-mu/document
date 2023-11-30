@@ -173,3 +173,84 @@ Console::
    Info) Exiting normally.
    Singularity>
 
+Pilot Test: Cluster Access and Performance Awareness:
+====================================================
+
+PI has degree of freedom to manage your own project resource: User and Performance.
+Computational Research Center automatic get update publications.
+
+
+Inspired by incomming Indonesia visiting for Performance Benchmarking, we create testbed to demonstrate how three open source applications work in concert to provide a **toolset for high performance computing (HPC) centers**. **ColdFront** is an **allocations management portal** that provides users an easy way to request access to allocations for a Center's resources. HPC systems staff configure the data center’s resources with attributes that tie ColdFront’s plug-ins to systems such as job schedulers, authentication/account management systems, system monitoring, and **Open XDMoD**. Once the user's allocation is activated in ColdFront, they are able to access the resource using **Open OnDemand**, a web-based portal for accessing HPC services that removes the complexities of HPC system environments from the end-user. Through Open OnDemand, users can upload and download files, create, edit, submit and monitor jobs, create and share apps, run GUI applications and connect to a terminal, all via a web browser, with no client software to install and configure. The **Open XDMoD** portal provides a rich set of features, which are tailored to the role of the user. Sample metrics provided by Open XDMoD include: number of jobs, CPUs consumed, wait time, and wall time, with minimum, maximum and the average of these metrics. Performance and quality of service metrics of the HPC infrastructure are also provided, along with application specific performance metrics (flop/s, IO rates, network metrics, etc) for all user applications running on a given resource.
+
+`NSF grant awarded in collaboration with OSC & VT <https://www.buffalo.edu/ccr/about-us/news-events/latest_news.host.html/content/shared/www/ccr/ccr-news/nsf-grant-awarded-in-collaboration-with-osc.detail.html>`_
+
+
+**PI** has degree of freedom to manage your own project resource: **User and reasonable  Performance utilization**.
+**Computational Research Center** automatic get update publications.
+
+Given Test at:
+--------------
+
+ Coldfront URL: https://10.34.250.32:2443
+
+
+ OnDemand URL: https://10.34.250.32:3443
+
+
+ XDMoD URL: https://10.34.250.32:4443
+
+ User: cgray
+ pass: test123
+
+
+ Test for **Future HPC admin workshop** and **if we use these plateform for access and monitor their job, what is users feedback?
+ 
+Features:
+---------
+
+
+ * Allocation based system for managing access to resources
+ * Self-service portal for users to request access to resources for their research group
+ * Collection of Project, Grant, and Publication data from users
+ * Center director approval system and annual project review process
+ * Email notifications for expiring/renewing access to resources
+ * Ability to define custom attributes on resources and allocations
+ * Integration with 3rd party systems for automation, access control, and other system provisioning tasks
+
+
+Principal investigators (PIs) or Project Owners:
+------------------------------------------------
+
+Principal investigators (PIs) can use ColdFront as a self-service portal to do the following tasks:
+
+ * Request allocations to center sources such as clusters, cloud resources, servers, storage, and software licenses
+ * Add/remove user access to/from allocated resources without requiring system administrator interaction
+ * Elevate selected users to 'manager' status, allowing them to handle some of the PI tasks such as request new and renew expiring resource allocations, add/remove users to/from resource allocations, add project data such as grants and publications
+ * Monitor resource utilization such as storage and cloud usage
+ * Receive email notifications for expiring/renewing access to resources as well as notifications when allocations change status - i.e. activated, expired, denied
+ * Provide information such as grants, publications, and other reportable data for periodic review by center director to demonstrate need for the resources
+   
+HPC system administrators:
+--------------------------
+
+HPC system administrators can use ColdFront as a management portal and a command line tool to complete the following tasks:
+
+ * Approve/deny resource allocation requests
+ * Define when a resource allocation will expire
+ * Associate attributes with resources and allocations for access control automation
+ * Automate job scheduler account management by utilizing attributes on resources and allocations (currently supports the Slurm job scheduler)
+ * Manage availability of resources. Resources can be public or private. Private resources can be made available on per-user or per-group basis
+ * Require PIs to periodically review their projects to ensure user access is kept up to date which helps keep systems secure and data protected
+ * Integrate with multiple authentication options such as local database, LDAP, or OpenIdConnect (FreeIPA-based)
+
+Center directors:
+-----------------
+
+Center directors can use ColdFront to do the following:
+
+ * Measure center impact based on grants, publications, and other research output entered by PIs
+ * Collect return on investment metrics to position HPC center for sustainability
+ * Interact with PIs on project reviews ensuring they provide all required information
+ * Periodically review PI access to center resources
+ * Explore all projects, resource allocations, grants, and publications with read only access
+
