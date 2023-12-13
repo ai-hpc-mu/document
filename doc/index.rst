@@ -20,3 +20,4 @@ Basics
    workshop.rst
    swguide.rst
    powersaving.rst
+   quantumml.rst
