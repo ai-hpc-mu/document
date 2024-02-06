@@ -21,3 +21,4 @@ Basics
    swguide.rst
    powersaving.rst
    quantumml.rst
+   torch_multi.rst

@@ -1,13 +1,19 @@
-Quantum Machine Learning
+Large Language Model 
 =========================
 
-Tensor networks or tensor network states are a class of variational wave functions used in the study of many-body quantum systems.[1] Tensor networks extend one-dimensional matrix product states to higher dimensions while preserving some of their useful mathematical properties.[Wiki]
+Qurge language model (LLM) is a language model notable for its ability to achieve general-purpose language generation. LLMs acquire these abilities by learning statistical relationships from text documents during a computationally intensive self-supervised and semi-supervised training process. LLMs are artificial neural networks typically built with a transformer-based architecture. Some recent implementations are based on alternative architectures such as recurrent neural network variants and Mamba (a state space model).
 
-Developer familly with Machine Learning framework such as tensorflow and Pytorchcan be prepared to simulate quantum algorithms on GPU High Performance Computing. At time of this draft, there are two classes of simulator method that are state vector simulator and Tensor 
+LLMs can be used for text generation, a form of generative AI, by taking an input text and repeatedly predicting the next token or word.[5] Up to 2020, fine tuning was the only way a model could be adapted to be able to accomplish specific tasks. Larger sized models, such as GPT-3, however, can be prompt-engineered to achieve similar results.[6] They are thought to acquire knowledge about syntax, semantics and "ontology" inherent in human language corpora, but also inaccuracies and biases present in the corpora.
 
-Quantum-classical hybrid paradigm and variational quantum algorithms
---------------------------------------------------------------------
-Tensor network for quantum wave
+`Large language model <https://en.wikipedia.org/wiki/Large_language_model>`_
+
+LLaMA
+------
+
+
+LLaMA (Large Language Model Meta AI) is a family of autoregressive large language models (LLMs), released by Meta AI starting in February 2023.
+
+
 WorkFlow for HPC QC AI/ML 
 =========================
 
