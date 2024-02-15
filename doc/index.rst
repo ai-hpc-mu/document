@@ -22,3 +22,4 @@ Basics
    powersaving.rst
    quantumml.rst
    torch_multi.rst
+   parabricks.rst
