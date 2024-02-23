@@ -23,3 +23,4 @@ Basics
    quantumml.rst
    torch_multi.rst
    parabricks.rst
+   cryo_em.rst
