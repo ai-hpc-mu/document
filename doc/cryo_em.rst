@@ -40,7 +40,7 @@ Signle particle tutorial
 
 .. image:: images/relion.png
 
-This image is the best one which needed to improve for run on multi-nodes with Slurm scheduling.
+This image is NOT the best one which we will improve Singularity definition file to run on multi-nodes with Slurm scheduling.
 
 
 `RELION Single particle tutorial  <https://relion.readthedocs.io/en/release-4.0/SPA_tutorial/index.html>`_
