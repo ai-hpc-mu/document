@@ -14,6 +14,7 @@ Relion 3 or 4 on Exascale Cluster with Singularity
 This is very simple guide to run Relion on a DGX100, more effective multinodes should be explore futher.
 Assume you allocate resource on one of our compute nodes by salloc command.
 .. code-block:: console
+
    $ salloc -w omega -t 1:0:0 --gres=gpu:1
 
 Download Data
@@ -21,16 +22,19 @@ Download Data
 You can download data from Takayuki Kato from the Namba group at Osaka university, Japan. It was collected on a JEOL CRYO ARM 200 microscope.The data and our precalculated results may be downloaded and unpacked using the commands below.
 
 .. code-block:: console
+
    cd ~/
    mkdir relion/tutorial/
    wget ftp://ftp.mrc-lmb.cam.ac.uk/pub/scheres/relion30_tutorial_data.tar
    wget ftp://ftp.mrc-lmb.cam.ac.uk/pub/scheres/relion40_tutorial_precalculated_results.tar.gz
    tar -xf relion30_tutorial_data.tar
    tar -zxf relion40_tutorial_precalculated_results.tar.gz
- 
+
+
 Signle particle tutorial
 -------------------------
 .. code-block:: console
+  
    $ singularity shell --nv /app/relion4_gui_cufftw.sif
    Singularity> relion &
 
