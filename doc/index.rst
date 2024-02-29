@@ -24,3 +24,4 @@ Basics
    torch_multi.rst
    parabricks.rst
    cryo_em.rst
+   llm.rst
