@@ -173,6 +173,65 @@ Console::
    Info) Exiting normally.
    Singularity>
 
+GROMACS: High Performance Molecular Dynamics
+============================================
+GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles and is a community-driven project. It is primarily designed for biochemical molecules like proteins, lipids and nucleic acids that have a lot of complicated bonded interactions, but since GROMACS is extremely fast at calculating the nonbonded interactions (that usually dominate simulations) many groups are also using it for research on non-biological systems, e.g. polymers and fluid dynamics.
+`<https://www.gromacs.org/>`_
+
+Example GROMACS on 4 GPUs 128CPU  MPIs 
+--------------------------------------
+The following examples demonstrate using the NGC GROMACS container to run the STMV benchmark. Reference performance, on a range of systems,
+we use 2 thread-MPI tasks per GPU (-ntmpi 8), which we find gives good performance. We set 16 OpenMP threads per thread-MPI task (assuming at least 128 CPU cores in the system). 
+
+Download Benchmark Dataset
+--------------------------
+
+.. code-block:: console
+
+        wget https://zenodo.org/record/3893789/files/GROMACS_heterogeneous_parallelization_benchmark_info_and_systems_JCP.tar.gz
+
+        tar xf GROMACS_heterogeneous_parallelization_benchmark_info_and_systems_JCP.tar.gz
+
+        cd GROMACS_heterogeneous_parallelization_benchmark_info_and_systems_JCP/stmv
+
+Run on Singularity:
+-------------------
+
+.. code-block:: console
+
+        $ salloc  -t 1:0:0 -c 128 --gres=gpu:4 
+        
+        $ ssh <computer node, allocate>
+
+        $ export GMX_ENABLE_DIRECT_GPU_COMM=1
+
+        $ singularity run --nv -B ${PWD}:/host_pwd --pwd /host_pwd /app/gromacs.2023.2.sif gmx mdrun -ntmpi 8 -ntomp 16 -nb gpu -pme gpu -npme 1 -update gpu -bonded gpu -nsteps 100000 -resetstep 90000 -noconfout -dlb no -nstlist 300 -pin on -v -gpu_id 0123
+
+Performance x 2 with Direct GPUs NVLINK
+---------------------------------------
+Why not supercompuer!.
+
+With normal communication link, performance GROMACS for overriding nsteps with value passed on the command line: 100000 steps, 200 ps
+
+.. code-block:: console
+
+    _               Core t (s)   Wall t (s)        (%)
+    Time:           6561.962       51.310        12788.8
+                     (ns/day)    (hour/ns)
+    Performance:       33.681        0.713
+
+After taking advantage of NVLINK Speed GPUs network directly
+
+.. code-block:: console
+   
+       _             Core t (s)    Wall t (s)        (%)
+       Time:         2796.036       21.914        12759.0
+                       (ns/day)    (hour/ns)
+       Performance:      78.861        0.304
+
+
+
+
 Pilot Test: Cluster Access and Performance Awareness:
 ====================================================
 
