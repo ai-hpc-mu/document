@@ -18,14 +18,14 @@ List available pageckage (133 at date of writting April 8, 2024)
 
 .. code-block:: console
 
-   $ module av
+   Singularity>  module av
 
 Support we want run paraview
 
 .. code-block:: console
 
-   $ module load paraview
-   $ paraview
+   Singularity> module load paraview
+   Singularity> paraview
 
 Parallel Electronic Simulation
 ------------------------------
@@ -46,6 +46,7 @@ To run Xyce Spice-compatible Parallel Electronic Simulation
    .RESULT {v(b)}
    .RESULT {v(b)*v(b)/2}
    .END
-
-   $ Xyce  cir.nlist
+   
+   Singularity> module load xyce
+   Singularity> Xyce  cir.nlist
 
