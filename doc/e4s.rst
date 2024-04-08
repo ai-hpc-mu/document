@@ -9,7 +9,6 @@ Run with Container
 ------------------
 E4S can be used at MAI by Singularity containver image :- 
 
- singularity run --nv /app/e4s-cuda80-x86_64-24.02.sif
 
 .. code-block:: console
 
