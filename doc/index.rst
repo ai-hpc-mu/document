@@ -25,3 +25,4 @@ Basics
    parabricks.rst
    cryo_em.rst
    llm.rst
+   e4s.rst
