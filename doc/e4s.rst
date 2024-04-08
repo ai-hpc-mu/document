@@ -47,8 +47,5 @@ To run Xyce Spice-compatible Parallel Electronic Simulation
    .RESULT {v(b)*v(b)/2}
    .END
 
-   $ Xyce  nlist
+   $ Xyce  cir.nlist
 
-Reference:
-1. E4S https://e4s-project.github.io/index.html
-2. E4S AWS https://aws.amazon.com/marketplace/pp/prodview-ozpychswxmldi 
