@@ -62,5 +62,67 @@ Typically we want things in table form, here's one way to run it for that and so
    $ rm blast-results.tmp 
    $ column -ts $'\t' blast-results.tsv 
 
+Reproducting research results with Python and Conda Package management
+======================================================================
+In many cases, researcher need system adminstrators to install new library for their project. This is somehow taking longer time then we expected. So one solution in sharing system cluster, we are learing how to use 'module' system environment or singularity container. They are general usage. For Python eco-system, conda package management and conflict library resolver save us a lot when it comes to customization library for us.
+
+We use newly release(two years)  and request from user for PSSMPRO.
+
+How to
+------
+Setup Conda (once time setup)
+
+
+.. code-block:: console
+
+   $ module load anaconda3
+
+   $ conda init bash
+
+
+Then logout and relogin again.
+
+Create Conda Environment(one time  only) 
+
+
+.. code-block:: console
+
+   $ conda create -n bio python=3.9 scikit-learn pandas jupyter blast bioconductor-kebabs=1.24.0 -c conda-forge -c bioconda  
+
+Wait....!
+
+
+Activate environment when you want to work on project environment
+
+
+.. code-block:: console
+
+   $ conda env list
+
+   $  conda activate bio
+
+
+ Add new library to Working Environment 
+
+
+.. code-block:: console
+
+   $ pip install pssmpro
+
+   $ jupyter notebook
+
+In side your notebook your can verify that you can work with new installed package 
+
+
+.. code-block:: console
+
+   from pssmpro.features import create_pssm_profile 
+
+
 Reference:
    `Command-line blast example <https://hackmd.io/@AstrobioMike/command-line-blast-example>`_
+
+   `Generate PSSM profiles for protein sequences <https://github.com/deeprob/pssmpro>`_
+
+   `Thioesterases based on ensemble learning <https://github.com/deeprob/ThioesteraseEnzymeSpecificity>`_
+
