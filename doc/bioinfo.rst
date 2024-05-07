@@ -6,11 +6,12 @@ The following is note taking for applications for Bioinformatics.
 BLAST
 ------
 BLAST (basic local alignment search tool)[3] is an algorithm and program for comparing primary biological sequence information, such as the amino-acid sequences of proteins or the nucleotides of DNA and/or RNA sequences.
-`BLAST  <https://en.wikipedia.org/wiki/BLAST_(biotechnology)>`
+
+`BLAST  <https://en.wikipedia.org/wiki/BLAST_(biotechnology)>`_
 
 Allocate resource for testing
 ----------------------------------
-To test simple on a compute node
+To test an example on a compute node
 
 .. code-block:: console
 
@@ -60,3 +61,6 @@ Typically we want things in table form, here's one way to run it for that and so
 
    $ rm blast-results.tmp 
    $ column -ts $'\t' blast-results.tsv 
+
+Reference:
+   `Command-line blast example <https://hackmd.io/@AstrobioMike/command-line-blast-example>`_
