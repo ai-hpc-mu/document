@@ -1,6 +1,28 @@
+Statistical Tools
+#################
 
+RStudio on Jupyter with The Rocker Project
+==========================================
 
-RStudio Server
+Without complicated setup, we can run container and work on jupyter notebook environment.
+
+How to
+******
+
+ On any node:  activate singularity
+
+.. code-block:: console
+
+  $ module load singularity
+  $ singularity run /scratch/rocker_rstudio.sif
+
+ Connect to RStudio Server via browser::
+        http://compute_node.mahidol.ac.th:port
+
+Reference:
+`The Rocker Project  <https://rocker-project.org/images/>`_
+
+RStudio Server(outdate)
 ==============
 
 
