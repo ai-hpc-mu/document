@@ -8,13 +8,10 @@ Basics
 ==========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3 
 
-   purpose.rst
-   dependencies.rst
-   usage.rst
-   credit.rst
-   exercises.rst
+   home.rst
+   quickStart.rst
    rstudio.rst
    container.rst
    workshop.rst

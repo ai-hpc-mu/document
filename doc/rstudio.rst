@@ -1,5 +1,20 @@
-Statistical Tools
-#################
+Mathematics and Statistics Tools
+#################################
+
+MATLAB singularity with License server enabled
+==============================================
+
+At allocated compute node; activate singularity and run MATLAB image 
+
+.. code-block:: console
+
+   $module load singularity
+   $singularity run /app/matlab2023bLic.sif
+   or
+   $singularity run /scratch/matlab2023bLic.sif
+
+This software license is depended on MUIT MATLAB license.
+
 
 RStudio on Jupyter with The Rocker Project
 ==========================================
