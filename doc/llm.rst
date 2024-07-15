@@ -127,7 +127,7 @@ Reference:
 
 Build LLM Apps with Low-code
 ==============================
-Having settle down with serving LLM model, we can build application deploy those model in AI application with low-code tool for developers to build customized LLM orchestration flow & AI agents.
+With serving LLM model, we can build AI applications that applied  models with low-code tool for developers to build customized LLM orchestration flow & AI agents.
 
 `Build LLM Application with FlowiseAI <https://flowiseai.com/>`_
 
