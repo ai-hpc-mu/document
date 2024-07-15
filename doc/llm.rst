@@ -61,3 +61,76 @@ Execute Pyton script to run interference in singularity image
 
    singularity run --nv -B ${CKPT_PATH}:"/tmp/ckpt" /app/gemma.sif python scripts/run.py  --device=cuda  --ckpt=/tmp/ckpt/gemma-${VARIANT}.ckpt --variant=${VARIANT}  --prompt="${PROMPT}"
 
+Get up and running with large language models on private cloud
+==============================================================
+Serving large language models (LLMs) locally can be super helpful—whether you'd like to play around with LLMs or build more powerful apps using them. But configuring your working environment and getting LLMs to run on your machine is not trivial.
+
+So how do you run LLMs locally or on primise cloud without any of the annoyance? Enter Ollama, a platform that makes local development with open-source large language models. With Ollama, everything you need to run an LLM—model weights and all of the config—is packaged into a single Modelfile. Think kubernetes for LLMs. 
+
+In this tutorial, we’ll take a look at how to get started with Ollama to run large language models on AI/HPC cluster . So let’s get right into the steps!
+
+Get Source repository and make them work on K8S  for Ollama
+--------------------------------
+
+
+.. code-block:: console
+
+   $ git  clone https://github.com/ollama/ollama.git
+
+   $ cd ~/ollama/examples/kubernetes/
+
+Modify gpu.yaml to your with your namespace. 
+With follow step replace the correct namespace. 
+
+
+.. code-block:: console
+
+   $ kubectl apply -f gpu.yaml
+
+   $ kubectl -n ollama port-forward service/ollama 11434:80
+
+   $ kubectl get pod -n ollama
+
+Connect to pod and pull LLM models as your want to use.
+
+
+.. code-block:: console
+
+   $ kubectl -n ollama exec --stdin --tty ollama-58fcd9f74d-8rp92  -- /bin/bash
+
+   # ollama pull gemma2
+
+Test on the server inside Pod: 
+ 
+.. code-block:: console
+
+   # ollama run gemma2 "How should Mahidol University do to be favorite place for researcher around the world in next 20 years?"
+
+RestAPI test on host that port forwarded
+------------------------------------------
+
+On host that we set up port forward for ollama service, we can test RestAPI for model response.
+
+.. code-block:: console 
+
+  $ curl --noproxy "*"  http://127.0.0.1:11434/api/generate -d '{
+     "model": "gemma2",
+     "prompt": "How should Mahidol University do to be favorite place for researcher around the world in next 20 years?"
+   }'
+
+To deploy on Exascale cluster, ingress proxy need to be verified.
+
+Reference:
+
+`Get up and running with Large language model <https://ollama.com/>`_
+
+
+Build LLM Apps with Low-code
+==============================
+Having settle down with serving LLM model, we can build application deploy those model in AI application with low-code tool for developers to build customized LLM orchestration flow & AI agents.
+
+`Build LLM Application with FlowiseAI <https://flowiseai.com/>`_
+
+
+
+
