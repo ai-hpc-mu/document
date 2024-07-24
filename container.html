@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apptainer/Singularity &mdash; Exascale Knowledge Share 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Workshop" href="workshop.html" />
+    <link rel="prev" title="Mathematics and Statistics Tools" href="rstudio.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Exascale Knowledge Share
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Apptainer/Singularity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-apptainer-image-without-root-privilage">Build Apptainer Image without root privilage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#macromolecular-modeling-and-visualization">Macromolecular Modeling and Visualization:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#gromacs-high-performance-molecular-dynamics">GROMACS: High Performance Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#pilot-test-cluster-access-and-performance-awareness">Pilot Test: Cluster Access and Performance Awareness:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powersaving.html">Electrical Energy  Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_multi.html">Pytorch DISTRIBUTED DATA PARALLEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html">Cryogenic electron microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#relion-4-0-for-cryo-em-structure-determination">Relion 4.0 for cryo-EM structure determination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#computational-imaging-system-for-transmission-electron-microscopy-cistem">Computational Imaging System for Transmission Electron Microscopy(cisTEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#lora-ai-at-the-edge-is-comming">LoRA: AI at the edge is comming.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#goolge-s-llm-gemma">Goolge’s LLM: Gemma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#responsible-ai">Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#get-source-repository-and-make-them-work-on-k8s-for-ollama">Get Source repository and make them work on K8S  for Ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#restapi-test-on-host-that-port-forwarded">RestAPI test on host that port forwarded</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#multi-lingual-capabilities-in-llama3-1-405b">Multi-lingual capabilities in Llama3.1 405B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#public-cluster-is-running-on-the-way">Public Cluster is running on the way:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e4s.html">Extreme-scale Scientific Software Stack (E4S)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#reproducting-research-results-with-python-and-conda-package-management">Reproducting research results with Python and Conda Package management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Exascale Knowledge Share</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Apptainer/Singularity</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/container.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apptainer-singularity">
+<h1>Apptainer/Singularity<a class="headerlink" href="#apptainer-singularity" title="Link to this heading"></a></h1>
+<p>Apptainer (formerly known as Singularity) is a free and open-source container platform that allows you to create and run applications in isolated images (also called “containers”) in a simple, portable, fast, and secure manner. It performs operating system level virtualization known as containerization. Many container platforms are available, but Apptainer is designed to bring containers and reproducibility to the scientific community and High-Performance Computing (HPC) use cases. Using Apptainer, developers can work in reproducible environments of their choice and design, and these complete environments can be easily copied and executed on other platforms.</p>
+<section id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h2>
+<p>…</p>
+</section>
+<section id="build-apptainer-image-without-root-privilage">
+<h2>Build Apptainer Image without root privilage<a class="headerlink" href="#build-apptainer-image-without-root-privilage" title="Link to this heading"></a></h2>
+<p>Let’s install dependencies to your PC, using root privilege</p>
+<p>On your own PC:</p>
+<dl class="simple">
+<dt>sudo apt-get install -y </dt><dd><p>build-essential libseccomp-dev pkg-config uidmap squashfs-tools squashfuse fuse2fs fuse-overlayfs fakeroot cryptsetup curl wget git openssl libssl-dev uuid-dev  uuid  seccomp gperf</p>
+</dd>
+</dl>
+<p>Next, install Go:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export GOVERSION=1.19.6 OS=linux ARCH=amd64  # change this as you need
+$ wget -O /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz \
+</pre></div>
+</div>
+<blockquote>
+<div><p><a class="reference external" href="https://dl.google.com/go">https://dl.google.com/go</a>/go${GOVERSION}.${OS}-${ARCH}.tar.gz</p>
+</div></blockquote>
+<p>$ sudo tar -C /usr/local -xzf /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz</p>
+<p>Clone the repo:</p>
+<p>git clone <a class="reference external" href="https://github.com/apptainer/apptainer.git">https://github.com/apptainer/apptainer.git</a>
+cd apptainer
+git checkout release-1.2</p>
+<p>Compiling Apptainer:
+export  PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/
+./mconfig –without-suid –prefix=/home/snit/apptainer &amp;&amp; make -C ./builddir &amp;&amp; make -C ./builddir install</p>
+<p>Archive apptainer to be ready for transfer to HPC cluster::
+$ cd ~
+$ tar zcvf apptainer.tar.gz apptainer
+$ scp to HPC cluster from your box
+$ scp apptainer.tar.gz <a class="reference external" href="mailto:snit&#46;san&#37;&#52;&#48;aim3&#46;mahidol&#46;ac&#46;th">snit<span>&#46;</span>san<span>&#64;</span>aim3<span>&#46;</span>mahidol<span>&#46;</span>ac<span>&#46;</span>th</a>:/home/snit.san
+$ tar xvfz apptainer.tar.gz</p>
+<p>and setup environmental variables::
+$ echo ‘export PATH=~/apptainer/bin:$PATH’ &gt;&gt; ~/.bashrc &amp;&amp; $ source ~/.bashrc
+$ apptainer –version</p>
+<p>Building SIF
+Create lolcow.def as described below on your own box:</p>
+<p>BootStrap: docker</p>
+<p>From: ubuntu:22.04%post
+apt-get -y update
+apt-get -y install fortune cowsay lolcat%environment
+export LC_ALL=C
+export PATH=/usr/games:$PATH%runscript
+fortune | cowsay | lolcat</p>
+<p>Compiling Apptainer on PC BOX
+You can configure, build, and install Apptainer using the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./mconfig
+$ cd ./builddir
+$ make
+$ sudo make install
+</pre></div>
+</div>
+<p>And that’s it! Now you can check your Apptainer version by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ apptainer --version
+</pre></div>
+</div>
+<p>Running SIF on Compute node zeta
+Let’s run SIF using non-root version of Apptainer!</p>
+<p>Install addition package on compute node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install squashfuse fuse2fs
+</pre></div>
+</div>
+<p>Wait until now bug on Zeta then install others nodes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$  apptainer run lolcow.sif
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rstudio.html" class="btn btn-neutral float-left" title="Mathematics and Statistics Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="workshop.html" class="btn btn-neutral float-right" title="Workshop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, MAI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

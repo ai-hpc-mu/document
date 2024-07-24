@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cryogenic electron microscopy &mdash; Exascale Knowledge Share 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LLaMA" href="llm.html" />
+    <link rel="prev" title="NVIDIA Parabricks" href="parabricks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Exascale Knowledge Share
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Apptainer/Singularity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#macromolecular-modeling-and-visualization">Macromolecular Modeling and Visualization:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#gromacs-high-performance-molecular-dynamics">GROMACS: High Performance Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#pilot-test-cluster-access-and-performance-awareness">Pilot Test: Cluster Access and Performance Awareness:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powersaving.html">Electrical Energy  Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_multi.html">Pytorch DISTRIBUTED DATA PARALLEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cryogenic electron microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#relion-4-0-for-cryo-em-structure-determination">Relion 4.0 for cryo-EM structure determination</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#relion-3-or-4-on-exascale-cluster-with-singularity">Relion 3 or 4 on Exascale Cluster with Singularity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-data">Download Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#signle-particle-tutorial">Signle particle tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#computational-imaging-system-for-transmission-electron-microscopy-cistem">Computational Imaging System for Transmission Electron Microscopy(cisTEM)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#run-cistem-on-a-dgx-a100">Run cisTEM on a DGX-A100</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Download Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#lora-ai-at-the-edge-is-comming">LoRA: AI at the edge is comming.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#goolge-s-llm-gemma">Goolge’s LLM: Gemma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#responsible-ai">Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#get-source-repository-and-make-them-work-on-k8s-for-ollama">Get Source repository and make them work on K8S  for Ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#restapi-test-on-host-that-port-forwarded">RestAPI test on host that port forwarded</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#multi-lingual-capabilities-in-llama3-1-405b">Multi-lingual capabilities in Llama3.1 405B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#public-cluster-is-running-on-the-way">Public Cluster is running on the way:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e4s.html">Extreme-scale Scientific Software Stack (E4S)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#reproducting-research-results-with-python-and-conda-package-management">Reproducting research results with Python and Conda Package management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Exascale Knowledge Share</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Cryogenic electron microscopy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cryo_em.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cryogenic-electron-microscopy">
+<h1>Cryogenic electron microscopy<a class="headerlink" href="#cryogenic-electron-microscopy" title="Link to this heading"></a></h1>
+<p>Cryogenic electron microscopy (cryoEM) is a cryomicroscopy technique applied on samples cooled to cryogenic temperatures. For biological specimens, the structure is preserved by embedding in an environment of vitreous ice.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Cryogenic_electron_microscopy#:~:text=Cryogenic%20electron%20microscopy%20(cryoEM)%20is,an%20environment%20of%20vitreous%20ice.">Cryogenic electron microscopy</a></p>
+</section>
+<section id="relion-4-0-for-cryo-em-structure-determination">
+<h1>Relion 4.0 for cryo-EM structure determination<a class="headerlink" href="#relion-4-0-for-cryo-em-structure-determination" title="Link to this heading"></a></h1>
+<p>Relion-4 cover  the entire single-particle analysis workflow in relion-4.0: beam-induced motion-correction, CTF estimation; automated particle picking; particle extraction; 2D class averaging; automated 2D class selection; SGD-based initial model generation; 3D classification; high-resolution 3D refinement; CTF refinement and higher-order aberration correction; the processing of movies from direct-electron detectors; and final map sharpening and local-resolution estimation.
+<a class="reference external" href="https://relion.readthedocs.io/en/release-4.0/SPA_tutorial/Introduction.html">RELION 4.0 Document</a></p>
+<section id="relion-3-or-4-on-exascale-cluster-with-singularity">
+<h2>Relion 3 or 4 on Exascale Cluster with Singularity<a class="headerlink" href="#relion-3-or-4-on-exascale-cluster-with-singularity" title="Link to this heading"></a></h2>
+<p>This is very simple guide to run Relion on a DGX100, more effective multinodes should be explore futher.
+Assume you allocate resource on one of our compute nodes by salloc command.
+.. code-block:: console</p>
+<blockquote>
+<div><p>$ salloc -w omega -t 1:0:0 –gres=gpu:1</p>
+</div></blockquote>
+</section>
+<section id="download-data">
+<h2>Download Data<a class="headerlink" href="#download-data" title="Link to this heading"></a></h2>
+<p>You can download data from Takayuki Kato from the Namba group at Osaka university, Japan. It was collected on a JEOL CRYO ARM 200 microscope.The data and our precalculated results may be downloaded and unpacked using the commands below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/</span>
+<span class="go">mkdir relion/tutorial/</span>
+<span class="go">wget ftp://ftp.mrc-lmb.cam.ac.uk/pub/scheres/relion30_tutorial_data.tar</span>
+<span class="go">wget ftp://ftp.mrc-lmb.cam.ac.uk/pub/scheres/relion40_tutorial_precalculated_results.tar.gz</span>
+<span class="go">tar -xf relion30_tutorial_data.tar</span>
+<span class="go">tar -zxf relion40_tutorial_precalculated_results.tar.gz</span>
+</pre></div>
+</div>
+</section>
+<section id="signle-particle-tutorial">
+<h2>Signle particle tutorial<a class="headerlink" href="#signle-particle-tutorial" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>shell<span class="w"> </span>--nv<span class="w"> </span>/app/relion4_gui_cufftw.sif
+<span class="go">Singularity&gt; relion &amp;</span>
+</pre></div>
+</div>
+<img alt="_images/relion.png" src="_images/relion.png" />
+<p>This image is NOT the best one which we will improve Singularity definition file to run on multi-nodes with Slurm scheduling.</p>
+<p><a class="reference external" href="https://relion.readthedocs.io/en/release-4.0/SPA_tutorial/index.html">RELION Single particle tutorial</a></p>
+</section>
+</section>
+<section id="computational-imaging-system-for-transmission-electron-microscopy-cistem">
+<h1>Computational Imaging System for Transmission Electron Microscopy(cisTEM)<a class="headerlink" href="#computational-imaging-system-for-transmission-electron-microscopy-cistem" title="Link to this heading"></a></h1>
+<p>cisTEM is user-friendly software to process cryo-EM images of macromolecular complexes and obtain high-resolution 3D reconstructions from them. It was originally developed by Tim Grant, Alexis Rohou and Nikolaus Grigorieff and comprises a number of tools to process image data including movies, micrographs and stacks of single-particle images, implementing a complete “pipeline” of processing steps to obtain high-resolution single-particle reconstructions. cisTEM is distributed under the Janelia Research Campus Software License and can be downloaded here. We recommend downloading and using the pre-compiled binaries, rather than compiling the source code, for best performance. New users are encouraged to follow the tutorial, which provides a quick way to become familiar with the most important functions of cisTEM.</p>
+<p><cite>cisTEM   &lt;https://cistem.org/&gt;</cite></p>
+<section id="run-cistem-on-a-dgx-a100">
+<h2>Run cisTEM on a DGX-A100<a class="headerlink" href="#run-cistem-on-a-dgx-a100" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>salloc<span class="w"> </span>-w<span class="w"> </span>omega<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:0:0<span class="w"> </span>--gres<span class="o">=</span>gpu:1
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>Download Data<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>To test programm we will need to download the apoferritin test dataset from the cisTEM web page. It comes as
+another archive called apoferritin_data.tar.gz and is attached to the “Getting Started”
+Documentation page. Store this archive on a fast local disk where you have about 15 GB of space and unpack it
+by typing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>https://grigoriefflab.umassmed.edu/sites/default/files/apoferritin_data.tar.gz
+<span class="gp">$  </span>tar<span class="w"> </span>-xzf<span class="w"> </span>apoferritin_data.tar.gz
+</pre></div>
+</div>
+<p>New folder apoferritin_data  contains 20 movies, recorded on an
+aberration-corrected Titan Krios microscope.</p>
+<p>To use X11 Window client, check DISPLAY environment as follow:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>DISPLAY
+<span class="gp">$ </span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>--env<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:10.0<span class="w"> </span>/app/cistem_latest.sif<span class="w"> </span>/usr/local/bin/cisTEM
+</pre></div>
+</div>
+<p>Take notes for DISPAY such as <em>DISPLAY=:10.0</em>, then  runs cisTEM inside singularity image.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="parabricks.html" class="btn btn-neutral float-left" title="NVIDIA Parabricks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="llm.html" class="btn btn-neutral float-right" title="LLaMA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, MAI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
