@@ -124,9 +124,10 @@ On host that we set up port forward for ollama service, we can test RestAPI for 
 New LLaMa 3.1 NOW suport Thai
 ==============================
 
-Multi-lingual capabilities
+Multi-lingual capabilities in Llama3.1 405B
 --------------------------
 The main update from Llama 3 to Llama 3.1 is better non-English support. The training data for Llama 3 was 95% English, so it performed poorly in other languages. The 3.1 update provides support for German, French, Italian, Portuguese, Hindi, Spanish, and Thai.
+
 .. code-block:: console 
 
   $ curl --noproxy "*"  http://127.0.0.1:11434/api/generate -d '{
@@ -146,6 +147,7 @@ $ curl -L -k  --noproxy "*" http://aicenter.mahidol.ac.th/ollama/api/tag
 Reference:
 
 `Get up and running with Large language model <https://ollama.com/>`_
+`What Is Llama 3.1 405B? <https://www.datacamp.com/blog/llama-3-1-405b-meta-ai>`_
 
 
 Build LLM Apps with Low-code
