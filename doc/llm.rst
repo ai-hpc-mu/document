@@ -1,6 +1,6 @@
+====================
 Large Language Model 
-=========================
-
+####################
 Large language model (LLM) is a language model notable for its ability to achieve general-purpose language generation. LLMs acquire these abilities by learning statistical relationships from text documents during a computationally intensive self-supervised and semi-supervised training process. LLMs are artificial neural networks typically built with a transformer-based architecture. Some recent implementations are based on alternative architectures such as recurrent neural network variants and Mamba (a state space model).
 
 LLMs can be used for text generation, a form of generative AI, by taking an input text and repeatedly predicting the next token or word. Up to 2020, fine tuning was the only way a model could be adapted to be able to accomplish specific tasks. Larger sized models, such as GPT-3, however, can be prompt-engineered to achieve similar results. They are thought to acquire knowledge about syntax, semantics and "ontology" inherent in human language corpora, but also inaccuracies and biases present in the corpora.
@@ -33,7 +33,7 @@ There are many feature that suitable for developer to start working on LLM with 
 - Adaptability: Gemma allows for high adaptability, enabling developers to fine-tune models for specific tasks or datasets.
 
 Inference Gemma on DGX A100:
-----------------------------
+============================
 To test feature of Gemma model and tools, the model and Singularity image is provide for AI developer to apply for projects.
 
 .. code-block:: console
@@ -100,6 +100,9 @@ Connect to pod and pull LLM models as your want to use.
 
    # ollama pull gemma2
 
+   # ollama pull llama3.1:405b
+
+
 Test on the server inside Pod: 
  
 .. code-block:: console
@@ -115,10 +118,30 @@ On host that we set up port forward for ollama service, we can test RestAPI for 
 
   $ curl --noproxy "*"  http://127.0.0.1:11434/api/generate -d '{
      "model": "gemma2",
-     "prompt": "How should Mahidol University do to be favorite place for researcher around the world in next 20 years?"
+     "prompt": "มหาวิทยาลัยมหิดลจะนำผู้คนในประเทศ ไปสู่ยุ่คใหม่ ปี 2050 มหาวิทยาลัยควรมีบทบาทอะไร ที่สำคับเจ็ดด้านหลักๆ"
    }'
 
+New LLaMa 3.1 NOW suport Thai
+==============================
+
+Multi-lingual capabilities
+--------------------------
+The main update from Llama 3 to Llama 3.1 is better non-English support. The training data for Llama 3 was 95% English, so it performed poorly in other languages. The 3.1 update provides support for German, French, Italian, Portuguese, Hindi, Spanish, and Thai.
+.. code-block:: console 
+
+  $ curl --noproxy "*"  http://127.0.0.1:11434/api/generate -d '{
+     "model": "llama3.1:405b",
+     "prompt": "มหาวิทยาลัยมหิดลจะนำผู้คนในประเทศ ไปสู่ยุ่คใหม่ ปี 2050 มหาวิทยาลัยควรมีบทบาทอะไร ที่สำคับเจ็ดด้านหลักๆ"
+   }'
+
+
+
 To deploy on Exascale cluster, ingress proxy need to be verified.
+
+Public Cluster is running on the way:
+----------------------------
+$ curl -L -k  --noproxy "*" http://aicenter.mahidol.ac.th/ollama/api/tag 
+
 
 Reference:
 
