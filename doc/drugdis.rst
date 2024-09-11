@@ -1,7 +1,17 @@
-Biomedical Application 
-=========================
+Large Language Model Approaches to Drug Disconvery Generative AI
+================================================================
 
-The following is note taking for applications for Bioinformatics.
+“Large language models show the potential to revolutionize molecular design
+with text-guided discovery and decision-making as agents, due to vast
+available training data, including the body of scientific literature.”
+
+Du, Y., et al. Nature Machine Intelligence. 2024.
+
+“Large language models (LLMs) are emerging as a powerful tool in chemistry
+across multiple domains. In chemistry, LLMs are able to accurately predict
+properties, design new molecules, optimize synthesis pathways, and accelerate
+
+drug and material discovery.” Ramos, M., et al. arXiv. 2024.
 
 BLAST
 ------
@@ -118,68 +128,6 @@ In side your notebook your can verify that you can work with new installed packa
 
    from pssmpro.features import create_pssm_profile 
 
-Nextflow:Reproducible scientific workflows
-==========================================
-
-Scientific workflow engines,nextflow are particularly useful for data-intensive domains including  bioinformatics and radioastronomy, where data analysis and processing is made up of a number of tasks to be repeatedly executed across large datasets.
-The following guide is example the of combination of container and workflow engines can be very effective in enforcing reproducible, portable, scalable science.
-Run a workflow using Singularity and Nextflow
----------------------------------------------
-
-Load repository :
-
-.. code-block:: console
-
-   ~/nextflow/test$ git clone https://github.com/nextflow-io/rnaseq-nf.git
-
-   $ cd /home/snit.san/nextflow/test/rnaseq-nf
-
-
-   $ module load slurm
-
-   $ salloca –t 1:0:0 –gres=gpu:1
-
-   $ ssh <compute_node>
-
-   $ module load singularity
-
-   $ module load nextflow
-
-   $ nextflow run main.nf -profile singularity
-
-Run Nextflow core or nf-core AlphaFold2 workflow
-------------------------------------------------
-What ever AlphaFold3 will change the way research working on protein folding and challenging AutoDock, how to run AlphaFold2 with workflow is noted as follow.
-
-
-.. code-block:: console
-
-   $ module load slurm
-
-   $ salloca –t 1:0:0 –gres=gpu:1
-
-   $ ssh <compute_node>
-
-   $ module load singularity
-
-   $ module load nextflow
-
-
-
-Load repository :
-
-   $ cd ~/nextflow/
-
-   $ git clone https://github.com/nf-core/proteinfold.git
-
-   $ cd rproteinfold
-
-   $ unset https_proxy
-
-
-
-
-   $ nextflow run nf-core/proteinfold --input ./assets/samplesheet.csv --outdir ./output --mode alphafold2 base --full_dbs false --alphafold2_model_preset monomer --use_gpu true     -profile singularity
 
 Reference:
    `Command-line blast example <https://hackmd.io/@AstrobioMike/command-line-blast-example>`_
@@ -187,5 +135,4 @@ Reference:
    `Generate PSSM profiles for protein sequences <https://github.com/deeprob/pssmpro>`_
 
    `Thioesterases based on ensemble learning <https://github.com/deeprob/ThioesteraseEnzymeSpecificity>`_
-   `Containers on HPC and Cloud with Singularity <https://pawseysc.github.io/singularity-containers/41-workflow-engines/index.html>`_
 

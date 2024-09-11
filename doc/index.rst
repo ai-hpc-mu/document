@@ -13,6 +13,7 @@ Basics
    home.rst
    quickStart.rst
    rstudio.rst
+   wine.rst
    container.rst
    workshop.rst
    swguide.rst
