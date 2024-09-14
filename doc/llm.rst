@@ -114,6 +114,7 @@ RestAPI test on host that port forwarded
 
 On host that we set up port forward for ollama service, we can test RestAPI for model response.
 
+.. role:: thai
 .. code-block:: console 
 
   $ curl --noproxy "*"  http://127.0.0.1:11434/api/generate -d '{
@@ -121,27 +122,31 @@ On host that we set up port forward for ollama service, we can test RestAPI for 
      "prompt": "มหาวิทยาลัยมหิดลจะนำผู้คนในประเทศ ไปสู่ยุ่คใหม่ ปี 2050 มหาวิทยาลัยควรมีบทบาทอะไร ที่สำคับเจ็ดด้านหลักๆ"
    }'
 
+
 New LLaMa 3.1 NOW suport Thai
 ==============================
 
 Multi-lingual capabilities in Llama3.1 405B
 --------------------------
 The main update from Llama 3 to Llama 3.1 is better non-English support. The training data for Llama 3 was 95% English, so it performed poorly in other languages. The 3.1 update provides support for German, French, Italian, Portuguese, Hindi, Spanish, and Thai.
+.. role:: thai
+.. code-block:: console 
+
+   
+   $ curl   -L https://mai:<ictCallNumber>@aicenter.mahidol.ac.th/ollama/api/generate -d '{"model": "llama3.1", "prompt":"วันอาทิตย์พักผ่อนที่ไหนดี"}'
+
+
+Deployment  on Exascale cluster, ingress proxy have been  verified.
+It is tested with basic authentication. 
+
+API inferencing check  available model :
+-----------------------------------------
 
 .. code-block:: console 
 
-  $ curl --noproxy "*"  http://127.0.0.1:11434/api/generate -d '{
-     "model": "llama3.1:405b",
-     "prompt": "มหาวิทยาลัยมหิดลจะนำผู้คนในประเทศ ไปสู่ยุ่คใหม่ ปี 2050 มหาวิทยาลัยควรมีบทบาทอะไร ที่สำคับเจ็ดด้านหลักๆ"
-   }'
+   $ curl   -L https://mai:<ictCallNumber@aicenter.mahidol.ac.th/ollama/api/tags"}'
 
-
-
-To deploy on Exascale cluster, ingress proxy need to be verified.
-
-Public Cluster is running on the way:
-----------------------------
-$ curl -L -k  --noproxy "*" http://aicenter.mahidol.ac.th/ollama/api/tag 
+`API document <https://github.com/ollama/ollama/blob/main/docs/api.md#list-local-models>`_
 
 
 Reference:
