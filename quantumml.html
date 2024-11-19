@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Machine Learning &mdash; Exascale Knowledge Share 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pytorch DISTRIBUTED DATA PARALLEL" href="torch_multi.html" />
+    <link rel="prev" title="Electrical Energy Saving" href="powersaving.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Exascale Knowledge Share
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wine.html">Excel Macro Runner Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Apptainer/Singularity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#macromolecular-modeling-and-visualization">Macromolecular Modeling and Visualization:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#gromacs-high-performance-molecular-dynamics">GROMACS: High Performance Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#pilot-test-cluster-access-and-performance-awareness">Pilot Test: Cluster Access and Performance Awareness:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powersaving.html">Electrical Energy  Saving</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantum Machine Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-classical-hybrid-paradigm-and-variational-quantum-algorithms">Quantum-classical hybrid paradigm and variational quantum algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#covalent">Covalent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-computing-with-dask-parallel">Quantum computing with Dask Parallel:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="torch_multi.html">Pytorch DISTRIBUTED DATA PARALLEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html">Cryogenic electron microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#relion-4-0-for-cryo-em-structure-determination">Relion 4.0 for cryo-EM structure determination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#computational-imaging-system-for-transmission-electron-microscopy-cistem">Computational Imaging System for Transmission Electron Microscopy(cisTEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#lora-ai-at-the-edge-is-comming">LoRA: AI at the edge is comming.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#goolge-s-llm-gemma">Goolge’s LLM: Gemma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#responsible-ai">Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#get-source-repository-and-make-them-work-on-k8s-for-ollama">Get Source repository and make them work on K8S  for Ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#restapi-test-on-host-that-port-forwarded">RestAPI test on host that port forwarded</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#multi-lingual-capabilities-in-llama3-1-405b">Multi-lingual capabilities in Llama3.1 405B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#api-inferencing-check-available-model">API inferencing check  available model :</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e4s.html">Extreme-scale Scientific Software Stack (E4S)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#reproducting-research-results-with-python-and-conda-package-management">Reproducting research results with Python and Conda Package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#nextflow-reproducible-scientific-workflows">Nextflow:Reproducible scientific workflows</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Exascale Knowledge Share</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quantum Machine Learning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quantumml.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quantum-machine-learning">
+<h1>Quantum Machine Learning<a class="headerlink" href="#quantum-machine-learning" title="Link to this heading"></a></h1>
+<p>Tensor networks or tensor network states are a class of variational wave functions used in the study of many-body quantum systems.[1] Tensor networks extend one-dimensional matrix product states to higher dimensions while preserving some of their useful mathematical properties.[Wiki]</p>
+<p>Developer familly with Machine Learning framework such as tensorflow and Pytorchcan be prepared to simulate quantum algorithms on GPU High Performance Computing. At time of this draft, there are two classes of simulator method that are state vector simulator and Tensor</p>
+<section id="quantum-classical-hybrid-paradigm-and-variational-quantum-algorithms">
+<h2>Quantum-classical hybrid paradigm and variational quantum algorithms<a class="headerlink" href="#quantum-classical-hybrid-paradigm-and-variational-quantum-algorithms" title="Link to this heading"></a></h2>
+<p>Tensor network for quantum wave
+WorkFlow for HPC QC AI/ML
+=========================</p>
+<p>The following guides are intend to introduce basic tools for Pythonic workflow tool for computational scientists, AI/ML software engineers, and anyone who needs to run workloads on limited or expensive computing resources including HPC clusters, GPU arrays, quantum computers and cloud services..</p>
+</section>
+<section id="covalent">
+<h2>Covalent<a class="headerlink" href="#covalent" title="Link to this heading"></a></h2>
+<p>Covalent is a powerful open-source orchestration platform designed to harmonize the dynamic and complex world of advanced computing. It streamlines the utilization and management of disparate computational resources, encompassing classical high-performance computing (HPC), quantum computing, and AI/ML paradigms. Covalent is a workflow management tool, designed for the orchestration of, and seamless communication between these distinct systems, empowering teams to focus on higher-value R&amp;D objectives.</p>
+<p><a class="reference external" href="https://docs.covalent.xyz">Covalent is ideal for scaling jobs from your laptop / Jupyter notebook to any heterogenous combination of hardware backends</a></p>
+</section>
+<section id="quantum-computing-with-dask-parallel">
+<h2>Quantum computing with Dask Parallel:<a class="headerlink" href="#quantum-computing-with-dask-parallel" title="Link to this heading"></a></h2>
+<p>We are rework on Quantum Algorithms for  Time Series Anomaly Detection to verify workflow is work on HPC cluster and Dask. Then next PennyLane Lighting.gpu.</p>
+<p>Let solve notebook issue change ‘requirement.txt’ for notebook to version 6.5.6
+<a class="reference external" href="https://github.com/AgnostiqHQ/QuantumVariationalRewinding">Quantum Variational Rewinding for Time Series Anomaly Detection</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="powersaving.html" class="btn btn-neutral float-left" title="Electrical Energy Saving" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="torch_multi.html" class="btn btn-neutral float-right" title="Pytorch DISTRIBUTED DATA PARALLEL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, MAI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
