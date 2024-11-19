@@ -12,6 +12,7 @@ Basics
 
    home.rst
    quickStart.rst
+   alphafold.rst
    rstudio.rst
    wine.rst
    container.rst
