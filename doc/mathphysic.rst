@@ -1,5 +1,5 @@
-Mathematical modeling physics with QwQ LLM from China
-=====================================================
+Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China
+====================================================================================================
 
 Large language model (LLM) is a language model notable for its ability to achieve general-purpose language generation. Mathematics language in Physics turns nature into numbers,differential or difference equations. This note takes rocket science example to noted that non-linear differential equation model formulation taking from [1].
 
