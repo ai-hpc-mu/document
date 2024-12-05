@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLaMA &mdash; Exascale Knowledge Share 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Extreme-scale Scientific Software Stack (E4S)" href="e4s.html" />
+    <link rel="prev" title="Cryogenic electron microscopy" href="cryo_em.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Exascale Knowledge Share
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wine.html">Excel Macro Runner Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Apptainer/Singularity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#macromolecular-modeling-and-visualization">Macromolecular Modeling and Visualization:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#gromacs-high-performance-molecular-dynamics">GROMACS: High Performance Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#pilot-test-cluster-access-and-performance-awareness">Pilot Test: Cluster Access and Performance Awareness:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powersaving.html">Electrical Energy  Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_multi.html">Pytorch DISTRIBUTED DATA PARALLEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html">Cryogenic electron microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#relion-4-0-for-cryo-em-structure-determination">Relion 4.0 for cryo-EM structure determination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#computational-imaging-system-for-transmission-electron-microscopy-cistem">Computational Imaging System for Transmission Electron Microscopy(cisTEM)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LLaMA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#lora-ai-at-the-edge-is-comming">LoRA: AI at the edge is comming.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#goolge-s-llm-gemma">Goolge’s LLM: Gemma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#responsible-ai">Responsible AI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#inference-gemma-on-dgx-a100">Inference Gemma on DGX A100:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-up-and-running-with-large-language-models-on-private-cloud">Get up and running with large language models on private cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#get-source-repository-and-make-them-work-on-k8s-for-ollama">Get Source repository and make them work on K8S  for Ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#restapi-test-on-host-that-port-forwarded">RestAPI test on host that port forwarded</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#new-llama-3-1-now-suport-thai">New LLaMa 3.1 NOW suport Thai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#multi-lingual-capabilities-in-llama3-1-405b">Multi-lingual capabilities in Llama3.1 405B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#api-inferencing-check-available-model">API inferencing check  available model :</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-llm-apps-with-low-code">Build LLM Apps with Low-code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="e4s.html">Extreme-scale Scientific Software Stack (E4S)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#reproducting-research-results-with-python-and-conda-package-management">Reproducting research results with Python and Conda Package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#nextflow-reproducible-scientific-workflows">Nextflow:Reproducible scientific workflows</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Exascale Knowledge Share</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">LLaMA</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/llm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>Large language model (LLM) is a language model notable for its ability to achieve general-purpose language generation. LLMs acquire these abilities by learning statistical relationships from text documents during a computationally intensive self-supervised and semi-supervised training process. LLMs are artificial neural networks typically built with a transformer-based architecture. Some recent implementations are based on alternative architectures such as recurrent neural network variants and Mamba (a state space model).</p>
+<p>LLMs can be used for text generation, a form of generative AI, by taking an input text and repeatedly predicting the next token or word. Up to 2020, fine tuning was the only way a model could be adapted to be able to accomplish specific tasks. Larger sized models, such as GPT-3, however, can be prompt-engineered to achieve similar results. They are thought to acquire knowledge about syntax, semantics and “ontology” inherent in human language corpora, but also inaccuracies and biases present in the corpora.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Large_language_model">Large language model</a></p>
+<section id="llama">
+<h1>LLaMA<a class="headerlink" href="#llama" title="Link to this heading"></a></h1>
+<p>The first LLM open model we are interested is LLaMA that OpenThaiGPT based on this model.
+LLaMA (Large Language Model Meta AI) is a family of autoregressive large language models (LLMs), released by Meta AI starting in February 2023.
+<cite>OpenThaiGPT Finetune &lt;https://github.com/OpenThaiGPT/openthaigpt-finetune&gt;</cite></p>
+</section>
+<section id="lora-ai-at-the-edge-is-comming">
+<h1>LoRA: AI at the edge is comming.<a class="headerlink" href="#lora-ai-at-the-edge-is-comming" title="Link to this heading"></a></h1>
+<p>However, after we proved that we can make use resource to finetune LLaMa model in one night one A100 server, answer for Thai language is more room to improve. So with LoRA or Low-Rank Adaptation method is a fine-tuning method introduced by a team of Microsoft researchers in 2021. Since then, it has become a very popular approach to fine-tuning large language models. It makes possible edge resource to finetune LLM.</p>
+</section>
+<section id="goolge-s-llm-gemma">
+<h1>Goolge’s LLM: Gemma<a class="headerlink" href="#goolge-s-llm-gemma" title="Link to this heading"></a></h1>
+<p>There are LLM model from Goolge, the lastest one is Gemma. Google has unveiled Gemma, a collection of lightweight, open-source AI models, following the triumph of their flagship Gemini models. Gemma targets developers aiming to integrate AI capabilities into their applications, unlike Gemini, which primarily serves end-users via platforms like search engines or virtual assistants or prompt engineering.</p>
+</section>
+<section id="responsible-ai">
+<h1>Responsible AI<a class="headerlink" href="#responsible-ai" title="Link to this heading"></a></h1>
+<p>There are many feature that suitable for developer to start working on LLM with challenge resource. The following are main features of Gemma:
+- Lightweight: Unlike Gemini, Gemma models are compact and can operate on laptops, desktops, and IoT devices, without hefty computing requirements
+- Responsible AI Toolkit: Developers receive a Responsible Generative AI Toolkit alongside Gemma models, facilitating the creation of safer AI applications.
+- Closed Model versus Open Source: Gemini is closed-source, while Gemma is open-source, granting developers more freedom and control.
+- Target Audience: Gemini targets general consumers, whereas Gemma caters to developers seeking to integrate AI features
+- Adaptability: Gemma allows for high adaptability, enabling developers to fine-tune models for specific tasks or datasets.</p>
+<section id="inference-gemma-on-dgx-a100">
+<h2>Inference Gemma on DGX A100:<a class="headerlink" href="#inference-gemma-on-dgx-a100" title="Link to this heading"></a></h2>
+<p>To test feature of Gemma model and tools, the model and Singularity image is provide for AI developer to apply for projects.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>salloc<span class="w"> </span>-w<span class="w"> </span>omega<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:0:0<span class="w"> </span>--gres<span class="o">=</span>gpu:1
+</pre></div>
+</div>
+<p>Assume you get resource compute node.
+In case you got many gpus, specify which one you will use.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export CUDA_VISIBLE_DEVICES=1</span>
+</pre></div>
+</div>
+<p>Set up environment</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export PROMPT=&quot;ความหมาย ของ ชีวิตคืออะไร&quot;</span>
+<span class="go">export VARIANT=7b</span>
+<span class="go">export  CKPT_PATH=/shared/models/Gemma/ckpt/${VARIANT}</span>
+</pre></div>
+</div>
+<p>Execute Pyton script to run interference in singularity image</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">singularity run --nv -B ${CKPT_PATH}:&quot;/tmp/ckpt&quot; /app/gemma.sif python scripts/run.py  --device=cuda  --ckpt=/tmp/ckpt/gemma-${VARIANT}.ckpt --variant=${VARIANT}  --prompt=&quot;${PROMPT}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="get-up-and-running-with-large-language-models-on-private-cloud">
+<h2>Get up and running with large language models on private cloud<a class="headerlink" href="#get-up-and-running-with-large-language-models-on-private-cloud" title="Link to this heading"></a></h2>
+<p>Serving large language models (LLMs) locally can be super helpful—whether you’d like to play around with LLMs or build more powerful apps using them. But configuring your working environment and getting LLMs to run on your machine is not trivial.</p>
+<p>So how do you run LLMs locally or on primise cloud without any of the annoyance? Enter Ollama, a platform that makes local development with open-source large language models. With Ollama, everything you need to run an LLM—model weights and all of the config—is packaged into a single Modelfile. Think kubernetes for LLMs.</p>
+<p>In this tutorial, we’ll take a look at how to get started with Ollama to run large language models on AI/HPC cluster . So let’s get right into the steps!</p>
+</section>
+</section>
+<section id="get-source-repository-and-make-them-work-on-k8s-for-ollama">
+<h1>Get Source repository and make them work on K8S  for Ollama<a class="headerlink" href="#get-source-repository-and-make-them-work-on-k8s-for-ollama" title="Link to this heading"></a></h1>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w">  </span>clone<span class="w"> </span>https://github.com/ollama/ollama.git
+
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/ollama/examples/kubernetes/
+</pre></div>
+</div>
+<p>Modify gpu.yaml to your with your namespace.
+With follow step replace the correct namespace.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>gpu.yaml
+
+<span class="gp">$ </span>kubectl<span class="w"> </span>-n<span class="w"> </span>ollama<span class="w"> </span>port-forward<span class="w"> </span>service/ollama<span class="w"> </span><span class="m">11434</span>:80
+
+<span class="gp">$ </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>ollama
+</pre></div>
+</div>
+<p>Connect to pod and pull LLM models as your want to use.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>kubectl<span class="w"> </span>-n<span class="w"> </span>ollama<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--stdin<span class="w"> </span>--tty<span class="w"> </span>ollama-58fcd9f74d-8rp92<span class="w">  </span>--<span class="w"> </span>/bin/bash
+
+<span class="gp"># </span>ollama<span class="w"> </span>pull<span class="w"> </span>gemma2
+
+<span class="gp"># </span>ollama<span class="w"> </span>pull<span class="w"> </span>llama3.1:405b
+</pre></div>
+</div>
+<p>Test on the server inside Pod:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>ollama<span class="w"> </span>run<span class="w"> </span>gemma2<span class="w"> </span><span class="s2">&quot;How should Mahidol University do to be favorite place for researcher around the world in next 20 years?&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="restapi-test-on-host-that-port-forwarded">
+<h1>RestAPI test on host that port forwarded<a class="headerlink" href="#restapi-test-on-host-that-port-forwarded" title="Link to this heading"></a></h1>
+<p>On host that we set up port forward for ollama service, we can test RestAPI for model response.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>--noproxy<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w">  </span>http://127.0.0.1:11434/api/generate<span class="w"> </span>-d<span class="w"> </span><span class="err">&#39;</span><span class="o">{</span>
+<span class="go">   &quot;model&quot;: &quot;gemma2&quot;,</span>
+<span class="go">   &quot;prompt&quot;: &quot;มหาวิทยาลัยมหิดลจะนำผู้คนในประเทศ ไปสู่ยุ่คใหม่ ปี 2050 มหาวิทยาลัยควรมีบทบาทอะไร ที่สำคับเจ็ดด้านหลักๆ&quot;</span>
+<span class="go"> }&#39;</span>
+</pre></div>
+</div>
+<section id="new-llama-3-1-now-suport-thai">
+<h2>New LLaMa 3.1 NOW suport Thai<a class="headerlink" href="#new-llama-3-1-now-suport-thai" title="Link to this heading"></a></h2>
+</section>
+</section>
+<section id="multi-lingual-capabilities-in-llama3-1-405b">
+<h1>Multi-lingual capabilities in Llama3.1 405B<a class="headerlink" href="#multi-lingual-capabilities-in-llama3-1-405b" title="Link to this heading"></a></h1>
+<p>The main update from Llama 3 to Llama 3.1 is better non-English support. The training data for Llama 3 was 95% English, so it performed poorly in other languages. The 3.1 update provides support for German, French, Italian, Portuguese, Hindi, Spanish, and Thai.
+.. role:: thai
+.. code-block:: console</p>
+<blockquote>
+<div><p>$ curl   -L <a class="reference external" href="https://mai">https://mai</a>:&lt;ictCallNumber&gt;&#64;aicenter.mahidol.ac.th/ollama/api/generate -d ‘{“model”: “llama3.1”, “prompt”:”วันอาทิตย์พักผ่อนที่ไหนดี”}’</p>
+</div></blockquote>
+<p>Deployment  on Exascale cluster, ingress proxy have been  verified.
+It is tested with basic authentication.</p>
+</section>
+<section id="api-inferencing-check-available-model">
+<h1>API inferencing check  available model :<a class="headerlink" href="#api-inferencing-check-available-model" title="Link to this heading"></a></h1>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w">   </span>-L<span class="w"> </span>https://mai:&lt;ictCallNumber@aicenter.mahidol.ac.th/ollama/api/tags<span class="s2">&quot;}&#39;</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/ollama/ollama/blob/main/docs/api.md#list-local-models">API document</a></p>
+<p>Reference:</p>
+<p><a class="reference external" href="https://ollama.com/">Get up and running with Large language model</a>
+<a class="reference external" href="https://www.datacamp.com/blog/llama-3-1-405b-meta-ai">What Is Llama 3.1 405B?</a></p>
+<section id="build-llm-apps-with-low-code">
+<h2>Build LLM Apps with Low-code<a class="headerlink" href="#build-llm-apps-with-low-code" title="Link to this heading"></a></h2>
+<p>With serving LLM model, we can build AI applications that applied  models with low-code tool for developers to build customized LLM orchestration flow &amp; AI agents.</p>
+<p><a class="reference external" href="https://flowiseai.com/">Build LLM Application with FlowiseAI</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cryo_em.html" class="btn btn-neutral float-left" title="Cryogenic electron microscopy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="e4s.html" class="btn btn-neutral float-right" title="Extreme-scale Scientific Software Stack (E4S)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, MAI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
