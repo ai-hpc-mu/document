@@ -31,7 +31,7 @@ To run the sample dataset:
 
    $ module load singularity
    $ singularity run --nv -B /cm/shared/dataset/parabricks/sample:/sample \
-    ../clara-parabricks_4.4.0-1.sif pbrun fq2bam --ref \
+    ../app/clara-parabricks_4.4.0-1.sif pbrun fq2bam --ref \
         /sample/Ref/Homo_sapiens_assembly38.fasta \
         --in-fq /sample/Data/sample_1.fq.gz /sample/Data/sample_2.fq.gz --out-bam output.bam
 
