@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China &mdash; Exascale Knowledge Share 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mathematics and Statistics Tools" href="rstudio.html" />
+    <link rel="prev" title="AlphaFold 3 : The inference pipeline" href="alphafold.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Exascale Knowledge Share
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prompt">Prompt:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#response">Response:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interpretation">Interpretation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wine.html">Excel Macro Runner Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Apptainer/Singularity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workshop.html">Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#macromolecular-modeling-and-visualization">Macromolecular Modeling and Visualization:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#gromacs-high-performance-molecular-dynamics">GROMACS: High Performance Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html#pilot-test-cluster-access-and-performance-awareness">Pilot Test: Cluster Access and Performance Awareness:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powersaving.html">Electrical Energy  Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_multi.html">Pytorch DISTRIBUTED DATA PARALLEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html">Cryogenic electron microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#relion-4-0-for-cryo-em-structure-determination">Relion 4.0 for cryo-EM structure determination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cryo_em.html#computational-imaging-system-for-transmission-electron-microscopy-cistem">Computational Imaging System for Transmission Electron Microscopy(cisTEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#lora-ai-at-the-edge-is-comming">LoRA: AI at the edge is comming.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#goolge-s-llm-gemma">Goolge’s LLM: Gemma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#responsible-ai">Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#get-source-repository-and-make-them-work-on-k8s-for-ollama">Get Source repository and make them work on K8S  for Ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#restapi-test-on-host-that-port-forwarded">RestAPI test on host that port forwarded</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#multi-lingual-capabilities-in-llama3-1-405b">Multi-lingual capabilities in Llama3.1 405B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llm.html#api-inferencing-check-available-model">API inferencing check  available model :</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e4s.html">Extreme-scale Scientific Software Stack (E4S)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#reproducting-research-results-with-python-and-conda-package-management">Reproducting research results with Python and Conda Package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html#nextflow-reproducible-scientific-workflows">Nextflow:Reproducible scientific workflows</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Exascale Knowledge Share</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mathphysic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mathematical-modeling-in-physics-engineering-biological-and-social-science-with-qwq-llm-from-china">
+<h1>Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China<a class="headerlink" href="#mathematical-modeling-in-physics-engineering-biological-and-social-science-with-qwq-llm-from-china" title="Link to this heading"></a></h1>
+<p>Large language model (LLM) is a language model notable for its ability to achieve general-purpose language generation. Mathematics language in Physics turns nature into numbers,differential or difference equations. This note takes rocket science example to noted that non-linear differential equation model formulation taking from [1].</p>
+<p>At time of writing, a model QwQ, an experimental research model focused on advancing AI reasoning capabilities from a helpful assistant created by Alibaba Cloud[2], hooks people attention for Qwen2.5. QwQ is 32 billion parameters, showcases impressive analytical capabilities.</p>
+<p>In the following note, we deploy the model on Ollama to check performance on Physics modeling for non-linear differential equation of basic rocket science which are reflecting probability up coming World War expansion.</p>
+<p>Environment setup framework is base ‘open-webui’ locally[3,4] with NVIDIA RTX GPU or A100.
+Goal to motivate apply LLM  to be assitant modeller in complex mathematical modeling in Engineering, Physical, Biological and Social Science by apply common language in Mathematics not just calculator.</p>
+<section id="prompt">
+<h2>Prompt:<a class="headerlink" href="#prompt" title="Link to this heading"></a></h2>
+<p>“You are physicist, try to model Rocket Launch:
+The motion of the rocket is influenced by the trust generated by it and the force acting on it due to its interaction with each and other celestial bodies. To start, let us assume that the forces due to interaction with celestial bodies are insignificant. This is process of simplification. With this assumption a description of the problem can be done in terms of a closed system with two objects, the rocket and the earth, each interacting with the other.</p>
+<p>The variable characterizing the rocket are its position and velocity with respect to some fixed point on the each and the thrust generated by the rocket. We can regard the point from where the rocket is launched as the fixed point. If we assume that the rocket is launched to move in a vertical direction, the position of the rocket is described by a single variable which changes with time as the rocket moves.</p>
+<p>Let <span class="math notranslate nohighlight">\(x(t)\)</span> denote the altitude of the rocket at time t with t=0 corresponding to the instant at which the rocket launched.</p>
+<p>The velocity is given by <span class="math notranslate nohighlight">\(x′(t)\)</span>, the time derivative of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(F(t)\)</span> represent the thrust generate by the rocket in its upward motion. Since the motion of the rocket is governed by the laws of dynamics, the accerleration of the rocket <span class="math notranslate nohighlight">\(x′′(t)\)</span>, the time derivative of <span class="math notranslate nohighlight">\(x′()\)</span>, is influenced by the following three forces:</p>
+<ol class="lowerroman simple">
+<li><p><span class="math notranslate nohighlight">\(F(x)\)</span> : thrust generated by the rocket,</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span>: gravitational force of attraction,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span>: frictional retarding force. The direction in which these forces act on can differ depending on whether the rocket is going up or down. In case of upward motion, direction of f or frictional retarding force is downward. In the opposite, rocket going down, f is upward.</p></li>
+</ol>
+<p>In general, the thrust F(t) is of constant magnitude F_m and acting for a relatively short period in relation to the time token to reach the maximum altitude. Which one is best model for time t, continuous or discrete time ?</p>
+<p>Hint: of inverse square raw for gravitational attraction and we acknowledge friction force <span class="math notranslate nohighlight">\(f\)</span> depend on velocity <span class="math notranslate nohighlight">\(x'(t)\)</span> as well as the density of air, which varies with the position x(t).
+We assume the density variation can be ignored, the frictional force varies linearly with the velocity with some constant, k. <span class="math notranslate nohighlight">\(f=kx'(t)\)</span>, let <span class="math notranslate nohighlight">\(M\)</span> is mass of the rocket, <span class="math notranslate nohighlight">\(R\)</span> is radius of the earth, <span class="math notranslate nohighlight">\(g_0\)</span> is the gravitational constant. assume x(0)=0,and x’(0)=0.</p>
+<p>What is <span class="math notranslate nohighlight">\(Mx''(t)\)</span>?.</p>
+<p>Given</p>
+<div class="math notranslate nohighlight">
+\[G=\frac{M g_0 R^2}{(x(t)+R)^2}\]</div>
+</section>
+<section id="response">
+<h2>Response:<a class="headerlink" href="#response" title="Link to this heading"></a></h2>
+<p>So I’m trying to model the motion of a rocket being launched, considering things like thrust, gravity, and friction. It’s a bit complicated, but let’s break it down step by step.</p>
+<p>First, we’re assuming that the only significant forces acting on the rocket are the thrust from its engines, the gravitational pull from the Earth, and some friction or air resistance. We’re ignoring other celestial bodies and their influences, which is a common simplification for this kind of problem.</p>
+<p>We’re focusing on vertical motion, meaning the rocket is going straight up or down relative to the launch point. So, we can describe its position with a single variable, x(t), which is the altitude at time t. The velocity is just the derivative of position with respect to time, x’(t), and acceleration is the derivative of velocity, x’’(t).</p>
+<p>There are three main forces to consider:</p>
+<blockquote>
+<div><p>Thrust (<span class="math notranslate nohighlight">\(F(t)\)</span>) : This is the force generated by the rocket’s engines, pushing it upwards. We’re told that the thrust is constant in magnitude, <span class="math notranslate nohighlight">\(F_m\)</span>, but only acts for a short period compared to the total flight time.</p>
+<p>Gravitational Force (G) : This is the force pulling the rocket back towards the Earth due to gravity. The problem provides an expression for gravity as
+.. math::
+G = (M g_0 R²)/(x(t) + R)²,</p>
+</div></blockquote>
+<p>which accounts for the fact that gravitational force decreases with distance from the center of the Earth.</p>
+<p>Frictional Force (f) : This is the resistance from the air as the rocket moves through it. The problem states that we can model this force as being proportional to the velocity of the rocket, so <span class="math notranslate nohighlight">\(f = k x'(t), where k is a constant\)</span>. Also, the direction of this force is opposite to the direction of motion. So, if the rocket is going up, friction acts downwards, and vice versa.</p>
+<dl>
+<dt>Given these forces, we can use Newton’s second law, which states that the net force acting on an object is equal to its mass times its acceleration:</dt><dd><div class="math notranslate nohighlight">
+\[\]</div>
+<p>F_net = M x’’(t).</p>
+</dd>
+</dl>
+<p>So, the net force F_net is the sum of the thrust, gravitational force, and frictional force. But we need to consider their directions.</p>
+<p>When the rocket is going up:</p>
+<blockquote>
+<div><p>Thrust (F_m) is upwards.</p>
+<p>Gravity (G) is downwards.</p>
+<p>Friction (f = k x’(t)) is also downwards because it opposes the motion.</p>
+</div></blockquote>
+<p>Therefore, the net force is:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F_net</span> <span class="o">=</span> <span class="n">F_m</span> <span class="o">-</span> <span class="n">G</span> <span class="o">-</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>Plugging in the expressions:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>F_net = F_m - [M g_0 R² / (x + R)²] - k x&#39;
+</pre></div>
+</div>
+<p>So, according to Newton’s second law:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M x&#39;&#39; = F_m - M g_0 R² / (x + R)² - k x&#39;
+</pre></div>
+</div>
+<p>Similarly, when the rocket is coming down:</p>
+<blockquote>
+<div><p>Thrust is still upwards (assuming the engines are off once the initial thrust is applied).</p>
+<p>Gravity is still downwards.</p>
+<p>Friction now acts upwards because it opposes the downward motion.</p>
+</div></blockquote>
+<p>So, net force would be:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F_net</span> <span class="o">=</span> <span class="n">F_m</span> <span class="o">+</span> <span class="n">G</span> <span class="o">-</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>But since F_m is likely zero during descent or negligible compared to gravity and friction, it might be:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>F_net = M g_0 R² / (x + R)² - k x&#39;
+</pre></div>
+</div>
+<p>Again, using Newton’s second law:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M x&#39;&#39; = M g_0 R² / (x + R)² - k x&#39;
+</pre></div>
+</div>
+<p>Wait, but in the descending phase, if thrust is zero, it’s just gravity minus friction (which is now positive because friction acts upwards).</p>
+<p>So, to generalize, we need to consider the direction of each force based on the velocity.</p>
+<p>But for the initial part, where the rocket is launched upwards, we can stick with the first equation:</p>
+<div class="math notranslate nohighlight">
+\[M x'' = F_m - M g_0 R² / (x + R)² - k x'\]</div>
+<p>Given that at t=0, x(0)=0 (starting at ground level) and x’(0)=0 (initially at rest).</p>
+<p>Now, the problem gives G = M g_0 R² / (x + R)², which is the gravitational force.</p>
+<p>So, plugging that in:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="n">x</span><span class="s1">&#39;&#39;</span> <span class="o">=</span> <span class="n">F_m</span> <span class="o">-</span> <span class="n">G</span> <span class="o">-</span> <span class="n">k</span> <span class="n">x</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>Or, substituting G:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M x&#39;&#39; = F_m - [M g_0 R² / (x + R)²] - k x&#39;
+</pre></div>
+</div>
+<p>This seems like a second-order nonlinear differential equation because of the term involving x in the denominator.</p>
+<p>Solving this analytically might be challenging, so perhaps we need to make some approximations or consider specific cases.</p>
+</section>
+<section id="interpretation">
+<h2>Interpretation:<a class="headerlink" href="#interpretation" title="Link to this heading"></a></h2>
+<p>The result also show how to solve this equation but it is not verified yet. However, the model of second order non-linear equation fomulation is shown promissing result compared to analitics equations from references.
+- QwQ can model important concept in mathematical physics: impuse, <strong>Dirac delta function</strong>
+- Construct <strong>non-linear equation model</strong> from English statement.
+- Demostrated <strong>solving and reasoning</strong> in Mathematical application.
+- Milestone to teach and learn applied Mathematical modeling in undergrade level.</p>
+</section>
+<section id="references">
+<h2>References:<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Murthy, D. N. P &amp; Rodin, E. Y. (Ervin Y.), 1932- &amp; Page, N. W. (1990). Mathematical modelling : a tool for problem solving in engineering, physical, biological, and social sciences / D.N.P. Murthy and N.W. Page and E.Y. Rodin. Oxford ; New York : Pergamon Press</p></li>
+<li><p>QwQ: Reflect Deeply on the Boundaries of the Unknown, QWEN team, <a class="reference external" href="https://qwenlm.github.io/blog/qwq-32b-preview/">github</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-webui/open-webui">Deploy Open WebUI with Ollama</a></p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="alphafold.html" class="btn btn-neutral float-left" title="AlphaFold 3 : The inference pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rstudio.html" class="btn btn-neutral float-right" title="Mathematics and Statistics Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, MAI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
