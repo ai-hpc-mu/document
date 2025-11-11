@@ -1,32 +1,24 @@
-name: Deploy Blog to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main  # or your default branch name
-
+name: Docs
+on: [push, pull_request, workflow_dispatch]
+permissions:
+    contents: write
 jobs:
-  deploy:
+  docs:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12.2'  # Replace '3.x' with your preferred version
-      
-      - name: Install Dependencies
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install dependencies
         run: |
-          pip install sphinx ablog sphinx_pydata_theme
-      
-      - name: Build Blog
-        run: ablog build
-      
-      - name: Publish to GitHub Pages
+          pip install sphinx sphinx_pydata_theme nbsphinx
+      - name: Sphinx build
+        run: |
+          sphinx-build doc _build
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         with:
+          publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build/html
+          publish_dir: _build/
+          force_orphan: true
