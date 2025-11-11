@@ -8,7 +8,8 @@ Basics
 ==========
 
 .. toctree::
-   :maxdepth: 3 
+   :maxdepth: 4 
+   :caption: User Guides
 
    home.rst
    quickStart.rst

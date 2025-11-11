@@ -1,0 +1,4 @@
+#!/bin/bash
+sphinx-build -M html doc/ _build/
+cd _build/html
+python -m http.server 3030

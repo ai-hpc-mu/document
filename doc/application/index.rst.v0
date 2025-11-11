@@ -1,0 +1,18 @@
+Account Application and Change
+==============================
+This section covers all account-related procedures.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Account Application and Change of Application Details
+
+   account_new_registration
+   change_of_account_info
+   renewal_of_account  <- This is your target page
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Related
+
+   signing_pledge
+   contact_us
