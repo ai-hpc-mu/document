@@ -28,7 +28,7 @@ from typing import Any, Dict
 from sphinx.application import Sphinx
 from sphinx.locale import _
 
-import pydata-sphinxx-_theme
+import pydata_sphinx_theme
 
 
 sys.path.append(str(Path(".").resolve()))
