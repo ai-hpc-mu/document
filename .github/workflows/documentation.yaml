@@ -16,7 +16,7 @@ jobs:
           jupyter_sphinx  sphinx-to-sqlite jupyterlite-sphinx xarray ipyleaflet \
           sphinx-autoapi sphinxext-rediraffe sphinx_design  sphinx_copybutton \
           sphinx-autoapi  myst-parser ablog sphinxcontrib-youtube sphinx_togglebutton \
-          sphinx_favicon sphinx_sitemap Linkify-Linkedlist
+          sphinx_favicon sphinx_sitemap Linkify-Linkedlist pandoc
       - name: Sphinx build
         run: |
           sphinx-build doc _build
