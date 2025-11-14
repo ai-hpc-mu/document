@@ -14,7 +14,7 @@ Write me ...
 .. _doc-contribution:
 
 How-To: Contribute to this Document
-----------------------------------
+-------------------------------------
 The document, user guide and source code is managed using Git and is hosted on GitHub. The recommended way for new contributors to submit information  to MAI document is to fork this repository and submit a pull request after committing changes to their fork. The pull request will then need to be approved by one of the core members before it is merged into the main repository.
 If you feel uncomfortable or uncertain about an issue or your changes, feel free to email the mai@mahidol.ac.th.
 

@@ -4,7 +4,7 @@ Software Guide
 The following guides are intend to introduce basic tools for HPC Bioinformatics tools.
 
 RNA and ChIP-sequencing analysis
----------------------
+---------------------------------
 `RNASeq ChIPseq <https://github.com/vclabsysbio/AI-MD_RNASeq_ChIPseq>`_
 
 `Single-cell RNA-seq <https://github.com/vclabsysbio/AI-MD_scRNAseq>`_
@@ -114,6 +114,7 @@ Console::
 `License <https://ambermd.org/GetAmber.php>`_
    Getting Amber22 for commerical use
 The license above is valid for both commerical and non-commerical usage. Only the license fee is different from commerical use. Commerical users should fill out this application for a commerical license. This will generate a license form that you can sign, and will contain information about how to pay the license fee.
+
 
 VMD:
 ----

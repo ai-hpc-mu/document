@@ -1,0 +1,340 @@
+Running Sphinx v8.1.3
+loading translations [EN]... not available for built-in messages
+Converting `source_suffix = ['.rst', '.md']` to `source_suffix = {'.rst': 'restructuredtext', '.md': 'restructuredtext'}`.
+[autosummary] generating autosummary for: adv_guide/adminstrative.rst, adv_guide/alphafold.rst, adv_guide/bioinfo.rst, adv_guide/container.rst, adv_guide/credit.rst, adv_guide/cryo_em.rst, adv_guide/drugdis.rst, adv_guide/e4s.rst, adv_guide/exercises.rst, adv_guide/hfss.rst, ..., examples/subpages/index.rst, examples/subpages/subpage1.rst, examples/subpages/subpage2.rst, examples/subpages/subsubpages/index.rst, examples/subpages/subsubpages/subsubpage1.rst, examples/subpages/subsubpages/subsubpage2.rst, examples/subpages/subsubpages/subsubpage3.rst, examples/subpages/subsubpages/subsubsubpages/subsubsubpage1.rst, index.md, sys_oview/index.md
+loading intersphinx inventory 'sphinx' from https://www.sphinx-doc.org/en/master/objects.inv ...
+[AutoAPI] Reading files... [ 12%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/pygments.py
+[AutoAPI] Reading files... [ 25%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/translator.py
+[AutoAPI] Reading files... [ 38%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/short_link.py
+[AutoAPI] Reading files... [ 50%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/logo.py
+[AutoAPI] Reading files... [ 62%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/utils.py
+[AutoAPI] Reading files... [ 75%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/toctree.py
+[AutoAPI] Reading files... [ 88%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/edit_this_page.py
+[AutoAPI] Reading files... [100%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/__init__.py
+
+[AutoAPI] Mapping Data... [ 12%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/pygments.py
+[AutoAPI] Mapping Data... [ 25%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/translator.py
+[AutoAPI] Mapping Data... [ 38%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/short_link.py
+[AutoAPI] Mapping Data... [ 50%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/logo.py
+[AutoAPI] Mapping Data... [ 62%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/utils.py
+[AutoAPI] Mapping Data... [ 75%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/toctree.py
+[AutoAPI] Mapping Data... [ 88%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/edit_this_page.py
+[AutoAPI] Mapping Data... [100%] /home/snit.san/.workshop/document2026/src/pydata_sphinx_theme/__init__.py
+
+[AutoAPI] Rendering Data... [ 12%] pydata_sphinx_theme
+[AutoAPI] Rendering Data... [ 25%] pydata_sphinx_theme.logo
+[AutoAPI] Rendering Data... [ 38%] pydata_sphinx_theme.utils
+[AutoAPI] Rendering Data... [ 50%] pydata_sphinx_theme.toctree
+[AutoAPI] Rendering Data... [ 62%] pydata_sphinx_theme.pygments
+[AutoAPI] Rendering Data... [ 75%] pydata_sphinx_theme.translator
+[AutoAPI] Rendering Data... [ 88%] pydata_sphinx_theme.short_link
+[AutoAPI] Rendering Data... [100%] pydata_sphinx_theme.edit_this_page
+
+myst v4.0.1: MdParserConfig(commonmark_only=False, gfm_only=False, enable_extensions=set(), disable_syntax=[], all_links_external=False, links_external_new_tab=False, url_schemes=('http', 'https', 'mailto', 'ftp'), ref_domains=None, fence_as_directive=set(), number_code_blocks=[], title_to_header=False, heading_anchors=0, heading_slug_func=None, html_meta={}, footnote_sort=True, footnote_transition=True, words_per_minute=200, substitutions={}, linkify_fuzzy_links=True, dmath_allow_labels=True, dmath_allow_space=True, dmath_allow_digits=True, dmath_double_inline=False, update_mathjax=True, mathjax_classes='tex2jax_process|mathjax_process|math|output_area', enable_checkboxes=False, suppress_warnings=[], highlight_code_blocks=True)
+Writing evaluated template result to /home/snit.san/.workshop/document2026/_build/html/_static/nbsphinx-code-cells.css
+The version switcher "https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json" file cannot be read due to the following error:
+ProxyError(MaxRetryError("HTTPSConnectionPool(host='pydata-sphinx-theme.readthedocs.io', port=443): Max retries exceeded with url: /en/latest/_static/switcher.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"))
+building [mo]: targets for 0 po files that are out of date
+writing output... 
+building [html]: targets for 120 source files that are out of date
+updating environment: [new config] 120 added, 0 changed, 0 removed
+reading sources... [  1%] adv_guide/adminstrative
+reading sources... [  2%] adv_guide/alphafold
+reading sources... [  2%] adv_guide/bioinfo
+reading sources... [  3%] adv_guide/container
+reading sources... [  4%] adv_guide/credit
+reading sources... [  5%] adv_guide/cryo_em
+reading sources... [  6%] adv_guide/drugdis
+reading sources... [  7%] adv_guide/e4s
+reading sources... [  8%] adv_guide/exercises
+reading sources... [  8%] adv_guide/hfss
+reading sources... [  9%] adv_guide/home
+reading sources... [ 10%] adv_guide/hpc/adminstrative
+reading sources... [ 11%] adv_guide/hpc/alphafold
+reading sources... [ 12%] adv_guide/hpc/bioinfo
+reading sources... [ 12%] adv_guide/hpc/container
+reading sources... [ 13%] adv_guide/hpc/credit
+reading sources... [ 14%] adv_guide/hpc/cryo_em
+reading sources... [ 15%] adv_guide/hpc/drugdis
+reading sources... [ 16%] adv_guide/hpc/e4s
+reading sources... [ 17%] adv_guide/hpc/exercises
+reading sources... [ 18%] adv_guide/hpc/home
+reading sources... [ 18%] adv_guide/hpc/index
+reading sources... [ 19%] adv_guide/hpc/llm
+reading sources... [ 20%] adv_guide/hpc/mathphysic
+reading sources... [ 21%] adv_guide/hpc/parabricks
+reading sources... [ 22%] adv_guide/hpc/powersaving
+reading sources... [ 22%] adv_guide/hpc/quantumml
+reading sources... [ 23%] adv_guide/hpc/quickStart
+reading sources... [ 24%] adv_guide/hpc/rstudio
+reading sources... [ 25%] adv_guide/hpc/swguide
+reading sources... [ 26%] adv_guide/hpc/torch_multi
+reading sources... [ 27%] adv_guide/hpc/tunelling
+reading sources... [ 28%] adv_guide/hpc/wine
+reading sources... [ 28%] adv_guide/hpc/workshop
+reading sources... [ 29%] adv_guide/index
+reading sources... [ 30%] adv_guide/llm
+reading sources... [ 31%] adv_guide/mathphysic
+reading sources... [ 32%] adv_guide/parabricks
+reading sources... [ 32%] adv_guide/powersaving
+reading sources... [ 33%] adv_guide/quantumml
+reading sources... [ 34%] adv_guide/quickStart
+reading sources... [ 35%] adv_guide/rstudio
+reading sources... [ 36%] adv_guide/swguide
+reading sources... [ 37%] adv_guide/torch_multi
+reading sources... [ 38%] adv_guide/tunelling
+reading sources... [ 38%] adv_guide/wine
+reading sources... [ 39%] adv_guide/workshop
+reading sources... [ 40%] api/index
+reading sources... [ 41%] api/pydata_sphinx_theme/edit_this_page/index
+reading sources... [ 42%] api/pydata_sphinx_theme/index
+reading sources... [ 42%] api/pydata_sphinx_theme/logo/index
+reading sources... [ 43%] api/pydata_sphinx_theme/pygments/index
+reading sources... [ 44%] api/pydata_sphinx_theme/short_link/index
+reading sources... [ 45%] api/pydata_sphinx_theme/toctree/index
+reading sources... [ 46%] api/pydata_sphinx_theme/translator/index
+reading sources... [ 47%] api/pydata_sphinx_theme/utils/index
+reading sources... [ 48%] application/account_new_registration
+reading sources... [ 48%] application/change_of_account_info
+reading sources... [ 49%] application/index
+reading sources... [ 50%] backup/swguide
+reading sources... [ 51%] community/accessibility-statement
+reading sources... [ 52%] community/contributors
+reading sources... [ 52%] community/design-system
+reading sources... [ 53%] community/index
+reading sources... [ 54%] community/inspiration
+reading sources... [ 55%] community/practices/merge
+reading sources... [ 56%] community/practices/release
+reading sources... [ 57%] community/practices/versions
+reading sources... [ 57%] community/setup
+reading sources... [ 58%] community/structure
+reading sources... [ 59%] community/topics/accessibility
+reading sources... [ 60%] community/topics/assets
+reading sources... [ 61%] community/topics/attribution
+reading sources... [ 62%] community/topics/bootstrap
+reading sources... [ 62%] community/topics/config
+reading sources... [ 63%] community/topics/dependencies-js
+reading sources... [ 64%] community/topics/galleries
+reading sources... [ 65%] community/topics/i18n
+reading sources... [ 66%] community/topics/index
+reading sources... [ 67%] community/topics/kitchen-sink
+reading sources... [ 68%] community/topics/manual-dev
+reading sources... [ 68%] community/topics/page-metadata
+reading sources... [ 69%] community/topics/pre-commit
+reading sources... [ 70%] community/topics/pydata
+reading sources... [ 71%] community/topics/warnings
+reading sources... [ 72%] contb_guide/index
+reading sources... [ 72%] examples/blog/post1
+reading sources... [ 73%] examples/blog/post2
+reading sources... [ 74%] examples/blog/post3
+reading sources... [ 75%] examples/execution
+executing execution
+reading sources... [ 76%] examples/gallery
+reading sources... [ 77%] examples/graphviz
+reading sources... [ 78%] examples/in-page-toc
+reading sources... [ 78%] examples/index
+reading sources... [ 79%] examples/kitchen-sink/admonitions
+reading sources... [ 80%] examples/kitchen-sink/api
+reading sources... [ 81%] examples/kitchen-sink/blocks
+reading sources... [ 82%] examples/kitchen-sink/generic
+reading sources... [ 82%] examples/kitchen-sink/images
+reading sources... [ 83%] examples/kitchen-sink/index
+reading sources... [ 84%] examples/kitchen-sink/lists
+reading sources... [ 85%] examples/kitchen-sink/really-long
+reading sources... [ 86%] examples/kitchen-sink/structure
+reading sources... [ 87%] examples/kitchen-sink/tables
+reading sources... [ 88%] examples/kitchen-sink/typography
+reading sources... [ 88%] examples/mult_headers
+reading sources... [ 89%] examples/no-sidebar
+reading sources... [ 90%] examples/persistent-search-field
+reading sources... [ 91%] examples/pydata
+reading sources... [ 92%] examples/regressions
+reading sources... [ 92%] examples/subpages/index
+reading sources... [ 93%] examples/subpages/subpage1
+reading sources... [ 94%] examples/subpages/subpage2
+reading sources... [ 95%] examples/subpages/subsubpages/index
+reading sources... [ 96%] examples/subpages/subsubpages/subsubpage1
+reading sources... [ 97%] examples/subpages/subsubpages/subsubpage2
+reading sources... [ 98%] examples/subpages/subsubpages/subsubpage3
+reading sources... [ 98%] examples/subpages/subsubpages/subsubsubpages/subsubsubpage1
+reading sources... [ 99%] index
+[AutoAPI] Adding AutoAPI TOCTree [api/index] to index.rst
+reading sources... [100%] sys_oview/index
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+copying assets... 
+copying static files... 
+Writing evaluated template result to /home/snit.san/.workshop/document2026/_build/html/_static/basic.css
+Writing evaluated template result to /home/snit.san/.workshop/document2026/_build/html/_static/documentation_options.js
+Writing evaluated template result to /home/snit.san/.workshop/document2026/_build/html/_static/language_data.js
+Writing evaluated template result to /home/snit.san/.workshop/document2026/_build/html/_static/copybutton.js
+copying static files: done
+copying extra files... 
+copying extra files: done
+copying assets: done
+writing output... [  1%] adv_guide/adminstrative
+writing output... [  2%] adv_guide/alphafold
+writing output... [  2%] adv_guide/bioinfo
+writing output... [  3%] adv_guide/container
+writing output... [  4%] adv_guide/credit
+writing output... [  5%] adv_guide/cryo_em
+writing output... [  6%] adv_guide/drugdis
+writing output... [  7%] adv_guide/e4s
+writing output... [  8%] adv_guide/exercises
+writing output... [  8%] adv_guide/hfss
+writing output... [  9%] adv_guide/home
+writing output... [ 10%] adv_guide/hpc/adminstrative
+writing output... [ 11%] adv_guide/hpc/alphafold
+writing output... [ 12%] adv_guide/hpc/bioinfo
+writing output... [ 12%] adv_guide/hpc/container
+writing output... [ 13%] adv_guide/hpc/credit
+writing output... [ 14%] adv_guide/hpc/cryo_em
+writing output... [ 15%] adv_guide/hpc/drugdis
+writing output... [ 16%] adv_guide/hpc/e4s
+writing output... [ 17%] adv_guide/hpc/exercises
+writing output... [ 18%] adv_guide/hpc/home
+writing output... [ 18%] adv_guide/hpc/index
+writing output... [ 19%] adv_guide/hpc/llm
+writing output... [ 20%] adv_guide/hpc/mathphysic
+writing output... [ 21%] adv_guide/hpc/parabricks
+writing output... [ 22%] adv_guide/hpc/powersaving
+writing output... [ 22%] adv_guide/hpc/quantumml
+writing output... [ 23%] adv_guide/hpc/quickStart
+writing output... [ 24%] adv_guide/hpc/rstudio
+writing output... [ 25%] adv_guide/hpc/swguide
+writing output... [ 26%] adv_guide/hpc/torch_multi
+writing output... [ 27%] adv_guide/hpc/tunelling
+writing output... [ 28%] adv_guide/hpc/wine
+writing output... [ 28%] adv_guide/hpc/workshop
+writing output... [ 29%] adv_guide/index
+writing output... [ 30%] adv_guide/llm
+writing output... [ 31%] adv_guide/mathphysic
+writing output... [ 32%] adv_guide/parabricks
+writing output... [ 32%] adv_guide/powersaving
+writing output... [ 33%] adv_guide/quantumml
+writing output... [ 34%] adv_guide/quickStart
+writing output... [ 35%] adv_guide/rstudio
+writing output... [ 36%] adv_guide/swguide
+writing output... [ 37%] adv_guide/torch_multi
+writing output... [ 38%] adv_guide/tunelling
+writing output... [ 38%] adv_guide/wine
+writing output... [ 39%] adv_guide/workshop
+writing output... [ 40%] api/index
+writing output... [ 41%] api/pydata_sphinx_theme/edit_this_page/index
+writing output... [ 42%] api/pydata_sphinx_theme/index
+writing output... [ 42%] api/pydata_sphinx_theme/logo/index
+writing output... [ 43%] api/pydata_sphinx_theme/pygments/index
+writing output... [ 44%] api/pydata_sphinx_theme/short_link/index
+writing output... [ 45%] api/pydata_sphinx_theme/toctree/index
+writing output... [ 46%] api/pydata_sphinx_theme/translator/index
+writing output... [ 47%] api/pydata_sphinx_theme/utils/index
+writing output... [ 48%] application/account_new_registration
+writing output... [ 48%] application/change_of_account_info
+writing output... [ 49%] application/index
+writing output... [ 50%] backup/swguide
+writing output... [ 51%] community/accessibility-statement
+writing output... [ 52%] community/contributors
+writing output... [ 52%] community/design-system
+writing output... [ 53%] community/index
+writing output... [ 54%] community/inspiration
+writing output... [ 55%] community/practices/merge
+writing output... [ 56%] community/practices/release
+writing output... [ 57%] community/practices/versions
+writing output... [ 57%] community/setup
+writing output... [ 58%] community/structure
+writing output... [ 59%] community/topics/accessibility
+writing output... [ 60%] community/topics/assets
+writing output... [ 61%] community/topics/attribution
+writing output... [ 62%] community/topics/bootstrap
+writing output... [ 62%] community/topics/config
+writing output... [ 63%] community/topics/dependencies-js
+writing output... [ 64%] community/topics/galleries
+writing output... [ 65%] community/topics/i18n
+writing output... [ 66%] community/topics/index
+writing output... [ 67%] community/topics/kitchen-sink
+writing output... [ 68%] community/topics/manual-dev
+writing output... [ 68%] community/topics/page-metadata
+writing output... [ 69%] community/topics/pre-commit
+writing output... [ 70%] community/topics/pydata
+writing output... [ 71%] community/topics/warnings
+writing output... [ 72%] contb_guide/index
+writing output... [ 72%] examples/blog/post1
+writing output... [ 73%] examples/blog/post2
+writing output... [ 74%] examples/blog/post3
+writing output... [ 75%] examples/execution
+writing output... [ 76%] examples/gallery
+writing output... [ 77%] examples/graphviz
+writing output... [ 78%] examples/in-page-toc
+writing output... [ 78%] examples/index
+writing output... [ 79%] examples/kitchen-sink/admonitions
+writing output... [ 80%] examples/kitchen-sink/api
+writing output... [ 81%] examples/kitchen-sink/blocks
+writing output... [ 82%] examples/kitchen-sink/generic
+writing output... [ 82%] examples/kitchen-sink/images
+writing output... [ 83%] examples/kitchen-sink/index
+writing output... [ 84%] examples/kitchen-sink/lists
+writing output... [ 85%] examples/kitchen-sink/really-long
+writing output... [ 86%] examples/kitchen-sink/structure
+writing output... [ 87%] examples/kitchen-sink/tables
+writing output... [ 88%] examples/kitchen-sink/typography
+writing output... [ 88%] examples/mult_headers
+writing output... [ 89%] examples/no-sidebar
+writing output... [ 90%] examples/persistent-search-field
+writing output... [ 91%] examples/pydata
+writing output... [ 92%] examples/regressions
+writing output... [ 92%] examples/subpages/index
+writing output... [ 93%] examples/subpages/subpage1
+writing output... [ 94%] examples/subpages/subpage2
+writing output... [ 95%] examples/subpages/subsubpages/index
+writing output... [ 96%] examples/subpages/subsubpages/subsubpage1
+writing output... [ 97%] examples/subpages/subsubpages/subsubpage2
+writing output... [ 98%] examples/subpages/subsubpages/subsubpage3
+writing output... [ 98%] examples/subpages/subsubpages/subsubsubpages/subsubsubpage1
+writing output... [ 99%] index
+writing output... [100%] sys_oview/index
+
+generating indices... genindex py-modindex done
+copying linked files... 
+copying notebooks ... [100%] examples/pydata.ipynb
+
+highlighting module code... [ 11%] pydata_sphinx_theme
+highlighting module code... [ 22%] pydata_sphinx_theme.edit_this_page
+highlighting module code... [ 33%] pydata_sphinx_theme.logo
+highlighting module code... [ 44%] pydata_sphinx_theme.pygments
+highlighting module code... [ 56%] pydata_sphinx_theme.short_link
+highlighting module code... [ 67%] pydata_sphinx_theme.toctree
+highlighting module code... [ 78%] pydata_sphinx_theme.translator
+highlighting module code... [ 89%] pydata_sphinx_theme.utils
+highlighting module code... [100%] urllib.parse
+
+writing additional pages... search done
+copying images... [  6%] _static/inspiration/GitBook-Icon-Dark.svg
+copying images... [ 11%] _static/inspiration/docker-mark-blue.svg
+copying images... [ 17%] ../_build/jupyter_execute/examples/execution_0_1.png
+copying images... [ 22%] _static/gallery/arviz.png
+copying images... [ 28%] _static/gallery/bokeh.png
+copying images... [ 33%] _static/gallery/brightway.png
+copying images... [ 39%] _static/gallery/jupyter.png
+copying images... [ 44%] _static/gallery/jupyter_book.png
+copying images... [ 50%] _static/gallery/matplotlib.png
+copying images... [ 56%] _static/gallery/mne-python.png
+copying images... [ 61%] _static/gallery/networkx.png
+copying images... [ 67%] _static/gallery/numpy.png
+copying images... [ 72%] _static/gallery/pandas.png
+copying images... [ 78%] _static/gallery/scipy.png
+copying images... [ 83%] _static/gallery/scikit-learn.png
+copying images... [ 89%] _static/gallery/sepal.png
+copying images... [ 94%] ../_build/doctrees/nbsphinx/examples_pydata_6_1.png
+copying images... [100%] ../_build/doctrees/nbsphinx/examples_pydata_7_1.png
+
+dumping search index in English (code: en)... done
+dumping object inventory... done
+[jupyterlite-sphinx] Running JupyterLite build
+[jupyterlite-sphinx] Command: ['/home/snit.san/.conda/envs/workshop/bin/python', '-m', 'jupyter', 'lite', 'build', '--debug', '--config', 'jupyterlite_config.json', '--contents', '/home/snit.san/.workshop/document2026/doc/_contents', '--output-dir', '/home/snit.san/.workshop/document2026/_build/html/lite', '--apps', 'notebooks', '--apps', 'edit', '--apps', 'lab', '--apps', 'repl', '--apps', 'tree', '--apps', 'consoles', '--lite-dir', '/home/snit.san/.workshop/document2026/doc']
+[jupyterlite-sphinx] JupyterLite build done
+build succeeded, 665 warnings.
+
+The HTML pages are in _build/html.

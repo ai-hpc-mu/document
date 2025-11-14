@@ -19,7 +19,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../source'))
+#sys.path.insert(0, os.path.abspath('../src'))
 
 # pydata
 from pathlib import Path
@@ -339,6 +339,7 @@ latex_elements = {
 
 # -- Options for autoapi -------------------------------------------------------
 autoapi_type = "python"
+#autoapi_dirs = ["../src/pydata_sphinx_theme"]
 autoapi_dirs = ["../src/pydata_sphinx_theme"]
 autoapi_keep_files = True
 autoapi_root = "api"
