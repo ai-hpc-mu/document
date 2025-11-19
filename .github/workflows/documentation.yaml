@@ -12,7 +12,7 @@ jobs:
           python-version: '3.12.2'
       - name: Install dependencies
         run: |
-          pip install sphinx  pydata-sphinx-theme nbsphinx pandoc numpydoc matplotlib \
+          pip install pandoc sphinx  pydata-sphinx-theme nbsphinx  numpydoc matplotlib \
           jupyter_sphinx  sphinx-to-sqlite jupyterlite-sphinx xarray ipyleaflet \
           sphinx-autoapi sphinxext-rediraffe sphinx_design  sphinx_copybutton \
           sphinx-autoapi  myst-parser ablog sphinxcontrib-youtube sphinx_togglebutton \
