@@ -12,7 +12,8 @@ jobs:
           python-version: '3.12.2'
       - name: Install dependencies apt
         run:  |
-          apt-get install -y pandoc 
+          sudo apt-get update
+          sudo apt-get install -y pandoc 
       - name: Install dependencies pip
         run: |
           pip install  sphinx  pydata-sphinx-theme nbsphinx  numpydoc matplotlib \
