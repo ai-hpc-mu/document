@@ -41,7 +41,7 @@ parabricks
 ```
 
 ```{toctree}
-:caption: Large Model toos
+:caption: Large Model tools
 
 ```
 ollama
@@ -53,3 +53,9 @@ llm
 
 hfss
 
+```{toctree}
+:caption: DevOps - AI
+
+
+claudevai
+```
