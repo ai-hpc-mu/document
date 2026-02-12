@@ -21,6 +21,7 @@ about the reliability of content. Your feedback and contribution help improving 
 home
 quickStart
 swguide
+slurm-job-submit
 ```
 
 ```{toctree}
