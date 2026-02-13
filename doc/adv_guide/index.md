@@ -16,6 +16,7 @@ about the reliability of content. Your feedback and contribution help improving 
 
 
 ```{toctree}
+:maxdepth: 2
 :caption: Get started
 
 home
@@ -25,6 +26,7 @@ slurm-job-submit
 ```
 
 ```{toctree}
+:maxdepth: 2
 :caption: Math\/Physics tools
 
 mathphysic
@@ -42,6 +44,7 @@ parabricks
 ```
 
 ```{toctree}
+:maxdepth: 2
 :caption: Large Model tools
 
 ```
@@ -49,12 +52,14 @@ ollama
 llm
 
 ```{toctree}
+:maxdepth: 2
 :caption: Engineering
 
 
 hfss
 
 ```{toctree}
+:maxdepth: 2
 :caption: DevOps - AI
 
 
