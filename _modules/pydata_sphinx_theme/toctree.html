@@ -1,0 +1,1234 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pydata_sphinx_theme.toctree &#8212; Exascale Knowledge Share 0.16.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=0f282c0f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pydata_sphinx_theme/toctree';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.16.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="Feb 13, 2026"/>   
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../adv_guide/index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../api/index.html">
+    API Reference
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../adv_guide/index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../pydata_sphinx_theme.html" class="nav-link">pydata_sphinx_theme</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pydata_sphinx_theme.toctree</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <h1>Source code for pydata_sphinx_theme.toctree</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Methods to build the toctree used in the html pages.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cache</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">count</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span> <span class="n">dedent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sphinx</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">docutils</span><span class="w"> </span><span class="kn">import</span> <span class="n">nodes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">docutils.nodes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sphinx.addnodes</span><span class="w"> </span><span class="kn">import</span> <span class="n">toctree</span> <span class="k">as</span> <span class="n">TocTreeNodeClass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sphinx.application</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sphinx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sphinx.environment.adapters.toctree</span><span class="w"> </span><span class="kn">import</span> <span class="n">TocTree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sphinx.locale</span><span class="w"> </span><span class="kn">import</span> <span class="n">_</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">traverse_or_findall</span>
+
+
+<div class="viewcode-block" id="add_inline_math">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.add_inline_math">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_inline_math</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Render a node with HTML tags that activate MathJax processing.</span>
+
+<span class="sd">    This is meant for use with rendering section titles with math in them, because</span>
+<span class="sd">    math outputs are ignored by pydata-sphinx-theme&#39;s header.</span>
+
+<span class="sd">    related to the behaviour of a normal math node from:</span>
+<span class="sd">    https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/mathjax.py#L28</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="s1">&#39;&lt;span class=&quot;math notranslate nohighlight&quot;&gt;&#39;</span> <span class="sa">rf</span><span class="s2">&quot;\(</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span><span class="si">}</span><span class="s2">\)&quot;</span> <span class="s2">&quot;&lt;/span&gt;&quot;</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="_get_ancestor_pagename">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree._get_ancestor_pagename">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_ancestor_pagename</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">Sphinx</span><span class="p">,</span> <span class="n">pagename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">startdepth</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the name of `pagename`&#39;s ancestor that is rooted `startdepth` levels below the</span>
+<span class="sd">    global root.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">toctree</span> <span class="o">=</span> <span class="n">TocTree</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">version_info</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">sphinx.environment.adapters.toctree</span><span class="w"> </span><span class="kn">import</span> <span class="n">_get_toctree_ancestors</span>
+
+        <span class="n">ancestors</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">_get_toctree_ancestors</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">toctree_includes</span><span class="p">,</span> <span class="n">pagename</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ancestors</span> <span class="o">=</span> <span class="n">toctree</span><span class="o">.</span><span class="n">get_toctree_ancestors</span><span class="p">(</span><span class="n">pagename</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">ancestors</span><span class="p">[</span><span class="o">-</span><span class="n">startdepth</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="c1"># eg for index.rst, but also special pages such as genindex, py-modindex, search</span>
+        <span class="c1"># those pages don&#39;t have a &quot;current&quot; element in the toctree, so we can</span>
+        <span class="c1"># directly return None instead of using the default sphinx</span>
+        <span class="c1"># toctree.get_toctree_for(pagename, app.builder, collapse, **kwargs)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">out</span><span class="p">,</span> <span class="n">toctree</span></div>
+
+
+
+<span class="nd">@dataclass</span>
+<div class="viewcode-block" id="LinkInfo">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.LinkInfo">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LinkInfo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dataclass to generate toctree data.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LinkInfo.is_current">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.LinkInfo.is_current">[docs]</a>
+    <span class="n">is_current</span><span class="p">:</span> <span class="nb">bool</span></div>
+
+<div class="viewcode-block" id="LinkInfo.href">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.LinkInfo.href">[docs]</a>
+    <span class="n">href</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="LinkInfo.title">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.LinkInfo.title">[docs]</a>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="LinkInfo.is_external">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.LinkInfo.is_external">[docs]</a>
+    <span class="n">is_external</span><span class="p">:</span> <span class="nb">bool</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="add_toctree_functions">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.add_toctree_functions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_toctree_functions</span><span class="p">(</span>
+    <span class="n">app</span><span class="p">:</span> <span class="n">Sphinx</span><span class="p">,</span> <span class="n">pagename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">templatename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">doctree</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add functions so Jinja templates can add toctree objects.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">suppress_sidebar_toctree</span><span class="p">(</span><span class="n">startdepth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if there&#39;s a sidebar TocTree that needs to be rendered.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            startdepth : The level of the TocTree at which to start. 0 includes the</span>
+<span class="sd">            entire TocTree for the site; 1 (default) gets the TocTree for the current</span>
+<span class="sd">            top-level section.</span>
+
+<span class="sd">            kwargs : passed to the Sphinx `toctree` template function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ancestorname</span><span class="p">,</span> <span class="n">toctree_obj</span> <span class="o">=</span> <span class="n">_get_ancestor_pagename</span><span class="p">(</span>
+            <span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="o">=</span><span class="n">pagename</span><span class="p">,</span> <span class="n">startdepth</span><span class="o">=</span><span class="n">startdepth</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">ancestorname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># suppress</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;includehidden&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="c1"># if ancestor is found and `includehidden=True` we&#39;re guaranteed there&#39;s a</span>
+            <span class="c1"># TocTree to be shown, so don&#39;t suppress</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># we&#39;ve found an ancestor page, but `includehidden=False` so we can&#39;t be sure if</span>
+        <span class="c1"># there&#39;s a TocTree fragment that should be shown on this page; unfortunately we</span>
+        <span class="c1"># must resolve the whole TOC subtree to find out</span>
+        <span class="n">toctree</span> <span class="o">=</span> <span class="n">get_nonroot_toctree</span><span class="p">(</span>
+            <span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">ancestorname</span><span class="p">,</span> <span class="n">toctree_obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">toctree</span> <span class="ow">is</span> <span class="kc">None</span>
+
+    <span class="nd">@cache</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_or_create_id_generator</span><span class="p">(</span><span class="n">base_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">base_id</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_id</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unique_html_id</span><span class="p">(</span><span class="n">base_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create an id that is unique from other ids created by this function at build</span>
+<span class="sd">        time.</span>
+
+<span class="sd">        The function works by sequentially returning &quot;&lt;base_id&gt;&quot;, &quot;&lt;base_id&gt;-2&quot;,</span>
+<span class="sd">        &quot;&lt;base_id&gt;-3&quot;, etc. each time it is called.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">get_or_create_id_generator</span><span class="p">(</span><span class="n">base_id</span><span class="p">))</span>
+
+    <span class="nd">@cache</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_nav_info</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">LinkInfo</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate informations necessary to generate nav.</span>
+
+<span class="sd">        Instead of messing with html later, having this as a util function</span>
+<span class="sd">        should make it slightly easier to generate different html snippet for</span>
+<span class="sd">        sidebar or navbar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">toctree</span> <span class="o">=</span> <span class="n">TocTree</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
+
+        <span class="c1"># Find the active header navigation item so we decide whether to highlight</span>
+        <span class="c1"># Will be empty if there is no active page (root_doc, or genindex etc)</span>
+        <span class="k">if</span> <span class="n">sphinx</span><span class="o">.</span><span class="n">version_info</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">sphinx.environment.adapters.toctree</span><span class="w"> </span><span class="kn">import</span> <span class="n">_get_toctree_ancestors</span>
+
+            <span class="c1"># NOTE: `env.toctree_includes` is a dict mapping pagenames to any (possibly</span>
+            <span class="c1"># hidden) TocTree directives on that page (i.e., the &quot;child&quot; pages nested</span>
+            <span class="c1"># under `pagename`).</span>
+            <span class="n">header_pages</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">_get_toctree_ancestors</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">toctree_includes</span><span class="p">,</span> <span class="n">pagename</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">header_pages</span> <span class="o">=</span> <span class="n">toctree</span><span class="o">.</span><span class="n">get_toctree_ancestors</span><span class="p">(</span><span class="n">pagename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">header_pages</span><span class="p">:</span>
+            <span class="c1"># The final list item will be the top-most ancestor</span>
+            <span class="n">active_header_page</span> <span class="o">=</span> <span class="n">header_pages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">active_header_page</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># NOTE: `env.tocs` is a dict mapping pagenames to hierarchical bullet-lists</span>
+        <span class="c1"># (&quot;nodetrees&quot; in Sphinx parlance) of in-page headings (including `toctree::`</span>
+        <span class="c1"># directives). Thus the `tocs` of `root_doc` yields the top-level pages that sit</span>
+        <span class="c1"># just below the root of our site</span>
+        <span class="n">root_toc</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">tocs</span><span class="p">[</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">root_doc</span><span class="p">]</span>
+
+        <span class="n">links_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Iterate through each node in the root document toc.</span>
+        <span class="c1"># Grab the toctree pages and find the relative link + title.</span>
+        <span class="k">for</span> <span class="n">toc</span> <span class="ow">in</span> <span class="n">traverse_or_findall</span><span class="p">(</span><span class="n">root_toc</span><span class="p">,</span> <span class="n">TocTreeNodeClass</span><span class="p">):</span>
+            <span class="c1"># TODO: ↑↑↑ use `root_toc.findall(TocTreeNodeClass)` ↑↑↑</span>
+            <span class="c1">#              once docutils min version &gt;=0.18.1</span>
+            <span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">toc</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;entries&quot;</span><span class="p">]:</span>
+                <span class="c1"># if the page is using &quot;self&quot; use the correct link</span>
+                <span class="n">page</span> <span class="o">=</span> <span class="n">toc</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;parent&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">page</span> <span class="o">==</span> <span class="s2">&quot;self&quot;</span> <span class="k">else</span> <span class="n">page</span>
+
+                <span class="c1"># If this is the active ancestor page, add a class so we highlight it</span>
+
+                <span class="c1"># sanitize page title for use in the html output if needed</span>
+                <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">titles</span><span class="p">[</span><span class="n">page</span><span class="p">]</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">math</span><span class="p">):</span>
+                            <span class="n">title</span> <span class="o">+=</span> <span class="n">add_inline_math</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">title</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span>
+
+                <span class="c1"># set up the status of the link and the path</span>
+                <span class="c1"># if the path is relative then we use the context for the path</span>
+                <span class="c1"># resolution and the internal class.</span>
+                <span class="c1"># If it&#39;s an absolute one then we use the external class and</span>
+                <span class="c1"># the complete url.</span>
+                <span class="n">is_absolute</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span>
+                <span class="n">link_href</span> <span class="o">=</span> <span class="n">page</span> <span class="k">if</span> <span class="n">is_absolute</span> <span class="k">else</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;pathto&quot;</span><span class="p">](</span><span class="n">page</span><span class="p">)</span>
+
+                <span class="n">links_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">LinkInfo</span><span class="p">(</span>
+                        <span class="n">is_current</span><span class="o">=</span><span class="p">(</span><span class="n">page</span> <span class="o">==</span> <span class="n">active_header_page</span><span class="p">),</span>
+                        <span class="n">href</span><span class="o">=</span><span class="n">link_href</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                        <span class="n">is_external</span><span class="o">=</span><span class="n">is_absolute</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Add external links defined in configuration as sibling list items</span>
+        <span class="k">for</span> <span class="n">external_link</span> <span class="ow">in</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;theme_external_links&quot;</span><span class="p">]:</span>
+            <span class="n">links_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">LinkInfo</span><span class="p">(</span>
+                    <span class="n">is_current</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">href</span><span class="o">=</span><span class="n">external_link</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">external_link</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="n">is_external</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">links_data</span>
+
+    <span class="nd">@cache</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_header_nav_before_dropdown</span><span class="p">(</span>
+        <span class="n">n_links_before_dropdown</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return html for navbar and dropdown.</span>
+
+<span class="sd">        Given the number of links before the dropdown, return the html for the navbar,</span>
+<span class="sd">        as well as the list of links to put in a dropdown.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - HTML str for the navbar</span>
+<span class="sd">            - list of HTML str for the dropdown</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">n_links_before_dropdown</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_links_before_dropdown</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;n_links_before_dropdown is not an int: </span><span class="si">{</span><span class="n">n_links_before_dropdown</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="n">links_data</span> <span class="o">=</span> <span class="n">_generate_nav_info</span><span class="p">()</span>
+
+        <span class="n">links_html</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">links_dropdown</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">boilerplate</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            &lt;li class=&quot;{nav_item} {active}&quot;&gt;</span>
+<span class="sd">              &lt;a class=&quot;{nav_link} nav-{ext_int}&quot; href=&quot;{href}&quot;&gt;</span>
+<span class="sd">                {title}</span>
+<span class="sd">              &lt;/a&gt;</span>
+<span class="sd">            &lt;/li&gt;</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="n">nav_item</span> <span class="o">=</span> <span class="s2">&quot;nav-item&quot;</span>
+        <span class="n">nav_link</span> <span class="o">=</span> <span class="s2">&quot;nav-link&quot;</span>
+        <span class="n">dropdown_item</span> <span class="o">=</span> <span class="s2">&quot;dropdown-item&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">links_data</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">n_links_before_dropdown</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># max items without a dropdown is n + 1,</span>
+            <span class="c1"># the cutoff counting the dropdown itself.</span>
+            <span class="c1"># avoids having a dropdown with exactly one item</span>
+            <span class="n">dropdown_cutoff</span> <span class="o">=</span> <span class="n">n_links_before_dropdown</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dropdown_cutoff</span> <span class="o">=</span> <span class="n">n_links_before_dropdown</span>
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links_data</span><span class="p">[:</span><span class="n">dropdown_cutoff</span><span class="p">]:</span>
+            <span class="n">links_html</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">boilerplate</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">active</span><span class="o">=</span><span class="s2">&quot;current active&quot;</span> <span class="k">if</span> <span class="n">link</span><span class="o">.</span><span class="n">is_current</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="n">nav_link</span><span class="o">=</span><span class="n">nav_link</span><span class="p">,</span>
+                    <span class="n">nav_item</span><span class="o">=</span><span class="n">nav_item</span><span class="p">,</span>
+                    <span class="n">ext_int</span><span class="o">=</span><span class="s2">&quot;external&quot;</span> <span class="k">if</span> <span class="n">link</span><span class="o">.</span><span class="n">is_external</span> <span class="k">else</span> <span class="s2">&quot;internal&quot;</span><span class="p">,</span>
+                    <span class="n">href</span><span class="o">=</span><span class="n">link</span><span class="o">.</span><span class="n">href</span><span class="p">,</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">link</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links_data</span><span class="p">[</span><span class="n">dropdown_cutoff</span><span class="p">:]:</span>
+            <span class="n">links_dropdown</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">boilerplate</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">active</span><span class="o">=</span><span class="s2">&quot;current active&quot;</span> <span class="k">if</span> <span class="n">link</span><span class="o">.</span><span class="n">is_current</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="n">nav_link</span><span class="o">=</span><span class="n">nav_link</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">dropdown_item</span><span class="p">,</span>
+                    <span class="n">nav_item</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="n">ext_int</span><span class="o">=</span><span class="s2">&quot;external&quot;</span> <span class="k">if</span> <span class="n">link</span><span class="o">.</span><span class="n">is_external</span> <span class="k">else</span> <span class="s2">&quot;internal&quot;</span><span class="p">,</span>
+                    <span class="n">href</span><span class="o">=</span><span class="n">link</span><span class="o">.</span><span class="n">href</span><span class="p">,</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">link</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># The first links will always be visible</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">links_html</span><span class="p">),</span> <span class="n">links_dropdown</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_header_nav_html</span><span class="p">(</span>
+        <span class="n">n_links_before_dropdown</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dropdown_text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;More&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate top-level links that are meant for the header navigation.</span>
+
+<span class="sd">        We use this function instead of the TocTree-based one used for the</span>
+<span class="sd">        sidebar because this one is much faster for generating the links and</span>
+<span class="sd">        we don&#39;t need the complexity of the full Sphinx TocTree.</span>
+
+<span class="sd">        This includes two kinds of links:</span>
+
+<span class="sd">        - Links to pages described listed in the root_doc TocTrees</span>
+<span class="sd">        - External links defined in theme configuration</span>
+
+<span class="sd">        Additionally it will create a dropdown list for several links after</span>
+<span class="sd">        a cutoff.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            n_links_before_dropdown:The number of links to show before nesting the</span>
+<span class="sd">                remaining links in a Dropdown element.</span>
+<span class="sd">            dropdown_text:Text of the dropdown element button.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span><span class="p">,</span> <span class="n">links_dropdown</span> <span class="o">=</span> <span class="n">_generate_header_nav_before_dropdown</span><span class="p">(</span>
+            <span class="n">n_links_before_dropdown</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">links_dropdown</span><span class="p">:</span>
+            <span class="n">dropdown_id</span> <span class="o">=</span> <span class="n">unique_html_id</span><span class="p">(</span><span class="s2">&quot;pst-nav-more-links&quot;</span><span class="p">)</span>
+            <span class="n">links_dropdown_html</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">links_dropdown</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;li class=&quot;nav-item dropdown&quot;&gt;</span>
+<span class="s2">                &lt;button class=&quot;btn dropdown-toggle nav-item&quot; type=&quot;button&quot;</span>
+<span class="s2">                data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;</span>
+<span class="s2">                aria-controls=&quot;</span><span class="si">{</span><span class="n">dropdown_id</span><span class="si">}</span><span class="s2">&quot;&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">_</span><span class="p">(</span><span class="n">dropdown_text</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">                &lt;/button&gt;</span>
+<span class="s2">                &lt;ul id=&quot;</span><span class="si">{</span><span class="n">dropdown_id</span><span class="si">}</span><span class="s2">&quot; class=&quot;dropdown-menu&quot;&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">links_dropdown_html</span><span class="si">}</span>
+<span class="s2">                &lt;/ul&gt;</span>
+<span class="s2">            &lt;/li&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="c1"># Cache this function because it is expensive to run, and because Sphinx</span>
+    <span class="c1"># somehow runs this twice in some circumstances in unpredictable ways.</span>
+    <span class="nd">@cache</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_toctree_html</span><span class="p">(</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">startdepth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">show_nav_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">BeautifulSoup</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the navigation link structure in HTML.</span>
+
+<span class="sd">        This is similar to Sphinx&#39;s own default TocTree generation, but it is modified</span>
+<span class="sd">        to generate TocTrees for *second*-level pages and below (not supported</span>
+<span class="sd">        by default in Sphinx).</span>
+<span class="sd">        This is used for our sidebar, which starts at the second-level page.</span>
+
+<span class="sd">        It also modifies the generated TocTree slightly for Bootstrap classes</span>
+<span class="sd">        and structure (via BeautifulSoup).</span>
+
+<span class="sd">        Arguments are passed to Sphinx &quot;toctree&quot; function (context[&quot;toctree&quot;] below).</span>
+
+<span class="sd">        ref: https://www.sphinx-doc.org/en/master/templating.html#toctree</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            kind : &quot;sidebar&quot; or &quot;raw&quot;. Whether to generate HTML meant for sidebar</span>
+<span class="sd">                navigation (&quot;sidebar&quot;) or to return the raw BeautifulSoup object</span>
+<span class="sd">                (&quot;raw&quot;).</span>
+<span class="sd">            startdepth : The level of the toctree at which to start. By default,</span>
+<span class="sd">                for the navbar uses the normal toctree (`startdepth=0`), and for the</span>
+<span class="sd">                sidebar starts from the second level (`startdepth=1`).</span>
+<span class="sd">            show_nav_level : The level of the navigation bar to toggle as visible on</span>
+<span class="sd">                page load. By default, this level is 1, and only top-level pages are</span>
+<span class="sd">                shown, with drop-boxes to reveal children. Increasing `show_nav_level`</span>
+<span class="sd">                will show child levels as well.</span>
+<span class="sd">            kwargs : passed to the Sphinx `toctree` template function.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            HTML string (if kind == &quot;sidebar&quot;) OR BeautifulSoup object</span>
+<span class="sd">                (if kind == &quot;raw&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">startdepth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">html_toctree</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;toctree&quot;</span><span class="p">](</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># find relevant ancestor page; some pages (search, genindex) won&#39;t have one</span>
+            <span class="n">ancestorname</span><span class="p">,</span> <span class="n">toctree_obj</span> <span class="o">=</span> <span class="n">_get_ancestor_pagename</span><span class="p">(</span>
+                <span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="o">=</span><span class="n">pagename</span><span class="p">,</span> <span class="n">startdepth</span><span class="o">=</span><span class="n">startdepth</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">ancestorname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                    <span class="s2">&quot;Template requested to generate a TocTree fragment but no suitable &quot;</span>
+                    <span class="s2">&quot;ancestor found to act as root node. Please report this to theme &quot;</span>
+                    <span class="s2">&quot;developers.&quot;</span>
+                <span class="p">)</span>
+            <span class="c1"># select the &quot;active&quot; subset of the navigation tree for the sidebar</span>
+            <span class="n">toctree_element</span> <span class="o">=</span> <span class="n">get_nonroot_toctree</span><span class="p">(</span>
+                <span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">ancestorname</span><span class="p">,</span> <span class="n">toctree_obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+            <span class="p">)</span>
+            <span class="n">html_toctree</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">render_partial</span><span class="p">(</span><span class="n">toctree_element</span><span class="p">)[</span><span class="s2">&quot;fragment&quot;</span><span class="p">]</span>
+
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_toctree</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+        <span class="c1"># pair &quot;current&quot; with &quot;active&quot; since that&#39;s what we use w/ bootstrap</span>
+        <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">soup</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;current&quot;</span><span class="p">}):</span>
+            <span class="n">li</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Remove sidebar links to sub-headers on the page</span>
+        <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">):</span>
+            <span class="c1"># Remove</span>
+            <span class="k">if</span> <span class="n">li</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+                <span class="n">href</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s2">&quot;#&quot;</span> <span class="ow">in</span> <span class="n">href</span> <span class="ow">and</span> <span class="n">href</span> <span class="o">!=</span> <span class="s2">&quot;#&quot;</span><span class="p">:</span>
+                    <span class="n">li</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;sidebar&quot;</span><span class="p">:</span>
+            <span class="c1"># Add bootstrap classes for first `ul` items</span>
+            <span class="k">for</span> <span class="n">ul</span> <span class="ow">in</span> <span class="n">soup</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                <span class="n">ul</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">ul</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="s2">&quot;nav&quot;</span><span class="p">,</span> <span class="s2">&quot;bd-sidenav&quot;</span><span class="p">]</span>
+
+            <span class="c1"># Add collapse boxes for parts/captions.</span>
+            <span class="c1"># Wraps the TOC part in an extra &lt;ul&gt; to behave like chapters with toggles</span>
+            <span class="c1"># show_nav_level: 0 means make parts collapsible.</span>
+            <span class="k">if</span> <span class="n">show_nav_level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">partcaptions</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;caption&quot;</span><span class="p">})</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">partcaptions</span><span class="p">):</span>
+                    <span class="n">new_soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span>
+                        <span class="s2">&quot;&lt;ul class=&#39;list-caption&#39;&gt;&lt;/ul&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span>
+                    <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">caption</span> <span class="ow">in</span> <span class="n">partcaptions</span><span class="p">:</span>
+                        <span class="c1"># Assume that the next &lt;ul&gt; element is the TOC list</span>
+                        <span class="c1"># for this part</span>
+                        <span class="k">for</span> <span class="n">sibling</span> <span class="ow">in</span> <span class="n">caption</span><span class="o">.</span><span class="n">next_siblings</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">sibling</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;ul&quot;</span><span class="p">:</span>
+                                <span class="n">toclist</span> <span class="o">=</span> <span class="n">sibling</span>
+                                <span class="k">break</span>
+                        <span class="n">li</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;toctree-l0&quot;</span><span class="p">})</span>
+                        <span class="n">li</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">caption</span><span class="p">,</span> <span class="n">toclist</span><span class="p">])</span>
+                        <span class="n">new_soup</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
+                    <span class="n">soup</span> <span class="o">=</span> <span class="n">new_soup</span>
+
+            <span class="c1"># Add icons and labels for collapsible nested sections</span>
+            <span class="n">add_collapse_checkboxes</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+
+            <span class="c1"># Open the sidebar navigation to the proper depth</span>
+            <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">show_nav_level</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">details</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;li.toctree-l</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s2"> &gt; details&quot;</span><span class="p">):</span>
+                    <span class="n">details</span><span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;open&quot;</span>
+
+        <span class="k">return</span> <span class="n">soup</span>
+
+    <span class="nd">@cache</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_toc_html</span><span class="p">(</span><span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;html&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeautifulSoup</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the within-page TOC links in HTML.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;toc&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;toc&quot;</span><span class="p">],</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Add toc-hN + visible classes</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">add_header_level_recursive</span><span class="p">(</span><span class="n">ul</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">ul</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">if</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;theme_show_toc_level&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">ul</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">ul</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="s2">&quot;pst-show_toc_level&quot;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">ul</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                <span class="n">li</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">li</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="sa">f</span><span class="s2">&quot;toc-h</span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+                <span class="n">add_header_level_recursive</span><span class="p">(</span><span class="n">li</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">add_header_level_recursive</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Add in CSS classes for bootstrap</span>
+        <span class="k">for</span> <span class="n">ul</span> <span class="ow">in</span> <span class="n">soup</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">):</span>
+            <span class="n">ul</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">ul</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="s2">&quot;nav&quot;</span><span class="p">,</span> <span class="s2">&quot;section-nav&quot;</span><span class="p">,</span> <span class="s2">&quot;flex-column&quot;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">soup</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">):</span>
+            <span class="n">li</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">li</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="s2">&quot;nav-item&quot;</span><span class="p">,</span> <span class="s2">&quot;toc-entry&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">li</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+                <span class="n">a</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="s2">&quot;nav-link&quot;</span><span class="p">]</span>
+
+        <span class="c1"># If we only have one h1 header, assume it&#39;s a title</span>
+        <span class="n">h1_headers</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.toc-h1&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h1_headers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">h1_headers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># If we have no sub-headers of a title then we won&#39;t have a TOC</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">title</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.toc-h2&quot;</span><span class="p">):</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)</span>
+        <span class="c1"># Else treat the h1 headers as sections</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">soup</span>
+
+        <span class="c1"># Return the toctree object</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;html&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">out</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">soup</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">navbar_align_class</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the class that aligns the navbar based on config.&quot;&quot;&quot;</span>
+        <span class="n">align</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;theme_navbar_align&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">)</span>
+        <span class="n">align_options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;col-lg-3&quot;</span><span class="p">,</span> <span class="s2">&quot;col-lg-9&quot;</span><span class="p">,</span> <span class="s2">&quot;me-auto&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;me-auto&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;ms-auto&quot;</span><span class="p">),</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">align</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">align_options</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Theme option navbar_align must be one of&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">align_options</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">, got: </span><span class="si">{</span><span class="n">align</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">align_options</span><span class="p">[</span><span class="n">align</span><span class="p">]</span>
+
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;unique_html_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unique_html_id</span>
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;generate_header_nav_html&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_header_nav_html</span>
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;suppress_sidebar_toctree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">suppress_sidebar_toctree</span>
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;generate_toctree_html&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_toctree_html</span>
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;generate_toc_html&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_toc_html</span>
+    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;navbar_align_class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">navbar_align_class</span></div>
+
+
+
+<div class="viewcode-block" id="add_collapse_checkboxes">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.add_collapse_checkboxes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_collapse_checkboxes</span><span class="p">(</span><span class="n">soup</span><span class="p">:</span> <span class="n">BeautifulSoup</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add checkboxes to collapse children in a toctree.&quot;&quot;&quot;</span>
+    <span class="c1"># based on https://github.com/pradyunsg/furo</span>
+
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1"># We check all &quot;li&quot; elements, to add a &quot;current-page&quot; to the correct li.</span>
+        <span class="n">classes</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="c1"># expanding the parent part explicitly, if present</span>
+        <span class="k">if</span> <span class="s2">&quot;current&quot;</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">parentli</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">find_parent</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;toctree-l0&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">parentli</span><span class="p">:</span>
+                <span class="n">parentli</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;details&quot;</span><span class="p">)[</span><span class="s2">&quot;open&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Nothing more to do, unless this has &quot;children&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">element</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Add a class to indicate that this has children.</span>
+        <span class="n">element</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">classes</span><span class="p">,</span> <span class="s2">&quot;has-children&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># For table of contents nodes that have subtrees, we modify the HTML so</span>
+        <span class="c1"># that the subtree can be expanded or collapsed in the browser.</span>
+        <span class="c1">#</span>
+        <span class="c1"># The HTML markup tree at the parent node starts with this structure:</span>
+        <span class="c1">#</span>
+        <span class="c1"># - li.has-children</span>
+        <span class="c1">#   - a.reference or p.caption</span>
+        <span class="c1">#   - ul</span>
+        <span class="c1">#</span>
+        <span class="c1"># Note the first child of li.has-children is p.caption only if this node</span>
+        <span class="c1"># is a section heading. (This only happens when show_nav_level is set to</span>
+        <span class="c1"># 0.)</span>
+        <span class="c1">#</span>
+        <span class="c1"># Now we modify the tree structure in one of two ways.</span>
+        <span class="c1">#</span>
+        <span class="c1"># (1) If the node holds a section heading, the HTML tree will be</span>
+        <span class="c1"># modified like so:</span>
+        <span class="c1">#</span>
+        <span class="c1"># - li.has-children</span>
+        <span class="c1">#   - details</span>
+        <span class="c1">#     - summary</span>
+        <span class="c1">#       - p.caption</span>
+        <span class="c1">#       - .toctree-toggle</span>
+        <span class="c1">#     - ul</span>
+        <span class="c1">#</span>
+        <span class="c1"># (2) Otherwise, if the node holds a link to a page in the docs:</span>
+        <span class="c1">#</span>
+        <span class="c1"># - li.has-children</span>
+        <span class="c1">#   - a.reference</span>
+        <span class="c1">#   - details</span>
+        <span class="c1">#     - summary</span>
+        <span class="c1">#       - .toctree-toggle</span>
+        <span class="c1">#   - ul</span>
+        <span class="c1">#</span>
+        <span class="c1"># Why the difference? In the first case, the TOC section heading is not</span>
+        <span class="c1"># a link, but in the second case it is. So in the first case it makes</span>
+        <span class="c1"># sense to put the (non-link) text inside the summary tag so that the</span>
+        <span class="c1"># user can click either the text or the .toctree-toggle chevron icon to</span>
+        <span class="c1"># expand/collapse the TOC subtree. But in the second case, putting the</span>
+        <span class="c1"># link in the summary tag would make it unclear whether clicking on the</span>
+        <span class="c1"># link should expand the subtree or take you to the link.</span>
+
+        <span class="c1"># Create &lt;details&gt; and put the entire subtree into it</span>
+        <span class="n">details</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s2">&quot;details&quot;</span><span class="p">)</span>
+        <span class="n">details</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">contents</span><span class="p">)</span>
+        <span class="n">element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">details</span><span class="p">)</span>
+
+        <span class="c1"># Hoist the link to the top if there is one</span>
+        <span class="n">toc_link</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;details &gt; a.reference&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">toc_link</span><span class="p">:</span>
+            <span class="n">element</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">toc_link</span><span class="p">)</span>
+
+        <span class="c1"># Create &lt;summary&gt; with chevron icon</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s2">&quot;summary&quot;</span><span class="p">)</span>
+        <span class="n">span</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span>
+            <span class="s2">&quot;span&quot;</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;toctree-toggle&quot;</span><span class="p">,</span>
+                <span class="c1"># This element and the chevron it contains are purely decorative;</span>
+                <span class="c1"># the actual expand/collapse functionality is delegated to the</span>
+                <span class="c1"># &lt;summary&gt; tag</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;presentation&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">span</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">new_tag</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;fa-solid fa-chevron-down&quot;</span><span class="p">}))</span>
+        <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
+
+        <span class="c1"># Prepend section heading (if there is one) to &lt;summary&gt;</span>
+        <span class="n">collapsible_section_heading</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;details &gt; p.caption&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">collapsible_section_heading</span><span class="p">:</span>
+            <span class="c1"># Put heading inside summary so that the heading text (and chevron) are both</span>
+            <span class="c1"># clickable</span>
+            <span class="n">summary</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">collapsible_section_heading</span><span class="p">)</span>
+
+        <span class="c1"># Prepend &lt;summary&gt; to &lt;details&gt;</span>
+        <span class="n">details</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">summary</span><span class="p">)</span>
+
+        <span class="c1"># If this TOC node has a &quot;current&quot; class, be expanded by default</span>
+        <span class="c1"># (by opening the details/summary disclosure widget)</span>
+        <span class="k">if</span> <span class="s2">&quot;current&quot;</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">details</span><span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;open&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="get_nonroot_toctree">
+<a class="viewcode-back" href="../../api/pydata_sphinx_theme/toctree/index.html#pydata_sphinx_theme.toctree.get_nonroot_toctree">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_nonroot_toctree</span><span class="p">(</span>
+    <span class="n">app</span><span class="p">:</span> <span class="n">Sphinx</span><span class="p">,</span> <span class="n">pagename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ancestorname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">toctree</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the partial TocTree (rooted at `ancestorname`) that dominates `pagename`.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    app : Sphinx app.</span>
+<span class="sd">    pagename : Name of the current page (as Sphinx knows it; i.e., its relative path</span>
+<span class="sd">    from the documentation root).</span>
+<span class="sd">    ancestorname : Name of a page that dominates `pagename` and that will serve as the</span>
+<span class="sd">    root of the TocTree fragment.</span>
+<span class="sd">    toctree : A Sphinx TocTree object. Since this is always needed when finding the</span>
+<span class="sd">    ancestorname (see _get_ancestor_pagename), it&#39;s more efficient to pass it here to</span>
+<span class="sd">    re-use it.</span>
+<span class="sd">    kwargs : passed to the Sphinx `toctree` template function.</span>
+
+<span class="sd">    This is similar to `context[&quot;toctree&quot;](**kwargs)` (AKA `toctree(**kwargs)` within a</span>
+<span class="sd">    Jinja template), or `TocTree.get_toctree_for()`, which always uses the &quot;root&quot;</span>
+<span class="sd">    doctree (i.e., `doctree = self.env.get_doctree(self.env.config.root_doc)`).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;collapse&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;maxdepth&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;maxdepth&quot;</span><span class="p">]:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;maxdepth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;maxdepth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;maxdepth&quot;</span><span class="p">])</span>
+    <span class="c1"># starting from ancestor page, recursively parse `toctree::` elements</span>
+    <span class="n">ancestor_doctree</span> <span class="o">=</span> <span class="n">toctree</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">tocs</span><span class="p">[</span><span class="n">ancestorname</span><span class="p">]</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span>
+    <span class="n">toctrees</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># for each `toctree::` directive in the ancestor page...</span>
+    <span class="k">for</span> <span class="n">toctree_node</span> <span class="ow">in</span> <span class="n">traverse_or_findall</span><span class="p">(</span><span class="n">ancestor_doctree</span><span class="p">,</span> <span class="n">TocTreeNodeClass</span><span class="p">):</span>
+        <span class="c1"># TODO: ↑↑↑↑↑↑ use `ancestor_doctree.findall(TocTreeNodeClass)` ↑↑↑↑↑↑</span>
+        <span class="c1">#              once docutils min version &gt;=0.18.1</span>
+
+        <span class="c1"># ... resolve that `toctree::` (recursively get children, prune, collapse, etc)</span>
+        <span class="n">resolved_toctree</span> <span class="o">=</span> <span class="n">toctree</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span>
+            <span class="n">docname</span><span class="o">=</span><span class="n">pagename</span><span class="p">,</span>
+            <span class="n">builder</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="p">,</span>
+            <span class="n">toctree</span><span class="o">=</span><span class="n">toctree_node</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># ... keep the non-empty ones</span>
+        <span class="k">if</span> <span class="n">resolved_toctree</span><span class="p">:</span>
+            <span class="n">toctrees</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resolved_toctree</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">toctrees</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="c1"># ... and merge them into a single entity</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">toctrees</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">resolved_toctree</span> <span class="ow">in</span> <span class="n">toctrees</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resolved_toctree</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+</pre></div>
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

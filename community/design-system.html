@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>PyData Sphinx Theme Design System &#8212; Exascale Knowledge Share 0.16.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=0f282c0f"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'community/design-system';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.16.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="Feb 13, 2026"/>   
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../adv_guide/index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../adv_guide/index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">PyData Sphinx Theme Design System</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="pydata-sphinx-theme-design-system">
+<h1>PyData Sphinx Theme Design System<a class="headerlink" href="#pydata-sphinx-theme-design-system" title="Link to this heading">#</a></h1>
+<p>The Pydata Sphinx Theme is committed to maintaining a theme that supports industry standards;
+the design system must be included.
+Whether choosing how to configure your theme or making changes to the design system itself,
+consider the most recent version of the Web Content Accessibility Guidelines
+(WCAG) to make sure the community continues to support documentation access for everyone.</p>
+<section id="guiding-principles">
+<h2>Guiding Principles<a class="headerlink" href="#guiding-principles" title="Link to this heading">#</a></h2>
+<section id="accessibility">
+<h3>Accessibility<a class="headerlink" href="#accessibility" title="Link to this heading">#</a></h3>
+<p>Accessibility is at the core of the PyData Sphinx theme.
+All design decisions are made with <a class="reference external" href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a> conformance in mind,
+ensuring that the theme is usable by people of all abilities.
+Accessibility is a priority to make the theme inclusive for all users.</p>
+</section>
+<section id="open-source-collaboration">
+<h3>Open Source Collaboration<a class="headerlink" href="#open-source-collaboration" title="Link to this heading">#</a></h3>
+<p>As an open-source project, collaboration and transparency are key principles:</p>
+<ol class="arabic simple">
+<li><p><strong>Clear Guidelines:</strong> All components, color palettes, and typography rules must be documented.</p></li>
+<li><p><strong>Open Feedback:</strong> Designers, developers, users and maintainers are encouraged
+to give feedback on the theme, helping to improve its functionality and usability over time.
+If you’d like to provide feedback, please open an issue on the
+<a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme">PyData Sphinx Theme GitHub repository.</a></p></li>
+<li><p><strong>Community Driven:</strong> The theme grows and evolves based on the needs and
+suggestions of the open-source community.</p></li>
+</ol>
+</section>
+</section>
+<section id="typography">
+<h2>Typography<a class="headerlink" href="#typography" title="Link to this heading">#</a></h2>
+<section id="typeface">
+<h3>Typeface<a class="headerlink" href="#typeface" title="Link to this heading">#</a></h3>
+<p>PyData Sphinx uses default system fonts.</p>
+</section>
+<section id="type-scale">
+<h3>Type Scale<a class="headerlink" href="#type-scale" title="Link to this heading">#</a></h3>
+<p>A type scale refers to the multiple by which font sizes increase.
+You can find more about typographic scales at <a class="reference external" href="https://designcode.io/typographic-scales">Typographic Scale</a>.
+For content-heavy websites, a medium contrast scale, which provides balanced
+contrast between heading sizes without overly large jumps, is ideal,
+typically ranging from <code class="docutils literal notranslate"><span class="pre">1.2x</span></code> to <code class="docutils literal notranslate"><span class="pre">1.33x</span></code>.</p>
+<p>The PST type scale was updated (August 2024) to improve the accessibility of the
+overall type system and increase visual contrast between the headings.
+The PST type scale uses the Minor Third scale (<code class="docutils literal notranslate"><span class="pre">1.2x</span></code>) with values rounded to the
+nearest even whole number.
+Except for the H4 to H3 transition, all headings have a minimum of a <code class="docutils literal notranslate"><span class="pre">1.2x</span></code> increase,
+which is an improvement over the previous scale.</p>
+</section>
+<section id="styles">
+<h3>Styles<a class="headerlink" href="#styles" title="Link to this heading">#</a></h3>
+<section id="headings">
+<h4>Headings<a class="headerlink" href="#headings" title="Link to this heading">#</a></h4>
+<p>Headings create structure and hierarchy within the content.
+They range from <code class="docutils literal notranslate"><span class="pre">H1</span></code> to <code class="docutils literal notranslate"><span class="pre">H6</span></code>, with each level decreasing in size and importance.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Style</p></th>
+<th class="head text-left"><p>Size (<code class="docutils literal notranslate"><span class="pre">px</span></code>)</p></th>
+<th class="head text-left"><p>Size (<code class="docutils literal notranslate"><span class="pre">rem</span></code>)</p></th>
+<th class="head text-left"><p>Weight</p></th>
+<th class="head text-left"><p>Use / Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Heading 1</p></td>
+<td class="text-left"><p>42</p></td>
+<td class="text-left"><p>2.625</p></td>
+<td class="text-left"><p>600</p></td>
+<td class="text-left"><p>Main page titles (use only once)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Heading 2</p></td>
+<td class="text-left"><p>34</p></td>
+<td class="text-left"><p>2.125</p></td>
+<td class="text-left"><p>600</p></td>
+<td class="text-left"><p>Section titles</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Heading 3</p></td>
+<td class="text-left"><p>28</p></td>
+<td class="text-left"><p>1.750</p></td>
+<td class="text-left"><p>600</p></td>
+<td class="text-left"><p>Subsections within H2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Heading 4</p></td>
+<td class="text-left"><p>24</p></td>
+<td class="text-left"><p>1.500</p></td>
+<td class="text-left"><p>600</p></td>
+<td class="text-left"><p>Tertiary level headings</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Heading 5</p></td>
+<td class="text-left"><p>20</p></td>
+<td class="text-left"><p>1.250</p></td>
+<td class="text-left"><p>600</p></td>
+<td class="text-left"><p>Less prominent headings</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Heading 6</p></td>
+<td class="text-left"><p>16</p></td>
+<td class="text-left"><p>1.000</p></td>
+<td class="text-left"><p>600</p></td>
+<td class="text-left"><p>Lowest level headings</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Always use headings in logical order (<code class="docutils literal notranslate"><span class="pre">H1</span></code>, <code class="docutils literal notranslate"><span class="pre">H2</span></code>, <code class="docutils literal notranslate"><span class="pre">H3</span></code>, etc.) without skipping levels,
+to help assistive tech such as screen readers interpret the structure of the page.
+Each page should have a single, unique <code class="docutils literal notranslate"><span class="pre">H1</span></code> to effectively define the page’s purpose,
+improving search engine optimization (SEO) and accessibility for users who rely
+on assistive tech such as screen readers.</p>
+</section>
+<section id="body">
+<h4>Body<a class="headerlink" href="#body" title="Link to this heading">#</a></h4>
+<p>Body text serves as the standard style for detailed content.
+It is primarily used for longer, detailed content such as paragraphs, articles,
+and descriptions, but may also apply to other areas such as modals, admonitions
+or sections where longer content needs to be displayed clearly.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Style</p></th>
+<th class="head text-left"><p>Size (<code class="docutils literal notranslate"><span class="pre">px</span></code>)</p></th>
+<th class="head text-left"><p>Size (<code class="docutils literal notranslate"><span class="pre">rem</span></code>)</p></th>
+<th class="head text-left"><p>Weight</p></th>
+<th class="head text-left"><p>Use / Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Body</p></td>
+<td class="text-left"><p>16</p></td>
+<td class="text-left"><p>1.000</p></td>
+<td class="text-left"><p>400</p></td>
+<td class="text-left"><p>Standard text size for readability</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>While there is no absolute minimum text size, for optimum readability,
+body text should be at least <code class="docutils literal notranslate"><span class="pre">16px</span></code>.</p>
+</section>
+<section id="links">
+<h4>Links<a class="headerlink" href="#links" title="Link to this heading">#</a></h4>
+<p>Links must be styled in a way that makes them visually distinct from regular text.
+All links should be underlined in addition to being color-coded,
+as <a class="reference external" href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">color alone should not be used to convey meaning</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Style</p></th>
+<th class="head text-left"><p>Size (<code class="docutils literal notranslate"><span class="pre">px</span></code>)</p></th>
+<th class="head text-left"><p>Size (<code class="docutils literal notranslate"><span class="pre">rem</span></code>)</p></th>
+<th class="head text-left"><p>Weight</p></th>
+<th class="head text-left"><p>Use / Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Links</p></td>
+<td class="text-left"><p>16</p></td>
+<td class="text-left"><p>1.000</p></td>
+<td class="text-left"><p>400</p></td>
+<td class="text-left"><p>Always underlined and color-coded</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Links also have a hover and focus interactive state.
+Hover and focus states should always show a change in color and visual design
+to provide clear feedback for interactive elements.</p>
+<p>Links are used to navigate between different pages or sections and to redirect
+readers to external sources.
+They are visually distinct from buttons, which are used to perform actions within
+the current page or context and should not trigger actions like submitting forms
+or toggling components.</p>
+</section>
+<section id="code-text">
+<h4>Code Text<a class="headerlink" href="#code-text" title="Link to this heading">#</a></h4>
+<p>Code text is used to display inline code snippets or larger blocks of code.
+It uses a monospaced font. The theme also includes interactive states for code
+text including links.</p>
+</section>
+</section>
+<section id="type-color">
+<h3>Type Color<a class="headerlink" href="#type-color" title="Link to this heading">#</a></h3>
+<p>Text color plays a crucial role in ensuring that content is legible and accessible.
+In the PyData Sphinx theme, we use a predefined set of colors to ensure readability,
+visual hierarchy, and consistency across different elements.
+Each text color is designed to meet accessibility guidelines, ensuring sufficient
+contrast between text and background.</p>
+<p>When using colors in text, ensure that it meets the minimum
+<a class="reference external" href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.1#contrast-minimum">WCAG color contrast accessibility criterion</a>.
+Color alone should not be used to indicate meaning.
+For example, text that is a link should not be indicated solely by color
+but also with an underline.
+This helps ensure that users who have difficulty distinguishing colors can still identify links.
+Semantic colors (such as for success, warning, or error messages) can be used to
+convey meaning, but color should not be the only indicator.
+Pair these colors with icons or text labels to ensure clarity.</p>
+</section>
+</section>
+<section id="color">
+<h2>Color<a class="headerlink" href="#color" title="Link to this heading">#</a></h2>
+<p>The PyData Sphinx theme uses a well-defined color palette to ensure consistency,
+readability, and accessibility across the entire design system.
+This color palette is available for both light and dark themes.
+This document explains how to use the theme’s color system</p>
+<section id="base-colors">
+<h3>Base Colors<a class="headerlink" href="#base-colors" title="Link to this heading">#</a></h3>
+<p>Base colors form the foundation of the theme and are used across primary UI elements
+like buttons, backgrounds, and text. They maintain consistency throughout the interface.</p>
+<ul class="simple">
+<li><p><strong>Primary</strong>: The main color for major actions and interactive elements.</p></li>
+<li><p><strong>Secondary</strong>: A supporting color for secondary actions and highlights.</p></li>
+<li><p><strong>Accent</strong>: An emphasis color used sparingly for highlighting content.</p></li>
+<li><p><strong>Gray (Neutral)</strong>: Used for typography, borders, and backgrounds.</p></li>
+<li><p><strong>Foundation Colors</strong>: Black and white base colors used for backgrounds and
+surfaces (for example, cards, containers, modals) in light and dark modes.</p></li>
+</ul>
+<p>Color variables are also documented in the <a class="reference internal" href="#../user_guide/styling.rst"><code class="xref myst docutils literal notranslate"><span class="pre">../user_guide/styling.rst</span></code></a> section
+of the User Guide.</p>
+</section>
+<section id="semantic-colors">
+<h3>Semantic Colors<a class="headerlink" href="#semantic-colors" title="Link to this heading">#</a></h3>
+<p>Semantic colors, colors named for what they represent and how they are used,
+are provided for success, errors, warnings, and information.
+Using these colors as named ensures users can easily understand system feedback
+through visual cues.</p>
+</section>
+</section>
+<section id="relevant-links">
+<h2>Relevant Links<a class="headerlink" href="#relevant-links" title="Link to this heading">#</a></h2>
+<p>For further reference, you can access the following resources related to the
+color and typography in the PyData Sphinx theme:</p>
+<ol class="arabic simple">
+<li><p><strong>GitHub Repository:</strong> The source code for the PyData Sphinx theme is available on GitHub.</p>
+<ol class="arabic simple">
+<li><p>You can find the specific file that defines the typography settings,
+including font stacks, sizes, and weights in the
+<a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/blob/main/src/pydata_sphinx_theme/assets/styles/variables/_fonts.scss"><code class="docutils literal notranslate"><span class="pre">fonts.scss</span></code> file</a>.</p></li>
+<li><p>You can find all the PyData Sphinx theme colors in the
+<a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/tree/main/src/pydata_sphinx_theme/assets/styles/variables/_color.scss"><code class="docutils literal notranslate"><span class="pre">color.scss</span></code> file</a></p></li>
+</ol>
+</li>
+<li><p><strong>Figma Design File:</strong> The Figma file contains the visual design and specifications
+for the typography styles, including font sizes, line heights,
+and spacing used throughout the theme. It also includes our color palette and its use cases, as well as details on interactive components and their states.
+You can access it <a class="reference external" href="https://www.figma.com/community/file/1443191723065200671/pydata-sphinx-theme-design-system">through this link to the Figma file</a>.</p></li>
+</ol>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://carbondesignsystem.com/elements/typography/overview/">https://carbondesignsystem.com/elements/typography/overview/</a></p></li>
+<li><p><a class="reference external" href="https://canvas.workday.com/styles/tokens/type">https://canvas.workday.com/styles/tokens/type</a></p></li>
+<li><p><a class="reference external" href="https://atlassian.design/foundations/typography-beta">https://atlassian.design/foundations/typography-beta</a>
+refer to the <a class="reference external" href="https://www.figma.com/community/file/1443191723065200671/pydata-sphinx-theme-design-system">Figma Design File</a>.</p></li>
+</ol>
+<!-- reusable links -->
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guiding-principles">Guiding Principles</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility">Accessibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-collaboration">Open Source Collaboration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typography">Typography</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typeface">Typeface</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-scale">Type Scale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#styles">Styles</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#headings">Headings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#body">Body</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#links">Links</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-text">Code Text</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-color">Type Color</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color">Color</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-colors">Base Colors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-colors">Semantic Colors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-links">Relevant Links</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/community/design-system.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/community/design-system.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

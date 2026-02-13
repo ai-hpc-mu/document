@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China &#8212; Exascale Knowledge Share 0.16.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=0f282c0f"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/mathphysic';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.16.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quantum Machine Learning" href="quantumml.html" />
+    <link rel="prev" title="SLURM Job Submit Guide" href="slurm-job-submit.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="Feb 13, 2026"/>   
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="mathematical-modeling-in-physics-engineering-biological-and-social-science-with-qwq-llm-from-china">
+<h1>Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China<a class="headerlink" href="#mathematical-modeling-in-physics-engineering-biological-and-social-science-with-qwq-llm-from-china" title="Link to this heading">#</a></h1>
+<p>Large language model (LLM) is a language model notable for its ability to achieve general-purpose language generation. Mathematics language in Physics turns nature into numbers,differential or difference equations. This note takes rocket science example to noted that non-linear differential equation model formulation taking from [1].</p>
+<p>At time of writing, a model QwQ, an experimental research model focused on advancing AI reasoning capabilities from a helpful assistant created by Alibaba Cloud[2], hooks people attention for Qwen2.5. QwQ is 32 billion parameters, showcases impressive analytical capabilities.</p>
+<p>In the following note, we deploy the model on Ollama to check performance on Physics modeling for non-linear differential equation of basic rocket science which are reflecting probability up coming World War expansion.</p>
+<p>Environment setup framework is base ‘open-webui’ locally[3,4] with NVIDIA RTX GPU or A100.
+Goal to motivate apply LLM  to be assitant modeller in complex mathematical modeling in Engineering, Physical, Biological and Social Science by apply common language in Mathematics not just calculator.</p>
+<section id="prompt">
+<h2>Prompt:<a class="headerlink" href="#prompt" title="Link to this heading">#</a></h2>
+<p>“You are physicist, try to model Rocket Launch:
+The motion of the rocket is influenced by the trust generated by it and the force acting on it due to its interaction with each and other celestial bodies. To start, let us assume that the forces due to interaction with celestial bodies are insignificant. This is process of simplification. With this assumption a description of the problem can be done in terms of a closed system with two objects, the rocket and the earth, each interacting with the other.</p>
+<p>The variable characterizing the rocket are its position and velocity with respect to some fixed point on the each and the thrust generated by the rocket. We can regard the point from where the rocket is launched as the fixed point. If we assume that the rocket is launched to move in a vertical direction, the position of the rocket is described by a single variable which changes with time as the rocket moves.</p>
+<p>Let <span class="math notranslate nohighlight">\(x(t)\)</span> denote the altitude of the rocket at time t with t=0 corresponding to the instant at which the rocket launched.</p>
+<p>The velocity is given by <span class="math notranslate nohighlight">\(x′(t)\)</span>, the time derivative of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(F(t)\)</span> represent the thrust generate by the rocket in its upward motion. Since the motion of the rocket is governed by the laws of dynamics, the accerleration of the rocket <span class="math notranslate nohighlight">\(x′′(t)\)</span>, the time derivative of <span class="math notranslate nohighlight">\(x′()\)</span>, is influenced by the following three forces:</p>
+<ol class="lowerroman simple">
+<li><p><span class="math notranslate nohighlight">\(F(x)\)</span> : thrust generated by the rocket,</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span>: gravitational force of attraction,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span>: frictional retarding force. The direction in which these forces act on can differ depending on whether the rocket is going up or down. In case of upward motion, direction of f or frictional retarding force is downward. In the opposite, rocket going down, f is upward.</p></li>
+</ol>
+<p>In general, the thrust F(t) is of constant magnitude F_m and acting for a relatively short period in relation to the time token to reach the maximum altitude. Which one is best model for time t, continuous or discrete time ?</p>
+<p>Hint: of inverse square raw for gravitational attraction and we acknowledge friction force <span class="math notranslate nohighlight">\(f\)</span> depend on velocity <span class="math notranslate nohighlight">\(x'(t)\)</span> as well as the density of air, which varies with the position x(t).
+We assume the density variation can be ignored, the frictional force varies linearly with the velocity with some constant, k. <span class="math notranslate nohighlight">\(f=kx'(t)\)</span>, let <span class="math notranslate nohighlight">\(M\)</span> is mass of the rocket, <span class="math notranslate nohighlight">\(R\)</span> is radius of the earth, <span class="math notranslate nohighlight">\(g_0\)</span> is the gravitational constant. assume x(0)=0,and x’(0)=0.</p>
+<p>What is <span class="math notranslate nohighlight">\(Mx''(t)\)</span>?.</p>
+<p>Given</p>
+<div class="math notranslate nohighlight">
+\[G=\frac{M g_0 R^2}{(x(t)+R)^2}\]</div>
+</section>
+<section id="response">
+<h2>Response:<a class="headerlink" href="#response" title="Link to this heading">#</a></h2>
+<p>So I’m trying to model the motion of a rocket being launched, considering things like thrust, gravity, and friction. It’s a bit complicated, but let’s break it down step by step.</p>
+<p>First, we’re assuming that the only significant forces acting on the rocket are the thrust from its engines, the gravitational pull from the Earth, and some friction or air resistance. We’re ignoring other celestial bodies and their influences, which is a common simplification for this kind of problem.</p>
+<p>We’re focusing on vertical motion, meaning the rocket is going straight up or down relative to the launch point. So, we can describe its position with a single variable, x(t), which is the altitude at time t. The velocity is just the derivative of position with respect to time, x’(t), and acceleration is the derivative of velocity, x’’(t).</p>
+<p>There are three main forces to consider:</p>
+<blockquote>
+<div><p>Thrust (<span class="math notranslate nohighlight">\(F(t)\)</span>) : This is the force generated by the rocket’s engines, pushing it upwards. We’re told that the thrust is constant in magnitude, <span class="math notranslate nohighlight">\(F_m\)</span>, but only acts for a short period compared to the total flight time.</p>
+<p>Gravitational Force (G) : This is the force pulling the rocket back towards the Earth due to gravity. The problem provides an expression for gravity as
+.. math::
+G = (M g_0 R²)/(x(t) + R)²,</p>
+</div></blockquote>
+<p>which accounts for the fact that gravitational force decreases with distance from the center of the Earth.</p>
+<p>Frictional Force (f) : This is the resistance from the air as the rocket moves through it. The problem states that we can model this force as being proportional to the velocity of the rocket, so <span class="math notranslate nohighlight">\(f = k x'(t), where k is a constant\)</span>. Also, the direction of this force is opposite to the direction of motion. So, if the rocket is going up, friction acts downwards, and vice versa.</p>
+<dl>
+<dt>Given these forces, we can use Newton’s second law, which states that the net force acting on an object is equal to its mass times its acceleration:</dt><dd><div class="math notranslate nohighlight">
+\[\]</div>
+<p>F_net = M x’’(t).</p>
+</dd>
+</dl>
+<p>So, the net force F_net is the sum of the thrust, gravitational force, and frictional force. But we need to consider their directions.</p>
+<p>When the rocket is going up:</p>
+<blockquote>
+<div><p>Thrust (F_m) is upwards.</p>
+<p>Gravity (G) is downwards.</p>
+<p>Friction (f = k x’(t)) is also downwards because it opposes the motion.</p>
+</div></blockquote>
+<p>Therefore, the net force is:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F_net</span> <span class="o">=</span> <span class="n">F_m</span> <span class="o">-</span> <span class="n">G</span> <span class="o">-</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>Plugging in the expressions:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>F_net = F_m - [M g_0 R² / (x + R)²] - k x&#39;
+</pre></div>
+</div>
+<p>So, according to Newton’s second law:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M x&#39;&#39; = F_m - M g_0 R² / (x + R)² - k x&#39;
+</pre></div>
+</div>
+<p>Similarly, when the rocket is coming down:</p>
+<blockquote>
+<div><p>Thrust is still upwards (assuming the engines are off once the initial thrust is applied).</p>
+<p>Gravity is still downwards.</p>
+<p>Friction now acts upwards because it opposes the downward motion.</p>
+</div></blockquote>
+<p>So, net force would be:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F_net</span> <span class="o">=</span> <span class="n">F_m</span> <span class="o">+</span> <span class="n">G</span> <span class="o">-</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>But since F_m is likely zero during descent or negligible compared to gravity and friction, it might be:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>F_net = M g_0 R² / (x + R)² - k x&#39;
+</pre></div>
+</div>
+<p>Again, using Newton’s second law:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M x&#39;&#39; = M g_0 R² / (x + R)² - k x&#39;
+</pre></div>
+</div>
+<p>Wait, but in the descending phase, if thrust is zero, it’s just gravity minus friction (which is now positive because friction acts upwards).</p>
+<p>So, to generalize, we need to consider the direction of each force based on the velocity.</p>
+<p>But for the initial part, where the rocket is launched upwards, we can stick with the first equation:</p>
+<div class="math notranslate nohighlight">
+\[M x'' = F_m - M g_0 R² / (x + R)² - k x'\]</div>
+<p>Given that at t=0, x(0)=0 (starting at ground level) and x’(0)=0 (initially at rest).</p>
+<p>Now, the problem gives G = M g_0 R² / (x + R)², which is the gravitational force.</p>
+<p>So, plugging that in:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="n">x</span><span class="s1">&#39;&#39;</span> <span class="o">=</span> <span class="n">F_m</span> <span class="o">-</span> <span class="n">G</span> <span class="o">-</span> <span class="n">k</span> <span class="n">x</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>Or, substituting G:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M x&#39;&#39; = F_m - [M g_0 R² / (x + R)²] - k x&#39;
+</pre></div>
+</div>
+<p>This seems like a second-order nonlinear differential equation because of the term involving x in the denominator.</p>
+<p>Solving this analytically might be challenging, so perhaps we need to make some approximations or consider specific cases.</p>
+</section>
+<section id="interpretation">
+<h2>Interpretation:<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h2>
+<p>The result also show how to solve this equation but it is not verified yet. However, the model of second order non-linear equation fomulation is shown promissing result compared to analitics equations from references.
+- QwQ can model important concept in mathematical physics: impuse, <strong>Dirac delta function</strong>
+- Construct <strong>non-linear equation model</strong> from English statement.
+- Demostrated <strong>solving and reasoning</strong> in Mathematical application.
+- Milestone to teach and learn applied Mathematical modeling in undergrade level.</p>
+</section>
+<section id="references">
+<h2>References:<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Murthy, D. N. P &amp; Rodin, E. Y. (Ervin Y.), 1932- &amp; Page, N. W. (1990). Mathematical modelling : a tool for problem solving in engineering, physical, biological, and social sciences / D.N.P. Murthy and N.W. Page and E.Y. Rodin. Oxford ; New York : Pergamon Press</p></li>
+<li><p>QwQ: Reflect Deeply on the Boundaries of the Unknown, QWEN team, <a class="reference external" href="https://qwenlm.github.io/blog/qwq-32b-preview/">github</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-webui/open-webui">Deploy Open WebUI with Ollama</a></p></li>
+</ol>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="slurm-job-submit.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SLURM Job Submit Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="quantumml.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quantum Machine Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt">Prompt:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#response">Response:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/mathphysic.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/adv_guide/mathphysic.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
