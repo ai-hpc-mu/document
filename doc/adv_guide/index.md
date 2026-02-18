@@ -41,6 +41,7 @@ rstudio
 bioinfo
 alphafold
 parabricks
+cellbender
 ```
 
 ```{toctree}
