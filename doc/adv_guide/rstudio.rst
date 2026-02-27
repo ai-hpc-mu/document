@@ -131,3 +131,141 @@ Reonnect to RStudio Server via browser::
 
         http://compute_node.mahidol.ac.th:port
 
+
+RStudio Customization Library
+==============================
+
+*Author: Snit Sanghlao and Claude Code (Anthropic)*
+
+Install RStudio Server in user space on Ubuntu-based HPC cluster nodes,
+expose it via Jupyter proxy, and run it alongside a GPU-enabled Conda environment.
+
+Step 1: Download and Extract the Ubuntu Package
+------------------------------------------------
+
+Create a private software folder and unpack the RStudio Server binaries locally
+(no ``sudo`` or root privileges required).
+
+.. code-block:: bash
+
+   # 1.1  Create your permanent software directory and a temporary working folder
+   mkdir -p ~/software/rstudio-server
+   mkdir -p ~/software/temp-rstudio
+   cd ~/software/temp-rstudio
+
+   # 1.2  Download the Ubuntu 22.04 (Jammy) RStudio Server .deb package
+   #      Check https://posit.co/download/rstudio-server/ for the latest link.
+   wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2026.01.1-403-amd64.deb
+
+   # 1.3  Extract the .deb file locally (no root required)
+   dpkg -x rstudio-server-2026.01.1-403-amd64.deb .
+
+   # 1.4  Move the core binaries to your permanent folder and clean up
+   mv usr/lib/rstudio-server/* ~/software/rstudio-server/
+   cd ~/software
+   rm -rf temp-rstudio
+
+Step 2: Create Your Personal Modulefile
+----------------------------------------
+
+Create the ``~/privatemodules/rstudio/`` directory and write a modulefile so
+that the Environment Modules system can expose the ``rserver`` binary.
+
+.. code-block:: bash
+
+   # 2.1  Create the modulefile directory
+   mkdir -p ~/privatemodules/rstudio
+
+   # 2.2  Create the modulefile
+   nano ~/privatemodules/rstudio/2026.01.1
+
+Paste the following Tcl content into the file, then save with
+``Ctrl+O`` → ``Enter`` and exit with ``Ctrl+X``:
+
+.. code-block:: tcl
+
+   #%Module1.0
+   proc ModulesHelp { } {
+       puts stderr "Loads RStudio Server 2026.01.1 for Jupyter Proxy"
+   }
+
+   module-whatis "RStudio Server (User Space)"
+
+   set RSTUDIO_DIR /home/snit.san/software/rstudio-server
+
+   # Add the binary to your PATH so Jupyter proxy can find 'rserver'
+   prepend-path PATH $RSTUDIO_DIR/bin
+
+Step 3: Create the Conda Environment
+--------------------------------------
+
+Install JupyterLab, Jupyter Server Proxy, and the RStudio proxy extension via
+Conda. The ``rstudio`` Conda package is intentionally omitted because the
+user-space binary installed in Step 1 is used instead.
+
+.. code-block:: bash
+
+   # 3.1  Create the GPU-enabled Conda environment
+   conda create -n rstudio_gpu -c conda-forge \
+       python=3.10 \
+       r-base=4.3 \
+       r-essentials \
+       r-hdf5r \
+       jupyterlab \
+       jupyter-server-proxy \
+       jupyter-rsession-proxy
+
+Step 4: Request a Compute Node and Launch Jupyter
+--------------------------------------------------
+
+**4.1 Load the Slurm module:**
+
+.. code-block:: bash
+
+   module load slurm
+
+**4.2 Request an interactive GPU node:**
+
+.. code-block:: bash
+
+   srun --partition=defq --gres=gpu:1 -t 0:1:0 --pty bash
+
+**4.3 On the compute node, set up the environment:**
+
+.. code-block:: bash
+
+   # Tell the cluster where your private modules live
+   module use ~/privatemodules
+
+   # Load your custom RStudio module (adds rserver to PATH)
+   module load rstudio/2026.01.1
+
+   # Activate the Conda environment
+   conda activate rstudio_gpu
+
+   # Force the Conda environment's bin directory to the front of PATH
+   export PATH=$CONDA_PREFIX/bin:$PATH
+
+**4.4 Verify that Jupyter resolves correctly:**
+
+.. code-block:: bash
+
+   which jupyter
+
+**4.5 Confirm the proxy extensions are registered:**
+
+.. code-block:: bash
+
+   jupyter server extension list
+
+**4.6 Launch JupyterLab:**
+
+.. code-block:: bash
+
+   jupyter lab --no-browser --ip=$(hostname -i)
+
+Open the URL printed in your terminal in a local browser (you may need an SSH
+tunnel). In the JupyterLab Launcher, click the **RStudio** button. The proxy
+will locate the ``rserver`` binary from Step 1, connect it to the Conda R 4.3
+environment, and start your RStudio session.
+
