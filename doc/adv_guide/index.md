@@ -48,9 +48,11 @@ cellbender
 :maxdepth: 2
 :caption: Large Model tools
 
-```
+
 ollama
 llm
+qwen3.5
+```
 
 ```{toctree}
 :maxdepth: 2
