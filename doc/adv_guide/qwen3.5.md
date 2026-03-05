@@ -1,9 +1,8 @@
-Here is the refined documentation, saved as **`qwen3.5.md`**. I have incorporated the technical successes we achieved today (handling the tokenizer error and tuning the VRAM for the MoE architecture).
 
 ---
 
 # 🚀 Deploying Qwen 3.5 122B on Mahidol Cluster
-
+Author: Snit Sanhlao , AI Assitant Gemini 
 ### High-Performance Coding & Chat via 4-bit AWQ Quantization
 
 This guide provides the configuration and setup for **Qwen 3.5**, optimized for resource-constrained GPU clusters. By utilizing **AWQ 4-bit quantization** and a **Mixture of Experts (MoE)** architecture, we achieve high-tier reasoning capabilities while significantly reducing VRAM footprint and token costs.
