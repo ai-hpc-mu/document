@@ -52,6 +52,7 @@ cellbender
 ollama
 llm
 qwen3.5
+metasearch
 ```
 
 ```{toctree}
