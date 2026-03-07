@@ -27,27 +27,36 @@ This guide provides the configuration and setup for **Qwen 3.5**, optimized for 
 
 ### Continue.dev Configuration
 
-To use Qwen 3.5 as your coding assistant, update your `~/.continue/config.json`:
+To use Qwen 3.5 as your coding assistant, update your `~/.continue/config.yaml`:
 
-```json
-{
-  "models": [
-    {
-      "title": "Qwen 3.5 (Mahidol AI)",
-      "provider": "openai",
-      "model": "cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit",
-      "apiKey": "sk-xxxx",
-      "apiBase": "https://aicenter.mahidol.ac.th/vllm/v1"
-    }
-  ],
-  "tabAutocompleteModel": {
-    "title": "Qwen 3.5 Autocomplete",
-    "provider": "openai",
-    "model": "cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit",
-    "apiBase": "https://aicenter.mahidol.ac.th/vllm/v1"
-  }
-}
-
+```yaml
+name: Local Config
+version: 1.0.0
+schema: v1
+models:
+  - name: Qwen3.5
+    provider: openai
+    model: cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit
+    apiBase: https://aicenter.mahidol.ac.th/vllm/v1
+    apiKey: "sk-xxxx"
+    requestOptions:
+      extraBodyProperties:
+        chat_template_kwargs:
+          enable_thinking: false
+context:
+  - provider: web
+    params:
+      engine: "searxng"
+      query: ""
+      searxngBaseUrl: https://aicenter.mahidol.ac.th/metasearch/
+      n: 5
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
 ```
 
 ---
