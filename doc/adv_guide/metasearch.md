@@ -105,35 +105,42 @@ Go to: `Admin Panel → Settings → Web Search`
 
 ### Option 2: Continue VS Code Extension
 
-Continue uses SearXNG as a **context provider**. When you type `@search`, Continue fetches results from SearXNG and injects them into the model's prompt before sending — the model itself does not browse the web.
+Continue uses SearXNG as a **context provider**. When you type `@web`, Continue fetches results from SearXNG and injects them into the model's prompt before sending — the model itself does not browse the web.
 
 #### Step 1: Configure Continue
 
 **PC (Local Windows)**
 
-Config file: `C:\Users\<your-username>\.continue\config.json`
+Config file: `C:\Users\<your-username>\.continue\config.yaml`
 
-```json
-{
-  "models": [
-    {
-      "title": "Qwen3.5",
-      "provider": "openai",
-      "model": "cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit",
-      "apiBase": "https://aicenter.mahidol.ac.th/vllm/v1",
-      "apiKey": "sk-xxxx"
-    }
-  ],
-  "contextProviders": [
-    {
-      "name": "search",
-      "params": {
-        "searxngBaseUrl": "https://aicenter.mahidol.ac.th/metasearch/",
-        "n": 5
-      }
-    }
-  ]
-}
+```yaml
+name: Local Config
+version: 1.0.0
+schema: v1
+models:
+  - name: Qwen3.5
+    provider: openai
+    model: cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit
+    apiBase: https://aicenter.mahidol.ac.th/vllm/v1
+    apiKey: "sk-xxxx"
+    requestOptions:
+      extraBodyProperties:
+        chat_template_kwargs:
+          enable_thinking: false
+context:
+  - provider: web
+    params:
+      engine: "searxng"
+      query: ""
+      searxngBaseUrl: https://aicenter.mahidol.ac.th/metasearch/
+      n: 5
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
 ```
 
 **Remote SSH (Linux Cluster)**
@@ -142,7 +149,7 @@ Connect to the cluster via VS Code Remote SSH, then run:
 
 ```bash
 mkdir -p ~/.continue
-nano ~/.continue/config.json
+nano ~/.continue/config.yaml
 ```
 
 Paste the same config above, save (`Ctrl+O` → Enter → `Ctrl+X`).
@@ -151,15 +158,15 @@ Paste the same config above, save (`Ctrl+O` → Enter → `Ctrl+X`).
 
 Press `Ctrl+Shift+P` → `Developer: Reload Window`
 
-#### Step 3: Use @search in Chat
+#### Step 3: Use @web in Chat
 
 1. Open the Continue chat panel
 2. Type `@` — a dropdown appears
-3. Select **search** from the list
+3. Select **web** from the list
 4. Type your query followed by your question:
 
 ```
-@search transformer architecture survey 2024
+@web transformer architecture survey 2024
 Summarize the key improvements in recent transformer models.
 ```
 
@@ -171,12 +178,12 @@ Summarize the key improvements in recent transformer models.
 
 | Problem | Solution |
 |---------|----------|
-| `@search` not in dropdown after `@` | Reload VS Code: `Ctrl+Shift+P` → `Developer: Reload Window` |
-| Dropdown appears but no `search` option | Check `config.json` is valid JSON — use a JSON validator |
+| `@web` not in dropdown after `@` | Reload VS Code: `Ctrl+Shift+P` → `Developer: Reload Window` |
+| Dropdown appears but no `web` option | Check `config.yaml` is valid YAML — use a YAML validator |
 | Globe icon missing in OpenWebUI | Ask admin to enable Web Search in Admin Panel |
 | SearXNG not reachable | Open `https://aicenter.mahidol.ac.th/metasearch/` in your browser |
-| Model says it cannot search | Use `@search` — the model has no built-in search; Continue injects results as context |
-| Remote SSH config not loading | Ensure config is at `~/.continue/config.json` on the **remote** server, not local |
+| Model says it cannot search | Use `@web` — the model has no built-in search; Continue injects results as context |
+| Remote SSH config not loading | Ensure config is at `~/.continue/config.yaml` on the **remote** server, not local |
 
 **Verify SearXNG API is working:**
 
