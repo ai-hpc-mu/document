@@ -38,6 +38,7 @@ models:
     provider: openai
     model: cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit
     apiBase: https://aicenter.mahidol.ac.th/vllm/v1
+    systemMessage: "You are a helpful assistant."
     apiKey: "sk-xxxx"
     requestOptions:
       extraBodyProperties:
