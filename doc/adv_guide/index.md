@@ -61,11 +61,21 @@ metasearch
 
 
 hfss
-
+```
+`
 ```{toctree}
 :maxdepth: 2
 :caption: DevOps - AI
 
 
 claudevai
+```
+
+
+```{toctree}
+:maxdepth: 2
+:caption: Interative Session
+
+
+tmuxwarning
 ```
