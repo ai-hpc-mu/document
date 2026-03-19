@@ -40,6 +40,8 @@ models:
     apiBase: https://aicenter.mahidol.ac.th/vllm/v1
     systemMessage: "You are a helpful assistant."
     apiKey: "sk-xxxx"
+    contextLength: 16384  # Explicitly set to your 16k window
+    maxTokens: 4096       # Leave room for the model to respond
     requestOptions:
       extraBodyProperties:
         chat_template_kwargs:
