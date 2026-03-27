@@ -2,7 +2,7 @@
 ---
 
 # 🚀 Deploying Qwen 3.5 122B on Mahidol Cluster
-Author: Snit Sanhlao , AI Assitant Gemini 
+**Author**: Snit Sanhlao , AI Assitant Gemini 
 ### High-Performance Coding & Chat via 4-bit AWQ Quantization
 
 This guide provides the configuration and setup for **Qwen 3.5**, optimized for resource-constrained GPU clusters. By utilizing **AWQ 4-bit quantization** and a **Mixture of Experts (MoE)** architecture, we achieve high-tier reasoning capabilities while significantly reducing VRAM footprint and token costs.
@@ -36,11 +36,11 @@ schema: v1
 models:
   - name: Qwen3.5
     provider: openai
-    model: cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit
+    model: qwen3.5
     apiBase: https://aicenter.mahidol.ac.th/vllm/v1
     systemMessage: "You are a helpful assistant."
     apiKey: "sk-xxxx"
-    contextLength: 16384  # Explicitly set to your 16k window
+    contextLength: 81920  # Explicitly set to your 16k window
     maxTokens: 4096       # Leave room for the model to respond
     requestOptions:
       extraBodyProperties:
@@ -96,7 +96,7 @@ curl https://aicenter.mahidol.ac.th/vllm/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer sk-xxxx" \
   -d '{
-    "model": "cyankiwi/Qwen3.5-122B-A10B-AWQ-4bit",
+    "model": "qwen3.5",
     "messages": [{"role": "user", "content": "Explain the benefit of MoE architecture."}],
     "temperature": 0.7
   }'

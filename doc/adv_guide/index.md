@@ -74,8 +74,9 @@ claudevai
 
 ```{toctree}
 :maxdepth: 2
-:caption: Important Prevention
+:caption: Caution!
 
-temp.md
+temp
 tmuxwarning
+zeta-A100-80GB-singularity
 ```
