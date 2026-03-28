@@ -8,7 +8,7 @@ myst:
 
 # User Guides
 
-To provide comhensive guide for HPC users and native cloud users. 
+To provide comprehensive guide for HPC users and native cloud users.
 ```{danger}
 This guide is still under active development, and we make no promises
 about the reliability of content. Your feedback and contribution help improving document.
@@ -16,13 +16,14 @@ about the reliability of content. Your feedback and contribution help improving 
 
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 3
 :caption: Get started
 
 home
 quickStart
 swguide
 slurm-job-submit
+array-jobs
 ```
 
 ```{toctree}
@@ -62,7 +63,7 @@ metasearch
 
 hfss
 ```
-`
+
 ```{toctree}
 :maxdepth: 2
 :caption: DevOps - AI
