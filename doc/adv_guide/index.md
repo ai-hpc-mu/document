@@ -54,6 +54,7 @@ ollama
 llm
 qwen3.5
 metasearch
+openclaw
 ```
 
 ```{toctree}

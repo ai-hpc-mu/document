@@ -1,5 +1,6 @@
 Biomedical Application 
 =========================
+**author**: "Snit Sanghlao"
 
 The following is note taking for applications for Bioinformatics.
 
