@@ -24,6 +24,7 @@ quickStart
 swguide
 slurm-job-submit
 array-jobs
+watchdog-checkpoint-survival
 ```
 
 ```{toctree}
