@@ -56,7 +56,6 @@ llm
 qwen3.5
 metasearch
 openclaw
-ddp-training
 ```
 
 ```{toctree}
@@ -74,6 +73,7 @@ fpga
 
 
 claudevai
+ddp-training
 ```
 
 
