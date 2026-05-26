@@ -1,0 +1,515 @@
+# Hermes Remote HPC + Slack — Research Acceleration Guide
+
+**Authors:** Snit Sanghlao, Qwen, Hermes
+
+> **Reference:** `aicenter.mahidol.ac.th/hermes-remote-hpc-slack`
+>
+> **Inspired by:** [Andrej Karpathy's AutoResearch](https://github.com/karpathy/autoresearch) — an autonomous research agent that iterates on experiments, analysis, and reporting without manual intervention. We adapt this vision for cluster-based ML research using Hermes as the local orchestrator.
+>
+> **Hermes documentation:** [https://hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs)
+
+---
+
+## 1. Executive Summary
+
+Machine learning research on HPC clusters should not require a terminal session glued to your screen. This guide shows how to drive experiments **entirely through Slack** using:
+
+- **Hermes (local machine)** — your AI-powered orchestrator that parses Slack commands, manages workflows, and coordinates cluster jobs.
+- **SSH** — secure, key-based tunnel from your workstation to the HPC login node.
+- **SLURM + Singularity (Remote Cluster)** — batch scheduling and containerized environments for GPU training.
+- **Slack** — the natural-language interface for submitting runs, checking logs, and reviewing results.
+
+The goal is a closed-loop research workflow where you describe an idea in Slack and get back plots, metrics, and the next research direction — all without touching a terminal.
+
+### The Research Benefit Loop
+
+```
+IDEA (Slack) → HERMES (Local) → SSH → SLURM (Cluster) → GPU TRAINING
+                                                              ↓
+ RESULTS (Logs/Plots) ← SLURM ← HERMES ┌════════════┐
+      ↓                                │  ITERATE   │
+SLACK REPORT + NEXT IDEA ←─────────────└════════════┘
+```
+
+You type an idea in Slack → Hermes translates it into a workflow → the cluster trains → results flow back → Hermes summarizes and suggests the next step → repeat.
+
+---
+
+## 2. Prerequisites
+
+Both the local workstation (where Hermes runs) and the remote HPC cluster must meet certain requirements. The table below compares the two environments.
+
+| Requirement           | Home Machine (Local)                          | Remote Cluster (HPC)                     |
+| --------------------- | --------------------------------------------- | ---------------------------------------- |
+| **OS**                | Ubuntu 20.04+ / macOS 12+ / WSL2              | Linux (CentOS 7+, Rocky 8+, Ubuntu 20+) |
+| **Python**            | 3.10+ (for Hermes + helpers)                  | 3.9+ (inside Singularity containers)     |
+| **Node.js**           | 18+ (for Slack Bolt SDK)                      | Not required                             |
+| **SSH Key**           | Yes (public key installed on cluster)         | Yes (authorized_keys on login node)      |
+| **SLURM**             | No                                            | **Yes** — sbatch, squeue, scancel        |
+| **Singularity/Apptainer** | No                                      | **Yes** — for containerized ML env       |
+| **Hermes**            | **Yes** — installed locally                   | No (runs locally only)                   |
+
+> **Note:** If your cluster uses a different scheduler (PBS/Torque, LSF), adapt the SLURM commands accordingly. The concepts remain the same.
+
+---
+
+## 3. Step 1: SSH Setup
+
+Hermes communicates with the HPC cluster over SSH. A password-less, key-based setup is essential for fully automated workflows.
+
+### 3.1. Generate an SSH Key (if you don't have one)
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+# /home/snitsan/.ssh/id_ed25519      (private key — keep secret)
+# /home/snitsan/.ssh/id_ed25519.pub  (public key — copy to cluster)
+```
+
+### 3.2. Install Public Key on the Cluster
+
+```bash
+# Copy the public key to the cluster (replace with your actual username/addr)
+ssh-copy-id YOUR_USERNAME@YOUR_CLUSTER_ADDRESS
+
+# Or manually paste the content of id_ed25519.pub into
+# ~/.ssh/authorized_keys on the cluster.
+```
+
+### 3.3. Configure `~/.ssh/config`
+
+Add a named host entry for convenience. Hermes will reference this alias.
+
+```
+Host hpc
+    HostName YOUR_CLUSTER_ADDRESS
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_ed25519
+    Port 22
+    # Forward an agent if your key is on a hardware token (YubiKey, etc.)
+    # ForwardAgent yes
+```
+
+> Replace `YOUR_CLUSTER_ADDRESS` and `YOUR_USERNAME` with your actual values.
+
+### 3.4. Test the Connection
+
+```bash
+ssh hpc
+# Should log you in without a password prompt
+whoami
+# Expected: YOUR_USERNAME
+exit
+```
+
+If this works, your SSH tunnel is ready for Hermes to use.
+
+---
+
+## 4. Step 2: Install Hermes Locally
+
+**Hermes** is the local AI agent that acts as the bridge between Slack and your HPC cluster. It receives Slack commands, translates them into terminal / SLURM / file operations, and sends results back. Think of it as an always-on research assistant running on your machine.
+
+### 4.1. Install Hermes
+
+```bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+```
+
+This installs the Hermes CLI and supporting tools into `~/.hermes`.
+
+### 4.2. Verify Installation
+
+```bash
+hermes doctor
+```
+
+Expected output: all health-check items passing (Python version, Node.js, disk space, config directory).
+
+```
+✅ Python .......... 3.11.x (OK)
+✅ Node.js ......... 18.x (OK)
+✅ Config folder ... ~/.hermes (OK)
+✅ Disk space ...... 45 GB free (OK)
+```
+
+Fix any issues flagged by `hermes doctor` before proceeding. Refer to the [official Hermes docs](https://hermes-agent.nousresearch.com/docs) for troubleshooting.
+
+### 4.3. Quick Hermes Description
+
+Hermes is an autonomous agent framework offered by Nous Research. Key capabilities relevant to this guide:
+
+| Capability             | What it does                                          |
+| ---------------------- | ----------------------------------------------------- |
+| **Command execution**  | Runs shell commands locally and over SSH              |
+| **File management**    | Reads, writes, diffs files on local and remote systems|
+| **Process orchestration** | Manages long-running background jobs               |
+| **Slack integration**  | Bolt SDK app that maps Slack messages to Hermes actions|
+| **Self-reasoning**     | Breaks complex tasks into steps, executes, verifies   |
+
+The remaining steps — SSH configuration inside Hermes, Slack bot setup, and the SLURM / Singularity orchestration layer — will follow in the next section.
+
+---
+
+## 5. Step 3: Configure Hermes SSH Backend
+
+Hermes must know how to reach the cluster. Instead of hardcoding hostnames in scripts, you set a single backend directive pointing at the SSH alias you defined in `~/.ssh/config` (Section 3.3).
+
+### 5.1. Set the Backend and Host
+
+```bash
+# Tell Hermes to use SSH as its terminal backend
+hermes config set terminal.backend ssh
+
+# Point it at the SSH alias defined in ~/.ssh/config
+hermes config set terminal.host hpc
+```
+
+The `hpc` alias must match a `Host hpc` stanza in your SSH config. Hermes resolves the rest (hostname, user, identity file) automatically.
+
+### 5.2. Set the Remote Working Directory
+
+Hermes needs a writable directory on the cluster to stage scripts, log output, and manage artifacts:
+
+```bash
+hermes config set terminal.remote_dir /scratch/YOUR_USERNAME
+```
+
+> Replace `YOUR_USERNAME` with your actual cluster login name. Use `/scratch` (not `/home`) for large datasets and model checkpoints to avoid quota issues.
+
+### 5.3. Verify Config File
+
+After setting values, check that `~/.hermes/config.yaml` looks correct:
+
+```yaml
+terminal:
+  backend: ssh
+  host: hpc
+  remote_dir: /scratch/YOUR_USERNAME
+```
+
+### 5.4. Run a Test Command
+
+```bash
+hermes chat -q "whoami; hostname; sinfo"
+```
+
+If everything is wired correctly, Hermes SSHes into `hpc`, runs the three commands, and returns:
+
+```
+┌─ output ───────────────────────┐
+│ YOUR_USERNAME                  │
+│ login-node-01.cluster.edu      │
+│ PARTITION      AVAIL TIMELIMIT │
+│ gpu_normal      up    7-00:00  │
+│ gpu_dev         up  1-00:00    │
+└────────────────────────────────┘
+```
+
+> **Troubleshooting:** If the test hangs, verify password-less login with plain `ssh hpc` first. Hermes reuses your SSH key — it does not manage authentication itself.
+
+---
+
+## 6. Step 4: Slack Gateway Setup
+
+The Slack gateway turns your workspace into a natural-language control panel for Hermes. This section walks through creating a Slack app, wiring it to Hermes, and installing the gateway as a system service.
+
+### 6.1. Create a Slack App
+
+1. Go to https://api.slack.com/apps and click **Create New App** → **From scratch**.
+2. Name it (e.g., `hermes-research-bot`) and pick your workspace.
+3. Under **Features → Bot Tokens**, add these scopes:
+   - `channels:history`, `channels:read`, `channels:write`
+   - `chat:write`, `chat:write.customize`
+   - `groups:history`, `im:history`, `im:write`
+   - `files:read`, `files:write`
+   - `mpim:history`, `users:read`
+
+> These scopes let the bot read channel history, send formatted messages and file attachments, and inspect user information. Request only what you need.
+
+4. Under **OAuth & Permissions**, install the app to your workspace and copy the **Bot User OAuth Token** (starts with `xoxb-`).
+
+### 6.2. Generate App-Level Token
+
+1. In your app settings, go to **Settings → Basic Information → App-Level Tokens**.
+2. Create a token with the `connections:write` scope. This is required for Socket Mode.
+3. Copy the token (starts with `xapp-`).
+
+### 6.3. Tell Hermes About Slack
+
+Run the interactive setup wizard:
+
+```bash
+hermes gateway setup
+# [?] Select gateway type:  → Slack
+# [?] Enable Socket Mode?:  → Yes
+```
+
+Then set the credentials. **Never store real tokens in `config.yaml`.** Use the `.env` file:
+
+```bash
+# Place these in ~/.hermes/.env — never commit to version control
+SLACK_BOT_TOKEN=xoxb-YOUR_SLACK_BOT_TOKEN
+SLACK_APP_TOKEN=xapp-YOUR_SLACK_APP_TOKEN
+
+# The config.yaml references the env vars, not raw tokens
+hermes config set gateway.slack.token ${SLACK_BOT_TOKEN}
+hermes config set gateway.slack.app_token ${SLACK_APP_TOKEN}
+```
+
+Your resulting `~/.hermes/config.yaml` should show variable references, not secrets:
+
+```yaml
+gateway:
+  type: slack
+  socket_mode: true
+  slack:
+    token: ${SLACK_BOT_TOKEN}
+    app_token: ${SLACK_APP_TOKEN}
+```
+
+> **Security note:** Hermes loads `~/.hermes/.env` automatically. If you paste a raw `xoxb-` token directly into `config.yaml`, `hermes doctor` will warn you. Always use the `.env` indirection.
+
+### 6.4. Install and Start the Gateway
+
+```bash
+# Register the gateway as a systemd service (runs as your user)
+hermes gateway install
+
+# Start it
+hermes gateway start
+
+# Check its status
+hermes gateway status
+```
+
+Expected output:
+
+```
+✅ Service active: hermes-gateway.service
+✅ Socket Mode: connected
+✅ Listening on workspace: your-team.slack.com
+```
+
+### 6.5. Use the Bot
+
+That's it. Open Slack, find the bot by name, and send a message:
+
+```
+you → @hermes-research-bot: whoami; hostname; sinfo
+          ↓
+bot replies with cluster output
+```
+
+Or in a channel:
+
+```
+you → #research-gpu: @hermes-research-bot show me active jobs on gpu_normal
+          ↓
+bot replies with squeue output, formatted as a table
+```
+
+The bot parses natural language, routes the request through Hermes, executes it on the cluster via SSH, and returns formatted results — all in Slack.
+
+---
+
+
+---
+
+## 7. Step 5: SLURM Job Templates + Singularity
+
+Hermes submits training jobs to the cluster via SLURM `sbatch`. The standard workflow is:
+
+1. Hermes writes a SLURM script on your local machine
+2. It SCPs the script to the cluster
+3. It runs `sbatch` via SSH
+4. It monitors job status and tails logs
+
+### 7.1. SLURM Script Template
+
+Create `cnn_train.slurm`:
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=cnn_cifar10
+#SBATCH --partition=gpu_normal
+#SBATCH --gres=gpu:1
+#SBATCH --time=24:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --output=/scratch/%u/cnn_%j.out
+#SBATCH --error=/scratch/%u/cnn_%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=YOUR_EMAIL
+
+# Load modules (if needed)
+module load singularity
+
+# Path to your Singularity container
+CONTAINER=/opt/containers/pytorch_2.0.sif
+
+# Run training via Singularity
+singularity exec \
+  --bind /scratch:/data,/home:/home \
+  --nv \
+  $CONTAINER \
+  python /data/cnn_train.py \
+  --epochs 50 \
+  --batch_size 128 \
+  --lr 0.01 \
+  --data_dir /data/cifar10 \
+  --output_dir /data/cnn_results
+```
+
+### 7.2. Submit via Hermes
+
+```bash
+# Hermes does this automatically, but manually it looks like:
+scp cnn_train.slurm hpc:/scratch/YOUR_USERNAME/
+ssh hpc "sbatch /scratch/YOUR_USERNAME/cnn_train.slurm"
+```
+
+### 7.3. Monitor via Hermes
+
+```bash
+# Check job status
+ssh hpc "squeue -u YOUR_USERNAME --format='%i %P %j %S %R'"
+
+# Tail live output
+ssh hpc "tail -f /scratch/YOUR_USERNAME/cnn_JOB_ID.out"
+```
+
+---
+
+## 8. Step 6: Simple CNN Demo
+
+We provide a ready-to-use PyTorch CNN script (`train_cnn.py`) that:
+
+- Trains a 4-layer CNN on CIFAR-10
+- Supports --epochs, --batch_size, --lr, --data_dir, --output_dir
+- Saves metrics.csv (per-epoch train/val loss and accuracy)
+- Saves best_model.pth checkpoint
+- Outputs summary.json with best accuracy
+
+```bash
+# Test locally (CPU, small dataset)
+python train_cnn.py --epochs 3 --batch_size 64 --lr 0.001 --data_dir ./data --output_dir ./results
+
+# Submit to cluster via SLURM + Singularity
+ssh hpc "sbatch cnn_train.slurm"
+```
+
+See `train_cnn.py` in this directory for the full source code.
+
+---
+
+## 9. Step 7: Automated Research Loop via Hermes Cron
+
+Hermes can proactively monitor your experiments and Slack-DM you with updates — no manual checking needed.
+
+### 9.1. Create a Cron Job
+
+```bash
+# Check cluster jobs every 5 minutes
+hermes cron create "every 5m" \
+  --prompt "SSH to hpc, run squeue -u YOUR_USERNAME, tail the latest CNN training log,
+            parse the latest epoch metrics, and report train/val accuracy and loss.
+            If training is complete, summarize results and suggest next experiments."
+```
+
+### 9.2. Manage Cron Jobs
+
+```bash
+hermes cron list        # View all jobs
+hermes cron pause ID    # Pause a job
+hermes cron resume ID   # Resume a job
+hermes cron remove ID   # Delete a job
+```
+
+The benefit: you start a 24-hour training run and go to bed. Hermes checks every 5 minutes, parses the log, and Slack-DMs you with progress. When training finishes, it sends a summary and suggests:
+
+- "Val accuracy plateaued at 82% after epoch 12. Suggest: Increase lr to 0.01 or add data augmentation."
+
+---
+
+## 10. Step 8: Security Hardening
+
+### 10.1. SLURM Security
+
+| Practice | Command | Purpose |
+|----------|---------|---------|
+| Resource limits | `#SBATCH --mem=32G --cpus-per-task=8 --time=24:00:00` | Prevent runaway jobs |
+| Account chargeback | `#SBATCH --account=research_group` | Track compute costs |
+| Node constraints | `#SBATCH --constraint=v100` | Pin job to specific GPU type |
+| Job arrays | `#SBATCH --array=0-9%3` | Run 10 sweeps, max 3 concurrent |
+| Exclusion list | `#SBATCH --exclude=node05` | Avoid problematic nodes |
+
+### 10.2. Singularity/Apptainer Security
+
+| Practice | Flag | Purpose |
+|----------|------|---------|
+| Clean environment | `--cleanenv` | Prevent credential leakage from host |
+| Minimal binds | `--bind /data:/data` | Only mount required directories |
+| Readonly FS | `--rocm` or `--nv` | GPU passthrough without full host access |
+| User namespaces | `--userns` (Apptainer) | Unprivileged containers |
+| Image verification | `singularity verify container.sif` | Check signatures before execution |
+
+### 10.3. SSH Hardening
+
+```bash
+# In ~/.ssh/config
+Host hpc
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    ForwardAgent no          # Don't leak SSH agent to cluster
+    StrictHostKeyChecking yes    # Verify host keys
+```
+
+---
+
+## 11. Troubleshooting
+
+| Symptom | Check | Fix |
+|---------|-------|-----|
+| Slack bot not responding | `hermes gateway status` | `hermes gateway restart` |
+| SSH connection refused | `ssh hpc "echo OK"` | Check ~/.ssh/config, cluster DNS |
+| SLURM job pending (PD) | `squeue -u USER` | Check partition/gpu availability |
+| Singularity exec fails | Check log: `--nv` flag | Add `--nv` for NVIDIA GPU support |
+| Hermes can't write to /scratch | Check permissions | `chmod 755 /scratch/YOUR_USERNAME` |
+| Cron job not triggering | `hermes cron list` | Verify schedule format + enable status |
+
+---
+
+## 12. Citations
+
+BibTeX entries for referencing this guide and its components:
+
+```bibtex
+@misc{hermes_remote_hpc_slack,
+  author       = {Sanghlao, Snit },
+  title        = {Hermes Remote HPC + Slack: Research Acceleration Guide},
+  year         = {2026},
+  howpublished = {Mahidol University AI Center},
+  note         = {aicenter.mahidol.ac.th/hermes-remote-hpc-slack},
+}
+
+@software{hermes_agent,
+  author       = {{Nous Research}},
+  title        = {Hermes Agent},
+  url          = {https://hermes-agent.nousresearch.com/docs},
+  version      = {latest},
+  year         = {2026},
+}
+
+@software{karpathy_autoresearch,
+  author       = {Karpathy, Andrej},
+  title        = {AutoResearch: Autonomous ML Research Agent},
+  url          = {https://github.com/karpathy/autoresearch},
+  year         = {2025},
+}
+```
+
+---
+
+*Built for researchers who refuse to compromise on productivity, privacy, and control.*
+
+**Mahidol University AI Center** **Hermes Agent** **SLURM + Singularity**

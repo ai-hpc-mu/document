@@ -56,6 +56,7 @@ llm
 qwen3.5
 metasearch
 openclaw
+hermes-remote-hpc-slack
 ```
 
 ```{toctree}
