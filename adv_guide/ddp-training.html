@@ -1,0 +1,1294 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>HPC-AI User Guide: NCCL DDP Multi-Node Training &#8212; Exascale Knowledge Share 0.18.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../_static/documentation_options.js?v=6c964dcb"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/ddp-training';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.18.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes" href="temp.html" />
+    <link rel="prev" title="DevOps Engineering HPC &amp; AI" href="claudevai.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="May 26, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-jobs.html">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog-checkpoint-survival.html">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen3.5.html">🚀 Deploying Qwen 3.5 122B on Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclaw.html">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hermes-remote-hpc-slack.html">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fpga.html">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">HPC-AI User Guide: NCCL DDP Multi-Node Training</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="hpc-ai-user-guide-nccl-ddp-multi-node-training">
+<h1>HPC-AI User Guide: NCCL DDP Multi-Node Training<a class="headerlink" href="#hpc-ai-user-guide-nccl-ddp-multi-node-training" title="Link to this heading">#</a></h1>
+<p><strong>Author:</strong> Snit Sanghlao and Qwen<br />
+<strong>Institution:</strong> Mahidol AI Center<br />
+<strong>Date:</strong> 2026-05-19<br />
+<strong>Cluster:</strong> MAI HPC (Slurm) — tau, zeta, omega</p>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Cluster Overview</p></li>
+<li><p>Preparation: Smoke Tests</p></li>
+<li><p>NCCL Environment Variables Reference</p></li>
+<li><p>DDP Training: General Guidelines</p></li>
+<li><p>Common Pitfalls</p></li>
+<li><p>Benchmark Results</p></li>
+<li><p>Quick Reference: Submit a Job</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading">#</a></h2>
+<p>This guide covers Distributed Data Parallel (DDP) training across multiple GPUs and nodes using NVIDIA NCCL on the Mahidol AI Center HPC cluster.</p>
+<section id="why-nccl-ddp-infiniband">
+<h3>Why NCCL + DDP + InfiniBand?<a class="headerlink" href="#why-nccl-ddp-infiniband" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Factor</p></th>
+<th class="head"><p>Single GPU</p></th>
+<th class="head"><p>DDP (Ethernet)</p></th>
+<th class="head"><p>DDP (InfiniBand)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Throughput</p></td>
+<td><p>—</p></td>
+<td><p>~10 Gb/s</p></td>
+<td><p>~200 Gb/s (20×)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Training time (CIFAR-10, 2 GPUs)</p></td>
+<td><p>Baseline</p></td>
+<td><p>37.7s</p></td>
+<td><p><strong>18.1s</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Speedup</p></td>
+<td><p>1×</p></td>
+<td><p>—</p></td>
+<td><p><strong>~2.1× over Ethernet</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Scalability</p></td>
+<td><p>N/A</p></td>
+<td><p>Limited by bandwidth</p></td>
+<td><p>Scales to many nodes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>NCCL</strong> (NVIDIA Collective Communications Library) is the standard communication backend for multi-GPU PyTorch training. It provides optimized <code class="docutils literal notranslate"><span class="pre">all_reduce</span></code>, <code class="docutils literal notranslate"><span class="pre">all_gather</span></code>, and <code class="docutils literal notranslate"><span class="pre">broadcast</span></code> operations.</p></li>
+<li><p><strong>DDP</strong> (Distributed Data Parallel) splits training data across GPUs, each holding a full model copy, and synchronizes gradients via NCCL after every backward pass.</p></li>
+<li><p><strong>InfiniBand</strong> provides low-latency, high-bandwidth interconnect between nodes — critical for multi-node DDP where gradient synchronization becomes the bottleneck.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Bottom line:</strong> Without InfiniBand, multi-node DDP is bottlenecked by Ethernet bandwidth. With it, you get near-linear scaling across nodes.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="cluster-overview">
+<h2>1. Cluster Overview<a class="headerlink" href="#cluster-overview" title="Link to this heading">#</a></h2>
+<section id="hardware">
+<h3>Hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Node</p></th>
+<th class="head"><p>CPU</p></th>
+<th class="head"><p>Cores (HT)</p></th>
+<th class="head"><p>Memory</p></th>
+<th class="head"><p>GPUs</p></th>
+<th class="head"><p>IB Ports (Active)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>tau</strong></p></td>
+<td><p>x86_64</p></td>
+<td><p>112 × 2 = 224</p></td>
+<td><p>~2 TB</p></td>
+<td><p>8× NVIDIA H100 80GB</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mlx5_3</span></code>, <code class="docutils literal notranslate"><span class="pre">mlx5_4</span></code>, <code class="docutils literal notranslate"><span class="pre">mlx5_6</span></code>, <code class="docutils literal notranslate"><span class="pre">mlx5_11</span></code> (200 Gb/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>zeta</strong></p></td>
+<td><p>x86_64</p></td>
+<td><p>128 × 2 = 256</p></td>
+<td><p>~2 TB</p></td>
+<td><p>8× NVIDIA A100 80GB</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mlx5_0</span></code>–<code class="docutils literal notranslate"><span class="pre">mlx5_3</span></code>, <code class="docutils literal notranslate"><span class="pre">mlx5_6</span></code>–<code class="docutils literal notranslate"><span class="pre">mlx5_9</span></code> (200 Gb/s)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>omega</strong></p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>DOWN (maintenance)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="slurm-configuration">
+<h3>Slurm Configuration<a class="headerlink" href="#slurm-configuration" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cluster</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">slurm</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Partition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">defq</span></code> (default)</p></td>
+</tr>
+<tr class="row-even"><td><p>Total nodes</p></td>
+<td><p>3 (2 active)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Total GPUs</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-even"><td><p>Scheduler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">select/cons_tres</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MPI default</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pmix</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="preparation-smoke-tests">
+<h2>2. Preparation: Smoke Tests<a class="headerlink" href="#preparation-smoke-tests" title="Link to this heading">#</a></h2>
+<p>Before running production training, always verify connectivity and NCCL health.</p>
+<section id="basic-2-node-connectivity">
+<h3>2.1 Basic 2-Node Connectivity<a class="headerlink" href="#basic-2-node-connectivity" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># smoke2node.sh</span>
+<span class="c1">#SBATCH --job-name=smoke2node</span>
+<span class="c1">#SBATCH --partition=defq</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --time=00:02:00</span>
+
+srun<span class="w"> </span>-N<span class="w"> </span><span class="m">2</span><span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;Rank=$SLURM_PROCID  Host=$(hostname)&quot;&#39;</span>
+</pre></div>
+</div>
+<p><strong>Expected output:</strong> Both ranks print their hostname.</p>
+</section>
+<section id="nccl-smoke-test-ethernet">
+<h3>2.2 NCCL Smoke Test (Ethernet)<a class="headerlink" href="#nccl-smoke-test-ethernet" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># nccl_smoke_2node.sh</span>
+<span class="c1">#SBATCH --job-name=nccl_smoke2n</span>
+<span class="c1">#SBATCH --partition=defq</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --cpus-per-task=4</span>
+<span class="c1">#SBATCH --time=00:05:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>cuda12.2/toolkit<span class="w"> </span>nccl2-cuda12.2-gcc11/2.18.3<span class="w"> </span>default-environment
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>conda<span class="w"> </span>shell.bash<span class="w"> </span>hook<span class="k">)</span><span class="s2">&quot;</span>
+conda<span class="w"> </span>activate<span class="w"> </span>hpc_lab
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_ADDR</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostnames<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n1<span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_PORT</span><span class="o">=</span><span class="m">29500</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_DISABLE</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>bond
+
+srun<span class="w"> </span>-N<span class="w"> </span><span class="m">2</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import os, torch, torch.distributed as dist</span>
+<span class="s2">rank       = int(os.environ[&#39;SLURM_PROCID&#39;])</span>
+<span class="s2">world_size = int(os.environ[&#39;SLURM_NTASKS&#39;])</span>
+<span class="s2">local_rank = int(os.environ.get(&#39;SLURM_LOCALID&#39;, 0))</span>
+<span class="s2">master     = os.environ[&#39;MASTER_ADDR&#39;]</span>
+<span class="s2">port       = os.environ[&#39;MASTER_PORT&#39;]</span>
+<span class="s2">torch.cuda.set_device(local_rank)</span>
+<span class="s2">device = torch.device(f&#39;cuda:{local_rank}&#39;)</span>
+<span class="s2">dist.init_process_group(&#39;nccl&#39;, rank=rank, world_size=world_size,</span>
+<span class="s2">                        init_method=f&#39;tcp://{master}:{port}&#39;)</span>
+<span class="s2">x = torch.ones(1, device=device) * rank</span>
+<span class="s2">dist.all_reduce(x, op=dist.ReduceOp.SUM)</span>
+<span class="s2">print(f&#39;Rank {rank}: all_reduce = {x.item()}&#39;)</span>
+<span class="s2">dist.destroy_process_group()</span>
+<span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p><strong>Expected output:</strong> Both ranks print <code class="docutils literal notranslate"><span class="pre">all_reduce</span> <span class="pre">=</span> <span class="pre">1.0</span></code> (0 + 1).</p>
+</section>
+<section id="nccl-smoke-test-infiniband">
+<h3>2.3 NCCL Smoke Test (InfiniBand)<a class="headerlink" href="#nccl-smoke-test-infiniband" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># nccl_smoke_2node_ib.sh</span>
+<span class="c1">#SBATCH --job-name=nccl_ib2n</span>
+<span class="c1">#SBATCH --partition=defq</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --cpus-per-task=4</span>
+<span class="c1">#SBATCH --time=00:05:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>cuda12.2/toolkit<span class="w"> </span>nccl2-cuda12.2-gcc11/2.18.3<span class="w"> </span>default-environment
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>conda<span class="w"> </span>shell.bash<span class="w"> </span>hook<span class="k">)</span><span class="s2">&quot;</span>
+conda<span class="w"> </span>activate<span class="w"> </span>hpc_lab
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_ADDR</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostnames<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n1<span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_PORT</span><span class="o">=</span><span class="m">29500</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_DISABLE</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>bond
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_HCA</span><span class="o">=</span>mlx5_3,mlx5_6
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_GID_INDEX</span><span class="o">=</span><span class="m">3</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_DEBUG</span><span class="o">=</span>INFO
+
+srun<span class="w"> </span>-N<span class="w"> </span><span class="m">2</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import os, torch, torch.distributed as dist</span>
+<span class="s2">rank       = int(os.environ[&#39;SLURM_PROCID&#39;])</span>
+<span class="s2">world_size = int(os.environ[&#39;SLURM_NTASKS&#39;])</span>
+<span class="s2">local_rank = int(os.environ.get(&#39;SLURM_LOCALID&#39;, 0))</span>
+<span class="s2">master     = os.environ[&#39;MASTER_ADDR&#39;]</span>
+<span class="s2">port       = os.environ[&#39;MASTER_PORT&#39;]</span>
+<span class="s2">torch.cuda.set_device(local_rank)</span>
+<span class="s2">device = torch.device(f&#39;cuda:{local_rank}&#39;)</span>
+<span class="s2">dist.init_process_group(&#39;nccl&#39;, rank=rank, world_size=world_size,</span>
+<span class="s2">                        init_method=f&#39;tcp://{master}:{port}&#39;)</span>
+<span class="s2">x = torch.ones(1, device=device) * rank</span>
+<span class="s2">dist.all_reduce(x, op=dist.ReduceOp.SUM)</span>
+<span class="s2">print(f&#39;Rank {rank}: all_reduce = {x.item()}&#39;)</span>
+<span class="s2">dist.destroy_process_group()</span>
+<span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p><strong>Expected output:</strong> NCCL log shows <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">network</span> <span class="pre">IB</span></code>, both ranks print <code class="docutils literal notranslate"><span class="pre">all_reduce</span> <span class="pre">=</span> <span class="pre">1.0</span></code>.</p>
+</section>
+<section id="troubleshooting-smoke-tests">
+<h3>2.4 Troubleshooting Smoke Tests<a class="headerlink" href="#troubleshooting-smoke-tests" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Socket</span> <span class="pre">timed</span> <span class="pre">out</span></code></p></td>
+<td><p>Node still draining</p></td>
+<td><p>Wait for node to reach <code class="docutils literal notranslate"><span class="pre">IDLE</span></code> state</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">route</span> <span class="pre">to</span> <span class="pre">host</span></code></p></td>
+<td><p>NCCL picked down IB port</p></td>
+<td><p>Set <code class="docutils literal notranslate"><span class="pre">NCCL_IB_HCA</span></code> to active ports only</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">QOSMaxMemoryPerUser</span></code></p></td>
+<td><p>Memory QoS limit exceeded</p></td>
+<td><p>Reduce <code class="docutils literal notranslate"><span class="pre">--mem</span></code> or wait for lower usage</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job stuck in <code class="docutils literal notranslate"><span class="pre">CG</span></code> (Completing)</p></td>
+<td><p>Orphaned srun step</p></td>
+<td><p>Contact admin or restart slurmctld</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL</span> <span class="pre">error:</span> <span class="pre">unhandled</span> <span class="pre">cuda</span> <span class="pre">error</span></code></p></td>
+<td><p>GPU not accessible</p></td>
+<td><p>Verify <code class="docutils literal notranslate"><span class="pre">--gres=gpu:N</span></code> matches request</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="nccl-environment-variables-reference">
+<h2>3. NCCL Environment Variables Reference<a class="headerlink" href="#nccl-environment-variables-reference" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Recommended Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_IB_DISABLE</span></code></p></td>
+<td><p>Enable/disable IB transport</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (enable) for IB, <code class="docutils literal notranslate"><span class="pre">1</span></code> for Ethernet-only</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_SOCKET_IFNAME</span></code></p></td>
+<td><p>Bootstrap interface</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bond</span></code> — always use Ethernet for bootstrap</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_IB_HCA</span></code></p></td>
+<td><p>Explicit IB HCAs to use</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mlx5_3,mlx5_6</span></code> (active ports on both tau and zeta)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_IB_GID_INDEX</span></code></p></td>
+<td><p>GID index for RoCE/IB</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_DEBUG</span></code></p></td>
+<td><p>Debug verbosity</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code> for troubleshooting, unset for production</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_NET_PLUGIN</span></code></p></td>
+<td><p>Custom network plugin</p></td>
+<td><p>Leave default (internal)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_P2P_DISABLE</span></code></p></td>
+<td><p>Disable P2P between GPUs</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (enable P2P for same-node GPUs)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NCCL_SHM_DISABLE</span></code></p></td>
+<td><p>Disable shared memory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (enable for same-node communication)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="key-principle-bootstrap-over-ethernet-transport-over-ib">
+<h3>Key Principle: Bootstrap over Ethernet, Transport over IB<a class="headerlink" href="#key-principle-bootstrap-over-ethernet-transport-over-ib" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Always set <code class="docutils literal notranslate"><span class="pre">NCCL_SOCKET_IFNAME=bond</span></code> so process discovery uses Ethernet, then let NCCL use IB for actual data transfer. This prevents NCCL from selecting a down IB port during bootstrap.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ddp-training-general-guidelines">
+<h2>4. DDP Training: General Guidelines<a class="headerlink" href="#ddp-training-general-guidelines" title="Link to this heading">#</a></h2>
+<section id="single-node-multi-gpu">
+<h3>4.1 Single-Node, Multi-GPU<a class="headerlink" href="#single-node-multi-gpu" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">torchrun</span></code> for single-node DDP:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># ddp_job_1node.sh</span>
+<span class="c1">#SBATCH --job-name=cifar10_ddp_1n</span>
+<span class="c1">#SBATCH --partition=defq</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --gres=gpu:2</span>
+<span class="c1">#SBATCH --cpus-per-task=8</span>
+<span class="c1">#SBATCH --mem=16G</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>cuda12.2/toolkit<span class="w"> </span>nccl2-cuda12.2-gcc11/2.18.3<span class="w"> </span>default-environment
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>conda<span class="w"> </span>shell.bash<span class="w"> </span>hook<span class="k">)</span><span class="s2">&quot;</span>
+conda<span class="w"> </span>activate<span class="w"> </span>hpc_lab
+
+torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">2</span><span class="w"> </span>--nnodes<span class="o">=</span><span class="m">1</span><span class="w"> </span>--rdzv_endpoint<span class="o">=</span>localhost:29500<span class="w"> </span>train_ddp.py
+</pre></div>
+</div>
+<p><strong>Python code</strong> (<code class="docutils literal notranslate"><span class="pre">train_ddp.py</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.distributed</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dist</span>
+
+<span class="n">dist</span><span class="o">.</span><span class="n">init_process_group</span><span class="p">(</span><span class="s2">&quot;nccl&quot;</span><span class="p">)</span>  <span class="c1"># torchrun sets all env vars automatically</span>
+<span class="n">rank</span>       <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">get_rank</span><span class="p">()</span>
+<span class="n">local_rank</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;LOCAL_RANK&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-node-ddp">
+<h3>4.2 Multi-Node DDP<a class="headerlink" href="#multi-node-ddp" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">srun</span></code> with SLURM environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># ddp_job_2node.sh</span>
+<span class="c1">#SBATCH --job-name=cifar10_ddp_2n</span>
+<span class="c1">#SBATCH --partition=defq</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --cpus-per-task=8</span>
+<span class="c1">#SBATCH --mem=8G</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>cuda12.2/toolkit<span class="w"> </span>nccl2-cuda12.2-gcc11/2.18.3<span class="w"> </span>default-environment
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>conda<span class="w"> </span>shell.bash<span class="w"> </span>hook<span class="k">)</span><span class="s2">&quot;</span>
+conda<span class="w"> </span>activate<span class="w"> </span>hpc_lab
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_ADDR</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostnames<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n1<span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_PORT</span><span class="o">=</span><span class="m">29500</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_DISABLE</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>bond
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_HCA</span><span class="o">=</span>mlx5_3,mlx5_6
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_GID_INDEX</span><span class="o">=</span><span class="m">3</span>
+
+srun<span class="w"> </span>-N<span class="w"> </span><span class="m">2</span><span class="w"> </span>python3<span class="w"> </span>train_ddp_2node.py
+</pre></div>
+</div>
+<p><strong>Python code</strong> (<code class="docutils literal notranslate"><span class="pre">train_ddp_2node.py</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.distributed</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dist</span>
+
+<span class="n">rank</span>       <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SLURM_PROCID&#39;</span><span class="p">])</span>
+<span class="n">world_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SLURM_NTASKS&#39;</span><span class="p">])</span>
+<span class="n">local_rank</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SLURM_LOCALID&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">master</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;MASTER_ADDR&#39;</span><span class="p">]</span>
+<span class="n">port</span>       <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;MASTER_PORT&#39;</span><span class="p">]</span>
+
+<span class="n">dist</span><span class="o">.</span><span class="n">init_process_group</span><span class="p">(</span><span class="s1">&#39;nccl&#39;</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">world_size</span><span class="o">=</span><span class="n">world_size</span><span class="p">,</span>
+                        <span class="n">init_method</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;tcp://</span><span class="si">{</span><span class="n">master</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="best-practices">
+<h3>4.3 Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Always run smoke tests first</strong> — verify NCCL works before launching expensive training</p></li>
+<li><p><strong>Use <code class="docutils literal notranslate"><span class="pre">DistributedSampler</span></code></strong> — ensures each GPU gets unique data per epoch</p></li>
+<li><p><strong>Call <code class="docutils literal notranslate"><span class="pre">train_sampler.set_epoch(epoch)</span></code></strong> — shuffles data differently each epoch</p></li>
+<li><p><strong>Save checkpoints on rank 0 only</strong> — avoids file write conflicts</p></li>
+<li><p><strong>Use <code class="docutils literal notranslate"><span class="pre">pin_memory=True</span></code></strong> in DataLoader — enables async CPU→GPU transfer</p></li>
+<li><p><strong>Set <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> appropriately</strong> — 4 per GPU is a good starting point</p></li>
+<li><p><strong>Use <code class="docutils literal notranslate"><span class="pre">model.module.state_dict()</span></code></strong> — unwrap DDP wrapper before saving</p></li>
+<li><p><strong>Call <code class="docutils literal notranslate"><span class="pre">dist.destroy_process_group()</span></code></strong> — ensures clean shutdown</p></li>
+<li><p><strong>Use <code class="docutils literal notranslate"><span class="pre">NCCL_DEBUG=INFO</span></code> only for debugging</strong> — adds overhead in production</p></li>
+<li><p><strong>Monitor with <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code></strong> — verify all GPUs are utilized</p></li>
+</ol>
+</section>
+<section id="performance-checklist">
+<h3>4.4 Performance Checklist<a class="headerlink" href="#performance-checklist" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Check</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All GPUs active</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> on each node</p></td>
+</tr>
+<tr class="row-odd"><td><p>IB link up</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ibstat</span></code> — look for <code class="docutils literal notranslate"><span class="pre">State:</span> <span class="pre">Active</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NCCL using IB</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NCCL_DEBUG=INFO</span></code> log shows <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">network</span> <span class="pre">IB</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>No Ethernet fallback</p></td>
+<td><p>Log should <strong>not</strong> show <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">network</span> <span class="pre">Socket</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GPU utilization</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">dmon</span></code> — should show &gt;80% utilization</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory balanced</p></td>
+<td><p>All GPUs using similar VRAM</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="common-pitfalls">
+<h2>5. Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Link to this heading">#</a></h2>
+<section id="nccl-picks-down-ib-port">
+<h3>5.1 NCCL Picks Down IB Port<a class="headerlink" href="#nccl-picks-down-ib-port" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">route</span> <span class="pre">to</span> <span class="pre">host</span></code> during NCCL init.</p>
+<p><strong>Cause:</strong> NCCL auto-detects all IB HCAs, including down ones.</p>
+<p><strong>Fix:</strong> Explicitly restrict NCCL to active ports:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_HCA</span><span class="o">=</span>mlx5_3,mlx5_6
+</pre></div>
+</div>
+<p>Verify active ports first with <code class="docutils literal notranslate"><span class="pre">ibstat</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-A5</span> <span class="pre">&quot;Port</span> <span class="pre">1&quot;</span></code> and confirm <code class="docutils literal notranslate"><span class="pre">State:</span> <span class="pre">Active</span></code>.</p>
+</section>
+<section id="node-still-draining">
+<h3>5.2 Node Still Draining<a class="headerlink" href="#node-still-draining" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> <code class="docutils literal notranslate"><span class="pre">Socket</span> <span class="pre">timed</span> <span class="pre">out</span> <span class="pre">on</span> <span class="pre">send/recv</span> <span class="pre">operation</span></code>.</p>
+<p><strong>Cause:</strong> Node was resumed from <code class="docutils literal notranslate"><span class="pre">drain</span></code> but <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> isn’t ready.</p>
+<p><strong>Fix:</strong> Wait 1–2 minutes, then resubmit. Check node state with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sinfo<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%N %t&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="qos-memory-limit">
+<h3>5.3 QoS Memory Limit<a class="headerlink" href="#qos-memory-limit" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> Job pending with <code class="docutils literal notranslate"><span class="pre">QOSMaxMemoryPerUser</span></code>.</p>
+<p><strong>Cause:</strong> Your total memory across all jobs exceeds the QoS limit.</p>
+<p><strong>Fix:</strong> Cancel other jobs or reduce <code class="docutils literal notranslate"><span class="pre">--mem</span></code> request. Check current usage with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%A %j %m %t&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="stuck-completing-state">
+<h3>5.4 Stuck COMPLETING State<a class="headerlink" href="#stuck-completing-state" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> Job shows <code class="docutils literal notranslate"><span class="pre">CG</span></code> indefinitely.</p>
+<p><strong>Cause:</strong> Orphaned <code class="docutils literal notranslate"><span class="pre">srun</span></code> step that failed to launch.</p>
+<p><strong>Fix:</strong> Contact the cluster admin to force-clear the job. In the meantime you can cancel with <code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">&lt;jobid&gt;</span></code> — if that hangs, the admin needs to run <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">requeue</span> <span class="pre">&lt;jobid&gt;</span></code> or restart <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="benchmark-results">
+<h2>6. Benchmark Results<a class="headerlink" href="#benchmark-results" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>GPUs</p></th>
+<th class="head"><p>Transport</p></th>
+<th class="head"><p>Time (5 epochs)</p></th>
+<th class="head"><p>Test Accuracy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2-node, 2 GPU</p></td>
+<td><p>tau + zeta</p></td>
+<td><p>Ethernet (bond0)</p></td>
+<td><p>37.7s</p></td>
+<td><p>71.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p>2-node, 2 GPU</p></td>
+<td><p>tau + zeta</p></td>
+<td><p><strong>InfiniBand</strong></p></td>
+<td><p><strong>18.1s</strong></p></td>
+<td><p><strong>71.9%</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Speedup:</strong> ~2.1× with InfiniBand over Ethernet for 2-node DDP.</p>
+</section>
+<hr class="docutils" />
+<section id="quick-reference-submit-a-job">
+<h2>7. Quick Reference: Submit a Job<a class="headerlink" href="#quick-reference-submit-a-job" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Smoke test: basic 2-node connectivity</span>
+sbatch<span class="w"> </span>smoke2node.sh
+
+<span class="c1"># 2. Smoke test: NCCL over Ethernet</span>
+sbatch<span class="w"> </span>nccl_smoke_2node.sh
+
+<span class="c1"># 3. Smoke test: NCCL over InfiniBand</span>
+sbatch<span class="w"> </span>nccl_smoke_2node_ib.sh
+
+<span class="c1"># 4. DDP training (single node, 2 GPUs)</span>
+sbatch<span class="w"> </span>ddp_job_1node.sh
+
+<span class="c1"># 5. DDP training (2 nodes, InfiniBand)</span>
+sbatch<span class="w"> </span>ddp_job_2node.sh
+
+<span class="c1"># Monitor jobs</span>
+squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%A %N %j %t %R&quot;</span>
+
+<span class="c1"># Check output</span>
+cat<span class="w"> </span>ddp_2node-*.out
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><em>Mahidol AI Center — HPC-AI User Guide v1.0</em></p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="claudevai.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DevOps Engineering HPC &amp; AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="temp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-nccl-ddp-infiniband">Why NCCL + DDP + InfiniBand?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-overview">1. Cluster Overview</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-configuration">Slurm Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-smoke-tests">2. Preparation: Smoke Tests</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-2-node-connectivity">2.1 Basic 2-Node Connectivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nccl-smoke-test-ethernet">2.2 NCCL Smoke Test (Ethernet)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nccl-smoke-test-infiniband">2.3 NCCL Smoke Test (InfiniBand)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-smoke-tests">2.4 Troubleshooting Smoke Tests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nccl-environment-variables-reference">3. NCCL Environment Variables Reference</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-principle-bootstrap-over-ethernet-transport-over-ib">Key Principle: Bootstrap over Ethernet, Transport over IB</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ddp-training-general-guidelines">4. DDP Training: General Guidelines</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-node-multi-gpu">4.1 Single-Node, Multi-GPU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-node-ddp">4.2 Multi-Node DDP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">4.3 Best Practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-checklist">4.4 Performance Checklist</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-pitfalls">5. Common Pitfalls</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nccl-picks-down-ib-port">5.1 NCCL Picks Down IB Port</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node-still-draining">5.2 Node Still Draining</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos-memory-limit">5.3 QoS Memory Limit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stuck-completing-state">5.4 Stuck COMPLETING State</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-results">6. Benchmark Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference-submit-a-job">7. Quick Reference: Submit a Job</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/ddp-training.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/ddp-training.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>Watchdog &amp; Checkpoint Survival Guide &#8212; Exascale Knowledge Share 0.18.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../_static/documentation_options.js?v=6c964dcb"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/watchdog-checkpoint-survival';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.18.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China" href="mathphysic.html" />
+    <link rel="prev" title="SLURM Array Jobs Guide" href="array-jobs.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="May 26, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-jobs.html">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen3.5.html">🚀 Deploying Qwen 3.5 122B on Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclaw.html">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hermes-remote-hpc-slack.html">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fpga.html">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddp-training.html">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Watchdog &amp; Checkpoint Survival Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="watchdog-checkpoint-survival-guide">
+<h1>Watchdog &amp; Checkpoint Survival Guide<a class="headerlink" href="#watchdog-checkpoint-survival-guide" title="Link to this heading">#</a></h1>
+<p><strong>Authors:</strong> Snit Sanghlao · Owen</p>
+<section id="core-principle">
+<h2>Core Principle<a class="headerlink" href="#core-principle" title="Link to this heading">#</a></h2>
+<p><strong>Any job running longer than 1 hour must have crash-proof checkpoints.</strong> A single checkpoint file is a single point of failure — corruption, interrupted writes, or node failures will lose everything since the last good save.</p>
+</section>
+<section id="golden-rules">
+<h2>Golden Rules<a class="headerlink" href="#golden-rules" title="Link to this heading">#</a></h2>
+<section id="numbered-checkpoints-are-mandatory">
+<h3>1. Numbered Checkpoints Are Mandatory<a class="headerlink" href="#numbered-checkpoints-are-mandatory" title="Link to this heading">#</a></h3>
+<p>Never rely on a single <code class="docutils literal notranslate"><span class="pre">latest</span></code> file. At every save interval, write BOTH:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ckpt_00100.dat</span></code> — numbered, immutable, survives corruption</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latest.dat</span></code> — copy for quick resume</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">save_checkpoint</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">step</span> <span class="o">//</span> <span class="mi">1_000</span>
+    <span class="n">numbered</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ckpt_</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">05d</span><span class="si">}</span><span class="s2">.dat&quot;</span>
+    <span class="n">save</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">numbered</span><span class="p">)</span>   <span class="c1"># Immutable, survives corruption</span>
+    <span class="n">save</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="s2">&quot;latest.dat&quot;</span><span class="p">)</span>  <span class="c1"># Quick resume</span>
+</pre></div>
+</div>
+</section>
+<section id="atomic-writes-prevent-corruption">
+<h3>2. Atomic Writes Prevent Corruption<a class="headerlink" href="#atomic-writes-prevent-corruption" title="Link to this heading">#</a></h3>
+<p>Never overwrite a checkpoint in-place. Write to a temp file, then atomically rename:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">atomic_save</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">fd</span><span class="p">,</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkstemp</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="nb">dir</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.tmp&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">os</span><span class="o">.</span><span class="n">fdopen</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">serialize</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>  <span class="c1"># Atomic on same filesystem</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>  <span class="c1"># Cleanup on failure</span>
+</pre></div>
+</div>
+<p><strong>Why:</strong> If a job crashes mid-write, the original file is untouched. <code class="docutils literal notranslate"><span class="pre">os.rename()</span></code> is atomic on Linux ext4/xfs.</p>
+</section>
+<section id="smart-resume-logic">
+<h3>3. Smart Resume Logic<a class="headerlink" href="#smart-resume-logic" title="Link to this heading">#</a></h3>
+<p>On startup, scan for the best numbered checkpoint:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span><span class="o">,</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_best_checkpoint</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;ckpt_*.dat&quot;</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">extract_num</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;ckpt_(\d+)&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="n">m</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">extract_num</span><span class="p">)</span>
+
+<span class="c1"># Resume</span>
+<span class="n">ckpt</span> <span class="o">=</span> <span class="n">find_best_checkpoint</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;latest.dat&quot;</span>
+<span class="n">load</span><span class="p">(</span><span class="n">ckpt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">latest.dat</span></code> is corrupted, fall back to the best numbered checkpoint automatically.</p>
+</section>
+<section id="checkpoint-interval-vs-risk">
+<h3>4. Checkpoint Interval vs. Risk<a class="headerlink" href="#checkpoint-interval-vs-risk" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Job Length</p></th>
+<th class="head"><p>Max Checkpoint Interval</p></th>
+<th class="head"><p>Max Loss</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1 hour</p></td>
+<td><p>5 minutes</p></td>
+<td><p>5 min of work</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 day</p></td>
+<td><p>30 minutes</p></td>
+<td><p>30 min of work</p></td>
+</tr>
+<tr class="row-even"><td><p>1 week</p></td>
+<td><p>2 hours</p></td>
+<td><p>2 hours of work</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 month</p></td>
+<td><p>6 hours</p></td>
+<td><p>6 hours of work</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Rule:</strong> Maximum acceptable loss = 1% of total job runtime. Never lose more than you can afford to redo.</p>
+</section>
+<section id="slurm-specific-handle-job-preemption">
+<h3>5. SLURM-Specific: Handle Job Preemption<a class="headerlink" href="#slurm-specific-handle-job-preemption" title="Link to this heading">#</a></h3>
+<p>SLURM sends <code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code> before preempting or expiring a job. Catch it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">signal</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_shutdown</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="n">save_checkpoint</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">current_step</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">handle_shutdown</span><span class="p">)</span>
+<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGUSR1</span><span class="p">,</span> <span class="n">handle_shutdown</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In your SLURM script, use <code class="docutils literal notranslate"><span class="pre">--signal=B:USR1&#64;120</span></code> to get a warning 120 seconds before preemption:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --signal=B:USR1@120</span>
+<span class="c1">#SBATCH --time=7-00:00:00</span>
+<span class="c1">#SBATCH --requeue</span>
+</pre></div>
+</div>
+</section>
+<section id="slurm-checkpoint-directory-on-persistent-storage">
+<h3>6. SLURM Checkpoint Directory on Persistent Storage<a class="headerlink" href="#slurm-checkpoint-directory-on-persistent-storage" title="Link to this heading">#</a></h3>
+<p><strong>Never store checkpoints on scratch/tmp filesystems.</strong> Use persistent storage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># BAD — lost on node reboot</span>
+<span class="nv">CHECKPOINT_DIR</span><span class="o">=</span>/scratch/<span class="nv">$USER</span>/job123/ckpts/
+
+<span class="c1"># GOOD — survives node failure</span>
+<span class="nv">CHECKPOINT_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/checkpoints/job123/
+<span class="c1"># Or shared filesystem</span>
+<span class="nv">CHECKPOINT_DIR</span><span class="o">=</span>/shared/projects/myteam/checkpoints/job123/
+</pre></div>
+</div>
+</section>
+<section id="progress-metadata-is-unreliable">
+<h3>7. Progress Metadata Is Unreliable<a class="headerlink" href="#progress-metadata-is-unreliable" title="Link to this heading">#</a></h3>
+<p>JSON/log files reporting progress can be written by crashed processes with stale or incorrect data. Always verify against actual checkpoint files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify checkpoint integrity before resuming</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import torch; torch.load(&#39;</span><span class="nv">$CKPT</span><span class="s2">&#39;); print(&#39;OK&#39;)&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CORRUPTED&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="limit-checkpoint-count-to-save-disk-space">
+<h3>8. Limit Checkpoint Count to Save Disk Space<a class="headerlink" href="#limit-checkpoint-count-to-save-disk-space" title="Link to this heading">#</a></h3>
+<p>Keep only the last N numbered checkpoints plus milestones:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">prune_old_checkpoints</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;ckpt_&quot;</span><span class="p">,</span> <span class="n">keep_last</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">milestone_every</span><span class="o">=</span><span class="mi">500_000</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">*.dat&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">[:</span><span class="o">-</span><span class="n">keep_last</span><span class="p">]:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">extract_step</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="n">milestone_every</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Keep milestones forever</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="slurm-job-template-crash-proof">
+<h2>SLURM Job Template (Crash-Proof)<a class="headerlink" href="#slurm-job-template-crash-proof" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=mylongjob</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --time=7-00:00:00</span>
+<span class="c1">#SBATCH --signal=B:USR1@120</span>
+<span class="c1">#SBATCH --requeue</span>
+<span class="c1">#SBATCH --output=logs/%x_%j.out</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CHECKPOINT_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/checkpoints/myjob
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHECKPOINT_DIR</span><span class="s2">&quot;</span>
+
+<span class="c1"># Find best checkpoint for resume</span>
+<span class="nv">BEST</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHECKPOINT_DIR</span><span class="s2">&quot;</span>/ckpt_*.dat<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1<span class="k">)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BEST</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Resuming from: </span><span class="nv">$BEST</span><span class="s2">&quot;</span>
+<span class="w">    </span>python<span class="w"> </span>myjob.py<span class="w"> </span>--resume<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BEST</span><span class="s2">&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting fresh&quot;</span>
+<span class="w">    </span>python<span class="w"> </span>myjob.py
+<span class="k">fi</span>
+</pre></div>
+</div>
+</section>
+<section id="watchdog-monitoring-script">
+<h2>Watchdog / Monitoring Script<a class="headerlink" href="#watchdog-monitoring-script" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># watchdog.sh — runs via cron, restarts job if dead</span>
+
+<span class="nv">JOB_NAME</span><span class="o">=</span><span class="s2">&quot;myjob.py&quot;</span>
+<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">&quot;/var/run/myjob.pid&quot;</span>
+<span class="nv">CKPT_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/checkpoints/myjob&quot;</span>
+<span class="nv">LOG</span><span class="o">=</span><span class="s2">&quot;/var/log/myjob-watchdog.log&quot;</span>
+
+<span class="c1"># Find running process</span>
+<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JOB_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PID</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># Find best checkpoint</span>
+<span class="w">    </span><span class="nv">BEST</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CKPT_DIR</span><span class="s2">&quot;</span>/ckpt_*.dat<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1<span class="k">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BEST</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2"> Job died. Restarting from </span><span class="nv">$BEST</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span>
+<span class="w">        </span>nohup<span class="w"> </span>python<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JOB_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--resume<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BEST</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$!</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PID_FILE</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2"> Job died. No checkpoint found. Starting fresh.&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span>
+<span class="w">        </span>nohup<span class="w"> </span>python<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JOB_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$!</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PID_FILE</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2"> Job alive (PID </span><span class="nv">$PID</span><span class="s2">)&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Cron: <code class="docutils literal notranslate"><span class="pre">*/15</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">/path/to/watchdog.sh</span></code></p>
+</section>
+<section id="implementation-checklist">
+<h2>Implementation Checklist<a class="headerlink" href="#implementation-checklist" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] Numbered checkpoints at every save interval</p></li>
+<li><p>[ ] Atomic writes (temp file + rename)</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">latest</span></code> file as secondary for quick resume</p></li>
+<li><p>[ ] Smart resume scans for best numbered checkpoint</p></li>
+<li><p>[ ] Signal handlers (SIGTERM, SIGUSR1) save before exit</p></li>
+<li><p>[ ] Checkpoint interval ≤1% of total job time</p></li>
+<li><p>[ ] Milestone checkpoints kept forever (major boundaries)</p></li>
+<li><p>[ ] Old checkpoints pruned to save disk space</p></li>
+<li><p>[ ] Checkpoints stored on persistent storage (not scratch)</p></li>
+<li><p>[ ] SLURM: <code class="docutils literal notranslate"><span class="pre">--signal=B:USR1&#64;120</span></code> for preemption warning</p></li>
+<li><p>[ ] Watchdog monitors and restarts with best checkpoint</p></li>
+</ul>
+</section>
+<section id="anti-patterns-don-t-do-these">
+<h2>Anti-Patterns (Don’t Do These)<a class="headerlink" href="#anti-patterns-don-t-do-these" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Anti-Pattern</p></th>
+<th class="head"><p>Consequence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single checkpoint file (<code class="docutils literal notranslate"><span class="pre">latest.pt</span></code> only)</p></td>
+<td><p>Corruption loses all progress</p></td>
+</tr>
+<tr class="row-odd"><td><p>Overwriting checkpoint in-place</p></td>
+<td><p>Mid-write crash corrupts the file</p></td>
+</tr>
+<tr class="row-even"><td><p>No signal handlers</p></td>
+<td><p>Node shutdown kills unsaved work</p></td>
+</tr>
+<tr class="row-odd"><td><p>Checkpoints on scratch/tmp</p></td>
+<td><p>Lost on node reboot</p></td>
+</tr>
+<tr class="row-even"><td><p>Checkpoint interval too wide</p></td>
+<td><p>Loses days of computation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trusting progress JSON over checkpoints</p></td>
+<td><p>Crashed process writes fake progress</p></td>
+</tr>
+<tr class="row-even"><td><p>Keeping all checkpoints</p></td>
+<td><p>Fills disk, causes OOM</p></td>
+</tr>
+<tr class="row-odd"><td><p>Watchdog hardcoded to <code class="docutils literal notranslate"><span class="pre">latest</span></code> file</p></td>
+<td><p>Restarts from corrupted state</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="recovery-procedure">
+<h2>Recovery Procedure<a class="headerlink" href="#recovery-procedure" title="Link to this heading">#</a></h2>
+<p>When a job crashes:</p>
+<ol class="arabic simple">
+<li><p><strong>Don’t panic</strong> — numbered checkpoints survive</p></li>
+<li><p>Check which checkpoints exist: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lt</span> <span class="pre">ckpt_*.dat</span> <span class="pre">|</span> <span class="pre">head</span></code></p></li>
+<li><p>Verify integrity of latest: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">&quot;load('ckpt_XXXX.dat');</span> <span class="pre">print('OK')&quot;</span></code></p></li>
+<li><p>If corrupted, go back one: try <code class="docutils literal notranslate"><span class="pre">ckpt_(N-1).dat</span></code></p></li>
+<li><p>Resume from best valid checkpoint</p></li>
+<li><p>Investigate root cause (OOM? hardware? bug?)</p></li>
+<li><p>Fix before restarting</p></li>
+</ol>
+</section>
+<section id="cost-of-getting-it-wrong">
+<h2>Cost of Getting It Wrong<a class="headerlink" href="#cost-of-getting-it-wrong" title="Link to this heading">#</a></h2>
+<p>Real example: Lost ~100K training steps (~50 hours GPU time, ~$30 cloud cost) because a single checkpoint file was corrupted during a crash. The fix took 2 hours to implement. The prevention is 30 lines of code.</p>
+<p><strong>Invest 30 minutes setting up crash-proof checkpoints. Save days of recomputation.</strong></p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="array-jobs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SLURM Array Jobs Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mathphysic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-principle">Core Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#golden-rules">Golden Rules</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numbered-checkpoints-are-mandatory">1. Numbered Checkpoints Are Mandatory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-writes-prevent-corruption">2. Atomic Writes Prevent Corruption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smart-resume-logic">3. Smart Resume Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-interval-vs-risk">4. Checkpoint Interval vs. Risk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-specific-handle-job-preemption">5. SLURM-Specific: Handle Job Preemption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-checkpoint-directory-on-persistent-storage">6. SLURM Checkpoint Directory on Persistent Storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#progress-metadata-is-unreliable">7. Progress Metadata Is Unreliable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-checkpoint-count-to-save-disk-space">8. Limit Checkpoint Count to Save Disk Space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-job-template-crash-proof">SLURM Job Template (Crash-Proof)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watchdog-monitoring-script">Watchdog / Monitoring Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-checklist">Implementation Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anti-patterns-don-t-do-these">Anti-Patterns (Don’t Do These)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recovery-procedure">Recovery Procedure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cost-of-getting-it-wrong">Cost of Getting It Wrong</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/watchdog-checkpoint-survival.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/watchdog-checkpoint-survival.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

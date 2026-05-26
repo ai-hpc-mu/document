@@ -1,0 +1,1434 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>SLURM Array Jobs Guide &#8212; Exascale Knowledge Share 0.18.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../_static/documentation_options.js?v=6c964dcb"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/array-jobs';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.18.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Watchdog &amp; Checkpoint Survival Guide" href="watchdog-checkpoint-survival.html" />
+    <link rel="prev" title="SLURM Job Submit Guide" href="slurm-job-submit.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="May 26, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog-checkpoint-survival.html">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen3.5.html">🚀 Deploying Qwen 3.5 122B on Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclaw.html">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hermes-remote-hpc-slack.html">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fpga.html">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddp-training.html">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SLURM Array Jobs Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="slurm-array-jobs-guide">
+<h1>SLURM Array Jobs Guide<a class="headerlink" href="#slurm-array-jobs-guide" title="Link to this heading">#</a></h1>
+<p><em>Author: Snit Sanghlao, Claude, QWEN AI agents</em></p>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Submit 16 parallel FFT tasks</span>
+sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">0</span>-15<span class="w"> </span>slurm/fft-example.sh
+
+<span class="c1"># Check status</span>
+squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+
+<span class="c1"># View results</span>
+cat<span class="w"> </span>logs/fft-*.log
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="why-array-jobs">
+<h2>Why Array Jobs?<a class="headerlink" href="#why-array-jobs" title="Link to this heading">#</a></h2>
+<section id="parallel-execution">
+<h3>1. Parallel Execution<a class="headerlink" href="#parallel-execution" title="Link to this heading">#</a></h3>
+<p>Run 16 experiments simultaneously instead of sequentially:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>Time (16 tasks × 5min)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sequential</p></td>
+<td><p>80 minutes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Array Job</p></td>
+<td><p>~5 minutes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="qos-limit-workaround">
+<h3>2. QOS Limit Workaround<a class="headerlink" href="#qos-limit-workaround" title="Link to this heading">#</a></h3>
+<p>Clusters limit concurrent jobs per user (typically 3-10). Array jobs count as <strong>ONE</strong> job:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>Job Count</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>32 individual jobs</p></td>
+<td><p>32</p></td>
+<td><p>REJECTED after 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 array job (32 tasks)</p></td>
+<td><p>1</p></td>
+<td><p>All 32 run</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="fairness-resource-utilization">
+<h3>3. Fairness &amp; Resource Utilization<a class="headerlink" href="#fairness-resource-utilization" title="Link to this heading">#</a></h3>
+<p>Array jobs + QOS limits together ensure fair cluster access:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>User</p></th>
+<th class="head"><p>Individual Jobs</p></th>
+<th class="head"><p>Array Jobs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>32 jobs (blocked)</p></td>
+<td><p>1 job ✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>32 jobs (blocked)</p></td>
+<td><p>1 job ✓</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>32 jobs (blocked)</p></td>
+<td><p>1 job ✓</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Without array jobs, users would spam the queue. With array jobs, everyone gets equal job slots.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fft-frequency-analysis-example">
+<h2>FFT Frequency Analysis Example<a class="headerlink" href="#fft-frequency-analysis-example" title="Link to this heading">#</a></h2>
+<section id="task-distribution">
+<h3>Task Distribution<a class="headerlink" href="#task-distribution" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Signal</p></th>
+<th class="head"><p>Freq Band</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>traffic_speed</p></td>
+<td><p>low</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>traffic_volume</p></td>
+<td><p>low</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>intersection_delay</p></td>
+<td><p>low</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>traffic_speed</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>traffic_volume</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>intersection_delay</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>traffic_speed</p></td>
+<td><p>all</p></td>
+</tr>
+<tr class="row-odd"><td><p>7-15</p></td>
+<td><p>(repeat cycle)</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="scripts-fft-analysis-py">
+<h3><code class="docutils literal notranslate"><span class="pre">scripts/fft_analysis.py</span></code><a class="headerlink" href="#scripts-fft-analysis-py" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;FFT Frequency Analysis — Array Job Worker&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--signal&quot;</span><span class="p">,</span>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>   <span class="n">default</span><span class="o">=</span><span class="s2">&quot;traffic_speed&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--freq-band&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>   <span class="n">default</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--output&quot;</span><span class="p">,</span>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>   <span class="n">default</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="n">task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SLURM_ARRAY_TASK_ID&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># Generate sample signal (replace with real data)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+
+    <span class="c1"># Compute FFT</span>
+    <span class="n">fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="c1"># Extract dominant frequencies</span>
+    <span class="n">magnitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">top_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">)[</span><span class="o">-</span><span class="mi">5</span><span class="p">:][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">top_freqs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">freqs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">magnitudes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">top_idx</span><span class="p">]</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="n">task_id</span><span class="p">,</span>
+        <span class="s2">&quot;signal&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">signal</span><span class="p">,</span>
+        <span class="s2">&quot;freq_band&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">freq_band</span><span class="p">,</span>
+        <span class="s2">&quot;dominant_freqs&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;freq&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="s2">&quot;mag&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="p">)}</span> <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">top_freqs</span><span class="p">],</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;complete&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">out_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">output</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;fft&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;task</span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">out_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_dir</span> <span class="o">/</span> <span class="s2">&quot;result.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2">: Top freqs = </span><span class="si">{</span><span class="n">top_freqs</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="slurm-fft-example-sh">
+<h3><code class="docutils literal notranslate"><span class="pre">slurm/fft-example.sh</span></code><a class="headerlink" href="#slurm-fft-example-sh" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># FFT Array Job — Parallel frequency analysis</span>
+<span class="c1"># Submit: sbatch --array=0-15 slurm/fft-example.sh</span>
+
+<span class="c1">#SBATCH --job-name=fft-analysis</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --mem=2G</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --partition=defq</span>
+<span class="c1">#SBATCH --output=logs/fft-%A_%a.log</span>
+
+<span class="nb">source</span><span class="w"> </span>/cm/shared/apps/anaconda3/etc/profile.d/conda.sh
+conda<span class="w"> </span>activate<span class="w"> </span>traffic
+
+<span class="nv">TASK_ID</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+<span class="c1"># Signal configurations (16 combinations)</span>
+<span class="nv">SIGNALS</span><span class="o">=(</span>traffic_speed<span class="w"> </span>traffic_volume<span class="w"> </span>intersection_delay<span class="o">)</span>
+<span class="nv">FREQ_BANDS</span><span class="o">=(</span>low<span class="w"> </span>high<span class="w"> </span>all<span class="o">)</span>
+
+<span class="c1"># Map task_id to parameters</span>
+<span class="nv">SIG_IDX</span><span class="o">=</span><span class="k">$((</span><span class="nv">TASK_ID</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">3</span><span class="k">))</span>
+<span class="nv">FREQ_IDX</span><span class="o">=</span><span class="k">$((</span><span class="o">(</span><span class="nv">TASK_ID</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">3</span><span class="k">))</span>
+
+<span class="nv">SIGNAL</span><span class="o">=</span><span class="si">${</span><span class="nv">SIGNALS</span><span class="p">[</span><span class="nv">$SIG_IDX</span><span class="p">]</span><span class="si">}</span>
+<span class="nv">FREQ_BAND</span><span class="o">=</span><span class="si">${</span><span class="nv">FREQ_BANDS</span><span class="p">[</span><span class="nv">$FREQ_IDX</span><span class="p">]</span><span class="si">}</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Task </span><span class="nv">$TASK_ID</span><span class="s2">: signal=</span><span class="nv">$SIGNAL</span><span class="s2">, freq_band=</span><span class="nv">$FREQ_BAND</span><span class="s2">&quot;</span>
+
+python3<span class="w"> </span>scripts/fft_analysis.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--signal<span class="w"> </span><span class="nv">$SIGNAL</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--freq-band<span class="w"> </span><span class="nv">$FREQ_BAND</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>/scratch/<span class="nv">$USER</span>/fft-results
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="smoke-test-no-real-data">
+<h2>Smoke Test (No Real Data)<a class="headerlink" href="#smoke-test-no-real-data" title="Link to this heading">#</a></h2>
+<p>Validate infrastructure before running full experiments:</p>
+<section id="scripts-fft-smoke-test-py">
+<h3><code class="docutils literal notranslate"><span class="pre">scripts/fft_smoke_test.py</span></code><a class="headerlink" href="#scripts-fft-smoke-test-py" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;FFT Smoke Test — Validates FFT array job infrastructure&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--signal&quot;</span><span class="p">,</span>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--freq-band&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--output&quot;</span><span class="p">,</span>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="n">task_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SLURM_ARRAY_TASK_ID&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># Generate synthetic signal (no real data needed)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+
+    <span class="c1"># Compute FFT</span>
+    <span class="n">fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="c1"># Extract top frequencies</span>
+    <span class="n">magnitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">top_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">)[</span><span class="o">-</span><span class="mi">3</span><span class="p">:][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">top_freqs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">freqs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">magnitudes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">top_idx</span><span class="p">]</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="n">task_id</span><span class="p">,</span>
+        <span class="s2">&quot;signal&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">signal</span><span class="p">,</span>
+        <span class="s2">&quot;freq_band&quot;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">freq_band</span><span class="p">,</span>
+        <span class="s2">&quot;dominant_freqs&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;freq&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="s2">&quot;mag&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="p">)}</span> <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">top_freqs</span><span class="p">],</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;complete&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smoke_test&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">out_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">output</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;fft-smoke&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;task</span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">out_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_dir</span> <span class="o">/</span> <span class="s2">&quot;result.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2">: Top freq = </span><span class="si">{</span><span class="n">top_freqs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="slurm-fft-smoke-test-sh">
+<h3><code class="docutils literal notranslate"><span class="pre">slurm/fft-smoke-test.sh</span></code><a class="headerlink" href="#slurm-fft-smoke-test-sh" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># FFT Smoke Test — 16 parallel tasks, no real data</span>
+<span class="c1"># Submit: sbatch --array=0-15 slurm/fft-smoke-test.sh</span>
+
+<span class="c1">#SBATCH --job-name=fft-smoke</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --mem=2G</span>
+<span class="c1">#SBATCH --time=00:05:00</span>
+<span class="c1">#SBATCH --partition=defq</span>
+<span class="c1">#SBATCH --output=logs/fft-smoke-%A_%a.log</span>
+
+<span class="nb">source</span><span class="w"> </span>/cm/shared/apps/anaconda3/etc/profile.d/conda.sh
+conda<span class="w"> </span>activate<span class="w"> </span>python3
+
+<span class="nv">TASK_ID</span><span class="o">=</span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+<span class="c1"># 16 synthetic configurations</span>
+<span class="nv">SIGNALS</span><span class="o">=(</span>synthetic_1<span class="w"> </span>synthetic_2<span class="w"> </span>synthetic_3<span class="w"> </span>synthetic_4<span class="o">)</span>
+<span class="nv">FREQ_BANDS</span><span class="o">=(</span>low<span class="w"> </span>high<span class="w"> </span>all<span class="o">)</span>
+
+<span class="nv">SIG_IDX</span><span class="o">=</span><span class="k">$((</span><span class="nv">TASK_ID</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">4</span><span class="k">))</span>
+<span class="nv">FREQ_IDX</span><span class="o">=</span><span class="k">$((</span><span class="o">(</span><span class="nv">TASK_ID</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">4</span><span class="o">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">3</span><span class="k">))</span>
+
+<span class="nv">SIGNAL</span><span class="o">=</span><span class="si">${</span><span class="nv">SIGNALS</span><span class="p">[</span><span class="nv">$SIG_IDX</span><span class="p">]</span><span class="si">}</span>
+<span class="nv">FREQ_BAND</span><span class="o">=</span><span class="si">${</span><span class="nv">FREQ_BANDS</span><span class="p">[</span><span class="nv">$FREQ_IDX</span><span class="p">]</span><span class="si">}</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Task </span><span class="nv">$TASK_ID</span><span class="s2">: signal=</span><span class="nv">$SIGNAL</span><span class="s2">, freq_band=</span><span class="nv">$FREQ_BAND</span><span class="s2">&quot;</span>
+
+python3<span class="w"> </span>scripts/fft_smoke_test.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--signal<span class="w"> </span><span class="nv">$SIGNAL</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--freq-band<span class="w"> </span><span class="nv">$FREQ_BAND</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>/scratch/<span class="nv">$USER</span>/fft-results
+</pre></div>
+</div>
+</section>
+<section id="run-smoke-test">
+<h3>Run Smoke Test<a class="headerlink" href="#run-smoke-test" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">0</span>-15<span class="w"> </span>slurm/fft-smoke-test.sh
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="qos-limits-explained">
+<h2>QOS Limits Explained<a class="headerlink" href="#qos-limits-explained" title="Link to this heading">#</a></h2>
+<section id="what-you-see">
+<h3>What You See<a class="headerlink" href="#what-you-see" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JOBID</span>          <span class="n">STATE</span>
+<span class="mi">339846</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>   <span class="n">R</span>    <span class="p">(</span><span class="n">running</span><span class="p">)</span>
+<span class="mi">339846</span><span class="n">_</span><span class="p">[</span><span class="mi">3</span><span class="o">-</span><span class="mi">31</span><span class="p">]</span>  <span class="n">PD</span>   <span class="p">(</span><span class="n">QOSMaxJobsPerUserLimit</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="meaning">
+<h3>Meaning<a class="headerlink" href="#meaning" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>PD</strong> = Pending (waiting)</p></li>
+<li><p><strong>QOSMaxJobsPerUserLimit</strong> = Cluster allows only 3 concurrent jobs per user</p></li>
+</ul>
+</section>
+<section id="why-qos-limits-exist">
+<h3>Why QOS Limits Exist<a class="headerlink" href="#why-qos-limits-exist" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reason</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fair Share</p></td>
+<td><p>Prevent one user from monopolizing</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resource Protection</p></td>
+<td><p>Protect login nodes, scheduler</p></td>
+</tr>
+<tr class="row-even"><td><p>Cost Control</p></td>
+<td><p>Compute resources are expensive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="how-array-jobs-help">
+<h3>How Array Jobs Help<a class="headerlink" href="#how-array-jobs-help" title="Link to this heading">#</a></h3>
+<p>Array jobs count as <strong>ONE</strong> job entry:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Individual jobs (hit QOS limit)</span>
+sbatch<span class="w"> </span>job1.sh<span class="w">    </span><span class="c1"># Job 1 ✓</span>
+sbatch<span class="w"> </span>job2.sh<span class="w">    </span><span class="c1"># Job 2 ✓</span>
+sbatch<span class="w"> </span>job3.sh<span class="w">    </span><span class="c1"># Job 3 ✓</span>
+sbatch<span class="w"> </span>job4.sh<span class="w">    </span><span class="c1"># REJECTED</span>
+
+<span class="c1"># Array job (bypasses QOS limit)</span>
+sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">0</span>-31<span class="w"> </span>exp.sh<span class="w">   </span><span class="c1"># Job 1 ✓ (32 tasks under 1 entry)</span>
+</pre></div>
+</div>
+</section>
+<section id="check-your-cluster-s-qos">
+<h3>Check Your Cluster’s QOS<a class="headerlink" href="#check-your-cluster-s-qos" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># View QOS definitions</span>
+scontrol<span class="w"> </span>show<span class="w"> </span>qos
+
+<span class="c1"># Check your QOS limits</span>
+sacctmgr<span class="w"> </span>show<span class="w"> </span>qos<span class="w"> </span><span class="nv">format</span><span class="o">=</span>Name,MaxJobs,MaxSubmitJobs
+
+<span class="c1"># Check current jobs</span>
+squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%A %a %J %T&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="commands-reference">
+<h2>Commands Reference<a class="headerlink" href="#commands-reference" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Submit array job</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--array=0-15</span> <span class="pre">script.sh</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Check status</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">$USER</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Check specific job</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-j</span> <span class="pre">&lt;JOB_ID&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Cancel entire array</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">&lt;JOB_ID&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Cancel specific task</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">&lt;JOB_ID&gt;_[0,5,10]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>View logs</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">logs/fft-*.log</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>View QOS limits</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">qos</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="resource-efficiency">
+<h2>Resource Efficiency<a class="headerlink" href="#resource-efficiency" title="Link to this heading">#</a></h2>
+<section id="task-sizing-guide">
+<h3>Task Sizing Guide<a class="headerlink" href="#task-sizing-guide" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task Type</p></th>
+<th class="head"><p>CPUs</p></th>
+<th class="head"><p>Memory</p></th>
+<th class="head"><p>Time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FFT (light)</p></td>
+<td><p>2</p></td>
+<td><p>2GB</p></td>
+<td><p>5 min</p></td>
+</tr>
+<tr class="row-odd"><td><p>Traffic sim (med)</p></td>
+<td><p>2</p></td>
+<td><p>4GB</p></td>
+<td><p>1 hour</p></td>
+</tr>
+<tr class="row-even"><td><p>ML training (heavy)</p></td>
+<td><p>8</p></td>
+<td><p>32GB</p></td>
+<td><p>4 hours</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="cpu-oriented-tasks">
+<h3>CPU-Oriented Tasks<a class="headerlink" href="#cpu-oriented-tasks" title="Link to this heading">#</a></h3>
+<p>For compute-bound workloads (FFT, matrix ops, simulations):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Scenario</p></th>
+<th class="head"><p>CPUs Per Task</p></th>
+<th class="head"><p>Reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single-threaded FFT</p></td>
+<td><p>2</p></td>
+<td><p>1 for compute, 1 for I/O</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multi-threaded FFT</p></td>
+<td><p>4-8</p></td>
+<td><p>Parallelize across cores</p></td>
+</tr>
+<tr class="row-even"><td><p>Vectorized (numpy)</p></td>
+<td><p>2-4</p></td>
+<td><p>Leverage SIMD, avoid oversubscribe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parallel (multiprocessing)</p></td>
+<td><p>8-16</p></td>
+<td><p>Spawn worker processes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="node-packing-cpu-heavy">
+<h3>Node Packing (CPU-Heavy)<a class="headerlink" href="#node-packing-cpu-heavy" title="Link to this heading">#</a></h3>
+<p><strong>Node: 64 CPUs, 256GB RAM</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task Type</p></th>
+<th class="head"><p>CPUs/Task</p></th>
+<th class="head"><p>Tasks/Node</p></th>
+<th class="head"><p>Total Time (32 tasks)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Light (2 CPUs)</p></td>
+<td><p>2</p></td>
+<td><p>32</p></td>
+<td><p>~5 min</p></td>
+</tr>
+<tr class="row-odd"><td><p>Medium (4 CPUs)</p></td>
+<td><p>4</p></td>
+<td><p>16</p></td>
+<td><p>~10 min (2 batches)</p></td>
+</tr>
+<tr class="row-even"><td><p>Heavy (8 CPUs)</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>~20 min (4 batches)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Very Heavy (16)</p></td>
+<td><p>16</p></td>
+<td><p>4</p></td>
+<td><p>~40 min (8 batches)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="when-to-increase-cpus-per-task">
+<h3>When to Increase CPUs Per Task<a class="headerlink" href="#when-to-increase-cpus-per-task" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Single task, more cores = faster</span>
+<span class="c1">#SBATCH --cpus-per-task=8    # FFT with parallel backend</span>
+
+<span class="c1"># Many tasks, limit total cores</span>
+<span class="c1">#SBATCH --cpus-per-task=2    # 32 tasks × 2 = 64 cores</span>
+</pre></div>
+</div>
+</section>
+<section id="memory-bound-vs-cpu-bound">
+<h3>Memory-Bound vs CPU-Bound<a class="headerlink" href="#memory-bound-vs-cpu-bound" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Bottleneck</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CPU-bound</p></td>
+<td><p>Compute</p></td>
+<td><p>Add more CPUs</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory-bound</p></td>
+<td><p>RAM</p></td>
+<td><p>Add more memory</p></td>
+</tr>
+<tr class="row-even"><td><p>I/O-bound</p></td>
+<td><p>Disk/Network</p></td>
+<td><p>Reduce I/O, cache results</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="right-sizing-matters">
+<h3>Right-Sizing Matters<a class="headerlink" href="#right-sizing-matters" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Over-allocated (waste)</span>
+<span class="c1">#SBATCH --cpus-per-task=8    # Only uses 2</span>
+<span class="c1">#SBATCH --mem=16G           # Only uses 2GB</span>
+<span class="c1"># Result: 75% waste, fewer tasks per node</span>
+
+<span class="c1"># Right-sized (efficient)</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --mem=2G</span>
+<span class="c1"># Result: 100% utilization, more tasks per node</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="output-format">
+<h2>Output Format<a class="headerlink" href="#output-format" title="Link to this heading">#</a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;task_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;signal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;traffic_volume&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;freq_band&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dominant_freqs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;freq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mag&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.3</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;freq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mag&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">32.1</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;freq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mag&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.8</span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="aggregating-results">
+<h2>Aggregating Results<a class="headerlink" href="#aggregating-results" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">results_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/scratch/$USER/fft-results/fft&quot;</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">task_dir</span> <span class="ow">in</span> <span class="n">results_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;task*&quot;</span><span class="p">):</span>
+    <span class="n">result_file</span> <span class="o">=</span> <span class="n">task_dir</span> <span class="o">/</span> <span class="s2">&quot;result.json&quot;</span>
+    <span class="k">if</span> <span class="n">result_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">result_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()))</span>
+
+<span class="c1"># Print summary</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;task_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;freq_band&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Practice</p></th>
+<th class="head"><p>Why</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Use array jobs</p></td>
+<td><p>Counts as 1 job, bypasses QOS limit</p></td>
+</tr>
+<tr class="row-odd"><td><p>Right-size tasks</p></td>
+<td><p>Maximize nodes, reduce waste</p></td>
+</tr>
+<tr class="row-even"><td><p>Run smoke test</p></td>
+<td><p>Validate before full experiment</p></td>
+</tr>
+<tr class="row-odd"><td><p>Monitor utilization</p></td>
+<td><p>Check actual vs allocated resources</p></td>
+</tr>
+<tr class="row-even"><td><p>Batch similar tasks</p></td>
+<td><p>Group by resource requirements</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Key Point</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Array jobs</p></td>
+<td><p>1 job entry, N tasks</p></td>
+</tr>
+<tr class="row-odd"><td><p>QOS limits</p></td>
+<td><p>Fair share, prevent monopolization</p></td>
+</tr>
+<tr class="row-even"><td><p>Fairness</p></td>
+<td><p>Array + QOS = equal access for all users</p></td>
+</tr>
+<tr class="row-odd"><td><p>Efficiency</p></td>
+<td><p>Right-size tasks, pack nodes fully</p></td>
+</tr>
+<tr class="row-even"><td><p>Smoke test</p></td>
+<td><p>Validate infrastructure before real work</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="slurm-job-submit.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SLURM Job Submit Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="watchdog-checkpoint-survival.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Watchdog &amp; Checkpoint Survival Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-array-jobs">Why Array Jobs?</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-execution">1. Parallel Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos-limit-workaround">2. QOS Limit Workaround</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-resource-utilization">3. Fairness &amp; Resource Utilization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-frequency-analysis-example">FFT Frequency Analysis Example</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-distribution">Task Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts-fft-analysis-py"><code class="docutils literal notranslate"><span class="pre">scripts/fft_analysis.py</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-fft-example-sh"><code class="docutils literal notranslate"><span class="pre">slurm/fft-example.sh</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoke-test-no-real-data">Smoke Test (No Real Data)</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts-fft-smoke-test-py"><code class="docutils literal notranslate"><span class="pre">scripts/fft_smoke_test.py</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-fft-smoke-test-sh"><code class="docutils literal notranslate"><span class="pre">slurm/fft-smoke-test.sh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-smoke-test">Run Smoke Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qos-limits-explained">QOS Limits Explained</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-see">What You See</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meaning">Meaning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-qos-limits-exist">Why QOS Limits Exist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-array-jobs-help">How Array Jobs Help</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-cluster-s-qos">Check Your Cluster’s QOS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands-reference">Commands Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-efficiency">Resource Efficiency</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-sizing-guide">Task Sizing Guide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-oriented-tasks">CPU-Oriented Tasks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node-packing-cpu-heavy">Node Packing (CPU-Heavy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-increase-cpus-per-task">When to Increase CPUs Per Task</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-bound-vs-cpu-bound">Memory-Bound vs CPU-Bound</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#right-sizing-matters">Right-Sizing Matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-format">Output Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating-results">Aggregating Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/array-jobs.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/array-jobs.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

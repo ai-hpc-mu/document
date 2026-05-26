@@ -1,0 +1,1424 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>Hermes Remote HPC + Slack — Research Acceleration Guide &#8212; Exascale Knowledge Share 0.18.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../_static/documentation_options.js?v=6c964dcb"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/hermes-remote-hpc-slack';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.18.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ansys HFSS" href="hfss.html" />
+    <link rel="prev" title="OpenClaw — Local Agentic AI Framework" href="openclaw.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="May 26, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-jobs.html">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog-checkpoint-survival.html">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen3.5.html">🚀 Deploying Qwen 3.5 122B on Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclaw.html">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fpga.html">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddp-training.html">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Hermes Remote HPC + Slack — Research Acceleration Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="hermes-remote-hpc-slack-research-acceleration-guide">
+<h1>Hermes Remote HPC + Slack — Research Acceleration Guide<a class="headerlink" href="#hermes-remote-hpc-slack-research-acceleration-guide" title="Link to this heading">#</a></h1>
+<p><strong>Authors:</strong> Snit Sanghlao, Qwen, Hermes<br />
+<strong>Published by:</strong> Mahidol University AI Center<br />
+<strong>Reference:</strong> <code class="docutils literal notranslate"><span class="pre">aicenter.mahidol.ac.th/hermes-remote-hpc-slack</span></code></p>
+<blockquote>
+<div><p><strong>Inspired by:</strong> <a class="reference external" href="https://github.com/karpathy/autoresearch">Andrej Karpathy’s AutoResearch</a> — an autonomous research agent that iterates on experiments, analysis, and reporting without manual intervention. We adapt this vision for cluster-based ML research using Hermes as the local orchestrator.</p>
+<p><strong>Hermes documentation:</strong> <a class="reference external" href="https://hermes-agent.nousresearch.com/docs">https://hermes-agent.nousresearch.com/docs</a></p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Executive Summary</p></li>
+<li><p>Prerequisites</p></li>
+<li><p>SSH Setup</p></li>
+<li><p>Install Hermes Locally</p></li>
+<li><p>Configure Hermes SSH Backend</p></li>
+<li><p>Slack Gateway Setup</p></li>
+<li><p>SLURM Job Templates + Singularity</p></li>
+<li><p>Simple CNN Demo</p></li>
+<li><p>Automated Research Loop via Hermes Cron</p></li>
+<li><p>Security Hardening</p></li>
+<li><p>Troubleshooting</p></li>
+<li><p>Citations</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="executive-summary">
+<h2>1. Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading">#</a></h2>
+<p>Machine learning research on HPC clusters should not require a terminal session glued to your screen. This guide shows how to drive experiments <strong>entirely through Slack</strong> using:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hermes</strong> (local machine)</p></td>
+<td><p>AI-powered orchestrator — parses Slack commands, manages workflows, coordinates cluster jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SSH</strong></p></td>
+<td><p>Secure, key-based tunnel from your workstation to the HPC login node</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SLURM + Singularity</strong> (remote cluster)</p></td>
+<td><p>Batch scheduling and containerized GPU training environments</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slack</strong></p></td>
+<td><p>Natural-language interface for submitting runs, checking logs, and reviewing results</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The goal is a closed-loop research workflow where you describe an idea in Slack and receive plots, metrics, and the next research direction — all without opening a terminal.</p>
+<section id="the-research-benefit-loop">
+<h3>The Research Benefit Loop<a class="headerlink" href="#the-research-benefit-loop" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IDEA (Slack) ──► HERMES (Local) ──► SSH ──► SLURM (Cluster) ──► GPU TRAINING
+                                                                       │
+RESULTS (Logs/Plots) ◄── SLURM ◄── HERMES ◄──────── ┌─────────────┐  │
+        │                                             │   ITERATE   │◄─┘
+SLACK REPORT + NEXT IDEA ◄───────────────────────────└─────────────┘
+</pre></div>
+</div>
+<p>You type an idea in Slack → Hermes translates it into a workflow → the cluster trains → results flow back → Hermes summarizes and suggests the next step → repeat.</p>
+</section>
+<section id="the-convergence-principle">
+<h3>The Convergence Principle<a class="headerlink" href="#the-convergence-principle" title="Link to this heading">#</a></h3>
+<p>The loop above is an instance of a general research iteration model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ideal-Starter(Human | LLM)  −  Validator(any abstraction level)  =  Residual
+                                                                         │
+                                              Auto Research Loop ◄───────┘
+                                                      │
+                                              Residual Converges?
+                                                 Yes  │  No
+                                                      │   └──► iterate
+                                                   STOP
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Ideal-Starter</strong></p></td>
+<td><p>The initial hypothesis or experiment design — provided by a human, generated by an LLM, or both</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Validator</strong></p></td>
+<td><p>Any evaluation signal: loss curves, accuracy metrics, statistical tests, human review, or a critic model — operating at any abstraction level</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Residual</strong></p></td>
+<td><p>The gap between the current result and the ideal — what remains to be explained or improved</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Converge</strong></p></td>
+<td><p>Residual falls below an acceptable threshold (e.g., validation loss plateaus, accuracy target met, human approves result)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The auto research loop driven by Hermes operationalizes this model: each iteration reduces the residual until convergence, at which point the loop stops and the final result is reported.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="prerequisites">
+<h2>2. Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>Both the local workstation (where Hermes runs) and the remote HPC cluster must meet the requirements listed below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Requirement</p></th>
+<th class="head"><p>Home Machine (Local)</p></th>
+<th class="head"><p>Remote Cluster (HPC)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>OS</strong></p></td>
+<td><p>Ubuntu 20.04+ / macOS 12+ / WSL2</p></td>
+<td><p>Linux (CentOS 7+, Rocky 8+, Ubuntu 20+)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Python</strong></p></td>
+<td><p>3.10+ (for Hermes + helpers)</p></td>
+<td><p>3.9+ (inside Singularity containers)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Node.js</strong></p></td>
+<td><p>18+ (for Slack Bolt SDK)</p></td>
+<td><p>Not required</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SSH Key</strong></p></td>
+<td><p>Yes — public key installed on cluster</p></td>
+<td><p>Yes — <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> on login node</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SLURM</strong></p></td>
+<td><p>No</p></td>
+<td><p><strong>Yes</strong> — <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, <code class="docutils literal notranslate"><span class="pre">squeue</span></code>, <code class="docutils literal notranslate"><span class="pre">scancel</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Singularity/Apptainer</strong></p></td>
+<td><p>No</p></td>
+<td><p><strong>Yes</strong> — containerized ML environments</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hermes</strong></p></td>
+<td><p><strong>Yes</strong> — installed locally</p></td>
+<td><p>No (runs locally only)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> If your cluster uses a different scheduler (PBS/Torque, LSF), adapt the SLURM commands accordingly. The architecture remains the same.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="step-1-ssh-setup">
+<h2>3. Step 1: SSH Setup<a class="headerlink" href="#step-1-ssh-setup" title="Link to this heading">#</a></h2>
+<p>Hermes communicates with the HPC cluster over SSH. A password-less, key-based configuration is essential for fully automated workflows.</p>
+<section id="generate-an-ssh-key">
+<h3>3.1. Generate an SSH Key<a class="headerlink" href="#generate-an-ssh-key" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your_email@example.com&quot;</span>
+<span class="c1"># Private key: /home/snitsan/.ssh/id_ed25519   (keep secret)</span>
+<span class="c1"># Public key:  /home/snitsan/.ssh/id_ed25519.pub (copy to cluster)</span>
+</pre></div>
+</div>
+</section>
+<section id="install-the-public-key-on-the-cluster">
+<h3>3.2. Install the Public Key on the Cluster<a class="headerlink" href="#install-the-public-key-on-the-cluster" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy the public key to the cluster</span>
+ssh-copy-id<span class="w"> </span>YOUR_USERNAME@YOUR_CLUSTER_ADDRESS
+
+<span class="c1"># Alternatively, paste the contents of id_ed25519.pub into</span>
+<span class="c1"># ~/.ssh/authorized_keys on the cluster login node.</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-ssh-config">
+<h3>3.3. Configure <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code><a class="headerlink" href="#configure-ssh-config" title="Link to this heading">#</a></h3>
+<p>Add a named host entry. Hermes will reference this alias throughout the workflow.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">hpc</span>
+    <span class="n">HostName</span> <span class="n">YOUR_CLUSTER_ADDRESS</span>
+    <span class="n">User</span>     <span class="n">YOUR_USERNAME</span>
+    <span class="n">IdentityFile</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span>
+    <span class="n">Port</span>     <span class="mi">22</span>
+    <span class="c1"># Uncomment if your key is on a hardware token (YubiKey, etc.)</span>
+    <span class="c1"># ForwardAgent yes</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Replace <code class="docutils literal notranslate"><span class="pre">YOUR_CLUSTER_ADDRESS</span></code> and <code class="docutils literal notranslate"><span class="pre">YOUR_USERNAME</span></code> with your actual values.</p>
+</div></blockquote>
+</section>
+<section id="test-the-connection">
+<h3>3.4. Test the Connection<a class="headerlink" href="#test-the-connection" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>hpc
+whoami<span class="w">        </span><span class="c1"># Expected: YOUR_USERNAME</span>
+<span class="nb">exit</span>
+</pre></div>
+</div>
+<p>If you reach the cluster without a password prompt, the SSH tunnel is ready.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-2-install-hermes-locally">
+<h2>4. Step 2: Install Hermes Locally<a class="headerlink" href="#step-2-install-hermes-locally" title="Link to this heading">#</a></h2>
+<p><strong>Hermes</strong> is the local AI agent that bridges Slack and your HPC cluster. It receives Slack commands, translates them into terminal / SLURM / file operations, and returns results. Think of it as an always-on research assistant running on your machine.</p>
+<section id="install-hermes">
+<h3>4.1. Install Hermes<a class="headerlink" href="#install-hermes" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://hermes-agent.nousresearch.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</pre></div>
+</div>
+<p>This installs the Hermes CLI and supporting tools into <code class="docutils literal notranslate"><span class="pre">~/.hermes</span></code>.</p>
+</section>
+<section id="verify-the-installation">
+<h3>4.2. Verify the Installation<a class="headerlink" href="#verify-the-installation" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>doctor
+</pre></div>
+</div>
+<p>All health-check items should pass:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>✅ Python .......... 3.11.x  (OK)
+✅ Node.js ......... 18.x    (OK)
+✅ Config folder ... ~/.hermes (OK)
+✅ Disk space ...... 45 GB free (OK)
+</pre></div>
+</div>
+<p>Resolve any flagged issues before proceeding. See the <a class="reference external" href="https://hermes-agent.nousresearch.com/docs">Hermes documentation</a> for troubleshooting guidance.</p>
+</section>
+<section id="hermes-capabilities-at-a-glance">
+<h3>4.3. Hermes Capabilities at a Glance<a class="headerlink" href="#hermes-capabilities-at-a-glance" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Capability</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Command execution</strong></p></td>
+<td><p>Runs shell commands locally and over SSH</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>File management</strong></p></td>
+<td><p>Reads, writes, and diffs files on local and remote systems</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Process orchestration</strong></p></td>
+<td><p>Manages long-running background jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slack integration</strong></p></td>
+<td><p>Bolt SDK app that maps Slack messages to Hermes actions</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Self-reasoning</strong></p></td>
+<td><p>Breaks complex tasks into steps, executes, and verifies outcomes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-3-configure-hermes-ssh-backend">
+<h2>5. Step 3: Configure Hermes SSH Backend<a class="headerlink" href="#step-3-configure-hermes-ssh-backend" title="Link to this heading">#</a></h2>
+<p>Hermes must know how to reach the cluster. Rather than hardcoding hostnames in scripts, you set a single backend directive that points to the SSH alias defined in <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>.</p>
+<section id="set-the-backend-and-host">
+<h3>5.1. Set the Backend and Host<a class="headerlink" href="#set-the-backend-and-host" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use SSH as the terminal backend</span>
+hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>terminal.backend<span class="w"> </span>ssh
+
+<span class="c1"># Point to the SSH alias defined in ~/.ssh/config</span>
+hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>terminal.host<span class="w"> </span>hpc
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">hpc</span></code> alias must match a <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">hpc</span></code> stanza in your SSH config. Hermes resolves the hostname, user, and identity file automatically.</p>
+</section>
+<section id="set-the-remote-working-directory">
+<h3>5.2. Set the Remote Working Directory<a class="headerlink" href="#set-the-remote-working-directory" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>terminal.remote_dir<span class="w"> </span>/scratch/YOUR_USERNAME
+</pre></div>
+</div>
+<blockquote>
+<div><p>Use <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> (not <code class="docutils literal notranslate"><span class="pre">/home</span></code>) for large datasets and model checkpoints to avoid quota issues.</p>
+</div></blockquote>
+</section>
+<section id="verify-the-config-file">
+<h3>5.3. Verify the Config File<a class="headerlink" href="#verify-the-config-file" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># ~/.hermes/config.yaml</span>
+<span class="nt">terminal</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hpc</span>
+<span class="w">  </span><span class="nt">remote_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/scratch/YOUR_USERNAME</span>
+</pre></div>
+</div>
+</section>
+<section id="run-a-connectivity-test">
+<h3>5.4. Run a Connectivity Test<a class="headerlink" href="#run-a-connectivity-test" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>chat<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;whoami; hostname; sinfo&quot;</span>
+</pre></div>
+</div>
+<p>Expected output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─ output ────────────────────────────┐
+│ YOUR_USERNAME                       │
+│ login-node-01.cluster.edu           │
+│ PARTITION      AVAIL  TIMELIMIT     │
+│ gpu_normal      up    7-00:00       │
+│ gpu_dev         up    1-00:00       │
+└─────────────────────────────────────┘
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Troubleshooting:</strong> If the test hangs, verify password-less login with plain <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">hpc</span></code> first. Hermes reuses your SSH key — it does not manage authentication itself.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-4-slack-gateway-setup">
+<h2>6. Step 4: Slack Gateway Setup<a class="headerlink" href="#step-4-slack-gateway-setup" title="Link to this heading">#</a></h2>
+<p>The Slack gateway turns your workspace into a natural-language control panel for Hermes. This section covers creating a Slack app, wiring it to Hermes, and running the gateway as a system service.</p>
+<section id="create-a-slack-app">
+<h3>6.1. Create a Slack App<a class="headerlink" href="#create-a-slack-app" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="https://api.slack.com/apps">https://api.slack.com/apps</a> and click <strong>Create New App → From scratch</strong>.</p></li>
+<li><p>Name the app (e.g., <code class="docutils literal notranslate"><span class="pre">hermes-research-bot</span></code>) and select your workspace.</p></li>
+<li><p>Under <strong>Features → Bot Tokens</strong>, add the following OAuth scopes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">channels:history</span></code>, <code class="docutils literal notranslate"><span class="pre">channels:read</span></code>, <code class="docutils literal notranslate"><span class="pre">channels:write</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chat:write</span></code>, <code class="docutils literal notranslate"><span class="pre">chat:write.customize</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">groups:history</span></code>, <code class="docutils literal notranslate"><span class="pre">im:history</span></code>, <code class="docutils literal notranslate"><span class="pre">im:write</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files:read</span></code>, <code class="docutils literal notranslate"><span class="pre">files:write</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpim:history</span></code>, <code class="docutils literal notranslate"><span class="pre">users:read</span></code></p></li>
+</ul>
+</li>
+<li><p>Under <strong>OAuth &amp; Permissions</strong>, install the app to your workspace and copy the <strong>Bot User OAuth Token</strong> (begins with <code class="docutils literal notranslate"><span class="pre">xoxb-</span></code>).</p></li>
+</ol>
+<blockquote>
+<div><p>These scopes allow the bot to read channel history, send formatted messages and file attachments, and inspect user information. Request only the scopes your workflow requires.</p>
+</div></blockquote>
+</section>
+<section id="generate-an-app-level-token">
+<h3>6.2. Generate an App-Level Token<a class="headerlink" href="#generate-an-app-level-token" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Go to <strong>Settings → Basic Information → App-Level Tokens</strong>.</p></li>
+<li><p>Create a token with the <code class="docutils literal notranslate"><span class="pre">connections:write</span></code> scope (required for Socket Mode).</p></li>
+<li><p>Copy the token (begins with <code class="docutils literal notranslate"><span class="pre">xapp-</span></code>).</p></li>
+</ol>
+</section>
+<section id="configure-hermes-credentials">
+<h3>6.3. Configure Hermes Credentials<a class="headerlink" href="#configure-hermes-credentials" title="Link to this heading">#</a></h3>
+<p>Run the interactive setup wizard:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>gateway<span class="w"> </span>setup
+<span class="c1"># [?] Select gateway type:  → Slack</span>
+<span class="c1"># [?] Enable Socket Mode?:  → Yes</span>
+</pre></div>
+</div>
+<p>Store credentials in <code class="docutils literal notranslate"><span class="pre">~/.hermes/.env</span></code> — never in <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ~/.hermes/.env — never commit to version control</span>
+<span class="nv">SLACK_BOT_TOKEN</span><span class="o">=</span>xoxb-YOUR_SLACK_BOT_TOKEN
+<span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-YOUR_SLACK_APP_TOKEN
+</pre></div>
+</div>
+<p>Reference the environment variables in config:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.slack.token<span class="w"> </span><span class="s1">&#39;${SLACK_BOT_TOKEN}&#39;</span>
+hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.slack.app_token<span class="w"> </span><span class="s1">&#39;${SLACK_APP_TOKEN}&#39;</span>
+</pre></div>
+</div>
+<p>Your <code class="docutils literal notranslate"><span class="pre">~/.hermes/config.yaml</span></code> should show variable references, not raw secrets:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slack</span>
+<span class="w">  </span><span class="nt">socket_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">slack</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${SLACK_BOT_TOKEN}</span>
+<span class="w">    </span><span class="nt">app_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${SLACK_APP_TOKEN}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Security note:</strong> Hermes loads <code class="docutils literal notranslate"><span class="pre">~/.hermes/.env</span></code> automatically at startup. If you paste a raw <code class="docutils literal notranslate"><span class="pre">xoxb-</span></code> token directly into <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">hermes</span> <span class="pre">doctor</span></code> will warn you.</p>
+</div></blockquote>
+</section>
+<section id="install-and-start-the-gateway">
+<h3>6.4. Install and Start the Gateway<a class="headerlink" href="#install-and-start-the-gateway" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>gateway<span class="w"> </span>install<span class="w">   </span><span class="c1"># Register as a systemd service (runs as your user)</span>
+hermes<span class="w"> </span>gateway<span class="w"> </span>start<span class="w">     </span><span class="c1"># Start the service</span>
+hermes<span class="w"> </span>gateway<span class="w"> </span>status<span class="w">    </span><span class="c1"># Verify it is running</span>
+</pre></div>
+</div>
+<p>Expected status output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>✅ Service active: hermes-gateway.service
+✅ Socket Mode: connected
+✅ Listening on workspace: your-team.slack.com
+</pre></div>
+</div>
+</section>
+<section id="send-your-first-command">
+<h3>6.5. Send Your First Command<a class="headerlink" href="#send-your-first-command" title="Link to this heading">#</a></h3>
+<p>Open Slack and message the bot directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>you  →  @hermes-research-bot: whoami; hostname; sinfo
+bot  ←  [cluster output formatted as a table]
+</pre></div>
+</div>
+<p>Or mention it in a channel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>you  →  #research-gpu: @hermes-research-bot show me active jobs on gpu_normal
+bot  ←  [squeue output formatted as a table]
+</pre></div>
+</div>
+<p>Hermes parses natural language, routes the request through SSH, executes it on the cluster, and returns formatted results — entirely within Slack.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-5-slurm-job-templates-singularity">
+<h2>7. Step 5: SLURM Job Templates + Singularity<a class="headerlink" href="#step-5-slurm-job-templates-singularity" title="Link to this heading">#</a></h2>
+<p>Hermes submits training jobs to the cluster via SLURM <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>. The standard workflow is:</p>
+<ol class="arabic simple">
+<li><p>Hermes writes a SLURM script on your local machine</p></li>
+<li><p>It SCPs the script to the cluster</p></li>
+<li><p>It runs <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> via SSH</p></li>
+<li><p>It monitors job status and tails logs in real time</p></li>
+</ol>
+<section id="slurm-script-template">
+<h3>7.1. SLURM Script Template<a class="headerlink" href="#slurm-script-template" title="Link to this heading">#</a></h3>
+<p>Save the following as <code class="docutils literal notranslate"><span class="pre">cnn_train.slurm</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=cnn_cifar10</span>
+<span class="c1">#SBATCH --partition=gpu_normal</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --time=24:00:00</span>
+<span class="c1">#SBATCH --cpus-per-task=8</span>
+<span class="c1">#SBATCH --mem=32G</span>
+<span class="c1">#SBATCH --output=/scratch/%u/cnn_%j.out</span>
+<span class="c1">#SBATCH --error=/scratch/%u/cnn_%j.err</span>
+<span class="c1">#SBATCH --mail-type=END,FAIL</span>
+<span class="c1">#SBATCH --mail-user=YOUR_EMAIL</span>
+
+<span class="c1"># Load required modules</span>
+module<span class="w"> </span>load<span class="w"> </span>singularity
+
+<span class="c1"># Path to the Singularity container</span>
+<span class="nv">CONTAINER</span><span class="o">=</span>/opt/containers/pytorch_2.0.sif
+
+<span class="c1"># Run training inside the container</span>
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bind<span class="w"> </span>/scratch:/data,/home:/home<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">$CONTAINER</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python<span class="w"> </span>/data/cnn_train.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--epochs<span class="w">      </span><span class="m">50</span><span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--batch_size<span class="w">  </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--lr<span class="w">          </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data_dir<span class="w">    </span>/data/cifar10<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_dir<span class="w">  </span>/data/cnn_results
+</pre></div>
+</div>
+</section>
+<section id="submit-via-hermes">
+<h3>7.2. Submit via Hermes<a class="headerlink" href="#submit-via-hermes" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hermes handles this automatically; the equivalent manual steps are:</span>
+scp<span class="w"> </span>cnn_train.slurm<span class="w"> </span>hpc:/scratch/YOUR_USERNAME/
+ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;sbatch /scratch/YOUR_USERNAME/cnn_train.slurm&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="monitor-via-hermes">
+<h3>7.3. Monitor via Hermes<a class="headerlink" href="#monitor-via-hermes" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check job status</span>
+ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;squeue -u YOUR_USERNAME --format=&#39;%i %P %j %S %R&#39;&quot;</span>
+
+<span class="c1"># Stream live output</span>
+ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;tail -f /scratch/YOUR_USERNAME/cnn_JOB_ID.out&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-6-simple-cnn-demo">
+<h2>8. Step 6: Simple CNN Demo<a class="headerlink" href="#step-6-simple-cnn-demo" title="Link to this heading">#</a></h2>
+<p>A ready-to-use PyTorch CNN script (<code class="docutils literal notranslate"><span class="pre">train_cnn.py</span></code>) is included in this repository. It:</p>
+<ul class="simple">
+<li><p>Trains a 4-layer CNN on CIFAR-10</p></li>
+<li><p>Accepts <code class="docutils literal notranslate"><span class="pre">--epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">--batch_size</span></code>, <code class="docutils literal notranslate"><span class="pre">--lr</span></code>, <code class="docutils literal notranslate"><span class="pre">--data_dir</span></code>, <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code> arguments</p></li>
+<li><p>Saves <code class="docutils literal notranslate"><span class="pre">metrics.csv</span></code> (per-epoch train/val loss and accuracy)</p></li>
+<li><p>Saves <code class="docutils literal notranslate"><span class="pre">best_model.pth</span></code> checkpoint</p></li>
+<li><p>Outputs <code class="docutils literal notranslate"><span class="pre">summary.json</span></code> with the best validation accuracy</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quick local test (CPU, small dataset)</span>
+python<span class="w"> </span>train_cnn.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--epochs<span class="w"> </span><span class="m">3</span><span class="w"> </span>--batch_size<span class="w"> </span><span class="m">64</span><span class="w"> </span>--lr<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data_dir<span class="w"> </span>./data<span class="w"> </span>--output_dir<span class="w"> </span>./results
+
+<span class="c1"># Submit to cluster via SLURM + Singularity</span>
+ssh<span class="w"> </span>hpc<span class="w"> </span><span class="s2">&quot;sbatch cnn_train.slurm&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference download internal" download="" href="../_downloads/9d961e60c4e764bf34d6935de4c3e963/train_cnn.py"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">train_cnn.py</span></code></span></a> in this directory for the full source code.</p>
+</section>
+<hr class="docutils" />
+<section id="step-7-automated-research-loop-via-hermes-cron">
+<h2>9. Step 7: Automated Research Loop via Hermes Cron<a class="headerlink" href="#step-7-automated-research-loop-via-hermes-cron" title="Link to this heading">#</a></h2>
+<p>Hermes can proactively monitor your experiments and Slack-DM you with updates — no manual polling required.</p>
+<section id="create-a-monitoring-cron-job">
+<h3>9.1. Create a Monitoring Cron Job<a class="headerlink" href="#create-a-monitoring-cron-job" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>cron<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;every 5m&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prompt<span class="w"> </span><span class="s2">&quot;SSH to hpc, run squeue -u YOUR_USERNAME, tail the latest CNN training log,</span>
+<span class="s2">            parse the latest epoch metrics, and report train/val accuracy and loss.</span>
+<span class="s2">            If training is complete, summarize results and suggest next experiments.&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="manage-cron-jobs">
+<h3>9.2. Manage Cron Jobs<a class="headerlink" href="#manage-cron-jobs" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hermes<span class="w"> </span>cron<span class="w"> </span>list<span class="w">        </span><span class="c1"># View all scheduled jobs</span>
+hermes<span class="w"> </span>cron<span class="w"> </span>pause<span class="w"> </span>ID<span class="w">    </span><span class="c1"># Pause a specific job</span>
+hermes<span class="w"> </span>cron<span class="w"> </span>resume<span class="w"> </span>ID<span class="w">   </span><span class="c1"># Resume a paused job</span>
+hermes<span class="w"> </span>cron<span class="w"> </span>remove<span class="w"> </span>ID<span class="w">   </span><span class="c1"># Delete a job permanently</span>
+</pre></div>
+</div>
+<p><strong>The benefit in practice:</strong> start a 24-hour training run, close your laptop, and go home. Every 5 minutes, Hermes checks the log, parses metrics, and messages you in Slack. When training finishes, you receive a summary and a suggested next step, for example:</p>
+<blockquote>
+<div><p><em>“Val accuracy plateaued at 82% after epoch 12. Suggest: increase lr to 0.01 or add data augmentation.”</em></p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-8-security-hardening">
+<h2>10. Step 8: Security Hardening<a class="headerlink" href="#step-8-security-hardening" title="Link to this heading">#</a></h2>
+<section id="slurm-best-practices">
+<h3>10.1. SLURM Best Practices<a class="headerlink" href="#slurm-best-practices" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Practice</p></th>
+<th class="head"><p>Directive</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Resource limits</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--mem=32G</span> <span class="pre">--cpus-per-task=8</span> <span class="pre">--time=24:00:00</span></code></p></td>
+<td><p>Prevent runaway jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p>Account chargeback</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--account=research_group</span></code></p></td>
+<td><p>Track compute costs per group</p></td>
+</tr>
+<tr class="row-even"><td><p>Node constraints</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--constraint=v100</span></code></p></td>
+<td><p>Pin jobs to a specific GPU type</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job arrays</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--array=0-9%3</span></code></p></td>
+<td><p>Run 10 sweeps with max 3 concurrent</p></td>
+</tr>
+<tr class="row-even"><td><p>Node exclusion</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--exclude=node05</span></code></p></td>
+<td><p>Skip known problematic nodes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="singularity-apptainer-best-practices">
+<h3>10.2. Singularity / Apptainer Best Practices<a class="headerlink" href="#singularity-apptainer-best-practices" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Practice</p></th>
+<th class="head"><p>Flag</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Clean environment</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--cleanenv</span></code></p></td>
+<td><p>Prevent credential leakage from the host</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimal bind mounts</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--bind</span> <span class="pre">/data:/data</span></code></p></td>
+<td><p>Mount only required directories</p></td>
+</tr>
+<tr class="row-even"><td><p>GPU passthrough</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--nv</span></code></p></td>
+<td><p>NVIDIA GPU access without full host privileges</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unprivileged containers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--userns</span></code> (Apptainer)</p></td>
+<td><p>User-namespace isolation</p></td>
+</tr>
+<tr class="row-even"><td><p>Image verification</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">verify</span> <span class="pre">container.sif</span></code></p></td>
+<td><p>Validate signatures before execution</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ssh-hardening">
+<h3>10.3. SSH Hardening<a class="headerlink" href="#ssh-hardening" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ~/.ssh/config</span>
+<span class="n">Host</span> <span class="n">hpc</span>
+    <span class="n">ServerAliveInterval</span>  <span class="mi">60</span>
+    <span class="n">ServerAliveCountMax</span>  <span class="mi">3</span>
+    <span class="n">ForwardAgent</span>         <span class="n">no</span>    <span class="c1"># Do not expose your SSH agent to the cluster</span>
+    <span class="n">StrictHostKeyChecking</span> <span class="n">yes</span>  <span class="c1"># Always verify host keys</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>11. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Diagnostic Command</p></th>
+<th class="head"><p>Resolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Slack bot not responding</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hermes</span> <span class="pre">gateway</span> <span class="pre">status</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hermes</span> <span class="pre">gateway</span> <span class="pre">restart</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SSH connection refused</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">hpc</span> <span class="pre">&quot;echo</span> <span class="pre">OK&quot;</span></code></p></td>
+<td><p>Check <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> and cluster DNS</p></td>
+</tr>
+<tr class="row-even"><td><p>SLURM job stuck in PD</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">USER</span></code></p></td>
+<td><p>Verify partition and GPU availability</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">exec</span></code> fails</p></td>
+<td><p>Inspect job log</p></td>
+<td><p>Ensure <code class="docutils literal notranslate"><span class="pre">--nv</span></code> flag is present for NVIDIA GPUs</p></td>
+</tr>
+<tr class="row-even"><td><p>Hermes cannot write to <code class="docutils literal notranslate"><span class="pre">/scratch</span></code></p></td>
+<td><p>Check permissions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">755</span> <span class="pre">/scratch/YOUR_USERNAME</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Cron job not triggering</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hermes</span> <span class="pre">cron</span> <span class="pre">list</span></code></p></td>
+<td><p>Verify schedule format and enabled status</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="citations">
+<h2>12. Citations<a class="headerlink" href="#citations" title="Link to this heading">#</a></h2>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@misc</span><span class="p">{</span><span class="nl">hermes_remote_hpc_slack</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">{Sanghlao, Snit }</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">{Hermes Remote HPC + Slack: Research Acceleration Guide}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">howpublished</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Mahidol University AI Center}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">note</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">{aicenter.mahidol.ac.th/hermes-remote-hpc-slack}</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nc">@software</span><span class="p">{</span><span class="nl">hermes_agent</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">{{Nous Research}}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">{Hermes Agent}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">url</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">{https://hermes-agent.nousresearch.com/docs}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">version</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{latest}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nc">@software</span><span class="p">{</span><span class="nl">karpathy_autoresearch</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">{Karpathy, Andrej}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">{AutoResearch: Autonomous ML Research Agent}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">url</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">{https://github.com/karpathy/autoresearch}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">{2025}</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><em>Built for researchers who refuse to compromise on productivity, privacy, and control.</em></p>
+<p><strong>Mahidol University AI Center</strong> · <strong>Hermes Agent</strong> · <strong>SLURM + Singularity</strong></p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="openclaw.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OpenClaw — Local Agentic AI Framework</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hfss.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ansys HFSS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">1. Executive Summary</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-research-benefit-loop">The Research Benefit Loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-convergence-principle">The Convergence Principle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">2. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-ssh-setup">3. Step 1: SSH Setup</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-an-ssh-key">3.1. Generate an SSH Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-public-key-on-the-cluster">3.2. Install the Public Key on the Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-ssh-config">3.3. Configure <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-connection">3.4. Test the Connection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-hermes-locally">4. Step 2: Install Hermes Locally</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-hermes">4.1. Install Hermes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-installation">4.2. Verify the Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermes-capabilities-at-a-glance">4.3. Hermes Capabilities at a Glance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-configure-hermes-ssh-backend">5. Step 3: Configure Hermes SSH Backend</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-backend-and-host">5.1. Set the Backend and Host</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-remote-working-directory">5.2. Set the Remote Working Directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-config-file">5.3. Verify the Config File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-connectivity-test">5.4. Run a Connectivity Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-slack-gateway-setup">6. Step 4: Slack Gateway Setup</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-slack-app">6.1. Create a Slack App</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-an-app-level-token">6.2. Generate an App-Level Token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-hermes-credentials">6.3. Configure Hermes Credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-start-the-gateway">6.4. Install and Start the Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#send-your-first-command">6.5. Send Your First Command</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-slurm-job-templates-singularity">7. Step 5: SLURM Job Templates + Singularity</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-script-template">7.1. SLURM Script Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-via-hermes">7.2. Submit via Hermes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitor-via-hermes">7.3. Monitor via Hermes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-simple-cnn-demo">8. Step 6: Simple CNN Demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-automated-research-loop-via-hermes-cron">9. Step 7: Automated Research Loop via Hermes Cron</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-monitoring-cron-job">9.1. Create a Monitoring Cron Job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manage-cron-jobs">9.2. Manage Cron Jobs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-security-hardening">10. Step 8: Security Hardening</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-best-practices">10.1. SLURM Best Practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-apptainer-best-practices">10.2. Singularity / Apptainer Best Practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-hardening">10.3. SSH Hardening</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">11. Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">12. Citations</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/hermes-remote-hpc-slack.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/hermes-remote-hpc-slack.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

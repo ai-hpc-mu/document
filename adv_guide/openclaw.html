@@ -1,0 +1,1245 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>OpenClaw — Local Agentic AI Framework &#8212; Exascale Knowledge Share 0.18.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../_static/documentation_options.js?v=6c964dcb"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/openclaw';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.18.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hermes Remote HPC + Slack — Research Acceleration Guide" href="hermes-remote-hpc-slack.html" />
+    <link rel="prev" title="Metasearch for AI-Powered Organizations" href="metasearch.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="May 26, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-jobs.html">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog-checkpoint-survival.html">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen3.5.html">🚀 Deploying Qwen 3.5 122B on Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hermes-remote-hpc-slack.html">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fpga.html">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddp-training.html">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">OpenClaw — Local Agentic AI Framework</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="openclaw-local-agentic-ai-framework">
+<h1>OpenClaw — Local Agentic AI Framework<a class="headerlink" href="#openclaw-local-agentic-ai-framework" title="Link to this heading">#</a></h1>
+<section id="for-mahidol-university-ai-center-researchers-students-staff">
+<h2>For Mahidol University AI Center — Researchers, Students &amp; Staff<a class="headerlink" href="#for-mahidol-university-ai-center-researchers-students-staff" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>Reference:</strong> <code class="docutils literal notranslate"><span class="pre">aicenter.mahidol.ac.th/qwen3-6-27b</span></code></p>
+</div></blockquote>
+<p><strong>Authors:</strong> Snit Sanghlao, OpenClaw, Qwen, OpenCode</p>
+</section>
+<hr class="docutils" />
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading">#</a></h2>
+<p>AI is shifting from chatbots to agents — from “tell me” to “I’ll do it for you.”</p>
+<p>Anthropic recently closed off their community integrations (Claude Code CLI, cooperative agent frameworks), pulling powerful agentic capabilities behind closed doors. This leaves a critical gap for research and educational institutions that need <strong>transparent, controllable, deployable</strong> AI agents — especially for sensitive Thai language, local data, and compliance.</p>
+<p><strong>OpenClaw is the open-source answer.</strong> It is a full agentic AI framework that runs entirely locally — on your own servers, your own hardware, your own network. It pairs with open models like <strong>Qwen3.6-27B</strong> (27B parameters) to create a powerful, private, and persistent AI agent experience.</p>
+<section id="why-this-matters-now">
+<h3>Why This Matters Now<a class="headerlink" href="#why-this-matters-now" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Anthropic Claude (Closed)</p></th>
+<th class="head"><p><strong>OpenClaw × Qwen3.6-27B (Open &amp; Local)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Data Privacy</strong></p></td>
+<td><p>Cloud-only → your research leaves your campus</p></td>
+<td><p>Runs locally → data never leaves your infrastructure</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Language Support</strong></p></td>
+<td><p>Limited Thai/SE Asian language accuracy</p></td>
+<td><p>Use Thai-language models (Qwen excels at multilingual)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Customization</strong></p></td>
+<td><p>Fixed rules, no modification</p></td>
+<td><p>Full personality, workflow, and policy control</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cost</strong></p></td>
+<td><p>Ongoing subscription API fees</p></td>
+<td><p>One-time compute — free after hardware</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Community</strong></p></td>
+<td><p>Withdrawing from open ecosystem</p></td>
+<td><p>Active open-source, SKill marketplace (ClawHub)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multi-Channel</strong></p></td>
+<td><p>Single interface</p></td>
+<td><p>Telegram, Discord, WhatsApp, WebChat, Slack, Signal</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Persistent Memory</strong></p></td>
+<td><p>Stateless conversations</p></td>
+<td><p>Long-term memory across sessions (your knowledge base)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Agent Scheduling</strong></p></td>
+<td><p>Task-specific</p></td>
+<td><p>Built-in cron, heartbeats, proactive monitoring</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="benefits-now">
+<h3>Benefits — Now<a class="headerlink" href="#benefits-now" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Research Acceleration</strong> — Draft papers, analyze data, manage literature reviews, generate code</p></li>
+<li><p><strong>Student Support</strong> — 24/7 tutoring, research guidance, literature summaries</p></li>
+<li><p><strong>Admin Efficiency</strong> — Schedule management, email triage, knowledge base queries</p></li>
+<li><p><strong>Thesis/Dissertation Help</strong> — LaTeX writing, reference management, code debugging</p></li>
+<li><p><strong>Data Analysis</strong> — Run Python, shell commands, process files locally</p></li>
+<li><p><strong>Device Integration</strong> — Control servers, cameras, sensors paired as nodes</p></li>
+</ol>
+</section>
+<section id="benefits-future-mahidol-ai-center-vision">
+<h3>Benefits — Future (Mahidol AI Center Vision)<a class="headerlink" href="#benefits-future-mahidol-ai-center-vision" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Institutional Knowledge Base</strong> — Training the agent on internal research, policies, and procedures becomes your living reference system</p></li>
+<li><p><strong>Multi-Agent Workflows</strong> — Researchers spawn sub-agents to parallelize labs, code review, and experiments</p></li>
+<li><p><strong>Custom Skills Marketplace</strong> — Build and share skills tailored to Thai research domains (agriculture, medicine, marine science, NLP for Thai)</p></li>
+<li><p><strong>Local-First AI Governance</strong> — Full audit trail, no vendor lock-in, no data leakage risk</p></li>
+<li><p><strong>Community Collaboration</strong> — Share skills across Thai universities; contribute to the global open-agent ecosystem</p></li>
+<li><p><strong>Cost-Scaling</strong> — As Qwen and other open models improve, you benefit instantly with zero licensing changes</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="user-guide-setting-up-openclaw-with-qwen3-6-27b">
+<h2>User Guide — Setting Up OpenClaw with Qwen3.6-27B<a class="headerlink" href="#user-guide-setting-up-openclaw-with-qwen3-6-27b" title="Link to this heading">#</a></h2>
+<section id="what-you-need">
+<h3>What You Need<a class="headerlink" href="#what-you-need" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A Linux server (Ubuntu 22.04+, or similar)</p></li>
+<li><p>Node.js 20+ (or use nvm)</p></li>
+<li><p>GPU with ≥16GB VRAM for Qwen3.6-27B (A100/RTX 4090/RTX 3090) — or run CPU-only for lighter use</p></li>
+<li><p>Any LLM serving backend (vLLM, Ollama, LM Studio, or local OpenAI-compatible endpoint)</p></li>
+</ul>
+<blockquote>
+<div><p>For <code class="docutils literal notranslate"><span class="pre">qwen3-6-27b</span></code> on your server, ensure it’s accessible at an OpenAI-compatible endpoint like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">v1</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="step-1-install-openclaw">
+<h3>Step 1 — Install OpenClaw<a class="headerlink" href="#step-1-install-openclaw" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install via npm (requires Node.js 20+)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>openclaw
+
+<span class="c1"># Verify installation</span>
+openclaw<span class="w"> </span>--version
+</pre></div>
+</div>
+</section>
+<section id="step-2-initialize-your-workspace">
+<h3>Step 2 — Initialize Your Workspace<a class="headerlink" href="#step-2-initialize-your-workspace" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This creates your workspace and config</span>
+openclaw<span class="w"> </span>init
+</pre></div>
+</div>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">~/.openclaw/</span></code> with:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> — your main configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workspace/</span></code> — where your agent’s files, memory, and projects live</p></li>
+</ul>
+</section>
+<section id="step-3-configure-the-model-qwen3-6-27b">
+<h3>Step 3 — Configure the Model (Qwen3.6-27B)<a class="headerlink" href="#step-3-configure-the-model-qwen3-6-27b" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>Tip:</strong> Use Mahidol AICenter endpoint: <code class="docutils literal notranslate"><span class="pre">https://aicenter.mahidol.ac.th/qwen3-6-27b/v1</span></code></p>
+</div></blockquote>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">~/.openclaw/config.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm</span><span class="w">                    </span><span class="c1"># or ollama, lm-studio, anything OpenAI-compatible</span>
+<span class="w">  </span><span class="nt">modelId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Qwen/Qwen3.6-27B&quot;</span>
+<span class="w">  </span><span class="nt">apiBaseUrl</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8000/v1&quot;</span>
+<span class="w">  </span><span class="nt">apiKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="w">                    </span><span class="c1"># omit or set if your backend requires auth</span>
+<span class="w">  </span><span class="nt">maxTokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8192</span><span class="w">                 </span><span class="c1"># Max output tokens (8K - balanced for remote)</span>
+<span class="w">  </span><span class="nt">contextWindow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">262144</span><span class="w">           </span><span class="c1"># Context window (256K)</span>
+
+<span class="c1"># Optional: if using Ollama instead</span>
+<span class="c1"># model:</span>
+<span class="c1">#   provider: ollama</span>
+<span class="c1">#   modelId: &quot;qwen3.6:27b&quot;</span>
+</pre></div>
+</div>
+<section id="maxtokens-recommendation">
+<h4>maxTokens Recommendation<a class="headerlink" href="#maxtokens-recommendation" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>maxTokens</p></th>
+<th class="head"><p>Use Case</p></th>
+<th class="head"><p>Latency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>4K</strong></p></td>
+<td><p>Quick chat, simple tasks</p></td>
+<td><p>Fastest</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>8K</strong></p></td>
+<td><p>Balanced — recommended for remote endpoints</p></td>
+<td><p>Moderate</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>16K</strong></p></td>
+<td><p>Complex reasoning, longer outputs</p></td>
+<td><p>Slower</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>32K+</strong></p></td>
+<td><p>Full papers, extensive code — local GPU only</p></td>
+<td><p>Slowest</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>For AICenter remote endpoint:</strong> Use <code class="docutils literal notranslate"><span class="pre">maxTokens:</span> <span class="pre">8192</span></code> (8K) for best balance of response length and speed.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="step-4-start-the-gateway">
+<h3>Step 4 — Start the Gateway<a class="headerlink" href="#step-4-start-the-gateway" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start the agent daemon</span>
+openclaw<span class="w"> </span>gateway<span class="w"> </span>start
+
+<span class="c1"># Check status</span>
+openclaw<span class="w"> </span>gateway<span class="w"> </span>status
+</pre></div>
+</div>
+<p>The gateway listens on your server and exposes a web interface (webchat) plus messaging channels.</p>
+</section>
+<section id="step-5-connect-via-webchat-quick-start">
+<h3>Step 5 — Connect via Webchat (Quick Start)<a class="headerlink" href="#step-5-connect-via-webchat-quick-start" title="Link to this heading">#</a></h3>
+<p>By default, OpenClaw provides a web chat interface at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">your</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mi">3000</span>
+</pre></div>
+</div>
+<p>Visit it in your browser — that’s your agent ready to go.</p>
+</section>
+<section id="step-6-optional-connect-messaging-channels">
+<h3>Step 6 — Optional: Connect Messaging Channels<a class="headerlink" href="#step-6-optional-connect-messaging-channels" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add to config.yaml for Telegram</span>
+<span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">entries</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">telegram</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_BOT_TOKEN&quot;</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;telegram&quot;</span>
+
+<span class="c1"># Add to config.yaml for Discord</span>
+<span class="w">  </span><span class="nt">entries</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">discord</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_BOT_TOKEN&quot;</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discord&quot;</span>
+</pre></div>
+</div>
+<p>Then restart:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openclaw<span class="w"> </span>gateway<span class="w"> </span>restart
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="connecting-qwen3-6-27b-full-method">
+<h2>Connecting Qwen3.6-27B (Full Method)<a class="headerlink" href="#connecting-qwen3-6-27b-full-method" title="Link to this heading">#</a></h2>
+<section id="option-a-vllm-recommended-for-gpu">
+<h3>Option A — vLLM (Recommended for GPU)<a class="headerlink" href="#option-a-vllm-recommended-for-gpu" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install vLLM</span>
+pip<span class="w"> </span>install<span class="w"> </span>vllm
+
+<span class="c1"># Serve Qwen3.6-27B with GPU (256K context)</span>
+vllm<span class="w"> </span>serve<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-model-len<span class="w"> </span><span class="m">262144</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tensor-parallel-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+<p>Your OpenClaw config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm</span>
+<span class="w">  </span><span class="nt">modelId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Qwen/Qwen3.6-27B&quot;</span>
+<span class="w">  </span><span class="nt">apiBaseUrl</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8000/v1&quot;</span>
+<span class="w">  </span><span class="nt">maxTokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8192</span><span class="w">         </span><span class="c1"># Max output tokens (8K - balanced for remote)</span>
+<span class="w">  </span><span class="nt">contextWindow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">262144</span><span class="w">   </span><span class="c1"># Context window (256K)</span>
+</pre></div>
+</div>
+</section>
+<section id="option-b-ollama-easier-setup">
+<h3>Option B — Ollama (Easier Setup)<a class="headerlink" href="#option-b-ollama-easier-setup" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install Ollama (from https://ollama.com)</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://ollama.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+
+<span class="c1"># Pull Qwen</span>
+ollama<span class="w"> </span>pull<span class="w"> </span>qwen3.6:27b
+
+<span class="c1"># Verify it runs</span>
+ollama<span class="w"> </span>run<span class="w"> </span>qwen3.6:27b<span class="w"> </span><span class="s2">&quot;hello&quot;</span>
+</pre></div>
+</div>
+<p>Your OpenClaw config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ollama</span>
+<span class="w">  </span><span class="nt">modelId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;qwen3.6:27b&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="option-c-cpu-only-no-gpu-required">
+<h3>Option C — CPU Only (No GPU Required)<a class="headerlink" href="#option-c-cpu-only-no-gpu-required" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Slow but works with Ollama + larger context</span>
+ollama<span class="w"> </span>pull<span class="w"> </span>qwen3.6:27b
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="customizing-your-agent">
+<h2>Customizing Your Agent<a class="headerlink" href="#customizing-your-agent" title="Link to this heading">#</a></h2>
+<section id="give-it-a-personality">
+<h3>Give It a Personality<a class="headerlink" href="#give-it-a-personality" title="Link to this heading">#</a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">workspace/SOUL.md</span></code>:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># SOUL.md - Who You Are</span>
+
+<span class="gu">## Core Truths</span>
+<span class="k">-</span><span class="w"> </span>Be helpful and resourceful
+<span class="k">-</span><span class="w"> </span>Think in Thai context when user writes in Thai
+<span class="k">-</span><span class="w"> </span>Be concise — not verbose
+</pre></div>
+</div>
+</section>
+<section id="set-your-rules">
+<h3>Set Your Rules<a class="headerlink" href="#set-your-rules" title="Link to this heading">#</a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">workspace/AGENTS.md</span></code>:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## Rules</span>
+<span class="k">-</span><span class="w"> </span>Never share research data externally
+<span class="k">-</span><span class="w"> </span>Always ask before sending messages
+<span class="k">-</span><span class="w"> </span>Use Thai language by default for local staff
+</pre></div>
+</div>
+</section>
+<section id="set-long-term-memory">
+<h3>Set Long-Term Memory<a class="headerlink" href="#set-long-term-memory" title="Link to this heading">#</a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">workspace/MEMORY.md</span></code>:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># OpenClaw Memory</span>
+
+<span class="ge">*Key decisions, context, and knowledge base.*</span>
+
+<span class="gu">## Notes</span>
+<span class="k">-</span><span class="w"> </span>[Date] Setup complete with Qwen3.6-27B on server X
+<span class="k">-</span><span class="w"> </span>Active research areas: NLP, Computer Vision, Healthcare AI
+</pre></div>
+</div>
+</section>
+<section id="memory-directory">
+<h3>Memory Directory<a class="headerlink" href="#memory-directory" title="Link to this heading">#</a></h3>
+<p>Create a daily log folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/snit/.openclaw/workspace/memory
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="what-can-your-openclaw-agent-do-quick-reference">
+<h2>What Can Your OpenClaw Agent Do? (Quick Reference)<a class="headerlink" href="#what-can-your-openclaw-agent-do-quick-reference" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Capability</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>📝 <strong>Writing</strong></p></td>
+<td><p>Papers, reports, LaTeX</p></td>
+<td><p>“Draft a methods section for my ML paper”</p></td>
+</tr>
+<tr class="row-odd"><td><p>💻 <strong>Coding</strong></p></td>
+<td><p>Python, shell, any language</p></td>
+<td><p>“Write a data preprocessing script”</p></td>
+</tr>
+<tr class="row-even"><td><p>📚 <strong>Research</strong></p></td>
+<td><p>Literature search, summaries</p></td>
+<td><p>“Summarize transformer papers from 2023”</p></td>
+</tr>
+<tr class="row-odd"><td><p>📅 <strong>Scheduling</strong></p></td>
+<td><p>Cron, reminders, heartbeat</p></td>
+<td><p>“Remind me about the thesis deadline”</p></td>
+</tr>
+<tr class="row-even"><td><p>🌐 <strong>Web</strong></p></td>
+<td><p>Browser control, fetch</p></td>
+<td><p>“Check the latest arXiv papers on X”</p></td>
+</tr>
+<tr class="row-odd"><td><p>🗂️ <strong>Files</strong></p></td>
+<td><p>Read, edit, organize</p></td>
+<td><p>“Reorganize my project folders”</p></td>
+</tr>
+<tr class="row-even"><td><p>💬 <strong>Messaging</strong></p></td>
+<td><p>Multi-channel communication</p></td>
+<td><p>“Send this summary to the department channel”</p></td>
+</tr>
+<tr class="row-odd"><td><p>📊 <strong>Data</strong></p></td>
+<td><p>Run analysis, visualize</p></td>
+<td><p>“Process these CSV files and show summaries”</p></td>
+</tr>
+<tr class="row-even"><td><p>🔐 <strong>Memory</strong></p></td>
+<td><p>Persistent across sessions</p></td>
+<td><p>“Remember that server has 200TB storage”</p></td>
+</tr>
+<tr class="row-odd"><td><p>🤖 <strong>Agents</strong></p></td>
+<td><p>Spawn sub-agents for parallel work</p></td>
+<td><p>“Research A and B in parallel”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="security-hardening-user-level">
+<h2>Security Hardening — User Level<a class="headerlink" href="#security-hardening-user-level" title="Link to this heading">#</a></h2>
+<section id="gateway-access-control">
+<h3>Gateway Access Control<a class="headerlink" href="#gateway-access-control" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bind to localhost only (recommended for single-user)</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.bind<span class="w"> </span>loopback
+
+<span class="c1"># Or bind to LAN for local network access</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.bind<span class="w"> </span>lan
+</pre></div>
+</div>
+</section>
+<section id="token-authentication">
+<h3>Token Authentication<a class="headerlink" href="#token-authentication" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a new gateway token</span>
+openclaw<span class="w"> </span>devices<span class="w"> </span>pair<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;your-device&quot;</span>
+
+<span class="c1"># View current token</span>
+openclaw<span class="w"> </span>config<span class="w"> </span>get<span class="w"> </span>gateway.auth.token
+</pre></div>
+</div>
+</section>
+<section id="rate-limiting">
+<h3>Rate Limiting<a class="headerlink" href="#rate-limiting" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set rate limits in config</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.rateLimit.enabled<span class="w"> </span><span class="nb">true</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.rateLimit.maxRequests<span class="w"> </span><span class="m">100</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.rateLimit.windowMs<span class="w"> </span><span class="m">60000</span>
+</pre></div>
+</div>
+</section>
+<section id="file-system-permissions">
+<h3>File System Permissions<a class="headerlink" href="#file-system-permissions" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Secure workspace directory</span>
+chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>~/.openclaw/workspace
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.openclaw/openclaw.json
+</pre></div>
+</div>
+</section>
+<section id="network-firewall-linux">
+<h3>Network Firewall (Linux)<a class="headerlink" href="#network-firewall-linux" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allow only local access</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">18789</span>/tcp<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1
+sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+</pre></div>
+</div>
+</section>
+<section id="environment-variables-security">
+<h3>Environment Variables Security<a class="headerlink" href="#environment-variables-security" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Never store API keys in config files; use environment variables</span>
+<span class="c1"># In ~/.bashrc or ~/.profile:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENCLAW_API_KEY</span><span class="o">=</span><span class="s2">&quot;your-key-here&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-unused-channels">
+<h3>Disable Unused Channels<a class="headerlink" href="#disable-unused-channels" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># In config — disable channels you don&#39;t use</span>
+<span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">entries</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">telegram</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">discord</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</section>
+<section id="regular-updates">
+<h3>Regular Updates<a class="headerlink" href="#regular-updates" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep OpenClaw updated</span>
+openclaw<span class="w"> </span>update<span class="w"> </span>check
+openclaw<span class="w"> </span>update<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<section id="agent-won-t-start">
+<h3>Agent won’t start<a class="headerlink" href="#agent-won-t-start" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openclaw<span class="w"> </span>gateway<span class="w"> </span>status<span class="w">   </span><span class="c1"># check status</span>
+openclaw<span class="w"> </span>gateway<span class="w"> </span>restart<span class="w">  </span><span class="c1"># restart</span>
+</pre></div>
+</div>
+</section>
+<section id="model-connection-errors">
+<h3>Model connection errors<a class="headerlink" href="#model-connection-errors" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Verify your model server is running and accessible</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">apiBaseUrl</span></code> points to the correct endpoint</p></li>
+<li><p>Test with: <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">http://localhost:8000/v1/models</span></code></p></li>
+</ul>
+</section>
+<section id="memory-not-persisting">
+<h3>Memory not persisting<a class="headerlink" href="#memory-not-persisting" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">workspace/</span></code> exists</p></li>
+<li><p>Check file permissions: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">755</span> <span class="pre">workspace/</span></code></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Docs:</strong> https://docs.openclaw.ai</p></li>
+<li><p><strong>Source:</strong> https://github.com/openclaw/openclaw</p></li>
+<li><p><strong>Community:</strong> https://discord.com/invite/clawd</p></li>
+<li><p><strong>Skills Marketplace:</strong> https://clawhub.ai</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Built for institutions that refuse to compromise on privacy, control, and innovation.</em></p>
+<p><strong>Mahidol University AI Center</strong> × <strong>OpenClaw</strong> × <strong>Qwen3.6-27B</strong></p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="metasearch.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Metasearch for AI-Powered Organizations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hermes-remote-hpc-slack.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hermes Remote HPC + Slack — Research Acceleration Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-mahidol-university-ai-center-researchers-students-staff">For Mahidol University AI Center — Researchers, Students &amp; Staff</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters-now">Why This Matters Now</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-now">Benefits — Now</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-future-mahidol-ai-center-vision">Benefits — Future (Mahidol AI Center Vision)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-guide-setting-up-openclaw-with-qwen3-6-27b">User Guide — Setting Up OpenClaw with Qwen3.6-27B</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-need">What You Need</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-openclaw">Step 1 — Install OpenClaw</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-initialize-your-workspace">Step 2 — Initialize Your Workspace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-configure-the-model-qwen3-6-27b">Step 3 — Configure the Model (Qwen3.6-27B)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#maxtokens-recommendation">maxTokens Recommendation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-start-the-gateway">Step 4 — Start the Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-connect-via-webchat-quick-start">Step 5 — Connect via Webchat (Quick Start)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-optional-connect-messaging-channels">Step 6 — Optional: Connect Messaging Channels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-qwen3-6-27b-full-method">Connecting Qwen3.6-27B (Full Method)</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-a-vllm-recommended-for-gpu">Option A — vLLM (Recommended for GPU)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-ollama-easier-setup">Option B — Ollama (Easier Setup)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-c-cpu-only-no-gpu-required">Option C — CPU Only (No GPU Required)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-your-agent">Customizing Your Agent</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#give-it-a-personality">Give It a Personality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-your-rules">Set Your Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-long-term-memory">Set Long-Term Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-directory">Memory Directory</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-your-openclaw-agent-do-quick-reference">What Can Your OpenClaw Agent Do? (Quick Reference)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-hardening-user-level">Security Hardening — User Level</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-access-control">Gateway Access Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#token-authentication">Token Authentication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limiting">Rate Limiting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-permissions">File System Permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-firewall-linux">Network Firewall (Linux)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variables-security">Environment Variables Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disable-unused-channels">Disable Unused Channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-updates">Regular Updates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-won-t-start">Agent won’t start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-connection-errors">Model connection errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-not-persisting">Memory not persisting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting Help</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/openclaw.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/openclaw.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

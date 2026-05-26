@@ -1,0 +1,1924 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>Gowin FPGA AI Workflow — User Guide &#8212; Exascale Knowledge Share 0.18.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../_static/documentation_options.js?v=6c964dcb"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/fpga';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.18.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DevOps Engineering HPC &amp; AI" href="claudevai.html" />
+    <link rel="prev" title="Ansys HFSS" href="hfss.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="May 26, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-jobs.html">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog-checkpoint-survival.html">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3 :  The inference pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen3.5.html">🚀 Deploying Qwen 3.5 122B on Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclaw.html">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hermes-remote-hpc-slack.html">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddp-training.html">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Gowin FPGA AI Workflow — User Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="gowin-fpga-ai-workflow-user-guide">
+<h1>Gowin FPGA AI Workflow — User Guide<a class="headerlink" href="#gowin-fpga-ai-workflow-user-guide" title="Link to this heading">#</a></h1>
+<section id="mahidol-university-ai-center-design-house-r-d-laboratory">
+<h2>Mahidol University AI Center · Design House R&amp;D Laboratory<a class="headerlink" href="#mahidol-university-ai-center-design-house-r-d-laboratory" title="Link to this heading">#</a></h2>
+<p><strong>System:</strong> OpenClaw × Qwen3.6-27B × Gowin MCP × Obsidian × Slack<br />
+<strong>Hardware:</strong> Sipeed Tang Mega 138K · GW5AST-138B/C BGA484<br />
+<strong>Authors:</strong> Snit Sanghlao · Anthropic Claude · OpenClaw · Mahidol AI Center</p>
+</section>
+<hr class="docutils" />
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading">#</a></h2>
+<section id="what-this-system-does">
+<h3>What This System Does<a class="headerlink" href="#what-this-system-does" title="Link to this heading">#</a></h3>
+<p>The Mahidol AI Center Design House has deployed an AI-assisted FPGA development workflow that connects a locally-hosted AI agent directly into the hardware design pipeline. Engineers can issue natural-language commands via Slack or a web interface to synthesize, place-and-route, and flash Gowin FPGA bitstreams — without manually running toolchain commands.</p>
+<p>All compute, models, and data remain on-premise. No research IP leaves the laboratory network.</p>
+</section>
+<section id="business-value">
+<h3>Business Value<a class="headerlink" href="#business-value" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dimension</p></th>
+<th class="head"><p>Before</p></th>
+<th class="head"><p>After</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Synthesis trigger</strong></p></td>
+<td><p>Engineer opens IDE, configures run, waits</p></td>
+<td><p>Single message in Slack — AI handles the rest</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Knowledge retention</strong></p></td>
+<td><p>Scattered notes, terminal history</p></td>
+<td><p>Persistent Obsidian vault indexed by the AI</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Toolchain expertise</strong></p></td>
+<td><p>Each researcher learns CLI from scratch</p></td>
+<td><p>AI agent guides with exact commands and warnings</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Debugging</strong></p></td>
+<td><p>Manual log reading</p></td>
+<td><p>AI parses build logs, flags errors in plain language</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Remote operation</strong></p></td>
+<td><p>Must be at workstation</p></td>
+<td><p>Command from any device via Slack</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data sovereignty</strong></p></td>
+<td><p>N/A — closed cloud tools not used</p></td>
+<td><p>100% on-premise; no cloud vendor dependency</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="key-capabilities-now-available">
+<h3>Key Capabilities — Now Available<a class="headerlink" href="#key-capabilities-now-available" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Conversational FPGA builds</strong> — “Build my LDPC project and flash to the board” triggers synthesis → P&amp;R → programming automatically</p></li>
+<li><p><strong>Intelligent error reporting</strong> — Failed builds produce human-readable summaries with specific fix guidance</p></li>
+<li><p><strong>Board setup guidance</strong> — Agent provides DBG_BOOT, DIP switch, and udev instructions on demand</p></li>
+<li><p><strong>Design knowledge base</strong> — Obsidian vault stores project history, design decisions, and research notes; the AI searches it in real time</p></li>
+<li><p><strong>Slack integration</strong> — Full command access from <code class="docutils literal notranslate"><span class="pre">#all-openclaw-ws</span></code>; agent participates in team discussion</p></li>
+<li><p><strong>Persistent memory</strong> — Agent remembers project context, server configs, and past decisions across sessions</p></li>
+</ol>
+</section>
+<section id="who-should-read-this-guide">
+<h3>Who Should Read This Guide<a class="headerlink" href="#who-should-read-this-guide" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Lab managers / PI</strong> — Executive Summary (this section)</p></li>
+<li><p><strong>FPGA design engineers</strong> — Quick Start, MCP Tools Reference, Workflow Examples</p></li>
+<li><p><strong>System administrators</strong> — Installation, Security, Troubleshooting</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="system-architecture">
+<h2>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────┐
+│                    MAHIDOL AI CENTER — ON-PREMISE               │
+│                                                                 │
+│  ┌───────────────┐   ┌─────────────────────────────────────┐   │
+│  │ Slack Channel │   │         OpenClaw Gateway             │   │
+│  │ #all-openclaw │──▶│   (Node.js daemon, port 18789)       │   │
+│  │      -ws      │◀──│   Model: Qwen3.6-27B (256K context)  │   │
+│  └───────────────┘   │   Endpoint: aicenter.mahidol.ac.th  │   │
+│                      └─────────────┬───────────────────────┘   │
+│  ┌───────────────┐                 │                           │
+│  │ Web Chat UI   │                 │ MCP Protocol              │
+│  │ localhost:    │◀────────────────┤                           │
+│  │    18789      │                 │                           │
+│  └───────────────┘        ┌────────▼────────┐                  │
+│                           │   MCP Servers   │                  │
+│                      ┌────┴──┐         ┌───┴──────────────┐   │
+│                      │Obsidian│         │ gowin-workflow   │   │
+│                      │ Vault  │         │  mcp_server.py   │   │
+│                      │  MCP   │         └───────┬──────────┘   │
+│                      └────────┘                 │              │
+│  ┌─────────────────────────────────┐    ┌───────▼──────────┐   │
+│  │     Obsidian Second Brain       │    │  Gowin Toolchain  │   │
+│  │  openclaw-second-brain/ vault   │    │  ├─ gw_sh (IDE)   │   │
+│  │  ├─ MAI/guide/                  │    │  ├─ programmer_cli│   │
+│  │  └─ Project notes &amp; decisions   │    │  └─ openFPGALoader│   │
+│  └─────────────────────────────────┘    └───────┬──────────┘   │
+│                                        ┌────────▼──────────┐   │
+│                                        │ Tang Mega 138K    │   │
+│                                        │ GW5AST-138B BGA484│   │
+│                                        │ USB DEBUG-USB2    │   │
+│                                        └───────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<section id="component-map">
+<h3>Component Map<a class="headerlink" href="#component-map" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Role</p></th>
+<th class="head"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>OpenClaw</strong></p></td>
+<td><p>AI agent daemon, gateway, memory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~/.openclaw/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Qwen3.6-27B</strong></p></td>
+<td><p>Local LLM (27B, 256K context)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://aicenter.mahidol.ac.th/qwen3-6-27b/v1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>gowin-workflow MCP</strong></p></td>
+<td><p>FPGA toolchain tools over MCP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/media/snit/AiHPC/tools/vlsi/gowin/mcp_server.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>obsidian-vault MCP</strong></p></td>
+<td><p>Second brain file access</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;modelcontextprotocol/server-filesystem</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Obsidian vault</strong></p></td>
+<td><p>Knowledge base, notes, memory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/home/snit/ai/obsidian-noted/openclaw-second-brain/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slack</strong></p></td>
+<td><p>Team communication channel</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#all-openclaw-ws</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tang Mega 138K</strong></p></td>
+<td><p>Target FPGA board</p></td>
+<td><p>Physical hardware, USB JTAG</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="technical-perspective">
+<h2>Technical Perspective<a class="headerlink" href="#technical-perspective" title="Link to this heading">#</a></h2>
+<section id="mcp-architecture">
+<h3>MCP Architecture<a class="headerlink" href="#mcp-architecture" title="Link to this heading">#</a></h3>
+<p>OpenClaw exposes hardware tools to the AI agent via the <strong>Model Context Protocol (MCP)</strong> — a standardized JSON-RPC interface that lets a language model call structured tools with typed parameters and receive structured results. Two MCP servers are registered:</p>
+<section id="gowin-workflow-fpga-toolchain-server">
+<h4>1. <code class="docutils literal notranslate"><span class="pre">gowin-workflow</span></code> — FPGA Toolchain Server<a class="headerlink" href="#gowin-workflow-fpga-toolchain-server" title="Link to this heading">#</a></h4>
+<p><strong>Path:</strong> <code class="docutils literal notranslate"><span class="pre">/media/snit/AiHPC/tools/vlsi/gowin/mcp_server.py</span></code><br />
+<strong>Runtime:</strong> Python 3.11 venv at <code class="docutils literal notranslate"><span class="pre">/media/snit/AiHPC/tools/vlsi/gowin/.venv/</span></code><br />
+<strong>Transport:</strong> stdio (spawned by OpenClaw on demand)</p>
+<p>The server wraps four toolchain binaries:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Binary</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gw_sh</span></code></p></td>
+<td><p>Gowin IDE headless TCL shell — synthesis + P&amp;R</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">programmer_cli</span></code></p></td>
+<td><p>Gowin official programmer — cable/device scan</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">openFPGALoader</span></code></p></td>
+<td><p>Open-source JTAG programmer — flash + detect</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lsusb</span></code> / <code class="docutils literal notranslate"><span class="pre">bflb-mcu-tool</span></code></p></td>
+<td><p>USB detection + BL616 firmware update</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Environment management:</strong> The server injects <code class="docutils literal notranslate"><span class="pre">LM_LICENSE_FILE=YOUR_LICENSE_SERVER</span></code>, <code class="docutils literal notranslate"><span class="pre">QT_QPA_PLATFORM=offscreen</span></code>, and the Gowin IDE <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> for every headless toolchain call — no shell setup required from the user.</p>
+<p><strong>JTAG guard:</strong> <code class="docutils literal notranslate"><span class="pre">flash_bitstream</span></code> and <code class="docutils literal notranslate"><span class="pre">build</span></code> both call <code class="docutils literal notranslate"><span class="pre">_require_jtag_mode()</span></code> before touching the board. This runs <code class="docutils literal notranslate"><span class="pre">lsusb</span></code> and checks for <code class="docutils literal notranslate"><span class="pre">0403:6010</span></code> (FT2232 in JTAG mode). If missing, the tool returns step-by-step DBG_BOOT instructions rather than failing silently.</p>
+</section>
+<section id="obsidian-vault-knowledge-base-server">
+<h4>2. <code class="docutils literal notranslate"><span class="pre">obsidian-vault</span></code> — Knowledge Base Server<a class="headerlink" href="#obsidian-vault-knowledge-base-server" title="Link to this heading">#</a></h4>
+<p><strong>Command:</strong> <code class="docutils literal notranslate"><span class="pre">npx</span> <span class="pre">-y</span> <span class="pre">&#64;modelcontextprotocol/server-filesystem</span> <span class="pre">/home/snit/ai/obsidian-noted/openclaw-second-brain</span></code><br />
+<strong>Transport:</strong> stdio</p>
+<p>Provides the agent with read/write access to the full Obsidian vault. The agent can search design notes, update project logs, and retrieve historical context mid-conversation.</p>
+</section>
+</section>
+<section id="openclaw-configuration-openclaw-openclaw-json">
+<h3>OpenClaw Configuration (<code class="docutils literal notranslate"><span class="pre">~/.openclaw/openclaw.json</span></code>)<a class="headerlink" href="#openclaw-configuration-openclaw-openclaw-json" title="Link to this heading">#</a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;vllm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://aicenter.mahidol.ac.th/qwen3-6-27b/v1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Qwen/Qwen3.6-27B&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;maxTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">262144</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;ollama&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:11434/v1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen3.6:27b&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;maxTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;primary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vllm/Qwen/Qwen3.6-27B&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;contextTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256000</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The primary model is the remote Mahidol AICenter endpoint (256K context). The local Ollama instance serves as fallback when the remote is unreachable.</p>
+</section>
+<section id="slack-integration">
+<h3>Slack Integration<a class="headerlink" href="#slack-integration" title="Link to this heading">#</a></h3>
+<p>The agent connects to Slack via Socket Mode (no public webhook required):</p>
+<ul class="simple">
+<li><p><strong>Bot token:</strong> <code class="docutils literal notranslate"><span class="pre">xoxb-...</span></code> — workspace API access</p></li>
+<li><p><strong>App token:</strong> <code class="docutils literal notranslate"><span class="pre">xapp-...</span></code> — Socket Mode connection</p></li>
+<li><p><strong>Channel:</strong> <code class="docutils literal notranslate"><span class="pre">#all-openclaw-ws</span></code> — interactive replies enabled</p></li>
+<li><p><strong>Policy:</strong> <code class="docutils literal notranslate"><span class="pre">groupPolicy:</span> <span class="pre">open</span></code> — any channel member can invoke the agent</p></li>
+</ul>
+<p>Messages sent to the channel are processed by the agent. The agent can reply, react with emoji, and trigger MCP tool calls in response to natural language.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+<p>Before first use, verify these are in place:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Check OpenClaw is running</span>
+openclaw<span class="w"> </span>gateway<span class="w"> </span>status
+
+<span class="c1"># 2. Verify MCP servers registered</span>
+openclaw<span class="w"> </span>mcp<span class="w"> </span>show<span class="w"> </span>gowin-workflow
+openclaw<span class="w"> </span>mcp<span class="w"> </span>show<span class="w"> </span>obsidian-vault
+
+<span class="c1"># 3. Check model endpoint is reachable</span>
+curl<span class="w"> </span>https://aicenter.mahidol.ac.th/qwen3-6-27b/v1/models
+
+<span class="c1"># 4. Check USB device permissions (if using FPGA)</span>
+lsusb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;1a86|0403&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="start-the-gateway">
+<h3>Start the Gateway<a class="headerlink" href="#start-the-gateway" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openclaw<span class="w"> </span>gateway<span class="w"> </span>start
+
+<span class="c1"># Verify</span>
+openclaw<span class="w"> </span>gateway<span class="w"> </span>status
+<span class="c1"># → Gateway running on http://localhost:18789</span>
+</pre></div>
+</div>
+</section>
+<section id="access-points">
+<h3>Access Points<a class="headerlink" href="#access-points" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Interface</p></th>
+<th class="head"><p>URL / Channel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Web Chat</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://localhost:18789</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Slack</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#all-openclaw-ws</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fpga-hardware-setup">
+<h2>FPGA Hardware Setup<a class="headerlink" href="#fpga-hardware-setup" title="Link to this heading">#</a></h2>
+<section id="tang-mega-138k-board-overview">
+<h3>Tang Mega 138K Board Overview<a class="headerlink" href="#tang-mega-138k-board-overview" title="Link to this heading">#</a></h3>
+<p><strong>Device:</strong> GW5AST-138B/C · BGA484 · 138K LUT4<br />
+<strong>Debugger:</strong> BL616 onboard (USB-C port labeled <code class="docutils literal notranslate"><span class="pre">DEBUG-USB2</span></code>)<br />
+<strong>Programming interface:</strong> JTAG via FT2232 (activated via DBG_BOOT button or BL616 firmware update)</p>
+</section>
+<section id="dip-switch-settings">
+<h3>DIP Switch Settings<a class="headerlink" href="#dip-switch-settings" title="Link to this heading">#</a></h3>
+<p>Set all 5 DIP switches to <strong>OFF</strong> for normal JTAG programming:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>SW1</p></th>
+<th class="head"><p>SW2</p></th>
+<th class="head"><p>SW3</p></th>
+<th class="head"><p>SW4</p></th>
+<th class="head"><p>SW5</p></th>
+<th class="head"><p>Mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OFF</p></td>
+<td><p>OFF</p></td>
+<td><p>OFF</p></td>
+<td><p>OFF</p></td>
+<td><p>OFF</p></td>
+<td><p><strong>JTAG programming — use this</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="activating-jtag-mode-required-every-session">
+<h3>Activating JTAG Mode (Required Every Session)<a class="headerlink" href="#activating-jtag-mode-required-every-session" title="Link to this heading">#</a></h3>
+<p>The BL616 debugger defaults to CDC mode on power-up. To enable JTAG:</p>
+<ol class="arabic simple">
+<li><p>Set all DIP switches to <strong>OFF</strong></p></li>
+<li><p>Unplug the <strong>DEBUG-USB2</strong> USB-C cable</p></li>
+<li><p>Hold the <strong>DBG_BOOT</strong> button (small button below the DEBUG-USB2 port on the <strong>top</strong> of the PCB)</p></li>
+<li><p>Plug the cable back in while holding the button</p></li>
+<li><p>Hold ~1 second, then release</p></li>
+</ol>
+<p><strong>Verify JTAG mode is active:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">0403</span>:6010
+<span class="c1"># Expected: Bus 00X Device 0XX: ID 0403:6010 Future Technology Devices International, Ltd FT2232C/D/H</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>One-time fix:</strong> Flash the BL616 firmware once (see BL616 section) to make JTAG mode the permanent default — no button press needed again.</p>
+</div></blockquote>
+</section>
+<section id="usb-permissions-run-once">
+<h3>USB Permissions (Run Once)<a class="headerlink" href="#usb-permissions-run-once" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># BL616 / WCH</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ATTRS{idVendor}==&quot;1a86&quot;, ATTRS{idProduct}==&quot;fe0c&quot;, MODE:=&quot;666&quot;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/udev/rules.d/51-gowin-bl616.rules
+
+<span class="c1"># FT2232 JTAG</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ATTRS{idVendor}==&quot;0403&quot;, ATTRS{idProduct}==&quot;6010&quot;, MODE:=&quot;666&quot;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/udev/rules.d/51-gowin-ftdi.rules
+
+<span class="c1"># Gowin official rules</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>/media/snit/AiHPC/projects/ldpc/aiChipDC/Programmer/bin/50-programmer_usb.rules<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/etc/udev/rules.d/
+
+sudo<span class="w"> </span>udevadm<span class="w"> </span>control<span class="w"> </span>--reload-rules<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>udevadm<span class="w"> </span>trigger
+</pre></div>
+</div>
+<p>Unplug and replug the USB cable after running.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="mcp-tools-reference">
+<h2>MCP Tools Reference<a class="headerlink" href="#mcp-tools-reference" title="Link to this heading">#</a></h2>
+<p>All tools are accessible by the AI agent. Engineers can also trigger them by describing the action in natural language via Slack or web chat.</p>
+<section id="device-detection">
+<h3>Device Detection<a class="headerlink" href="#device-detection" title="Link to this heading">#</a></h3>
+<section id="check-usb-devices">
+<h4><code class="docutils literal notranslate"><span class="pre">check_usb_devices</span></code><a class="headerlink" href="#check-usb-devices" title="Link to this heading">#</a></h4>
+<p>Lists Gowin-related USB devices (BL616, FT2232, WCH variants).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Check what USB devices are connected&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="scan-cables">
+<h4><code class="docutils literal notranslate"><span class="pre">scan_cables</span></code><a class="headerlink" href="#scan-cables" title="Link to this heading">#</a></h4>
+<p>Scans for programmer cables via <code class="docutils literal notranslate"><span class="pre">programmer_cli</span> <span class="pre">--scan-cables</span> <span class="pre">L</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Scan for programmer cables&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="scan-devices">
+<h4><code class="docutils literal notranslate"><span class="pre">scan_devices</span></code><a class="headerlink" href="#scan-devices" title="Link to this heading">#</a></h4>
+<p>Scans for Gowin FPGA devices via <code class="docutils literal notranslate"><span class="pre">programmer_cli</span> <span class="pre">--scan</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Scan for FPGA devices&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="detect-fpga">
+<h4><code class="docutils literal notranslate"><span class="pre">detect_fpga</span></code><a class="headerlink" href="#detect-fpga" title="Link to this heading">#</a></h4>
+<p>Detects FPGA via <code class="docutils literal notranslate"><span class="pre">openFPGALoader</span> <span class="pre">-b</span> <span class="pre">tangmega138k</span> <span class="pre">--detect</span></code>. Requires JTAG mode active.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Detect the FPGA&quot;</span>
+<span class="n">Expected</span><span class="p">:</span> <span class="n">index</span> <span class="mi">0</span> <span class="o">/</span> <span class="n">GW5AST</span><span class="o">-</span><span class="mi">138</span> <span class="o">/</span> <span class="n">idcode</span> <span class="mh">0x1081b</span>
+</pre></div>
+</div>
+</section>
+<section id="get-device-info">
+<h4><code class="docutils literal notranslate"><span class="pre">get_device_info</span></code><a class="headerlink" href="#get-device-info" title="Link to this heading">#</a></h4>
+<p>Runs both <code class="docutils literal notranslate"><span class="pre">scan_devices</span></code> and <code class="docutils literal notranslate"><span class="pre">check_usb_devices</span></code> in one call — good for a full status check.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Give me full device info&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build-pipeline">
+<h3>Build Pipeline<a class="headerlink" href="#build-pipeline" title="Link to this heading">#</a></h3>
+<section id="synthesize-project-path">
+<h4><code class="docutils literal notranslate"><span class="pre">synthesize(project_path)</span></code><a class="headerlink" href="#synthesize-project-path" title="Link to this heading">#</a></h4>
+<p>Runs Gowin synthesis headlessly via <code class="docutils literal notranslate"><span class="pre">gw_sh</span></code>. Outputs go to <code class="docutils literal notranslate"><span class="pre">impl/gwsynthesis/</span></code> beside the project file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Synthesize /media/snit/AiHPC/projects/ldpc/mydesign/mydesign.gprj&quot;</span>
+<span class="n">Timeout</span><span class="p">:</span> <span class="mi">5</span> <span class="n">minutes</span>
+</pre></div>
+</div>
+</section>
+<section id="implement-project-path">
+<h4><code class="docutils literal notranslate"><span class="pre">implement(project_path)</span></code><a class="headerlink" href="#implement-project-path" title="Link to this heading">#</a></h4>
+<p>Runs place-and-route headlessly. Produces a <code class="docutils literal notranslate"><span class="pre">.fs</span></code> bitstream in <code class="docutils literal notranslate"><span class="pre">output/</span></code> beside the project file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Run P&amp;R on my project&quot;</span>
+<span class="n">Timeout</span><span class="p">:</span> <span class="mi">10</span> <span class="n">minutes</span>
+<span class="n">Output</span><span class="p">:</span> <span class="n">output</span><span class="o">/&lt;</span><span class="n">top</span><span class="o">&gt;.</span><span class="n">fs</span>
+</pre></div>
+</div>
+</section>
+<section id="build-project-path-do-flash-true">
+<h4><code class="docutils literal notranslate"><span class="pre">build(project_path,</span> <span class="pre">do_flash=True)</span></code><a class="headerlink" href="#build-project-path-do-flash-true" title="Link to this heading">#</a></h4>
+<p>Full pipeline: synthesis → P&amp;R → flash to external SPI flash.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ask: &quot;Build and flash /path/to/project.gprj&quot;
+Timeout: 15 minutes total
+Note: checks JTAG mode before starting — will abort with instructions if board not ready
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">do_flash=False</span></code> builds only, no programming:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Build without flashing&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="programming">
+<h3>Programming<a class="headerlink" href="#programming" title="Link to this heading">#</a></h3>
+<section id="flash-bitstream-fs-file-to-flash-true">
+<h4><code class="docutils literal notranslate"><span class="pre">flash_bitstream(fs_file,</span> <span class="pre">to_flash=True)</span></code><a class="headerlink" href="#flash-bitstream-fs-file-to-flash-true" title="Link to this heading">#</a></h4>
+<p>Flashes a <code class="docutils literal notranslate"><span class="pre">.fs</span></code> bitstream file to the Tang Mega 138K via <code class="docutils literal notranslate"><span class="pre">openFPGALoader</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">to_flash=True</span></code></p></td>
+<td><p>Default</p></td>
+<td><p>Writes to external SPI flash — <strong>survives power cycle</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">to_flash=False</span></code></p></td>
+<td><p>SRAM only</p></td>
+<td><p>Fast, lost on power cycle — good for testing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Flash /path/to/bitstream.fs to the board&quot;</span>
+<span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Load bitstream to SRAM only for testing&quot;</span>
+<span class="n">Timeout</span><span class="p">:</span> <span class="mi">3</span> <span class="n">minutes</span>
+</pre></div>
+</div>
+</section>
+<section id="list-bitstreams-directory">
+<h4><code class="docutils literal notranslate"><span class="pre">list_bitstreams(directory)</span></code><a class="headerlink" href="#list-bitstreams-directory" title="Link to this heading">#</a></h4>
+<p>Lists all <code class="docutils literal notranslate"><span class="pre">.fs</span></code> files in a directory tree.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;List available bitstreams in my project folder&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="setup-maintenance">
+<h3>Setup &amp; Maintenance<a class="headerlink" href="#setup-maintenance" title="Link to this heading">#</a></h3>
+<section id="get-dip-switch-config">
+<h4><code class="docutils literal notranslate"><span class="pre">get_dip_switch_config</span></code><a class="headerlink" href="#get-dip-switch-config" title="Link to this heading">#</a></h4>
+<p>Returns the DIP switch guide for all board modes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;What DIP switch settings do I need?&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="install-udev-rules">
+<h4><code class="docutils literal notranslate"><span class="pre">install_udev_rules</span></code><a class="headerlink" href="#install-udev-rules" title="Link to this heading">#</a></h4>
+<p>Returns the exact commands to install USB udev rules.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;How do I fix USB access permissions?&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="update-bl616-firmware-firmware-path-port">
+<h4><code class="docutils literal notranslate"><span class="pre">update_bl616_firmware(firmware_path,</span> <span class="pre">port)</span></code><a class="headerlink" href="#update-bl616-firmware-firmware-path-port" title="Link to this heading">#</a></h4>
+<p>Updates the BL616 onboard debugger firmware — makes JTAG mode permanent.</p>
+<p><strong>Before running:</strong></p>
+<ol class="arabic simple">
+<li><p>Set all DIP switches OFF</p></li>
+<li><p>Hold DBG_BOOT and plug DEBUG-USB2 cable</p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM0</span></code> is present</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ask</span><span class="p">:</span> <span class="s2">&quot;Update the BL616 firmware&quot;</span>
+<span class="n">Firmware</span><span class="p">:</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">bl616_NeoDock</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">Port</span><span class="p">:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyACM0</span>
+</pre></div>
+</div>
+<p>Download firmware if needed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://api.dl.sipeed.com/TANG/Debugger/onboard/BL616/2025030317/bl616_fpga_partner_NeoDock.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-O<span class="w"> </span>/tmp/bl616_NeoDock.bin
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="workflow-examples">
+<h2>Workflow Examples<a class="headerlink" href="#workflow-examples" title="Link to this heading">#</a></h2>
+<section id="example-1-daily-build-and-flash">
+<h3>Example 1 — Daily Build and Flash<a class="headerlink" href="#example-1-daily-build-and-flash" title="Link to this heading">#</a></h3>
+<p>In Slack <code class="docutils literal notranslate"><span class="pre">#all-openclaw-ws</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Engineer: Build and flash the LDPC project
+Agent:    Checking JTAG mode... ✅ FT2232 detected.
+          Running synthesis... [5 min]
+          Running P&amp;R... [8 min]
+          Flashing to external SPI flash... [1 min]
+          ✅ Build + flash succeeded.
+          Bitstream: output/ldpc_top.fs
+</pre></div>
+</div>
+</section>
+<section id="example-2-quick-sram-test">
+<h3>Example 2 — Quick SRAM Test<a class="headerlink" href="#example-2-quick-sram-test" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Engineer: Flash the latest bitstream to SRAM for a quick test
+Agent:    Listing bitstreams in /media/snit/AiHPC/projects/ldpc/...
+          Found: output/ldpc_top.fs (2026-04-27 14:32)
+          Loading to SRAM (not persistent)...
+          ✅ SRAM load succeeded.
+</pre></div>
+</div>
+</section>
+<section id="example-3-board-not-ready">
+<h3>Example 3 — Board Not Ready<a class="headerlink" href="#example-3-board-not-ready" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Engineer: Detect FPGA
+Agent:    ⚠️ Board not in JTAG mode (FT2232 not detected on USB).
+
+          To activate JTAG mode:
+            1. Unplug the DEBUG-USB2 cable
+            2. Hold the DBG_BOOT button (below DEBUG-USB2, TOP of PCB)
+            3. Plug back in while holding
+            4. Release after ~1 second
+
+          Then retry.
+</pre></div>
+</div>
+</section>
+<section id="example-4-design-knowledge-query">
+<h3>Example 4 — Design Knowledge Query<a class="headerlink" href="#example-4-design-knowledge-query" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Engineer: What was the last change we made to the LDPC encoder constraints?
+Agent:    [searches Obsidian vault]
+          From MAI/notes/ldpc-design-log.md (2026-04-15):
+          &quot;Updated timing constraint for encoder output to 250 MHz target.
+           Previous was 200 MHz — required pipeline stage insertion in enc_out_reg.&quot;
+</pre></div>
+</div>
+</section>
+<section id="example-5-full-setup-from-scratch">
+<h3>Example 5 — Full Setup from Scratch<a class="headerlink" href="#example-5-full-setup-from-scratch" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Engineer: I just plugged in the board. What do I need to do?
+Agent:    1. Check DIP switches → all OFF
+          2. Activate JTAG mode (DBG_BOOT button sequence)
+          3. Verify: lsusb | grep 0403:6010
+          4. If USB access denied: run install_udev_rules commands
+
+          Want me to check if the board is detected now?
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="obsidian-integration">
+<h2>Obsidian Integration<a class="headerlink" href="#obsidian-integration" title="Link to this heading">#</a></h2>
+<section id="what-the-agent-can-access">
+<h3>What the Agent Can Access<a class="headerlink" href="#what-the-agent-can-access" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">obsidian-vault</span></code> MCP server gives the agent full read/write access to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/home/snit/ai/obsidian-noted/openclaw-second-brain/
+├── MAI/
+│   ├── guide/          ← This document lives here
+│   └── ...
+├── [project notes]
+├── [design decisions]
+└── [research logs]
+</pre></div>
+</div>
+</section>
+<section id="practical-uses-for-fpga-r-d">
+<h3>Practical Uses for FPGA R&amp;D<a class="headerlink" href="#practical-uses-for-fpga-r-d" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Design decision logging</strong> — Ask the agent to record why a specific architecture choice was made</p></li>
+<li><p><strong>Build history</strong> — Log successful bitstreams, timing results, resource utilization</p></li>
+<li><p><strong>Error knowledge base</strong> — When a synthesis error is resolved, document the fix</p></li>
+<li><p><strong>Cross-session memory</strong> — Context from last week’s session is available today</p></li>
+</ol>
+</section>
+<section id="writing-to-the-vault-via-agent">
+<h3>Writing to the Vault via Agent<a class="headerlink" href="#writing-to-the-vault-via-agent" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engineer</span><span class="p">:</span> <span class="n">Save</span> <span class="n">a</span> <span class="n">note</span> <span class="n">that</span> <span class="n">we</span> <span class="n">changed</span> <span class="n">the</span> <span class="n">FIFO</span> <span class="n">depth</span> <span class="kn">from</span><span class="w"> </span><span class="mi">256</span> <span class="n">to</span> <span class="mi">512</span> <span class="n">today</span>
+          <span class="n">to</span> <span class="n">fix</span> <span class="n">the</span> <span class="n">backpressure</span> <span class="n">issue</span>
+
+<span class="n">Agent</span><span class="p">:</span>    <span class="p">[</span><span class="n">creates</span><span class="o">/</span><span class="n">updates</span> <span class="n">MAI</span><span class="o">/</span><span class="n">notes</span><span class="o">/</span><span class="n">design</span><span class="o">-</span><span class="n">log</span><span class="o">-</span><span class="mi">2026</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mf">27.</span><span class="n">md</span><span class="p">]</span>
+          <span class="n">Saved</span><span class="p">:</span> <span class="s2">&quot;2026-04-27 — FIFO depth increased 256→512 to resolve</span>
+          <span class="n">encoder</span> <span class="n">backpressure</span> <span class="n">under</span> <span class="nb">max</span> <span class="n">throughput</span><span class="o">.</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h2>Slack Integration<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="channel-all-openclaw-ws">
+<h3>Channel: <code class="docutils literal notranslate"><span class="pre">#all-openclaw-ws</span></code><a class="headerlink" href="#channel-all-openclaw-ws" title="Link to this heading">#</a></h3>
+<p>The agent is live in this channel with <code class="docutils literal notranslate"><span class="pre">interactiveReplies</span></code> enabled. It:</p>
+<ul class="simple">
+<li><p>Responds when mentioned or directly addressed</p></li>
+<li><p>Reacts with emoji when appropriate (no unnecessary replies)</p></li>
+<li><p>Can trigger any MCP tool from a natural-language message</p></li>
+<li><p>Stays quiet during human-to-human discussion</p></li>
+</ul>
+</section>
+<section id="invocation-examples">
+<h3>Invocation Examples<a class="headerlink" href="#invocation-examples" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@openclaw</span> <span class="n">build</span> <span class="ow">and</span> <span class="n">flash</span> <span class="n">my</span> <span class="n">project</span> <span class="n">at</span> <span class="o">/</span><span class="n">media</span><span class="o">/.../</span><span class="n">mydesign</span><span class="o">.</span><span class="n">gprj</span>
+<span class="nd">@openclaw</span> <span class="n">what</span><span class="s1">&#39;s the DIP switch config for JTAG?</span>
+<span class="nd">@openclaw</span> <span class="n">scan</span> <span class="k">for</span> <span class="n">USB</span> <span class="n">devices</span>
+<span class="nd">@openclaw</span> <span class="n">check</span> <span class="n">the</span> <span class="n">Obsidian</span> <span class="n">vault</span> <span class="k">for</span> <span class="n">notes</span> <span class="n">on</span> <span class="n">the</span> <span class="n">LDPC</span> <span class="n">timing</span> <span class="n">closure</span>
+</pre></div>
+</div>
+</section>
+<section id="agent-behavior-in-group-channels">
+<h3>Agent Behavior in Group Channels<a class="headerlink" href="#agent-behavior-in-group-channels" title="Link to this heading">#</a></h3>
+<p>Per the agent’s workspace rules:</p>
+<ul class="simple">
+<li><p>Responds when directly asked or when it can add genuine value</p></li>
+<li><p>Does <strong>not</strong> respond to every message — participates like a human team member</p></li>
+<li><p>Uses single emoji reactions (👍, ✅) instead of text replies for acknowledgements</p></li>
+<li><p>Avoids dominating the conversation</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="gowin-toolchain-reference">
+<h2>Gowin Toolchain Reference<a class="headerlink" href="#gowin-toolchain-reference" title="Link to this heading">#</a></h2>
+<section id="paths-current-installation">
+<h3>Paths (Current Installation)<a class="headerlink" href="#paths-current-installation" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gw_sh</span></code> (headless IDE)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/media/snit/AiHPC/projects/ldpc/aiChipDC/IDE/bin/gw_sh</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">programmer_cli</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/media/snit/AiHPC/projects/ldpc/aiChipDC/Programmer/bin/programmer_cli</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">openFPGALoader</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~/.local/bin/openFPGALoader</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>IDE lib directory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/media/snit/AiHPC/projects/ldpc/aiChipDC/IDE/lib</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="license">
+<h3>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LM_LICENSE_FILE</span><span class="o">=</span><span class="n">YOUR_LICENSE_SERVER</span>
+</pre></div>
+</div>
+</section>
+<section id="headless-build-manual-tcl">
+<h3>Headless Build (Manual TCL)<a class="headerlink" href="#headless-build-manual-tcl" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">LM_LICENSE_FILE</span><span class="o">=</span>YOUR_LICENSE_SERVER
+<span class="nb">export</span><span class="w"> </span><span class="nv">QT_QPA_PLATFORM</span><span class="o">=</span>offscreen
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/media/snit/AiHPC/projects/ldpc/aiChipDC/IDE/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+cat<span class="w"> </span>&gt;<span class="w"> </span>/tmp/build.tcl<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">open_project /path/to/project.gprj</span>
+<span class="s">run syn</span>
+<span class="s">run pnr</span>
+<span class="s">exit</span>
+<span class="s">EOF</span>
+
+/media/snit/AiHPC/projects/ldpc/aiChipDC/IDE/bin/gw_sh<span class="w"> </span>/tmp/build.tcl
+<span class="c1"># Bitstream output: output/&lt;top&gt;.fs</span>
+</pre></div>
+</div>
+</section>
+<section id="programming-commands-manual">
+<h3>Programming Commands (Manual)<a class="headerlink" href="#programming-commands-manual" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Detect FPGA (JTAG mode required)</span>
+openFPGALoader<span class="w"> </span>-b<span class="w"> </span>tangmega138k<span class="w"> </span>--detect
+
+<span class="c1"># Flash to external SPI (persistent)</span>
+openFPGALoader<span class="w"> </span>-b<span class="w"> </span>tangmega138k<span class="w"> </span>-f<span class="w"> </span>/path/to/bitstream.fs
+
+<span class="c1"># Load to SRAM only (fast, volatile)</span>
+openFPGALoader<span class="w"> </span>-b<span class="w"> </span>tangmega138k<span class="w"> </span>/path/to/bitstream.fs
+
+<span class="c1"># Gowin programmer_cli scan</span>
+programmer_cli<span class="w"> </span>--scan
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="security-operations">
+<h2>Security &amp; Operations<a class="headerlink" href="#security-operations" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Security protocols sourced from the Mahidol AI Center Obsidian vault:
+<code class="docutils literal notranslate"><span class="pre">MCP_CHECKLIST.md</span></code> · <code class="docutils literal notranslate"><span class="pre">Paths_Reference.md</span></code> · <code class="docutils literal notranslate"><span class="pre">Path-Verification-Log.md</span></code> ·
+<code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Slack.md</span></code> · <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Obsidian.md</span></code> · <code class="docutils literal notranslate"><span class="pre">DNS.md</span></code> · <code class="docutils literal notranslate"><span class="pre">2026-04-27-Slack-OpenClaw-LLM-Fix.md</span></code></p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="network-isolation">
+<h3>1. Network Isolation<a class="headerlink" href="#network-isolation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>OpenClaw gateway binds to <strong>loopback only</strong> (<code class="docutils literal notranslate"><span class="pre">gateway.bind:</span> <span class="pre">loopback</span></code>) — not reachable from LAN by default</p></li>
+<li><p>Slack connects via <strong>Socket Mode</strong> — no inbound port, no public URL, no firewall rule needed</p></li>
+<li><p>Model endpoint uses <strong>HTTPS</strong> to <code class="docutils literal notranslate"><span class="pre">aicenter.mahidol.ac.th</span></code> — encrypted in transit</p></li>
+<li><p>No external cloud APIs; all compute and data remain on Mahidol infrastructure</p></li>
+</ul>
+<p><strong>Firewall (optional — restrict gateway port further):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">18789</span>/tcp<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1
+sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+</pre></div>
+</div>
+<p><strong>Campus network note (from <code class="docutils literal notranslate"><span class="pre">DNS.md</span></code>):</strong> The Mahidol campus network blocks outbound DNS to public resolvers (1.1.1.1, 8.8.8.8) — do not change system DNS away from <code class="docutils literal notranslate"><span class="pre">192.168.1.1</span></code>. If this machine is a Kubernetes master, DNS changes propagate to all pods. Use the router’s upstream DNS settings instead of per-host overrides.</p>
+</section>
+<hr class="docutils" />
+<section id="authentication">
+<h3>2. Authentication<a class="headerlink" href="#authentication" title="Link to this heading">#</a></h3>
+<section id="gateway-token">
+<h4>Gateway Token<a class="headerlink" href="#gateway-token" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a new device token</span>
+openclaw<span class="w"> </span>devices<span class="w"> </span>pair<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;lab-workstation&quot;</span>
+
+<span class="c1"># View current token</span>
+openclaw<span class="w"> </span>config<span class="w"> </span>get<span class="w"> </span>gateway.auth.token
+</pre></div>
+</div>
+</section>
+<section id="slack-bot-token-scopes-least-privilege">
+<h4>Slack Bot Token Scopes (Least Privilege)<a class="headerlink" href="#slack-bot-token-scopes-least-privilege" title="Link to this heading">#</a></h4>
+<p>From <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Slack.md</span></code> — grant only the minimum required scopes when creating the Slack App:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Scope</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">app_mentions:read</span></code></p></td>
+<td><p>Detect &#64;mentions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chat:write</span></code></p></td>
+<td><p>Send messages</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">im:history</span></code></p></td>
+<td><p>Read DMs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">im:read</span></code></p></td>
+<td><p>List DMs</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">im:write</span></code></p></td>
+<td><p>Open DM channels</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>No admin, file, or user-management scopes are needed or should be granted.</p>
+</section>
+<section id="slack-device-pairing-security-first-protocol">
+<h4>Slack Device Pairing (Security-First Protocol)<a class="headerlink" href="#slack-device-pairing-security-first-protocol" title="Link to this heading">#</a></h4>
+<p>From <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Slack.md</span></code> — OpenClaw requires explicit approval before responding to any Slack account:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Find the bot in Slack Apps, send it a message (e.g. &quot;Hi&quot;)</span>
+<span class="c1"># 2. Bot replies with a pairing code in the terminal</span>
+<span class="c1"># 3. Approve from the server:</span>
+openclaw<span class="w"> </span>pairing<span class="w"> </span>approve<span class="w"> </span>slack<span class="w"> </span>&lt;YOUR_CODE&gt;
+
+<span class="c1"># 4. Invite to channels:</span>
+<span class="c1"># In Slack: /invite @OpenClaw in the target channel</span>
+</pre></div>
+</div>
+</section>
+<section id="token-storage">
+<h4>Token Storage<a class="headerlink" href="#token-storage" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Slack tokens: store in environment variables — <strong>never</strong> hardcode in config files</p></li>
+<li><p>Gateway token: <code class="docutils literal notranslate"><span class="pre">~/.openclaw/openclaw.json</span></code> (file permissions below)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In ~/.bashrc or ~/.profile</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENCLAW_SLACK_BOT_TOKEN</span><span class="o">=</span><span class="s2">&quot;xoxb-...&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENCLAW_SLACK_APP_TOKEN</span><span class="o">=</span><span class="s2">&quot;xapp-...&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="file-system-permissions">
+<h3>3. File System Permissions<a class="headerlink" href="#file-system-permissions" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lock down workspace and config</span>
+chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>~/.openclaw/workspace
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.openclaw/openclaw.json
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="mcp-first-execution-protocol">
+<h3>4. MCP-First Execution Protocol<a class="headerlink" href="#mcp-first-execution-protocol" title="Link to this heading">#</a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">MCP_CHECKLIST.md</span></code> — the agent <strong>must</strong> use MCP tools rather than direct shell execution wherever available. This is a hard security rule:</p>
+<blockquote>
+<div><p><strong>When you try to do something directly (exec, read, write, shell) → FIRST check if MCP is available for that task.</strong></p>
+</div></blockquote>
+<p><strong>Why this matters:</strong></p>
+<ul class="simple">
+<li><p>MCP tools have fixed, reviewed paths — no PATH injection risk</p></li>
+<li><p>Environment variables (license, library paths) are set inside the server — not exposed in shell history</p></li>
+<li><p>Errors are parsed and sanitized before being returned to the AI</p></li>
+</ul>
+<p><strong>Registered MCP servers that replace direct shell calls:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Direct shell (avoid)</p></th>
+<th class="head"><p>MCP tool (use instead)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Flash bitstream</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">openFPGALoader</span> <span class="pre">...</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flash_bitstream</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Synthesize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gw_sh</span> <span class="pre">build.tcl</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">synthesize</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Full build</p></td>
+<td><p>manual TCL + flash</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">build</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Check USB</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lsusb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">check_usb_devices</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Vault notes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">grep</span></code> on files</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">obsidian-vault</span></code> MCP</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="agent-path-safety-rules">
+<h3>5. Agent Path Safety Rules<a class="headerlink" href="#agent-path-safety-rules" title="Link to this heading">#</a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">Paths_Reference.md</span></code> — hard rules for the AI agent operating on this system:</p>
+<ol class="arabic simple">
+<li><p><strong>NEVER guess file paths</strong> — always confirm with <code class="docutils literal notranslate"><span class="pre">find</span></code> before operating</p></li>
+<li><p><strong>NEVER create a file if the canonical location is missing</strong> — report to user first</p></li>
+<li><p><strong>Canonical project paths</strong> live in <code class="docutils literal notranslate"><span class="pre">Paths_Reference.md</span></code> in the vault — read it before any FPGA/LLM session</p></li>
+</ol>
+<p><strong>Canonical active project paths:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Project</p></th>
+<th class="head"><p>Canonical Path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Musical LED (Tang Mega 138K)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/home/snit/ai/projects/ldpc/aChipDC/musical_letters/eda_proc/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>aiChipDC (AI Chip Design Center)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/home/snit/ai/projects/ldpc/aChipDC/aiChipDC</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Research workspace root</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/home/snit/ai</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="hard-operational-constraints">
+<h3>6. Hard Operational Constraints<a class="headerlink" href="#hard-operational-constraints" title="Link to this heading">#</a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">Path-Verification-Log.md</span></code> — the following constraints are permanently active in the agent’s operating rules:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constraint</p></th>
+<th class="head"><p>Rule</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Manifest Authority</strong></p></td>
+<td><p>Canonical paths from <code class="docutils literal notranslate"><span class="pre">Paths_Reference.md</span></code> take precedence over any assumed path</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>No Silent Delete</strong></p></td>
+<td><p>Never delete files without explicit user confirmation — use <code class="docutils literal notranslate"><span class="pre">trash</span></code> over <code class="docutils literal notranslate"><span class="pre">rm</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Sequential Operations</strong></p></td>
+<td><p>Do not run parallel file operations — one operation completes before the next starts</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>No Parallel Path Creation</strong></p></td>
+<td><p>Never create multiple path variants simultaneously — one canonical path per resource</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="obsidian-vault-backup-security">
+<h3>7. Obsidian Vault Backup Security<a class="headerlink" href="#obsidian-vault-backup-security" title="Link to this heading">#</a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Obsidian.md</span></code> — the vault is sensitive research data. Back it up to a <strong>private</strong> repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone to private GitHub repo (one-time setup)</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR_ORG/private-vault.git<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/home/snit/ai/obsidian-noted/openclaw-second-brain
+
+<span class="c1"># Configure git credential caching (avoid PAT prompts)</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span>store
+</pre></div>
+</div>
+<p><strong>Authentication options (in order of preference):</strong></p>
+<ol class="arabic simple">
+<li><p><strong>SSH keys</strong> — most secure, no token exposure</p></li>
+<li><p><strong>Personal Access Token (PAT)</strong> — <code class="docutils literal notranslate"><span class="pre">repo</span></code> scope only; generate at GitHub → Settings → Developer settings → Personal access tokens</p></li>
+<li><p>Never use your GitHub password directly</p></li>
+</ol>
+<p><strong>Obsidian Git plugin settings:</strong></p>
+<ul class="simple">
+<li><p>Enable <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">on</span> <span class="pre">startup</span></code></p></li>
+<li><p>Set backup interval: 5–15 minutes</p></li>
+<li><p>Repository must be <strong>Private</strong> — vault contains personal context and project IP</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="model-resilience-and-fallback">
+<h3>8. Model Resilience and Fallback<a class="headerlink" href="#model-resilience-and-fallback" title="Link to this heading">#</a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">2026-04-27-Slack-OpenClaw-LLM-Fix.md</span></code> — the remote model endpoint can time out (Slack WebSocket also disconnects periodically). The system has a local fallback:</p>
+<p><strong>Primary:</strong> <code class="docutils literal notranslate"><span class="pre">vllm/Qwen/Qwen3.6-27B</span></code> at <code class="docutils literal notranslate"><span class="pre">https://aicenter.mahidol.ac.th/qwen3-6-27b/v1</span></code><br />
+<strong>Fallback:</strong> <code class="docutils literal notranslate"><span class="pre">ollama/qwen3.6:27b</span></code> at <code class="docutils literal notranslate"><span class="pre">http://localhost:11434/v1</span></code> (dual-GPU: RTX 3080 + RTX 3080 Ti)</p>
+<p>Switch to local fallback:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>agents.defaults.model.primary<span class="w"> </span><span class="s2">&quot;ollama/qwen3.6:27b&quot;</span>
+openclaw<span class="w"> </span>gateway<span class="w"> </span>restart
+</pre></div>
+</div>
+<p>Switch back to remote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>agents.defaults.model.primary<span class="w"> </span><span class="s2">&quot;vllm/Qwen/Qwen3.6-27B&quot;</span>
+openclaw<span class="w"> </span>gateway<span class="w"> </span>restart
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="disable-unused-channels">
+<h3>9. Disable Unused Channels<a class="headerlink" href="#disable-unused-channels" title="Link to this heading">#</a></h3>
+<p>Reduce attack surface by disabling channels not in active use:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># ~/.openclaw/openclaw.json — disable inactive channels</span>
+<span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">entries</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">telegram</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">discord</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="rate-limiting-recommended-for-shared-lab-use">
+<h3>10. Rate Limiting (Recommended for Shared Lab Use)<a class="headerlink" href="#rate-limiting-recommended-for-shared-lab-use" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.rateLimit.enabled<span class="w"> </span><span class="nb">true</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.rateLimit.maxRequests<span class="w"> </span><span class="m">100</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gateway.rateLimit.windowMs<span class="w"> </span><span class="m">60000</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<section id="fpga-usb-issues">
+<h3>FPGA / USB Issues<a class="headerlink" href="#fpga-usb-issues" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“No Gowin devices found”</p></td>
+<td><p>BL616 not in JTAG mode</p></td>
+<td><p>Press DBG_BOOT while plugging USB</p></td>
+</tr>
+<tr class="row-odd"><td><p>“unable to open ftdi device”</p></td>
+<td><p>Same as above</p></td>
+<td><p>Same fix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lsusb</span></code> shows <code class="docutils literal notranslate"><span class="pre">1a86:fe0c</span></code> but not <code class="docutils literal notranslate"><span class="pre">0403:6010</span></code></p></td>
+<td><p>BL616 in CDC mode</p></td>
+<td><p>Press DBG_BOOT</p></td>
+</tr>
+<tr class="row-odd"><td><p>“Permission denied” on USB</p></td>
+<td><p>Missing udev rules</p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">install_udev_rules</span></code> via agent or manually</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">programmer_cli</span></code> finds cable but not device</p></td>
+<td><p>Wrong DIP switch or JTAG not active</p></td>
+<td><p>Set all DIP OFF + DBG_BOOT</p></td>
+</tr>
+<tr class="row-odd"><td><p>SRAM load fails</p></td>
+<td><p>Flash is empty</p></td>
+<td><p>Use <code class="docutils literal notranslate"><span class="pre">-f</span></code> flag to write flash first</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="build-issues">
+<h3>Build Issues<a class="headerlink" href="#build-issues" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Synthesis timeout (&gt;5 min)</p></td>
+<td><p>Check <code class="docutils literal notranslate"><span class="pre">LM_LICENSE_FILE</span></code>, verify license server is reachable</p></td>
+</tr>
+<tr class="row-odd"><td><p>“Cannot find Qt platform”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">QT_QPA_PLATFORM=offscreen</span></code> not set — MCP server sets it automatically</p></td>
+</tr>
+<tr class="row-even"><td><p>“No .fs found in output/”</p></td>
+<td><p>P&amp;R failed silently — check agent’s full stderr output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="openclaw-mcp-issues">
+<h3>OpenClaw / MCP Issues<a class="headerlink" href="#openclaw-mcp-issues" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openclaw<span class="w"> </span>gateway<span class="w"> </span>restart
+openclaw<span class="w"> </span>mcp<span class="w"> </span>show<span class="w"> </span>gowin-workflow
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>/media/snit/AiHPC/tools/vlsi/gowin/mcp_server.py<span class="w">  </span><span class="c1"># test manually</span>
+openclaw<span class="w"> </span>logs<span class="w"> </span>--tail<span class="w"> </span><span class="m">50</span>
+</pre></div>
+</div>
+</section>
+<section id="model-endpoint-issues">
+<h3>Model Endpoint Issues<a class="headerlink" href="#model-endpoint-issues" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://aicenter.mahidol.ac.th/qwen3-6-27b/v1/models
+
+<span class="c1"># Fall back to local Ollama</span>
+openclaw<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>agents.defaults.model.primary<span class="w"> </span><span class="s2">&quot;ollama/qwen3.6:27b&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quick-reference-card">
+<h2>Quick Reference Card<a class="headerlink" href="#quick-reference-card" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────┐
+│  MAHIDOL FPGA AI WORKFLOW — QUICK REFERENCE             │
+├─────────────────────────────────────────────────────────┤
+│  START:       openclaw gateway start                    │
+│  STATUS:      openclaw gateway status                   │
+│  WEB CHAT:    http://localhost:18789                    │
+│  SLACK:       #all-openclaw-ws                          │
+├─────────────────────────────────────────────────────────┤
+│  BOARD SETUP:                                           │
+│    DIP:       All switches OFF                          │
+│    JTAG:      Hold DBG_BOOT → plug USB → release        │
+│    VERIFY:    lsusb | grep 0403:6010                    │
+├─────────────────────────────────────────────────────────┤
+│  AGENT COMMANDS (natural language):                     │
+│    &quot;Build and flash [project path]&quot;                     │
+│    &quot;Synthesize [project path]&quot;                          │
+│    &quot;Flash [bitstream.fs] to SRAM&quot;                       │
+│    &quot;Detect FPGA&quot;                                        │
+│    &quot;Check USB devices&quot;                                  │
+│    &quot;What&#39;s the DIP switch config?&quot;                      │
+│    &quot;Search my notes for [topic]&quot;                        │
+├─────────────────────────────────────────────────────────┤
+│  LICENSE:     YOUR_LICENSE_SERVER                           │
+│  MODEL:       Qwen3.6-27B @ aicenter.mahidol.ac.th     │
+│  VAULT:       ~/ai/obsidian-noted/openclaw-second-brain │
+└─────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><em>Built for transparent, on-premise AI-assisted hardware design.</em><br />
+<strong>Mahidol University AI Center</strong> × <strong>OpenClaw</strong> × <strong>Anthropic Claude</strong> × <strong>Qwen3.6-27B</strong></p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hfss.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Ansys HFSS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="claudevai.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DevOps Engineering HPC &amp; AI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mahidol-university-ai-center-design-house-r-d-laboratory">Mahidol University AI Center · Design House R&amp;D Laboratory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-system-does">What This System Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#business-value">Business Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-capabilities-now-available">Key Capabilities — Now Available</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-should-read-this-guide">Who Should Read This Guide</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-map">Component Map</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-perspective">Technical Perspective</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mcp-architecture">MCP Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gowin-workflow-fpga-toolchain-server">1. <code class="docutils literal notranslate"><span class="pre">gowin-workflow</span></code> — FPGA Toolchain Server</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#obsidian-vault-knowledge-base-server">2. <code class="docutils literal notranslate"><span class="pre">obsidian-vault</span></code> — Knowledge Base Server</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openclaw-configuration-openclaw-openclaw-json">OpenClaw Configuration (<code class="docutils literal notranslate"><span class="pre">~/.openclaw/openclaw.json</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slack-integration">Slack Integration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-the-gateway">Start the Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-points">Access Points</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fpga-hardware-setup">FPGA Hardware Setup</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tang-mega-138k-board-overview">Tang Mega 138K Board Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dip-switch-settings">DIP Switch Settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activating-jtag-mode-required-every-session">Activating JTAG Mode (Required Every Session)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usb-permissions-run-once">USB Permissions (Run Once)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mcp-tools-reference">MCP Tools Reference</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#device-detection">Device Detection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-usb-devices"><code class="docutils literal notranslate"><span class="pre">check_usb_devices</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-cables"><code class="docutils literal notranslate"><span class="pre">scan_cables</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-devices"><code class="docutils literal notranslate"><span class="pre">scan_devices</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-fpga"><code class="docutils literal notranslate"><span class="pre">detect_fpga</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-device-info"><code class="docutils literal notranslate"><span class="pre">get_device_info</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-pipeline">Build Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#synthesize-project-path"><code class="docutils literal notranslate"><span class="pre">synthesize(project_path)</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-project-path"><code class="docutils literal notranslate"><span class="pre">implement(project_path)</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#build-project-path-do-flash-true"><code class="docutils literal notranslate"><span class="pre">build(project_path,</span> <span class="pre">do_flash=True)</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming">Programming</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flash-bitstream-fs-file-to-flash-true"><code class="docutils literal notranslate"><span class="pre">flash_bitstream(fs_file,</span> <span class="pre">to_flash=True)</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-bitstreams-directory"><code class="docutils literal notranslate"><span class="pre">list_bitstreams(directory)</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-maintenance">Setup &amp; Maintenance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-dip-switch-config"><code class="docutils literal notranslate"><span class="pre">get_dip_switch_config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-udev-rules"><code class="docutils literal notranslate"><span class="pre">install_udev_rules</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#update-bl616-firmware-firmware-path-port"><code class="docutils literal notranslate"><span class="pre">update_bl616_firmware(firmware_path,</span> <span class="pre">port)</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-examples">Workflow Examples</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-daily-build-and-flash">Example 1 — Daily Build and Flash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-quick-sram-test">Example 2 — Quick SRAM Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-board-not-ready">Example 3 — Board Not Ready</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-design-knowledge-query">Example 4 — Design Knowledge Query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-full-setup-from-scratch">Example 5 — Full Setup from Scratch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obsidian-integration">Obsidian Integration</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-agent-can-access">What the Agent Can Access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-uses-for-fpga-r-d">Practical Uses for FPGA R&amp;D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-to-the-vault-via-agent">Writing to the Vault via Agent</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Slack Integration</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-all-openclaw-ws">Channel: <code class="docutils literal notranslate"><span class="pre">#all-openclaw-ws</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invocation-examples">Invocation Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-behavior-in-group-channels">Agent Behavior in Group Channels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gowin-toolchain-reference">Gowin Toolchain Reference</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-current-installation">Paths (Current Installation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#headless-build-manual-tcl">Headless Build (Manual TCL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-commands-manual">Programming Commands (Manual)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-operations">Security &amp; Operations</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-isolation">1. Network Isolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">2. Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gateway-token">Gateway Token</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slack-bot-token-scopes-least-privilege">Slack Bot Token Scopes (Least Privilege)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slack-device-pairing-security-first-protocol">Slack Device Pairing (Security-First Protocol)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#token-storage">Token Storage</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-permissions">3. File System Permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mcp-first-execution-protocol">4. MCP-First Execution Protocol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-path-safety-rules">5. Agent Path Safety Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hard-operational-constraints">6. Hard Operational Constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obsidian-vault-backup-security">7. Obsidian Vault Backup Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-resilience-and-fallback">8. Model Resilience and Fallback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disable-unused-channels">9. Disable Unused Channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-limiting-recommended-for-shared-lab-use">10. Rate Limiting (Recommended for Shared Lab Use)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fpga-usb-issues">FPGA / USB Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-issues">Build Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openclaw-mcp-issues">OpenClaw / MCP Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-endpoint-issues">Model Endpoint Issues</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference-card">Quick Reference Card</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/fpga.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/fpga.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
