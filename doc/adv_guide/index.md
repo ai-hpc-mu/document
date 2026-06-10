@@ -42,6 +42,7 @@ rstudio
 
 bioinfo
 alphafold
+alphafold-db-api-access
 parabricks
 cellbender
 ```
