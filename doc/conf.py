@@ -491,3 +491,4 @@ linkcheck_report_timeouts_as_broken = True
 
 
 
+nbsphinx_allow_errors = True

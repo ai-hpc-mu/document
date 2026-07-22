@@ -46,6 +46,12 @@ alphafold-db-api-access
 parabricks
 cellbender
 ```
+```{toctree}
+:maxdepth: 2
+:caption: Chemistry and materials science
+
+alchemi
+```
 
 ```{toctree}
 :maxdepth: 2

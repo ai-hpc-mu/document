@@ -1,0 +1,400 @@
+---
+
+# ⚗️ NVIDIA ALCHEMI: AI-Powered Chemistry & Materials Simulation at Mahidol
+
+**Author**: Snit Sanghlao, Qwen, Hermes Agent
+**Created**: 2026-07-22 | **Last Updated**: 2026-07-22
+
+### GPU-Accelerated Atomistic Simulation via NVIDIA NIM Microservices
+
+This guide covers the use of **NVIDIA ALCHEMI** — a collection of GPU-accelerated AI microservices for chemistry and materials science — deployed on the Mahidol AI Center Kubernetes cluster. ALCHEMI enables near-quantum chemistry accuracy simulations at a fraction of the compute cost, powered by Machine Learning Interatomic Potentials (MLIPs) running on NVIDIA A100 GPUs.
+
+---
+
+## 📊 Service Specifications
+
+| Feature | BGR (Geometry Relaxation) | BMD (Molecular Dynamics) |
+| --- | --- | --- |
+| **NIM Image** | `nvcr.io/nim/nvidia/alchemi-bgr:1.0.0` | `nvcr.io/nim/nvidia/alchemi-bmd:1.0.0` |
+| **Model** | MACE-MP-0 (pre-bundled) | MACE-MPA-0 (pre-bundled) |
+| **API Endpoint** | `https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer` | `https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer` |
+| **Health Check** | `/alchemi-bgr/v1/health/ready` | `/alchemi-bmd/v1/health/ready` |
+| **GPU** | 2x A100 SXM4 40GB (turing node) | 2x A100 SXM4 40GB (turing node) |
+| **Ensembles** | Geometry optimization (FIRE2) | NVE, NVT, NPT |
+| **Accuracy** | Near-DFT level (~meV/atom error) | Near-DFT level (~meV/atom error) |
+
+---
+
+## 🔬 What Is ALCHEMI?
+
+Traditional computational chemistry faces a trade-off: **Density Functional Theory (DFT)** is accurate but scales as O(N³) and takes hours per molecule. **Classical force fields** are fast but lack chemical accuracy. ALCHEMI breaks this barrier using **Machine Learning Interatomic Potentials (MLIPs)** trained on millions of DFT calculations, delivering:
+
+- **Near-DFT accuracy** — errors typically < 5 meV/atom vs. quantum chemistry
+- **10,000x speedup** over DFT — seconds instead of hours per structure
+- **Batched inference** — process hundreds of molecules simultaneously on GPU
+- **No local installation** — REST API access from any Python environment
+
+The underlying model (**MACE-MP-0**) was trained on ~1 million DFT structures spanning 89 elements, making it suitable for organic molecules, inorganic materials, battery electrolytes, catalysts, and more.
+
+---
+## 🧪 Use Case 1: BGR — Batched Geometry Relaxation
+
+**What it does:** Given atomic coordinates, finds the lowest-energy (equilibrium) structure by relaxing forces to zero. Essential for validating molecular structures, finding transition states, and preparing input for further simulations.
+
+### Scientific Breakthrough Potential
+
+| Research Area | Application | Impact |
+|---|---|---|
+| **Battery Materials** | Optimize Li-ion intercalation structures in cathode materials (NMC, LFP) | Accelerate discovery of higher-capacity battery chemistries |
+| **Catalyst Design** | Relax adsorbate configurations on metal surfaces (Pt, Pd, Ni) | Screen thousands of catalyst candidates for green hydrogen, CO₂ reduction |
+| **Drug Discovery** | Optimize ligand-protein binding poses at near-DFT accuracy | Reduce false positives in virtual screening pipelines |
+| **OLED Materials** | Relax excited-state geometries of organic emitters | Design more efficient organic light-emitting diodes |
+| **Thai Natural Products** | Validate crystal structures of Thai medicinal compounds | Support computational pharmacology research at Mahidol |
+
+### Quick Start — Single Molecule
+
+```bash
+# H2 molecule geometry relaxation
+curl -s -X POST \
+  'https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "atoms": [{
+      "coord": [0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+      "numbers": [1, 1],
+      "cell": [10, 0, 0, 0, 10, 0, 0, 0, 10]
+    }]
+  }' | python3 -m json.tool
+```
+
+**Expected output:** `converged: true`, energy ~-6.5 eV, bond distance relaxed to 0.74 Angstrom.
+
+### Python — Batch Processing with ASE
+
+```python
+import requests
+import ase.io
+import numpy as np
+
+INFER_URL = "https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer"
+
+# Read multiple structures from extended XYZ file
+atoms_list = ase.io.read("structures.extxyz", index=":")
+if not isinstance(atoms_list, list):
+    atoms_list = [atoms_list]
+
+# Convert ASE Atoms to API format
+def ase_to_api(atoms, sid=None):
+    data = {
+        'coord': atoms.positions.flatten().tolist(),
+        'numbers': atoms.numbers.tolist(),
+        'charge': atoms.info.get('charge', 0),
+        'mult': atoms.info.get('mult', 1),
+    }
+    if atoms.cell.volume > 0:
+        data['cell'] = atoms.cell.array.flatten().tolist()
+        data['pbc'] = atoms.pbc.tolist()
+    if sid:
+        data['structure_id'] = sid
+    return data
+
+# Submit batch request
+input_data = {'atoms': [ase_to_api(a, f"struct_{i}") for i, a in enumerate(atoms_list)]}
+response = requests.post(INFER_URL, json=input_data)
+result = response.json()
+
+# Write optimized structures
+optimized = []
+for opt in result['atoms']:
+    a = ase.Atoms(positions=np.array(opt['coord']).reshape(-1, 3), numbers=opt['numbers'])
+    if opt.get('cell'):
+        a.set_cell(np.array(opt['cell']).reshape(3, 3))
+    a.info['energy'] = opt['energy']
+    a.info['converged'] = opt['converged']
+    optimized.append(a)
+
+ase.io.write('structures_optimized.extxyz', optimized)
+print(f"Optimized {len(optimized)} structures")
+```
+
+---
+## 🧪 Use Case 2: BMD — Batched Molecular Dynamics
+
+**What it does:** Simulates atomic motion over time using MLIP forces. Supports NVE (microcanonical), NVT (canonical with thermostat), and NPT (isothermal-isobaric) ensembles. Essential for studying temperature-dependent properties, phase transitions, diffusion, and conformational sampling.
+
+### Scientific Breakthrough Potential
+
+| Research Area | Application | Impact |
+|---|---|---|
+| **Solid-State Batteries** | Simulate Li⁺ diffusion in solid electrolytes (LLZO, LATP) at operating temp | Predict ionic conductivity without expensive DFT-MD |
+| **Polymer Science** | Study thermal behavior of polymer chains, glass transition temperatures | Design polymers with tailored mechanical properties |
+| **Protein-Ligand Dynamics** | Run MD of drug binding events with near-DFT accuracy forces | Understand binding kinetics beyond static docking |
+| **Thermal Materials** | Compute thermal conductivity via Green-Kubo from equilibrium MD | Discover thermoelectric materials for waste heat recovery |
+| **Nanoparticle Stability** | Simulate surface reconstruction of metal nanoparticles under heat | Optimize catalyst stability at reaction conditions |
+
+### Quick Start — NVT Simulation
+
+```bash
+# Carbon dimer, 300K NVT simulation for 1 ps
+curl -s -X POST \
+  'https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "atoms": {
+      "coord": [0.0, 0.0, 0.0, 1.5, 0.0, 0.0],
+      "numbers": [6, 6],
+      "cell": [10, 0, 0, 0, 10, 0, 0, 0, 10],
+      "pbc": [true, true, true]
+    },
+    "config": {
+      "temperature": 300.0,
+      "nvt": true,
+      "friction": 1.0,
+      "dt": 1.0,
+      "md_time_max": 1.0,
+      "save_interval": 10
+    }
+  }' | python3 -m json.tool
+```
+
+### Python — Full MD Workflow with Restart
+
+```python
+import requests
+
+SERVER = "https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer"
+
+# Initial simulation
+request = {
+    "atoms": {
+        "coord": [0.0, 0.0, 0.0, 1.5, 0.0, 0.0],
+        "numbers": [6, 6],
+        "cell": [10.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 10.0],
+        "pbc": [True, True, True]
+    },
+    "config": {
+        "temperature": 300.0,
+        "dt": 1.0,
+        "md_time_max": 1.0,
+        "nvt": True,
+        "save_interval": 10
+    }
+}
+
+response = requests.post(SERVER, json=request)
+result = response.json()
+
+# Analyze trajectory
+trajectory = result["trajectory"]
+print(f"Total snapshots: {len(trajectory)}")
+print(f"Final energy: {trajectory[-1].get('energy', 'N/A')}")
+
+# Restart from final state
+final = trajectory[-1]
+restart = {
+    "atoms": {
+        "coord": final["coord"],
+        "velocity": final["velocity"],
+        "numbers": [6, 6],
+        "cell": final.get("cell", request["atoms"]["cell"]),
+        "pbc": [True, True, True]
+    },
+    "config": {
+        "temperature": 300.0,
+        "dt": 1.0,
+        "nvt": True,
+        "save_interval": 10,
+        "istep": result["config"]["istep"],
+        "md_time": result["config"]["md_time"],
+        "md_time_max": float(result["config"]["md_time"]) + 1.0
+    }
+}
+
+continuation = requests.post(SERVER, json=restart).json()
+print(f"Continued: {len(continuation['trajectory'])} new snapshots")
+```
+
+### Ensemble Configuration Reference
+
+| Ensemble | Config Fields | Use Case |
+|---|---|---|
+| **NVE** | `{"dt": 0.5, "md_time_max": 1.0}` | Energy conservation tests, isolated systems |
+| **NVT** | `{"temperature": 300, "nvt": true, "friction": 1.0, "dt": 1.0, "md_time_max": 10}` | Constant-temperature simulations (most common) |
+| **NPT** | Add `"npt": true, "pressure": 1.0, "barostat_every": 25` | Constant pressure (material expansion, phase transitions) |
+
+---
+## 🧪 Use Case 3: Combined BGR + BMD Workflow
+
+**Typical research pipeline:** Relax structure first (BGR), then run dynamics from equilibrium (BMD).
+
+```python
+import requests
+
+BGR_URL = "https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer"
+BMD_URL = "https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer"
+
+# Step 1: Relax initial structure
+bgr_request = {
+    "atoms": [{
+        "coord": [0.0, 0.0, 0.0, 0.0, 0.75, 0.0],  # Initial guess
+        "numbers": [8, 8],  # O2 molecule
+        "cell": [10, 0, 0, 0, 10, 0, 0, 0, 10]
+    }]
+}
+relaxed = requests.post(BGR_URL, json=bgr_request).json()["atoms"][0]
+# Note: API returns coord values as strings — cast to float for arithmetic
+coord = [float(x) for x in relaxed['coord']]
+print(f"Relaxed energy: {float(relaxed['energy']):.4f} eV")
+bond_len = ((coord[3]-coord[0])**2 + (coord[4]-coord[1])**2 + (coord[5]-coord[2])**2)**0.5
+print(f"Bond length: {bond_len:.3f} A")
+
+# Step 2: Run MD from relaxed structure
+bmd_request = {
+    "atoms": {
+        "coord": relaxed["coord"],
+        "numbers": relaxed["numbers"],
+        "cell": relaxed.get("cell", [10,0,0,0,10,0,0,0,10]),
+        "pbc": [True, True, True]
+    },
+    "config": {
+        "temperature": 500.0,  # High temp to study dissociation
+        "nvt": True,
+        "dt": 0.5,
+        "md_time_max": 2.0,
+        "save_interval": 5
+    }
+}
+md_result = requests.post(BMD_URL, json=bmd_request).json()
+print(f"MD trajectory: {len(md_result['trajectory'])} snapshots over {md_result['config']['md_time']:.1f} ps")
+```
+
+---
+
+## 🔌 Integration with AI Agents (Qwen / Hermes)
+
+ALCHEMI endpoints can be called directly from AI coding agents for autonomous materials discovery:
+
+### Continue.dev / VS Code Configuration
+
+Add to `~/.continue/config.yaml`:
+
+```yaml
+models:
+  - name: alchemi-assistant
+    provider: openai
+    model: qwen3.6-27b
+    apiBase: https://aicenter.mahidol.ac.th/qwen3-6-27b/v1
+    apiKey: "dummy"
+    systemMessage: |
+      You are a computational chemistry assistant. You have access to
+      NVIDIA ALCHEMI endpoints for geometry relaxation and molecular dynamics.
+      BGR: https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer
+      BMD: https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer
+```
+
+### Hermes Agent Skill
+
+Create `~/.hermes/skills/alchemi/SKILL.md` for automated chemistry workflows:
+
+```yaml
+---
+name: alchemi
+description: "Use when running atomistic simulations — geometry relaxation (BGR) or molecular dynamics (BMD) via NVIDIA ALCHEMI NIM endpoints."
+tags: [chemistry, materials-science, mlip, molecular-dynamics, geometry-relaxation]
+---
+```
+
+With tool definitions for calling the REST API, parsing results, and integrating with ASE/pymatgen workflows.
+
+---
+## 🧪 Verification & Testing
+
+### Health Check
+
+```bash
+# BGR health
+curl -sk 'https://aicenter.mahidol.ac.th/alchemi-bgr/v1/health/ready'
+# Expected: {"status":"ready","backends_alive":2,"backends_total":2}
+
+# BMD health
+curl -sk 'https://aicenter.mahidol.ac.th/alchemi-bmd/v1/health/ready'
+# Expected: {"status":"ready","backends_alive":2,"backends_total":2}
+```
+
+### Quick Inference Test
+
+```bash
+# H2 relaxation test
+curl -sk -X POST 'https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer' \
+  -H 'Content-Type: application/json' \
+  -d '{"atoms":[{"coord":[0,0,0,0,0,1],"numbers":[1,1],"cell":[10,0,0,0,10,0,0,0,10]}]}'
+```
+
+Expected: `converged: true`, energy ~-6.5 eV, bond distance ~0.74 A.
+
+---
+
+## 🛠 Troubleshooting
+
+| Symptom | Action |
+| --- | --- |
+| **503 Service Unavailable** | The NIM is still initializing (model download + batch estimation). Wait 2-5 minutes and retry. |
+| **504 Gateway Timeout** | Increase NGINX proxy timeout. Large batches may take longer. |
+| **converged: false** | Structure did not relax within max steps. Try different initial geometry or increase optimizer iterations. |
+| **Empty trajectory in BMD** | Check that `md_time_max` > 0 and `dt` is reasonable (0.5-2.0 fs). |
+| **Wrong element numbers** | API uses atomic numbers (H=1, C=6, O=8, Fe=26), not symbols. |
+| **Periodic vs non-periodic** | For isolated molecules, omit `cell` field or set `pbc: [false,false,false]`. |
+| **coord/energy returned as strings** | The API serializes numeric values as JSON strings. Cast with `float()` before arithmetic: `coord = [float(x) for x in atom['coord']]`. |
+
+### Concurrent Requests
+
+Both endpoints support multiple concurrent requests. Issue parallel requests from separate threads/processes for throughput:
+
+```python
+import aiohttp
+import asyncio
+
+async def relax_batch(session, structures):
+    payload = {"atoms": structures}
+    async with session.post("https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer", json=payload) as resp:
+        return await resp.json()
+
+async def main():
+    async with aiohttp.ClientSession() as session:
+        results = await asyncio.gather(
+            relax_batch(session, batch_1),
+            relax_batch(session, batch_2),
+            relax_batch(session, batch_3)
+        )
+    return results
+```
+
+---
+
+## 📝 Usage Notes
+
+* **Accuracy:** MACE-MP-0 achieves ~1-5 meV/atom RMSE vs DFT on the MPTrj benchmark — comparable to hybrid functionals at a fraction of the cost.
+* **Element coverage:** Trained on 89 elements (H through Pu). Best accuracy for elements common in materials science (C, N, O, Si, transition metals).
+* **Batch size:** The server auto-estimates optimal batch size per GPU (~4000 atoms per backend on A100). Submit larger batches for better throughput.
+* **Privacy:** All data remains within Mahidol University infrastructure. No external data transfer.
+* **Rate limiting:** No explicit rate limit, but be mindful of shared GPU resources (4 GPUs used by ALCHEMI on turing node).
+* **No authentication required** for internal cluster access. External access requires VPN/proxy configuration.
+
+---
+
+## 📚 References
+
+| Resource | URL |
+| --- | --- |
+| NVIDIA ALCHEMI Overview | https://developer.nvidia.com/cuda/cuda-x-libraries/alchemi |
+| BGR Documentation | https://docs.nvidia.com/nim/alchemi/alchemi-bgr/latest/ |
+| BMD Documentation | https://docs.nvidia.com/nim/alchemi/alchemi-bmd/latest/ |
+| MACE Model Paper | https://arxiv.org/abs/2206.07697 |
+| ALCHEMI Toolkit (Python) | https://github.com/NVIDIA/nvalchemi-toolkit |
+| ASE (Atomic Simulation Env) | https://wiki.fysik.dtu.dk/ase/ |
+
+---
+
+*Last Updated: 2026-07-22*
+
+---
