@@ -1,0 +1,1266 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>⚗️ NVIDIA ALCHEMI: AI-Powered Chemistry &amp; Materials Simulation at Mahidol &#8212; Exascale Knowledge Share 0.21.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+
+    <script src="../_static/documentation_options.js?v=12411df6"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/alchemi';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.21.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LLaMA" href="llm.html" />
+    <link rel="prev" title="CellBender Quick-Start Tutorial" href="cellbender.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="Sep 07, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-jobs.html">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog-checkpoint-survival.html">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3: The Inference Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold-db-api-access.html">AlphaFold DB Skill: Build Guide and Usage Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemistry and materials science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">⚗️ NVIDIA ALCHEMI: AI-Powered Chemistry &amp; Materials Simulation at Mahidol</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen.html">🚀 Using Qwen on the Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclaw.html">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hermes-remote-hpc-slack.html">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fpga.html">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddp-training.html">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">⚗️ NVIDIA ALCHEMI: AI-Powered Chemistry &amp; Materials Simulation at Mahidol</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="nvidia-alchemi-ai-powered-chemistry-materials-simulation-at-mahidol">
+<h1>⚗️ NVIDIA ALCHEMI: AI-Powered Chemistry &amp; Materials Simulation at Mahidol<a class="headerlink" href="#nvidia-alchemi-ai-powered-chemistry-materials-simulation-at-mahidol" title="Link to this heading">#</a></h1>
+<p><strong>Author</strong>: Snit Sanghlao, Qwen, Claude
+<strong>Created</strong>: 2026-07-22 | <strong>Last Updated</strong>: 2026-07-22</p>
+<section id="gpu-accelerated-atomistic-simulation-via-nvidia-nim-microservices">
+<h2>GPU-Accelerated Atomistic Simulation via NVIDIA NIM Microservices<a class="headerlink" href="#gpu-accelerated-atomistic-simulation-via-nvidia-nim-microservices" title="Link to this heading">#</a></h2>
+<p>This guide covers the use of <strong>NVIDIA ALCHEMI</strong> — a collection of GPU-accelerated AI microservices for chemistry and materials science — deployed on the Mahidol AI Center Kubernetes cluster. ALCHEMI enables near-quantum chemistry accuracy simulations at a fraction of the compute cost, powered by Machine Learning Interatomic Potentials (MLIPs) running on NVIDIA A100 GPUs.</p>
+</section>
+<hr class="docutils" />
+<section id="service-specifications">
+<h2>📊 Service Specifications<a class="headerlink" href="#service-specifications" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>BGR (Geometry Relaxation)</p></th>
+<th class="head"><p>BMD (Molecular Dynamics)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>NIM Image</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvcr.io/nim/nvidia/alchemi-bgr:1.0.0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvcr.io/nim/nvidia/alchemi-bmd:1.0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Model</strong></p></td>
+<td><p>MACE-MP-0 (pre-bundled)</p></td>
+<td><p>MACE-MPA-0 (pre-bundled)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>API Endpoint</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Health Check</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/alchemi-bgr/v1/health/ready</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/alchemi-bmd/v1/health/ready</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GPU</strong></p></td>
+<td><p>2x A100</p></td>
+<td><p>2x A100</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ensembles</strong></p></td>
+<td><p>Geometry optimization (FIRE2)</p></td>
+<td><p>NVE, NVT, NPT</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Accuracy</strong></p></td>
+<td><p>Near-DFT level (~meV/atom error)</p></td>
+<td><p>Near-DFT level (~meV/atom error)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="what-is-alchemi">
+<h2>🔬 What Is ALCHEMI?<a class="headerlink" href="#what-is-alchemi" title="Link to this heading">#</a></h2>
+<p>Traditional computational chemistry faces a trade-off: <strong>Density Functional Theory (DFT)</strong> is accurate but scales as O(N³) and takes hours per molecule. <strong>Classical force fields</strong> are fast but lack chemical accuracy. ALCHEMI breaks this barrier using <strong>Machine Learning Interatomic Potentials (MLIPs)</strong> trained on millions of DFT calculations, delivering:</p>
+<ul class="simple">
+<li><p><strong>Near-DFT accuracy</strong> — energy MAE on the order of 10–20 meV/atom vs. quantum chemistry (<a class="reference external" href="https://mace-docs.readthedocs.io/en/latest/guide/foundation_models.html">MACE foundation models</a>)</p></li>
+<li><p><strong>100x speedup</strong> over DFT — seconds instead of hours per structure (<a class="reference external" href="https://developer.nvidia.com/cuda/cuda-x-libraries/alchemi">NVIDIA ALCHEMI</a>)</p></li>
+<li><p><strong>Batched inference</strong> — process hundreds of molecules simultaneously on GPU</p></li>
+<li><p><strong>No local installation</strong> — REST API access from any Python environment</p></li>
+</ul>
+<p>The underlying model (<strong>MACE-MP-0</strong>) was trained on the MPtrj dataset — ~1.6 million bulk-crystal structures at DFT (PBE+U) level, spanning 89 elements — making it suitable for organic molecules, inorganic materials, battery electrolytes, catalysts, and more.</p>
+</section>
+<hr class="docutils" />
+<section id="use-case-1-bgr-batched-geometry-relaxation">
+<h2>🧪 Use Case 1: BGR — Batched Geometry Relaxation<a class="headerlink" href="#use-case-1-bgr-batched-geometry-relaxation" title="Link to this heading">#</a></h2>
+<p><strong>What it does:</strong> Given atomic coordinates, finds the lowest-energy (equilibrium) structure by relaxing forces to zero. Essential for validating molecular structures, finding transition states, and preparing input for further simulations.</p>
+<section id="scientific-breakthrough-potential">
+<h3>Scientific Breakthrough Potential<a class="headerlink" href="#scientific-breakthrough-potential" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Research Area</p></th>
+<th class="head"><p>Application</p></th>
+<th class="head"><p>Impact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Battery Materials</strong></p></td>
+<td><p>Optimize Li-ion intercalation structures in cathode materials (NMC, LFP)</p></td>
+<td><p>Accelerate discovery of higher-capacity battery chemistries</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Catalyst Design</strong></p></td>
+<td><p>Relax adsorbate configurations on metal surfaces (Pt, Pd, Ni)</p></td>
+<td><p>Screen thousands of catalyst candidates for green hydrogen, CO₂ reduction</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Drug Discovery</strong></p></td>
+<td><p>Optimize ligand-protein binding poses at near-DFT accuracy</p></td>
+<td><p>Reduce false positives in virtual screening pipelines</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>OLED Materials</strong></p></td>
+<td><p>Relax excited-state geometries of organic emitters</p></td>
+<td><p>Design more efficient organic light-emitting diodes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Thai Natural Products</strong></p></td>
+<td><p>Validate crystal structures of Thai medicinal compounds</p></td>
+<td><p>Support computational pharmacology research at Mahidol</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="quick-start-single-molecule">
+<h3>Quick Start — Single Molecule<a class="headerlink" href="#quick-start-single-molecule" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># H2 molecule geometry relaxation</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">'https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "atoms": [{</span>
+<span class="s1">      "coord": [0.0, 0.0, 0.0, 0.0, 0.0, 1.0],</span>
+<span class="s1">      "numbers": [1, 1],</span>
+<span class="s1">      "cell": [10, 0, 0, 0, 10, 0, 0, 0, 10]</span>
+<span class="s1">    }]</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</pre></div>
+</div>
+<p><strong>Expected output:</strong> <code class="docutils literal notranslate"><span class="pre">converged:</span> <span class="pre">true</span></code>, energy ~-6.5 eV, bond distance relaxed to 0.74 Angstrom.</p>
+</section>
+<section id="python-batch-processing-with-ase">
+<h3>Python — Batch Processing with ASE<a class="headerlink" href="#python-batch-processing-with-ase" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ase.io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">INFER_URL</span> <span class="o">=</span> <span class="s2">"https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer"</span>
+
+<span class="c1"># Read multiple structures from extended XYZ file</span>
+<span class="n">atoms_list</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"structures.extxyz"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">atoms_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">atoms_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">atoms_list</span><span class="p">]</span>
+
+<span class="c1"># Convert ASE Atoms to API format</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ase_to_api</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">sid</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'coord'</span><span class="p">:</span> <span class="n">atoms</span><span class="o">.</span><span class="n">positions</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+        <span class="s1">'numbers'</span><span class="p">:</span> <span class="n">atoms</span><span class="o">.</span><span class="n">numbers</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+        <span class="s1">'charge'</span><span class="p">:</span> <span class="n">atoms</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'charge'</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s1">'mult'</span><span class="p">:</span> <span class="n">atoms</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'mult'</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">atoms</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">volume</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">'cell'</span><span class="p">]</span> <span class="o">=</span> <span class="n">atoms</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">'pbc'</span><span class="p">]</span> <span class="o">=</span> <span class="n">atoms</span><span class="o">.</span><span class="n">pbc</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">sid</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">'structure_id'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sid</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="c1"># Submit batch request</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'atoms'</span><span class="p">:</span> <span class="p">[</span><span class="n">ase_to_api</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"struct_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">atoms_list</span><span class="p">)]}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">INFER_URL</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">input_data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Write optimized structures</span>
+<span class="n">optimized</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="s1">'atoms'</span><span class="p">]:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">Atoms</span><span class="p">(</span><span class="n">positions</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">opt</span><span class="p">[</span><span class="s1">'coord'</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">numbers</span><span class="o">=</span><span class="n">opt</span><span class="p">[</span><span class="s1">'numbers'</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'cell'</span><span class="p">):</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">set_cell</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">opt</span><span class="p">[</span><span class="s1">'cell'</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">'energy'</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="s1">'energy'</span><span class="p">]</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">'converged'</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="s1">'converged'</span><span class="p">]</span>
+    <span class="n">optimized</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">ase</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'structures_optimized.extxyz'</span><span class="p">,</span> <span class="n">optimized</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimized </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">optimized</span><span class="p">)</span><span class="si">}</span><span class="s2"> structures"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="use-case-2-bmd-batched-molecular-dynamics">
+<h2>🧪 Use Case 2: BMD — Batched Molecular Dynamics<a class="headerlink" href="#use-case-2-bmd-batched-molecular-dynamics" title="Link to this heading">#</a></h2>
+<p><strong>What it does:</strong> Simulates atomic motion over time using MLIP forces. Supports NVE (microcanonical), NVT (canonical with thermostat), and NPT (isothermal-isobaric) ensembles. Essential for studying temperature-dependent properties, phase transitions, diffusion, and conformational sampling.</p>
+<section id="id1">
+<h3>Scientific Breakthrough Potential<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Research Area</p></th>
+<th class="head"><p>Application</p></th>
+<th class="head"><p>Impact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Solid-State Batteries</strong></p></td>
+<td><p>Simulate Li⁺ diffusion in solid electrolytes (LLZO, LATP) at operating temp</p></td>
+<td><p>Predict ionic conductivity without expensive DFT-MD</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Polymer Science</strong></p></td>
+<td><p>Study thermal behavior of polymer chains, glass transition temperatures</p></td>
+<td><p>Design polymers with tailored mechanical properties</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Protein-Ligand Dynamics</strong></p></td>
+<td><p>Run MD of drug binding events with near-DFT accuracy forces</p></td>
+<td><p>Understand binding kinetics beyond static docking</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Thermal Materials</strong></p></td>
+<td><p>Compute thermal conductivity via Green-Kubo from equilibrium MD</p></td>
+<td><p>Discover thermoelectric materials for waste heat recovery</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Nanoparticle Stability</strong></p></td>
+<td><p>Simulate surface reconstruction of metal nanoparticles under heat</p></td>
+<td><p>Optimize catalyst stability at reaction conditions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="quick-start-nvt-simulation">
+<h3>Quick Start — NVT Simulation<a class="headerlink" href="#quick-start-nvt-simulation" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carbon dimer, 300K NVT simulation for 1 ps</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">'https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "atoms": {</span>
+<span class="s1">      "coord": [0.0, 0.0, 0.0, 1.5, 0.0, 0.0],</span>
+<span class="s1">      "numbers": [6, 6],</span>
+<span class="s1">      "cell": [10, 0, 0, 0, 10, 0, 0, 0, 10],</span>
+<span class="s1">      "pbc": [true, true, true]</span>
+<span class="s1">    },</span>
+<span class="s1">    "config": {</span>
+<span class="s1">      "temperature": 300.0,</span>
+<span class="s1">      "nvt": true,</span>
+<span class="s1">      "friction": 1.0,</span>
+<span class="s1">      "dt": 1.0,</span>
+<span class="s1">      "md_time_max": 1.0,</span>
+<span class="s1">      "save_interval": 10</span>
+<span class="s1">    }</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</pre></div>
+</div>
+</section>
+<section id="python-full-md-workflow-with-restart">
+<h3>Python — Full MD Workflow with Restart<a class="headerlink" href="#python-full-md-workflow-with-restart" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s2">"https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer"</span>
+
+<span class="c1"># Initial simulation</span>
+<span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"atoms"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"coord"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="s2">"numbers"</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s2">"cell"</span><span class="p">:</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">],</span>
+        <span class="s2">"pbc"</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"temperature"</span><span class="p">:</span> <span class="mf">300.0</span><span class="p">,</span>
+        <span class="s2">"dt"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">"md_time_max"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">"nvt"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">"save_interval"</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">SERVER</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Analyze trajectory</span>
+<span class="n">trajectory</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"trajectory"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total snapshots: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trajectory</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Final energy: </span><span class="si">{</span><span class="n">trajectory</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'energy'</span><span class="p">,</span><span class="w"> </span><span class="s1">'N/A'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Restart from final state</span>
+<span class="n">final</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">restart</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"atoms"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"coord"</span><span class="p">:</span> <span class="n">final</span><span class="p">[</span><span class="s2">"coord"</span><span class="p">],</span>
+        <span class="s2">"velocity"</span><span class="p">:</span> <span class="n">final</span><span class="p">[</span><span class="s2">"velocity"</span><span class="p">],</span>
+        <span class="s2">"numbers"</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s2">"cell"</span><span class="p">:</span> <span class="n">final</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"cell"</span><span class="p">,</span> <span class="n">request</span><span class="p">[</span><span class="s2">"atoms"</span><span class="p">][</span><span class="s2">"cell"</span><span class="p">]),</span>
+        <span class="s2">"pbc"</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"temperature"</span><span class="p">:</span> <span class="mf">300.0</span><span class="p">,</span>
+        <span class="s2">"dt"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">"nvt"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">"save_interval"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">"istep"</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">"config"</span><span class="p">][</span><span class="s2">"istep"</span><span class="p">],</span>
+        <span class="s2">"md_time"</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">"config"</span><span class="p">][</span><span class="s2">"md_time"</span><span class="p">],</span>
+        <span class="s2">"md_time_max"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">"config"</span><span class="p">][</span><span class="s2">"md_time"</span><span class="p">])</span> <span class="o">+</span> <span class="mf">1.0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">continuation</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">SERVER</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">restart</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Continued: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">continuation</span><span class="p">[</span><span class="s1">'trajectory'</span><span class="p">])</span><span class="si">}</span><span class="s2"> new snapshots"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ensemble-configuration-reference">
+<h3>Ensemble Configuration Reference<a class="headerlink" href="#ensemble-configuration-reference" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ensemble</p></th>
+<th class="head"><p>Config Fields</p></th>
+<th class="head"><p>Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>NVE</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{&quot;dt&quot;:</span> <span class="pre">0.5,</span> <span class="pre">&quot;md_time_max&quot;:</span> <span class="pre">1.0}</span></code></p></td>
+<td><p>Energy conservation tests, isolated systems</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NVT</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{&quot;temperature&quot;:</span> <span class="pre">300,</span> <span class="pre">&quot;nvt&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;friction&quot;:</span> <span class="pre">1.0,</span> <span class="pre">&quot;dt&quot;:</span> <span class="pre">1.0,</span> <span class="pre">&quot;md_time_max&quot;:</span> <span class="pre">10}</span></code></p></td>
+<td><p>Constant-temperature simulations (most common)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NPT</strong></p></td>
+<td><p>Add <code class="docutils literal notranslate"><span class="pre">&quot;npt&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;pressure&quot;:</span> <span class="pre">1.0,</span> <span class="pre">&quot;barostat_every&quot;:</span> <span class="pre">25</span></code></p></td>
+<td><p>Constant pressure (material expansion, phase transitions)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="use-case-3-combined-bgr-bmd-workflow">
+<h2>🧪 Use Case 3: Combined BGR + BMD Workflow<a class="headerlink" href="#use-case-3-combined-bgr-bmd-workflow" title="Link to this heading">#</a></h2>
+<p><strong>Typical research pipeline:</strong> Relax structure first (BGR), then run dynamics from equilibrium (BMD).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">BGR_URL</span> <span class="o">=</span> <span class="s2">"https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer"</span>
+<span class="n">BMD_URL</span> <span class="o">=</span> <span class="s2">"https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer"</span>
+
+<span class="c1"># Step 1: Relax initial structure</span>
+<span class="n">bgr_request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"atoms"</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">"coord"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>  <span class="c1"># Initial guess</span>
+        <span class="s2">"numbers"</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>  <span class="c1"># O2 molecule</span>
+        <span class="s2">"cell"</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+<span class="n">relaxed</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">BGR_URL</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">bgr_request</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"atoms"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Note: API returns coord values as strings — cast to float for arithmetic</span>
+<span class="n">coord</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">relaxed</span><span class="p">[</span><span class="s1">'coord'</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Relaxed energy: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">relaxed</span><span class="p">[</span><span class="s1">'energy'</span><span class="p">])</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> eV"</span><span class="p">)</span>
+<span class="n">bond_len</span> <span class="o">=</span> <span class="p">((</span><span class="n">coord</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">coord</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">coord</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">coord</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Bond length: </span><span class="si">{</span><span class="n">bond_len</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> A"</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Run MD from relaxed structure</span>
+<span class="n">bmd_request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"atoms"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"coord"</span><span class="p">:</span> <span class="n">relaxed</span><span class="p">[</span><span class="s2">"coord"</span><span class="p">],</span>
+        <span class="s2">"numbers"</span><span class="p">:</span> <span class="n">relaxed</span><span class="p">[</span><span class="s2">"numbers"</span><span class="p">],</span>
+        <span class="s2">"cell"</span><span class="p">:</span> <span class="n">relaxed</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"cell"</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">]),</span>
+        <span class="s2">"pbc"</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"temperature"</span><span class="p">:</span> <span class="mf">500.0</span><span class="p">,</span>  <span class="c1"># High temp to study dissociation</span>
+        <span class="s2">"nvt"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">"dt"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">"md_time_max"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="s2">"save_interval"</span><span class="p">:</span> <span class="mi">5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">md_result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">BMD_URL</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">bmd_request</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"MD trajectory: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">md_result</span><span class="p">[</span><span class="s1">'trajectory'</span><span class="p">])</span><span class="si">}</span><span class="s2"> snapshots over </span><span class="si">{</span><span class="n">md_result</span><span class="p">[</span><span class="s1">'config'</span><span class="p">][</span><span class="s1">'md_time'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ps"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="integration-with-ai-agents-qwen-hermes">
+<h2>🔌 Integration with AI Agents (Qwen / Hermes)<a class="headerlink" href="#integration-with-ai-agents-qwen-hermes" title="Link to this heading">#</a></h2>
+<p>ALCHEMI endpoints can be called directly from AI coding agents for autonomous materials discovery:</p>
+<section id="continue-dev-vs-code-configuration">
+<h3>Continue.dev / VS Code Configuration<a class="headerlink" href="#continue-dev-vs-code-configuration" title="Link to this heading">#</a></h3>
+<p>Add to <code class="docutils literal notranslate"><span class="pre">~/.continue/config.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">models</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alchemi-assistant</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen</span>
+<span class="w">    </span><span class="nt">apiBase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://aicenter.mahidol.ac.th/qwen/v1</span>
+<span class="w">    </span><span class="nt">apiKey</span><span class="p">:</span><span class="w"> </span><span class="s">"dummy"</span>
+<span class="w">    </span><span class="nt">systemMessage</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are a computational chemistry assistant. You have access to</span>
+<span class="w">      </span><span class="no">NVIDIA ALCHEMI endpoints for geometry relaxation and molecular dynamics.</span>
+<span class="w">      </span><span class="no">BGR: https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer</span>
+<span class="w">      </span><span class="no">BMD: https://aicenter.mahidol.ac.th/alchemi-bmd/v1/infer</span>
+</pre></div>
+</div>
+</section>
+<section id="hermes-agent-skill">
+<h3>Hermes Agent Skill<a class="headerlink" href="#hermes-agent-skill" title="Link to this heading">#</a></h3>
+<p>Create <code class="docutils literal notranslate"><span class="pre">~/.hermes/skills/alchemi/SKILL.md</span></code> for automated chemistry workflows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alchemi</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Use</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">running</span><span class="nv"> </span><span class="s">atomistic</span><span class="nv"> </span><span class="s">simulations</span><span class="nv"> </span><span class="s">—</span><span class="nv"> </span><span class="s">geometry</span><span class="nv"> </span><span class="s">relaxation</span><span class="nv"> </span><span class="s">(BGR)</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">molecular</span><span class="nv"> </span><span class="s">dynamics</span><span class="nv"> </span><span class="s">(BMD)</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">NVIDIA</span><span class="nv"> </span><span class="s">ALCHEMI</span><span class="nv"> </span><span class="s">NIM</span><span class="nv"> </span><span class="s">endpoints."</span>
+<span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">chemistry</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">materials-science</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">mlip</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">molecular-dynamics</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">geometry-relaxation</span><span class="p p-Indicator">]</span>
+<span class="nn">---</span>
+</pre></div>
+</div>
+<p>With tool definitions for calling the REST API, parsing results, and integrating with ASE/pymatgen workflows.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="verification-testing">
+<h2>🧪 Verification &amp; Testing<a class="headerlink" href="#verification-testing" title="Link to this heading">#</a></h2>
+<section id="health-check">
+<h3>Health Check<a class="headerlink" href="#health-check" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># BGR health</span>
+curl<span class="w"> </span>-sk<span class="w"> </span><span class="s1">'https://aicenter.mahidol.ac.th/alchemi-bgr/v1/health/ready'</span>
+<span class="c1"># Expected: {"status":"ready","backends_alive":2,"backends_total":2}</span>
+
+<span class="c1"># BMD health</span>
+curl<span class="w"> </span>-sk<span class="w"> </span><span class="s1">'https://aicenter.mahidol.ac.th/alchemi-bmd/v1/health/ready'</span>
+<span class="c1"># Expected: {"status":"ready","backends_alive":2,"backends_total":2}</span>
+</pre></div>
+</div>
+</section>
+<section id="quick-inference-test">
+<h3>Quick Inference Test<a class="headerlink" href="#quick-inference-test" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># H2 relaxation test</span>
+curl<span class="w"> </span>-sk<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">'https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"atoms":[{"coord":[0,0,0,0,0,1],"numbers":[1,1],"cell":[10,0,0,0,10,0,0,0,10]}]}'</span>
+</pre></div>
+</div>
+<p>Expected: <code class="docutils literal notranslate"><span class="pre">converged:</span> <span class="pre">true</span></code>, energy ~-6.5 eV, bond distance ~0.74 A.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>🛠 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>503 Service Unavailable</strong></p></td>
+<td><p>The NIM is still initializing (model download + batch estimation). The liveness probe itself doesn’t check the pod until 10 minutes after start, so a fresh deployment can stay unready for up to 10 minutes — wait and retry rather than assuming a crash.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>504 Gateway Timeout</strong></p></td>
+<td><p>Increase NGINX proxy timeout. Large batches may take longer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>converged: false</strong></p></td>
+<td><p>Structure did not relax within max steps. Try different initial geometry or increase optimizer iterations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Empty trajectory in BMD</strong></p></td>
+<td><p>Check that <code class="docutils literal notranslate"><span class="pre">md_time_max</span></code> &gt; 0 and <code class="docutils literal notranslate"><span class="pre">dt</span></code> is reasonable (0.5-2.0 fs).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wrong element numbers</strong></p></td>
+<td><p>API uses atomic numbers (H=1, C=6, O=8, Fe=26), not symbols.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Periodic vs non-periodic</strong></p></td>
+<td><p>For isolated molecules, omit <code class="docutils literal notranslate"><span class="pre">cell</span></code> field or set <code class="docutils literal notranslate"><span class="pre">pbc:</span> <span class="pre">[false,false,false]</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>coord/energy returned as strings</strong></p></td>
+<td><p>The API serializes numeric values as JSON strings. Cast with <code class="docutils literal notranslate"><span class="pre">float()</span></code> before arithmetic: <code class="docutils literal notranslate"><span class="pre">coord</span> <span class="pre">=</span> <span class="pre">[float(x)</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">atom['coord']]</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="concurrent-requests">
+<h3>Concurrent Requests<a class="headerlink" href="#concurrent-requests" title="Link to this heading">#</a></h3>
+<p>Both endpoints support multiple concurrent requests. Issue parallel requests from separate threads/processes for throughput:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">aiohttp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">relax_batch</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">structures</span><span class="p">):</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"atoms"</span><span class="p">:</span> <span class="n">structures</span><span class="p">}</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"https://aicenter.mahidol.ac.th/alchemi-bgr/v1/infer"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+            <span class="n">relax_batch</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">batch_1</span><span class="p">),</span>
+            <span class="n">relax_batch</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">batch_2</span><span class="p">),</span>
+            <span class="n">relax_batch</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">batch_3</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="usage-notes">
+<h2>📝 Usage Notes<a class="headerlink" href="#usage-notes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Accuracy:</strong> MACE-MP-0 achieves an energy MAE on the order of 10-20 meV/atom vs DFT on the MPtrj benchmark — comparable to hybrid functionals at a fraction of the cost.</p></li>
+<li><p><strong>Element coverage:</strong> Trained on 89 elements (H through Pu). Best accuracy for elements common in materials science (C, N, O, Si, transition metals).</p></li>
+<li><p><strong>Batch size:</strong> The server auto-estimates optimal batch size per GPU (~4000 atoms per backend on A100). Submit larger batches for better throughput.</p></li>
+<li><p><strong>Privacy:</strong> All data remains within Mahidol University infrastructure. No external data transfer.</p></li>
+<li><p><strong>Rate limiting:</strong> No explicit rate limit, but be mindful of shared GPU resources (4 GPUs used by ALCHEMI).</p></li>
+<li><p><strong>No authentication required</strong> for internal cluster access. External access requires VPN/proxy configuration.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h2>📚 References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Resource</p></th>
+<th class="head"><p>URL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NVIDIA ALCHEMI Overview</p></td>
+<td><p>https://developer.nvidia.com/cuda/cuda-x-libraries/alchemi</p></td>
+</tr>
+<tr class="row-odd"><td><p>BGR Documentation</p></td>
+<td><p>https://docs.nvidia.com/nim/alchemi/alchemi-bgr/latest/</p></td>
+</tr>
+<tr class="row-even"><td><p>BMD Documentation</p></td>
+<td><p>https://docs.nvidia.com/nim/alchemi/alchemi-bmd/latest/</p></td>
+</tr>
+<tr class="row-odd"><td><p>MACE Model Paper</p></td>
+<td><p>https://arxiv.org/abs/2206.07697</p></td>
+</tr>
+<tr class="row-even"><td><p>ALCHEMI Toolkit (Python)</p></td>
+<td><p>https://github.com/NVIDIA/nvalchemi-toolkit</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASE (Atomic Simulation Env)</p></td>
+<td><p>https://wiki.fysik.dtu.dk/ase/</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><em>Last Updated: 2026-07-22</em></p>
+<hr class="docutils" />
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cellbender.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CellBender Quick-Start Tutorial</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="llm.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LLaMA</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-accelerated-atomistic-simulation-via-nvidia-nim-microservices">GPU-Accelerated Atomistic Simulation via NVIDIA NIM Microservices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#service-specifications">📊 Service Specifications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-alchemi">🔬 What Is ALCHEMI?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-bgr-batched-geometry-relaxation">🧪 Use Case 1: BGR — Batched Geometry Relaxation</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-breakthrough-potential">Scientific Breakthrough Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start-single-molecule">Quick Start — Single Molecule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-batch-processing-with-ase">Python — Batch Processing with ASE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-bmd-batched-molecular-dynamics">🧪 Use Case 2: BMD — Batched Molecular Dynamics</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Scientific Breakthrough Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start-nvt-simulation">Quick Start — NVT Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-full-md-workflow-with-restart">Python — Full MD Workflow with Restart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-configuration-reference">Ensemble Configuration Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-combined-bgr-bmd-workflow">🧪 Use Case 3: Combined BGR + BMD Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-ai-agents-qwen-hermes">🔌 Integration with AI Agents (Qwen / Hermes)</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-dev-vs-code-configuration">Continue.dev / VS Code Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermes-agent-skill">Hermes Agent Skill</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-testing">🧪 Verification &amp; Testing</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#health-check">Health Check</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-inference-test">Quick Inference Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">🛠 Troubleshooting</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concurrent-requests">Concurrent Requests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-notes">📝 Usage Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">📚 References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/alchemi.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/alchemi.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1007 @@
+
+<!DOCTYPE html>
+
+
+<html lang="EN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../_static/favicon-32x32.png" rel="icon" type="image/png">
+    <link href="../_static/favicon-16x16.png" rel="icon" type="image/png">
+    <link rel="shortcut icon" sizes="any" href="../_static/favicon.ico" type="image/x-icon">
+    <link href="../_static/android-chrome-192x192.png" rel="icon" type="image/png">
+    <link rel="mask-icon" color="#459db9" href="../_static/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../_static/apple-touch-icon.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#459db9">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-150x150.png">
+    <title>AlphaFold DB Skill: Build Guide and Usage Manual &#8212; Exascale Knowledge Share 0.21.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+
+    <script src="../_static/documentation_options.js?v=12411df6"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adv_guide/alphafold-db-api-access';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pydata-sphinx-theme.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'v0.21.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NVIDIA Parabricks" href="parabricks.html" />
+    <link rel="prev" title="AlphaFold 3: The Inference Pipeline" href="alphafold.html" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="EN"/>
+  <meta name="docsearch:version" content="0.2" />
+    <meta name="docbuild:last-update" content="Sep 07, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+     
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-light" alt="MAI - Home"/>
+    <img src="../_static/mai_logo.jpeg" class="logo__image only-dark pst-js-only" alt="MAI - Home"/>
+  
+  
+    <p class="title logo__title">Exascale Knowledge Share</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../application/index.html">
+    APPLICATION
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contb_guide/index.html">
+    Contribution Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sys_oview/index.html">
+    Node Configuration
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/pydata/pydata-sphinx-theme/releases">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ai-hpc-mu/document" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swguide.html">Software Guide</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="slurm-job-submit.html">SLURM Job Submit Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="array-jobs.html">SLURM Array Jobs Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog-checkpoint-survival.html">Watchdog &amp; Checkpoint Survival Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math\/Physics tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathphysic.html">Mathematical modeling in Physics Engineering, Biological and Social Science with QwQ LLM from China</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantumml.html">Quantum Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Mathematics and Statistics Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinformatics tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bioinfo.html">Biomedical Application</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold 3: The Inference Pipeline</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AlphaFold DB Skill: Build Guide and Usage Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parabricks.html">NVIDIA Parabricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellbender.html">CellBender Quick-Start Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemistry and materials science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="alchemi.html">⚗️ NVIDIA ALCHEMI: AI-Powered Chemistry &amp; Materials Simulation at Mahidol</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large Model tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="llm.html">LLaMA</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qwen.html">🚀 Using Qwen on the Mahidol Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metasearch.html">Metasearch for AI-Powered Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclaw.html">OpenClaw — Local Agentic AI Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hermes-remote-hpc-slack.html">Hermes Remote HPC + Slack — Research Acceleration Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Engineering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hfss.html">Ansys HFSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fpga.html">Gowin FPGA AI Workflow — User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DevOps - AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="claudevai.html">DevOps Engineering HPC &amp; AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddp-training.html">HPC-AI User Guide: NCCL DDP Multi-Node Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Caution!</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="temp.html">HPC User Guide: Avoiding /tmp Full Errors on Compute Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmuxwarning.html">Common Warnings — HPC Cluster (Mahidol DGX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zeta-A100-80GB-singularity.html">Zeta A100 SXM4 80GB — Singularity Precaution Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">AlphaFold DB Skill: Build Guide and Usage Manual</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section id="alphafold-db-skill-build-guide-and-usage-manual">
+<h1>AlphaFold DB Skill: Build Guide and Usage Manual<a class="headerlink" href="#alphafold-db-skill-build-guide-and-usage-manual" title="Link to this heading">#</a></h1>
+<p><strong>Created:</strong> 2026-06-10 <strong>Last updated:</strong> 2026-06-10 (rev 2 — Claude Code skill, BioPython fix, P12931 gate)</p>
+<p><strong>Author:</strong> Snit Sanghlao, Qwen, Claude AI</p>
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading">#</a></h2>
+<p>AlphaFold DB holds predicted 3D structures for over <strong>200 million proteins</strong> — the largest publicly available structural dataset in biology. For researchers,</p>
+<p>this means:</p>
+<ul class="simple">
+<li><p><strong>No wet-lab bottleneck.</strong> Structure hypotheses can be tested computationally before committing to X-ray crystallography or cryo-EM experiments.</p></li>
+<li><p><strong>Confidence metrics included.</strong> Every prediction ships with per-residue pLDDT scores and PAE matrices, so you know exactly which regions to trust.</p></li>
+<li><p><strong>Free and open.</strong> No account, no API key, no Docker image required — direct REST access from any Python environment.</p></li>
+<li><p><strong>Reproducible by design.</strong> The API returns versioned files (e.g. <code class="docutils literal notranslate"><span class="pre">v6</span></code>), so the exact structure used in an analysis can always be retrieved again.</p></li>
+</ul>
+<p>This skill encodes that workflow for Hermes so you can query, download, and analyze AlphaFold structures in a single prompted conversation — without</p>
+<p>re-deriving API URLs or parsing patterns each time.</p>
+</section>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
+<p>This skill provides a <strong>reproducible, documented workflow</strong> for accessing AlphaFold DB — no credentials, no Docker, direct REST API from the terminal.</p>
+<p>Skill location: <code class="docutils literal notranslate"><span class="pre">~/.hermes/skills/alphafold-db/SKILL.md</span></code></p>
+</section>
+<section id="how-this-skill-was-built">
+<h2>How This Skill Was Built<a class="headerlink" href="#how-this-skill-was-built" title="Link to this heading">#</a></h2>
+<p><strong>1. Knowledge distillation from source docs</strong></p>
+<p>The source material was analyzed with <code class="docutils literal notranslate"><span class="pre">research-project-audit</span></code> to extract:</p>
+<ul class="simple">
+<li><p>API endpoint patterns (REST URLs for prediction, mmCIF, confidence JSON, PAE)</p></li>
+<li><p>pLDDT confidence thresholds (&gt;90 very high, &lt;50 very low)</p></li>
+<li><p>BioPython parsing workflows</p></li>
+<li><p>Known pitfalls (PAE data structure format)</p></li>
+</ul>
+<p><strong>2. Skill creation</strong></p>
+<p>Created from the distilled knowledge as a <code class="docutils literal notranslate"><span class="pre">hermes-agent</span></code> skill.</p>
+<p>Generated a 204-line SKILL.md with:</p>
+<ul class="simple">
+<li><p>YAML frontmatter (name, description, tags)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description:</span> <span class="pre">&quot;Use</span> <span class="pre">when</span> <span class="pre">predicting</span> <span class="pre">protein</span> <span class="pre">structures</span> <span class="pre">via</span> <span class="pre">AlphaFold</span> <span class="pre">DB</span> <span class="pre">API.</span> <span class="pre">Provides</span> <span class="pre">pLDDT</span> <span class="pre">scores,</span> <span class="pre">confidence</span> <span class="pre">metrics,</span> <span class="pre">mmCIF</span> <span class="pre">files.&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tags:</span> <span class="pre">[alphafold-db,</span> <span class="pre">protein-structure,</span> <span class="pre">plddt,</span> <span class="pre">confidence,</span> <span class="pre">struct-chem]</span></code></p></li>
+</ul>
+<p><strong>3. Automated validation</strong></p>
+<p>The build process ran:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hermesllm</span></code> passed the skill definition</p></li>
+<li><p>Live API test: P00520 (ABL1 tyrosine kinase)</p>
+<ul>
+<li><p>Query: <code class="docutils literal notranslate"><span class="pre">https://alphafold.ebi.ac.uk/api/prediction/P00520</span></code></p></li>
+</ul>
+</li>
+<li><p>PAE endpoint fix: <code class="docutils literal notranslate"><span class="pre">pae[0][&quot;predicted_aligned_error&quot;]</span></code> (original had <code class="docutils literal notranslate"><span class="pre">pae['distance']</span></code>)</p></li>
+</ul>
+</section>
+<section id="skill-setup">
+<h2>Skill Setup<a class="headerlink" href="#skill-setup" title="Link to this heading">#</a></h2>
+<p>Two skill targets are documented: <strong>Hermes</strong> (file-based auto-load) and <strong>Claude Code CLI</strong> (project or global slash command).</p>
+<section id="claude-code-cli-skill">
+<h3>Claude Code CLI Skill<a class="headerlink" href="#claude-code-cli-skill" title="Link to this heading">#</a></h3>
+<p>The slash command <code class="docutils literal notranslate"><span class="pre">/alphafold</span></code> is defined as a Markdown prompt file.</p>
+<p><strong>Project-level</strong> (this repo only):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/alphafold-ai/.claude/commands
+<span class="gp">$ </span>cp<span class="w"> </span>alphafold.md<span class="w"> </span>~/alphafold-ai/.claude/commands/alphafold.md
+</pre></div>
+</div>
+<p>Open Claude Code from <code class="docutils literal notranslate"><span class="pre">~/alphafold-ai/</span></code> and type:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/alphafold P12931
+/alphafold P00520 --pae
+/alphafold P00520 --pae --download
+</pre></div>
+</div>
+<p><strong>Global</strong> (available in every project):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.claude/commands
+<span class="gp">$ </span>cp<span class="w"> </span>alphafold.md<span class="w"> </span>~/.claude/commands/alphafold.md
+</pre></div>
+</div>
+<p>Works identically inside the VS Code / JetBrains IDE extensions.</p>
+</section>
+<section id="hermes-skill">
+<h3>Hermes Skill<a class="headerlink" href="#hermes-skill" title="Link to this heading">#</a></h3>
+<p>Skills are file-based — Hermes auto-loads any <code class="docutils literal notranslate"><span class="pre">SKILL.md</span></code> found inside <code class="docutils literal notranslate"><span class="pre">~/.hermes/skills/</span></code>. No registration command is required.</p>
+<p><strong>1. Create the skill directory</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.hermes/skills/alphafold-db
+</pre></div>
+</div>
+<p><strong>2. Create SKILL.md with required frontmatter</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>vi<span class="w"> </span>~/.hermes/skills/alphafold-db/SKILL.md
+</pre></div>
+</div>
+<p>The file must begin with this YAML frontmatter block:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alphafold-db</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Use</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">predicting</span><span class="nv"> </span><span class="s">protein</span><span class="nv"> </span><span class="s">structures</span><span class="nv"> </span><span class="s">via</span><span class="nv"> </span><span class="s">AlphaFold</span><span class="nv"> </span><span class="s">DB</span><span class="nv"> </span><span class="s">API.</span><span class="nv"> </span><span class="s">Provides</span><span class="nv"> </span><span class="s">pLDDT</span><span class="nv"> </span><span class="s">scores,</span><span class="nv"> </span><span class="s">confidence</span><span class="nv"> </span><span class="s">metrics,</span><span class="nv"> </span><span class="s">mmCIF</span><span class="nv"> </span><span class="s">files."</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snit.san</span>
+<span class="nt">license</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CC-BY-4.0</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hermes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">alphafold-db</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">protein-structure</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">plddt</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">confidence</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">struct-chem</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">related_skills</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="nn">---</span>
+</pre></div>
+</div>
+<p>The skill body follows the frontmatter — include the steps, code snippets, and pitfalls you want Hermes to use when this skill is triggered.</p>
+<p><strong>3. Verify the skill is loaded</strong></p>
+<p>Restart Hermes (or open a new session), then confirm the skill is visible:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>~/.hermes/skills/alphafold-db/SKILL.md
+</pre></div>
+</div>
+<p>Ask Hermes directly to confirm it recognises the skill:</p>
+<blockquote>
+<div><p>“list my skills”</p>
+</div></blockquote>
+<blockquote>
+<div><p>“do you have an alphafold-db skill?”</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Important:</strong> If the skill is not picked up, check that the YAML frontmatter is valid (no tabs, no missing <code class="docutils literal notranslate"><span class="pre">---</span></code> delimiters) and that the file is saved as <code class="docutils literal notranslate"><span class="pre">SKILL.md</span></code> (case-sensitive).</p>
+</div></blockquote>
+</section>
+</section>
+<section id="api-endpoints">
+<h2>API Endpoints<a class="headerlink" href="#api-endpoints" title="Link to this heading">#</a></h2>
+<p>| Endpoint | Description |</p>
+<p>| — | — |</p>
+<p>| <code class="docutils literal notranslate"><span class="pre">https://alphafold.ebi.ac.uk/api/prediction/{UNIPROT_ID}</span></code> | Query metadata (entryId, latestVersion) |</p>
+<p>| <code class="docutils literal notranslate"><span class="pre">https://alphafold.ebi.ac.uk/files/{AFID}-model_v{VER}.cif</span></code> | Model coordinates (mmCIF) |</p>
+<p>| <code class="docutils literal notranslate"><span class="pre">https://alphafold.ebi.ac.uk/files/{AFID}-confidence_v{VER}.json</span></code> | pLDDT confidence scores |</p>
+<p>| <code class="docutils literal notranslate"><span class="pre">https://alphafold.ebi.ac.uk/files/{AFID}-predicted_aligned_error_v{VER}.json</span></code> | PAE matrix |</p>
+</section>
+<section id="how-to-use-this-skill">
+<h2>How to Use This Skill<a class="headerlink" href="#how-to-use-this-skill" title="Link to this heading">#</a></h2>
+<p>The skill is automatically loaded when you ask about:</p>
+<ul class="simple">
+<li><p>AlphaFold DB structure prediction</p></li>
+<li><p>pLDDT confidence scores</p></li>
+<li><p>mmCIF file parsing</p></li>
+<li><p>Protein structure confidence metrics</p></li>
+</ul>
+<p><strong>Example prompts you can run right now:</strong></p>
+<blockquote>
+<div><p>“show me P00520 structure”</p>
+</div></blockquote>
+<blockquote>
+<div><p>“what are the pLDDT scores for P12931?”</p>
+</div></blockquote>
+<blockquote>
+<div><p>“batch process proteins P00520, P12931, P04637”</p>
+</div></blockquote>
+<blockquote>
+<div><p>“download AlphaFold structure for P12931”</p>
+</div></blockquote>
+</section>
+<section id="step-by-step-usage">
+<h2>Step-by-Step Usage<a class="headerlink" href="#step-by-step-usage" title="Link to this heading">#</a></h2>
+<p><strong>Step 0: Environment setup</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<span class="gp">$ </span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>biopython<span class="w"> </span>requests<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>pandas
+</pre></div>
+</div>
+<p><strong>Step 1: Basic query</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">UNIPROT_ID</span> <span class="o">=</span> <span class="s2">"P00520"</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"https://alphafold.ebi.ac.uk/api/prediction/</span><span class="si">{</span><span class="n">UNIPROT_ID</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span>
+<span class="p">)</span>
+<span class="n">AFID</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"entryId"</span><span class="p">]</span>
+<span class="n">VER</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"latestVersion"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">UNIPROT_ID</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">AFID</span><span class="si">}</span><span class="s2"> v</span><span class="si">{</span><span class="n">VER</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 2: Download &amp; analyze</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Download mmCIF</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"https://alphafold.ebi.ac.uk/files/</span><span class="si">{</span><span class="n">AFID</span><span class="si">}</span><span class="s2">-model_v</span><span class="si">{</span><span class="n">VER</span><span class="si">}</span><span class="s2">.cif"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">120</span>
+<span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">AFID</span><span class="si">}</span><span class="s2">-model_v</span><span class="si">{</span><span class="n">VER</span><span class="si">}</span><span class="s2">.cif"</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Parse confidence (pLDDT)</span>
+<span class="n">conf</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"https://alphafold.ebi.ac.uk/files/</span><span class="si">{</span><span class="n">AFID</span><span class="si">}</span><span class="s2">-confidence_v</span><span class="si">{</span><span class="n">VER</span><span class="si">}</span><span class="s2">.json"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span>
+<span class="p">)</span>
+<span class="n">plddt</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"confidenceScore"</span><span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"pLDDT"</span><span class="p">:</span> <span class="n">plddt</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Step 3: Batch mode</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">UNIPROT_IDS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"P00520"</span><span class="p">,</span> <span class="s2">"P12931"</span><span class="p">,</span> <span class="s2">"P04637"</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">uid</span> <span class="ow">in</span> <span class="n">UNIPROT_IDS</span><span class="p">:</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"https://alphafold.ebi.ac.uk/api/prediction/</span><span class="si">{</span><span class="n">uid</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">afid</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"entryId"</span><span class="p">]</span>
+    <span class="n">ver</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"latestVersion"</span><span class="p">]</span>
+
+    <span class="n">conf</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"https://alphafold.ebi.ac.uk/files/</span><span class="si">{</span><span class="n">afid</span><span class="si">}</span><span class="s2">-confidence_v</span><span class="si">{</span><span class="n">ver</span><span class="si">}</span><span class="s2">.json"</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plddt_scores</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"confidenceScore"</span><span class="p">]</span>
+
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s2">"uniprot_id"</span><span class="p">:</span> <span class="n">uid</span><span class="p">,</span>
+        <span class="s2">"alphafold_id"</span><span class="p">:</span> <span class="n">afid</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="n">ver</span><span class="p">,</span>
+        <span class="s2">"avg_plddt"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">plddt_scores</span><span class="p">),</span>
+        <span class="s2">"very_high_conf_frac"</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">plddt_scores</span> <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="mi">90</span>
+        <span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">plddt_scores</span><span class="p">),</span>
+    <span class="p">})</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="known-pitfalls">
+<h2>Known Pitfalls<a class="headerlink" href="#known-pitfalls" title="Link to this heading">#</a></h2>
+<p><strong>1. PAE endpoint format change</strong></p>
+<p>The PAE JSON is <strong>a list of dicts</strong>, not a plain dict.</p>
+<ul class="simple">
+<li><p>Wrong: <code class="docutils literal notranslate"><span class="pre">pae[&quot;predicted_aligned_error&quot;]</span></code></p></li>
+<li><p>Correct: <code class="docutils literal notranslate"><span class="pre">pae[0][&quot;predicted_aligned_error&quot;]</span></code></p></li>
+</ul>
+<p><strong>2. pLDDT confidence interpretation</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;90</span></code>: Very high confidence — reliable for structure-based analysis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">70–90</span></code>: Confident — generally reliable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">50–70</span></code>: Low confidence — use with caution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;50</span></code>: Very low confidence — region likely disordered in vivo</p></li>
+</ul>
+<p><strong>3. BioPython 1.87 — MMCIFParser does not accept BytesIO</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">MMCIFParser.get_structure()</span></code> requires a <strong>file path string</strong> in BioPython 1.87.</p>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">io.BytesIO</span></code> raises <code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">startswith</span> <span class="pre">first</span> <span class="pre">arg</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">bytes</span></code>.</p>
+<ul class="simple">
+<li><p>Wrong: <code class="docutils literal notranslate"><span class="pre">parser.get_structure(af_id,</span> <span class="pre">io.BytesIO(cif_content))</span></code></p></li>
+<li><p>Correct: write the content to disk first, then pass the path:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cif_content</span><span class="p">)</span>
+<span class="n">structure</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="n">af_id</span><span class="p">,</span> <span class="n">out_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>4. High pLDDT does not guarantee functional accuracy</strong></p>
+<p>Always interpret predictions in biological context. Predictions lack ligands, post-translational modifications, and cofactors.</p>
+</section>
+<section id="quality-gates">
+<h2>Quality Gates<a class="headerlink" href="#quality-gates" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[x] Source docs analyzed with <code class="docutils literal notranslate"><span class="pre">research-project-audit</span></code> script</p></li>
+<li><p>[x] Live API test passed (P00520 — ABL1 tyrosine kinase)</p></li>
+<li><p>[x] Live API test passed (P12931 — SRC kinase, v6, 536 residues, global pLDDT 83.44)</p></li>
+<li><p>[x] PAE fix verified (<code class="docutils literal notranslate"><span class="pre">pae[0][&quot;predicted_aligned_error&quot;]</span></code>)</p></li>
+<li><p>[x] BioPython 1.87 BytesIO fix verified (write to disk, parse from path)</p></li>
+<li><p>[x] Batch processing tested</p></li>
+<li><p>[x] Claude Code CLI skill tested (<code class="docutils literal notranslate"><span class="pre">/alphafold</span> <span class="pre">P12931</span> <span class="pre">--pae</span> <span class="pre">--download</span></code>)</p></li>
+<li><p>[x] YAML validation passed</p></li>
+</ul>
+</section>
+<section id="security-notes">
+<h2>Security Notes<a class="headerlink" href="#security-notes" title="Link to this heading">#</a></h2>
+<p><strong>Rate limiting:</strong> The AlphaFold DB API has rate limits. If you get 429 responses, wait 30 seconds between requests.</p>
+<p><strong>No sensitive data:</strong> Only public structural data is accessed. No credentials required.</p>
+</section>
+<section id="citations-and-references">
+<h2>Citations and References<a class="headerlink" href="#citations-and-references" title="Link to this heading">#</a></h2>
+<p>When using results from this skill, cite:</p>
+<p>[1] Jumper, J. et al. (2021) Highly accurate protein structure prediction with AlphaFold. <em>Nature</em> 596, 583-589.</p>
+<p>[2] Varadi, M. et al. (2024) AlphaFold 3 and Protein Folding 2.0. <em>Nucleic Acids Research</em> 52, w31-w39.</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="alphafold.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AlphaFold 3: The Inference Pipeline</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parabricks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">NVIDIA Parabricks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-skill-was-built">How This Skill Was Built</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skill-setup">Skill Setup</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#claude-code-cli-skill">Claude Code CLI Skill</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hermes-skill">Hermes Skill</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-endpoints">API Endpoints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-skill">How to Use This Skill</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-usage">Step-by-Step Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-pitfalls">Known Pitfalls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-gates">Quality Gates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-notes">Security Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations-and-references">Citations and References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pydata/pydata-sphinx-theme/edit/main/docs/adv_guide/alphafold-db-api-access.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/adv_guide/alphafold-db-api-access.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, MAI.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
