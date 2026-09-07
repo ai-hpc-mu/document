@@ -2,7 +2,7 @@
 
 ### For Mahidol University AI Center — Researchers, Students & Staff
 
-> **Reference:** `aicenter.mahidol.ac.th/qwen3-6-27b`
+> **Reference:** `aicenter.mahidol.ac.th/qwen`
 
 **Authors:** Snit Sanghlao, OpenClaw, Qwen, OpenCode
 
@@ -14,11 +14,11 @@ AI is shifting from chatbots to agents — from "tell me" to "I'll do it for you
 
 Anthropic recently closed off their community integrations (Claude Code CLI, cooperative agent frameworks), pulling powerful agentic capabilities behind closed doors. This leaves a critical gap for research and educational institutions that need **transparent, controllable, deployable** AI agents — especially for sensitive Thai language, local data, and compliance.
 
-**OpenClaw is the open-source answer.** It is a full agentic AI framework that runs entirely locally — on your own servers, your own hardware, your own network. It pairs with open models like **Qwen3.6-27B** (27B parameters) to create a powerful, private, and persistent AI agent experience.
+**OpenClaw is the open-source answer.** It is a full agentic AI framework that runs entirely locally — on your own servers, your own hardware, your own network. It pairs with open models like **Qwen** to create a powerful, private, and persistent AI agent experience.
 
 ### Why This Matters Now
 
-| | Anthropic Claude (Closed) | **OpenClaw × Qwen3.6-27B (Open & Local)** |
+| | Anthropic Claude (Closed) | **OpenClaw × Qwen (Open & Local)** |
 |---|---|---|
 | **Data Privacy** | Cloud-only → your research leaves your campus | Runs locally → data never leaves your infrastructure |
 | **Language Support** | Limited Thai/SE Asian language accuracy | Use Thai-language models (Qwen excels at multilingual) |
@@ -49,16 +49,16 @@ Anthropic recently closed off their community integrations (Claude Code CLI, coo
 
 ---
 
-## User Guide — Setting Up OpenClaw with Qwen3.6-27B
+## User Guide — Setting Up OpenClaw with Qwen
 
 ### What You Need
 
 - A Linux server (Ubuntu 22.04+, or similar)
 - Node.js 20+ (or use nvm)
-- GPU with ≥16GB VRAM for Qwen3.6-27B (A100/RTX 4090/RTX 3090) — or run CPU-only for lighter use
-- Any LLM serving backend (vLLM, Ollama, LM Studio, or local OpenAI-compatible endpoint)
+- **To use the Mahidol AI Center endpoint:** nothing — it is already served at `https://aicenter.mahidol.ac.th/qwen/v1`
+- **To self-host instead:** a GPU with ≥24GB VRAM for a 27B-class Qwen (A100/RTX 4090/RTX 3090) — or run CPU-only for lighter use — plus any LLM serving backend (vLLM, Ollama, LM Studio, or local OpenAI-compatible endpoint)
 
-> For `qwen3-6-27b` on your server, ensure it's accessible at an OpenAI-compatible endpoint like:
+> A self-hosted Qwen should be reachable at an OpenAI-compatible endpoint like:
 > ```
 > http://localhost:8000/v1
 > ```
@@ -86,25 +86,26 @@ This creates `~/.openclaw/` with:
 - `config.yaml` — your main configuration
 - `workspace/` — where your agent's files, memory, and projects live
 
-### Step 3 — Configure the Model (Qwen3.6-27B)
+### Step 3 — Configure the Model (Qwen)
 
-> **Tip:** Use Mahidol AICenter endpoint: `https://aicenter.mahidol.ac.th/qwen3-6-27b/v1`
+> **Tip:** Use the Mahidol AICenter endpoint — a version-independent alias that always
+> points to the current production Qwen: `https://aicenter.mahidol.ac.th/qwen/v1`
 
 Edit `~/.openclaw/config.yaml`:
 
 ```yaml
 model:
   provider: vllm                    # or ollama, lm-studio, anything OpenAI-compatible
-  modelId: "Qwen/Qwen3.6-27B"
-  apiBaseUrl: "http://localhost:8000/v1"
+  modelId: "qwen"
+  apiBaseUrl: "https://aicenter.mahidol.ac.th/qwen/v1"
   apiKey: "none"                    # omit or set if your backend requires auth
   maxTokens: 8192                 # Max output tokens (8K - balanced for remote)
   contextWindow: 262144           # Context window (256K)
 
-# Optional: if using Ollama instead
+# Optional: if self-hosting with Ollama instead
 # model:
 #   provider: ollama
-#   modelId: "qwen3.6:27b"
+#   modelId: "qwen3.8:27b"
 ```
 
 #### maxTokens Recommendation
@@ -165,7 +166,11 @@ openclaw gateway restart
 
 ---
 
-## Connecting Qwen3.6-27B (Full Method)
+## Self-Hosting Qwen (Full Method)
+
+> Use this only if you are **not** using the AI Center endpoint. The model tag below
+> (`Qwen/Qwen3.8-27B`) is the current upstream checkpoint — check
+> `https://aicenter.mahidol.ac.th/qwen/v1/models` for the version in production.
 
 ### Option A — vLLM (Recommended for GPU)
 
@@ -173,10 +178,10 @@ openclaw gateway restart
 # Install vLLM
 pip install vllm
 
-# Serve Qwen3.6-27B with GPU (256K context)
-vllm serve Qwen/Qwen3.6-27B \
+# Serve Qwen with GPU (256K context). Tune parallelism/memory to your own hardware.
+vllm serve Qwen/Qwen3.8-27B \
+  --served-model-name qwen \
   --max-model-len 262144 \
-  --tensor-parallel-size 1 \
   --port 8000
 ```
 
@@ -184,7 +189,7 @@ Your OpenClaw config:
 ```yaml
 model:
   provider: vllm
-  modelId: "Qwen/Qwen3.6-27B"
+  modelId: "qwen"
   apiBaseUrl: "http://localhost:8000/v1"
   maxTokens: 8192         # Max output tokens (8K - balanced for remote)
   contextWindow: 262144   # Context window (256K)
@@ -197,24 +202,24 @@ model:
 curl -fsSL https://ollama.com/install.sh | sh
 
 # Pull Qwen
-ollama pull qwen3.6:27b
+ollama pull qwen3.8:27b
 
 # Verify it runs
-ollama run qwen3.6:27b "hello"
+ollama run qwen3.8:27b "hello"
 ```
 
 Your OpenClaw config:
 ```yaml
 model:
   provider: ollama
-  modelId: "qwen3.6:27b"
+  modelId: "qwen3.8:27b"
 ```
 
 ### Option C — CPU Only (No GPU Required)
 
 ```bash
 # Slow but works with Ollama + larger context
-ollama pull qwen3.6:27b
+ollama pull qwen3.8:27b
 ```
 
 ---
@@ -255,7 +260,7 @@ Edit `workspace/MEMORY.md`:
 *Key decisions, context, and knowledge base.*
 
 ## Notes
-- [Date] Setup complete with Qwen3.6-27B on server X
+- [Date] Setup complete with Qwen on server X
 - Active research areas: NLP, Computer Vision, Healthcare AI
 ```
 
@@ -393,4 +398,4 @@ openclaw gateway restart  # restart
 
 *Built for institutions that refuse to compromise on privacy, control, and innovation.*
 
-**Mahidol University AI Center** × **OpenClaw** × **Qwen3.6-27B**
+**Mahidol University AI Center** × **OpenClaw** × **Qwen**

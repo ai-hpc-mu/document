@@ -280,8 +280,8 @@ Add to `~/.continue/config.yaml`:
 models:
   - name: alchemi-assistant
     provider: openai
-    model: qwen3.6-27b
-    apiBase: https://aicenter.mahidol.ac.th/qwen3-6-27b/v1
+    model: qwen
+    apiBase: https://aicenter.mahidol.ac.th/qwen/v1
     apiKey: "dummy"
     systemMessage: |
       You are a computational chemistry assistant. You have access to

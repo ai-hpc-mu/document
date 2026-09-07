@@ -2,7 +2,7 @@
 
 ### Mahidol University AI Center · Design House R&D Laboratory
 
-**System:** OpenClaw × Qwen3.6-27B × Gowin MCP × Obsidian × Slack  
+**System:** OpenClaw × Qwen × Gowin MCP × Obsidian × Slack  
 **Hardware:** Sipeed Tang Mega 138K · GW5AST-138B/C BGA484  
 **Authors:** Snit Sanghlao · Anthropic Claude · OpenClaw · Mahidol AI Center
 
@@ -53,7 +53,7 @@ All compute, models, and data remain on-premise. No research IP leaves the labor
 │  ┌───────────────┐   ┌─────────────────────────────────────┐   │
 │  │ Slack Channel │   │         OpenClaw Gateway             │   │
 │  │ #all-openclaw │──▶│   (Node.js daemon, port 18789)       │   │
-│  │      -ws      │◀──│   Model: Qwen3.6-27B (256K context)  │   │
+│  │      -ws      │◀──│   Model: Qwen (256K context)        │   │
 │  └───────────────┘   │   Endpoint: aicenter.mahidol.ac.th  │   │
 │                      └─────────────┬───────────────────────┘   │
 │  ┌───────────────┐                 │                           │
@@ -86,7 +86,7 @@ All compute, models, and data remain on-premise. No research IP leaves the labor
 | Component | Role | Location |
 |---|---|---|
 | **OpenClaw** | AI agent daemon, gateway, memory | `~/.openclaw/` |
-| **Qwen3.6-27B** | Local LLM (27B, 256K context) | `https://aicenter.mahidol.ac.th/qwen3-6-27b/v1` |
+| **Qwen** | LLM (27B-class, 256K context) | `https://aicenter.mahidol.ac.th/qwen/v1` |
 | **gowin-workflow MCP** | FPGA toolchain tools over MCP | `/media/snit/AiHPC/tools/vlsi/gowin/mcp_server.py` |
 | **obsidian-vault MCP** | Second brain file access | `@modelcontextprotocol/server-filesystem` |
 | **Obsidian vault** | Knowledge base, notes, memory | `/home/snit/ai/obsidian-noted/openclaw-second-brain/` |
@@ -134,18 +134,18 @@ Provides the agent with read/write access to the full Obsidian vault. The agent 
   "models": {
     "providers": {
       "vllm": {
-        "baseUrl": "https://aicenter.mahidol.ac.th/qwen3-6-27b/v1",
-        "models": [{ "id": "Qwen/Qwen3.6-27B", "maxTokens": 262144 }]
+        "baseUrl": "https://aicenter.mahidol.ac.th/qwen/v1",
+        "models": [{ "id": "qwen", "maxTokens": 262144 }]
       },
       "ollama": {
         "baseUrl": "http://localhost:11434/v1",
-        "models": [{ "id": "qwen3.6:27b", "maxTokens": 4096 }]
+        "models": [{ "id": "qwen3.8:27b", "maxTokens": 4096 }]
       }
     }
   },
   "agents": {
     "defaults": {
-      "model": { "primary": "vllm/Qwen/Qwen3.6-27B" },
+      "model": { "primary": "vllm/qwen" },
       "contextTokens": 256000
     }
   }
@@ -182,7 +182,7 @@ openclaw mcp show gowin-workflow
 openclaw mcp show obsidian-vault
 
 # 3. Check model endpoint is reachable
-curl https://aicenter.mahidol.ac.th/qwen3-6-27b/v1/models
+curl https://aicenter.mahidol.ac.th/qwen/v1/models
 
 # 4. Check USB device permissions (if using FPGA)
 lsusb | grep -E "1a86|0403"
@@ -741,18 +741,18 @@ git config --global credential.helper store
 
 From `2026-04-27-Slack-OpenClaw-LLM-Fix.md` — the remote model endpoint can time out (Slack WebSocket also disconnects periodically). The system has a local fallback:
 
-**Primary:** `vllm/Qwen/Qwen3.6-27B` at `https://aicenter.mahidol.ac.th/qwen3-6-27b/v1`  
-**Fallback:** `ollama/qwen3.6:27b` at `http://localhost:11434/v1` (dual-GPU: RTX 3080 + RTX 3080 Ti)
+**Primary:** `vllm/qwen` at `https://aicenter.mahidol.ac.th/qwen/v1`  
+**Fallback:** `ollama/qwen3.8:27b` at `http://localhost:11434/v1` (local workstation)
 
 Switch to local fallback:
 ```bash
-openclaw config set agents.defaults.model.primary "ollama/qwen3.6:27b"
+openclaw config set agents.defaults.model.primary "ollama/qwen3.8:27b"
 openclaw gateway restart
 ```
 
 Switch back to remote:
 ```bash
-openclaw config set agents.defaults.model.primary "vllm/Qwen/Qwen3.6-27B"
+openclaw config set agents.defaults.model.primary "vllm/qwen"
 openclaw gateway restart
 ```
 
@@ -817,10 +817,10 @@ openclaw logs --tail 50
 ### Model Endpoint Issues
 
 ```bash
-curl https://aicenter.mahidol.ac.th/qwen3-6-27b/v1/models
+curl https://aicenter.mahidol.ac.th/qwen/v1/models
 
 # Fall back to local Ollama
-openclaw config set agents.defaults.model.primary "ollama/qwen3.6:27b"
+openclaw config set agents.defaults.model.primary "ollama/qwen3.8:27b"
 ```
 
 ---
@@ -851,7 +851,7 @@ openclaw config set agents.defaults.model.primary "ollama/qwen3.6:27b"
 │    "Search my notes for [topic]"                        │
 ├─────────────────────────────────────────────────────────┤
 │  LICENSE:     YOUR_LICENSE_SERVER                           │
-│  MODEL:       Qwen3.6-27B @ aicenter.mahidol.ac.th     │
+│  MODEL:       Qwen @ aicenter.mahidol.ac.th            │
 │  VAULT:       ~/ai/obsidian-noted/openclaw-second-brain │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -859,4 +859,4 @@ openclaw config set agents.defaults.model.primary "ollama/qwen3.6:27b"
 ---
 
 *Built for transparent, on-premise AI-assisted hardware design.*  
-**Mahidol University AI Center** × **OpenClaw** × **Anthropic Claude** × **Qwen3.6-27B**
+**Mahidol University AI Center** × **OpenClaw** × **Anthropic Claude** × **Qwen**

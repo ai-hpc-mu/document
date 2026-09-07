@@ -60,7 +60,7 @@ alchemi
 
 ollama
 llm
-qwen3.5
+qwen
 metasearch
 openclaw
 hermes-remote-hpc-slack

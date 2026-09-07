@@ -98,3 +98,51 @@ Hermes replaced the file with a "Skill Build Guide". Fixed its issues:
 - [x] `alphafold-db-api-access.md` — complete (Executive Summary, Setup, Usage, Pitfalls, Citations)
 - [x] `alphafold.rst` — clean
 - [ ] Sphinx build not yet run
+
+---
+
+## 2026-09-07 — Qwen model consolidation
+
+### Goal
+
+Docs referenced three different Qwen deployments (`Qwen3.5-122B-A10B-AWQ-4bit` on
+`/vllm/v1`; `Qwen3.6-27B` on `/qwen3-6-27b/v1`; author-line mentions). The production
+model is now **Qwen3.8-27B** and both old endpoints return HTTP 503. Consolidated every
+deployment reference onto a single **version-independent alias** so future upgrades need
+no doc or user-config change.
+
+### Decisions
+
+| Decision | Value |
+|----------|-------|
+| Canonical endpoint | `https://aicenter.mahidol.ac.th/qwen/v1` (stable alias, admin-maintained) |
+| Model ID | `qwen` |
+| Context window | 262144 (256K), current |
+| Live check | `curl -sk https://aicenter.mahidol.ac.th/qwen/v1/models` → `root: Qwen/Qwen3.8-27B` |
+| System resources | serving-side hardware/parallelism/memory settings deliberately omitted; `dual-GPU: RTX 3080 + RTX 3080 Ti` in `fpga.md` §8 redacted to "local workstation" |
+
+### Files Touched
+
+| File | Action |
+|------|--------|
+| `qwen3.5.md` → `qwen.md` | `git mv` + full rewrite: dropped 122B/MoE/AWQ/"A10B active" framing (3.8-27B is dense 27B), added "Stable Endpoint" section + admin note + `/models` discovery command, fixed `Sanhlao`→`Sanghlao` and `Assitant`→`Assistant`, removed self-contradicting `contextLength: 81920 # 16k window` line |
+| `index.md` | toctree `qwen3.5` → `qwen` |
+| `metasearch.md` | Continue block: `model` + `apiBase` → alias |
+| `alchemi.md` | Continue block (lines 283–284) → alias |
+| `openclaw.md` | reference, exec-summary table, Step 3 config, self-host section (renamed, `--served-model-name qwen`), ollama tags `qwen3.6:27b`→`qwen3.8:27b`, footer |
+| `fpga.md` | header, ASCII diagram, component map, `openclaw.json` block, §8 fallback (+ GPU redaction), troubleshooting curls, quick-ref card, footer |
+
+### Left Untouched (intentional)
+
+- `mathphysic.rst` — QwQ-32B / Qwen2.5 is a cited *research reference* with bibliography entry, not a deployment config
+- Author-line "Qwen" credits in `ddp-training.md`, `array-jobs.md`, `alphafold-db-api-access.md`, `hermes-remote-hpc-slack.md`, `backup/a100bug.md`
+- `openclaw.md` client-side "what you need" hardware guidance (reader's own hardware, not infra)
+
+### Deferred (not requested)
+
+- `fpga.md` still contains `/media/snit/AiHPC/...` paths, `192.168.1.1` + K8s-master note, and license-server strings — separate scrub, larger diff.
+
+### Status
+
+- [x] Sphinx build verification (conda `workshop` env) — exit 0, no new warnings/errors vs. baseline. `adv_guide/qwen` resolves (read + written at 39%). Pre-existing issues unchanged (H1→H3 myst.header across the doc set, `adv_guide/ollama` missing-doc, jupyterlite `build-finished` ExtensionError, RST indentation errors in unrelated files).
+- [ ] Not committed — awaiting review. Untracked `.bak` siblings left in `doc/adv_guide/` (fpga, index, metasearch, openclaw, qwen3.5). `alchemi.md.bak` was already git-tracked; restored to HEAD after cp overwrote it.
